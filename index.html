@@ -1,0 +1,2663 @@
+<!DOCTYPE html>
+
+<html lang="he" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>אימון הגייה - Quizlet Style</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+
+        :root {
+
+            --bg-color: #f6f7fb;
+
+            --text-main: #282e3e;
+
+            --text-muted: #586380;
+
+            --border-color: #edeff4;
+
+            --quizlet-blue: #4255ff;
+
+            --quizlet-blue-hover: #3b4cca;
+
+            
+
+            --card-green: #e1fdf4;
+
+            --card-yellow: #fff9d6;
+
+            --card-red: #ffeaea;
+
+
+
+            --tinder-red: #ff725b;
+
+            --tinder-green: #23b26d;
+
+        }
+
+
+
+        body {
+
+            font-family: 'Heebo', sans-serif;
+
+            background-color: var(--bg-color);
+
+            margin: 0;
+
+            padding: 0;
+
+            padding-bottom: 80px;
+
+            color: var(--text-main);
+
+            box-sizing: border-box;
+
+        }
+
+
+
+        *, *::before, *::after { box-sizing: inherit; }
+
+
+
+        /* סרגל עליון - ברכה, התקדמות וסטטיסטיקה */
+
+        .top-navbar {
+
+            background-color: #ffffff;
+
+            box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.08);
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 100;
+
+            padding: 15px 30px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            flex-wrap: wrap;
+
+            gap: 15px;
+
+        }
+
+
+
+        .greeting-text {
+
+            font-size: 22px;
+
+            font-weight: 800;
+
+            color: var(--quizlet-blue);
+
+            min-width: 150px;
+
+        }
+
+
+
+        /* פס התקדמות עליון */
+
+        .progress-wrapper {
+
+            flex: 1;
+
+            max-width: 500px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 6px;
+
+            margin: 0 auto;
+
+        }
+
+        .progress-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            width: 100%;
+
+            font-size: 14px;
+
+            font-weight: 800;
+
+            color: var(--quizlet-blue);
+
+        }
+
+        .progress-container {
+
+            width: 100%;
+
+            height: 14px;
+
+            background-color: #edeff4;
+
+            border-radius: 10px;
+
+            overflow: hidden;
+
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+
+        }
+
+        .progress-bar-fill {
+
+            height: 100%;
+
+            background: linear-gradient(90deg, #34d399, var(--tinder-green));
+
+            width: 0%;
+
+            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+
+            border-radius: 10px;
+
+        }
+
+        .progress-stats {
+
+            color: var(--text-muted);
+
+        }
+
+
+
+        .global-stats-btn {
+
+            font-size: 16px;
+
+            font-weight: 700;
+
+            background: #f6f7fb;
+
+            padding: 8px 16px;
+
+            border-radius: 20px;
+
+            color: var(--text-muted);
+
+            min-width: 100px;
+
+            text-align: center;
+
+        }
+
+
+
+        .container {
+
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+            padding: 40px 20px;
+
+        }
+
+
+
+        /* סרגל ניווט A-Z */
+
+        .az-nav-container {
+
+            background: #ffffff;
+
+            border-radius: 16px;
+
+            padding: 25px;
+
+            margin-bottom: 30px;
+
+            box-shadow: 0 0.25rem 1rem rgba(0,0,0,0.05);
+
+        }
+
+        
+
+        .az-nav-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 15px;
+
+        }
+
+
+
+        .az-nav-title {
+
+            font-size: 18px;
+
+            font-weight: 800;
+
+            color: var(--text-main);
+
+        }
+
+
+
+        .add-word-btn {
+
+            background: linear-gradient(135deg, #23b26d, #1e995d);
+
+            color: white;
+
+            border: none;
+
+            padding: 10px 22px;
+
+            border-radius: 30px;
+
+            font-weight: 800;
+
+            font-size: 15px;
+
+            cursor: pointer;
+
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+            box-shadow: 0 4px 12px rgba(35, 178, 109, 0.25);
+
+            font-family: 'Heebo', sans-serif;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+        }
+
+        .add-word-btn:hover {
+
+            transform: translateY(-3px) scale(1.02);
+
+            box-shadow: 0 8px 20px rgba(35, 178, 109, 0.4);
+
+        }
+
+
+
+        .az-grid {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 12px;
+
+            direction: ltr;
+
+            justify-content: center;
+
+        }
+
+        
+
+        .az-badge {
+
+            background: #ffffff;
+
+            border: 2px solid var(--border-color);
+
+            padding: 10px 15px;
+
+            border-radius: 12px;
+
+            font-family: 'Inter', sans-serif;
+
+            cursor: pointer;
+
+            transition: all 0.2s;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            min-width: 70px;
+
+        }
+
+        
+
+        .az-badge:hover {
+
+            border-color: #c9d2e0;
+
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+
+        }
+
+
+
+        .az-badge.active {
+
+            background: var(--quizlet-blue);
+
+            border-color: var(--quizlet-blue);
+
+            color: white;
+
+            transform: translateY(-2px);
+
+            box-shadow: 0 6px 12px rgba(66, 85, 255, 0.2);
+
+        }
+
+
+
+        .az-badge-letter { font-size: 22px; font-weight: 900; }
+
+        .az-badge-stats { font-size: 12px; font-weight: 600; margin-top: 4px; opacity: 0.8; }
+
+        .az-badge.active .az-badge-stats { opacity: 1; }
+
+        .az-badge.disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
+
+
+
+        /* כפתורי סינון */
+
+        .filters-container {
+
+            display: flex;
+
+            gap: 12px;
+
+            margin-bottom: 30px;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+        }
+
+        
+
+        .filter-btn {
+
+            background: #ffffff;
+
+            border: 2px solid var(--border-color);
+
+            padding: 10px 20px;
+
+            border-radius: 30px;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+            color: var(--text-muted);
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+
+        }
+
+        
+
+        .filter-btn:hover { 
+
+            border-color: var(--quizlet-blue); 
+
+            color: var(--quizlet-blue); 
+
+            transform: translateY(-2px);
+
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+
+        }
+
+        
+
+        .filter-btn.active { 
+
+            background: var(--quizlet-blue); 
+
+            color: white; 
+
+            border-color: var(--quizlet-blue); 
+
+            box-shadow: 0 6px 15px rgba(66, 85, 255, 0.25);
+
+        }
+
+
+
+        .filter-count {
+
+            background: #f0f2f5;
+
+            color: var(--text-main);
+
+            padding: 2px 10px;
+
+            border-radius: 12px;
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            transition: all 0.3s;
+
+            margin-right: 4px;
+
+        }
+
+
+
+        .filter-btn.active .filter-count {
+
+            background: rgba(255, 255, 255, 0.25);
+
+            color: #ffffff;
+
+        }
+
+
+
+        /* רשת הכרטיסיות */
+
+        .words-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 30px;
+
+        }
+
+
+
+        /* עיצוב כרטיסיית Quizlet */
+
+        .card {
+
+            background-color: #ffffff;
+
+            border-radius: 12px;
+
+            padding: 35px 25px 25px 25px;
+
+            box-shadow: 0 0.125rem 0.5rem rgba(0,0,0,0.08);
+
+            border: 3px solid transparent;
+
+            display: flex;
+
+            flex-direction: column;
+
+            transition: all 0.3s ease;
+
+            position: relative;
+
+        }
+
+
+
+        .card:hover { box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.12); transform: translateY(-4px); }
+
+
+
+        .card.state-green { background-color: var(--card-green); border-color: #a7f3d0; }
+
+        .card.state-yellow { background-color: var(--card-yellow); border-color: #fde047; }
+
+        .card.state-red { background-color: var(--card-red); border-color: #fca5a5; }
+
+
+
+        /* כפתור איפוס */
+
+        .btn-reset {
+
+            position: absolute;
+
+            top: 15px;
+
+            left: 15px;
+
+            background: rgba(0,0,0,0.05);
+
+            border: none;
+
+            width: 32px;
+
+            height: 32px;
+
+            border-radius: 50%;
+
+            cursor: pointer;
+
+            font-size: 16px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            color: var(--text-muted);
+
+            transition: 0.2s;
+
+        }
+
+        .btn-reset:hover { background: rgba(0,0,0,0.1); color: var(--text-main); transform: rotate(-45deg); }
+
+
+
+        /* כפתור כוכב (מועדפים) */
+
+        .star-btn {
+
+            position: absolute;
+
+            top: 15px;
+
+            right: 15px;
+
+            background: none;
+
+            border: none;
+
+            font-size: 26px;
+
+            color: var(--border-color);
+
+            cursor: pointer;
+
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+            text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+
+            padding: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+        .star-btn:hover {
+
+            transform: scale(1.15);
+
+            color: #fcd34d;
+
+        }
+
+        .star-btn.starred {
+
+            color: #f59e0b;
+
+            text-shadow: 0 2px 8px rgba(245, 158, 11, 0.4);
+
+        }
+
+
+
+        .english-word {
+
+            font-family: 'Inter', sans-serif;
+
+            font-size: 36px;
+
+            font-weight: 900;
+
+            text-align: center;
+
+            margin-bottom: 10px;
+
+            color: var(--text-main);
+
+            direction: ltr;
+
+        }
+
+
+
+        /* תיבת ההגייה */
+
+        .phonetic {
+
+            text-align: center;
+
+            font-size: 22px; 
+
+            font-weight: 900; 
+
+            color: #b45309; 
+
+            margin-bottom: 20px;
+
+            background-color: #fef3c7;
+
+            padding: 8px 20px;
+
+            border-radius: 12px;
+
+            border: 2px dashed #f59e0b;
+
+            display: inline-block;
+
+            align-self: center;
+
+            letter-spacing: 1px;
+
+            cursor: pointer;
+
+            transition: transform 0.2s, box-shadow 0.2s;
+
+        }
+
+        .phonetic:hover {
+
+            transform: scale(1.03);
+
+            box-shadow: 0 4px 8px rgba(245, 158, 11, 0.15);
+
+        }
+
+
+
+        /* כפתור השמע 🔊 */
+
+        .btn-audio {
+
+            background-color: #ffffff;
+
+            border: 2px solid var(--border-color);
+
+            color: var(--text-main);
+
+            padding: 10px 20px;
+
+            border-radius: 25px;
+
+            font-size: 16px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+
+            margin: 0 auto 25px auto;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            font-family: 'Inter', 'Heebo', sans-serif;
+
+        }
+
+        .btn-audio:hover { border-color: var(--quizlet-blue); color: var(--quizlet-blue); background: #f5f6ff; }
+
+        .btn-audio:active { transform: scale(0.95); }
+
+
+
+        .meaning-section { text-align: center; margin-bottom: 25px; }
+
+        
+
+        .btn-meaning-toggle {
+
+            background: none;
+
+            border: none;
+
+            color: var(--quizlet-blue);
+
+            font-weight: 800;
+
+            font-size: 15px;
+
+            cursor: pointer;
+
+            text-decoration: underline;
+
+            font-family: 'Inter', 'Heebo', sans-serif;
+
+        }
+
+
+
+        .meaning-text {
+
+            display: none;
+
+            margin-top: 15px;
+
+            font-size: 24px;
+
+            font-weight: 800;
+
+            color: var(--text-main);
+
+            background-color: rgba(0, 0, 0, 0.03);
+
+            padding: 15px;
+
+            border-radius: 12px;
+
+        }
+
+
+
+        .divider { height: 2px; background-color: var(--border-color); margin: 0 0 20px 0; width: 100%; }
+
+
+
+        /* Tinder Controls */
+
+        .tinder-controls { display: flex; flex-direction: column; gap: 15px; }
+
+        .tinder-row { display: flex; justify-content: space-between; align-items: center; }
+
+        .tinder-label { font-weight: 800; font-size: 16px; display: flex; flex-direction: column; color: var(--text-main); }
+
+        .tinder-label span.eng { font-size: 13px; color: var(--text-muted); font-family: 'Inter', sans-serif; font-weight: 600;}
+
+        .tinder-actions { display: flex; gap: 15px; }
+
+
+
+        .btn-tinder {
+
+            width: 48px;
+
+            height: 48px;
+
+            border-radius: 50%;
+
+            border: 3px solid;
+
+            background: #ffffff;
+
+            cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+        }
+
+
+
+        .btn-tinder-no { border-color: var(--tinder-red); color: var(--tinder-red); font-size: 20px; }
+
+        .btn-tinder-yes { border-color: var(--tinder-green); }
+
+        .btn-tinder-yes svg { fill: var(--tinder-green); width: 22px; height: 22px; transition: fill 0.2s; }
+
+
+
+        .btn-tinder-no:hover, .btn-tinder-no.active { background: var(--tinder-red); color: white; transform: scale(1.1); border-color: var(--tinder-red); }
+
+        .btn-tinder-yes:hover, .btn-tinder-yes.active { background: var(--tinder-green); transform: scale(1.1); border-color: var(--tinder-green); }
+
+        .btn-tinder-yes:hover svg, .btn-tinder-yes.active svg { fill: white; }
+
+
+
+        /* נגזרות */
+
+        .derivatives-toggle {
+
+            margin-top: 25px;
+
+            width: 100%;
+
+            background: #f6f7fb;
+
+            border: 2px solid var(--border-color);
+
+            border-radius: 12px;
+
+            color: var(--text-main);
+
+            font-weight: 800;
+
+            font-size: 14px;
+
+            cursor: pointer;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding: 12px 0;
+
+            transition: 0.2s;
+
+        }
+
+        .derivatives-toggle:hover { background: #edeff4; border-color: #c9d2e0; }
+
+        .derivatives-toggle svg { width: 18px; height: 18px; transition: transform 0.3s; }
+
+        .derivatives-toggle.open svg { transform: rotate(180deg); }
+
+
+
+        .derivatives-container { display: none; margin-top: 15px; }
+
+
+
+        .sub-card {
+
+            background-color: #ffffff;
+
+            border-radius: 12px;
+
+            padding: 25px 20px;
+
+            margin-bottom: 15px;
+
+            border: 2px solid var(--border-color);
+
+            display: flex;
+
+            flex-direction: column;
+
+            position: relative;
+
+        }
+
+        
+
+        .sub-card .english-word { font-size: 26px; margin-bottom: 5px; }
+
+        .sub-card .phonetic { font-size: 20px; padding: 6px 14px; margin-bottom: 20px; }
+
+        
+
+        .tense-badge {
+
+            align-self: center;
+
+            font-size: 12px;
+
+            background: var(--text-muted);
+
+            color: white;
+
+            padding: 4px 10px;
+
+            border-radius: 12px;
+
+            margin-bottom: 15px;
+
+            font-family: 'Inter', sans-serif;
+
+            letter-spacing: 0.5px;
+
+            font-weight: 800;
+
+        }
+
+
+
+        .no-results {
+
+            grid-column: 1 / -1;
+
+            text-align: center;
+
+            padding: 60px;
+
+            font-size: 22px;
+
+            font-weight: 800;
+
+            color: var(--text-muted);
+
+            background: white;
+
+            border-radius: 16px;
+
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+
+        }
+
+
+
+        @media (max-width: 1024px) { .words-grid { grid-template-columns: repeat(2, 1fr); } }
+
+        @media (max-width: 768px) { .words-grid { grid-template-columns: 1fr; } }
+
+
+
+        /* כפתורי פאגינציה */
+
+        .pagination-action {
+
+            display: flex;
+
+            justify-content: center;
+
+            margin-top: 40px;
+
+        }
+
+        
+
+        .load-more-btn {
+
+            background-color: var(--quizlet-blue);
+
+            color: white;
+
+            border: none;
+
+            padding: 15px 40px;
+
+            border-radius: 30px;
+
+            font-size: 18px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+            transition: all 0.3s;
+
+            box-shadow: 0 4px 15px rgba(66, 85, 255, 0.3);
+
+            font-family: 'Heebo', sans-serif;
+
+        }
+
+
+
+        .load-more-btn:hover {
+
+            background-color: var(--quizlet-blue-hover);
+
+            transform: translateY(-2px);
+
+            box-shadow: 0 6px 20px rgba(66, 85, 255, 0.4);
+
+        }
+
+        
+
+        .next-letter-btn {
+
+            background-color: var(--text-main);
+
+            box-shadow: 0 4px 15px rgba(40, 46, 62, 0.3);
+
+        }
+
+
+
+        .next-letter-btn:hover {
+
+            background-color: #1a1e28;
+
+            box-shadow: 0 6px 20px rgba(40, 46, 62, 0.4);
+
+        }
+
+        
+
+        .finished-msg {
+
+            font-size: 20px;
+
+            font-weight: 800;
+
+            color: var(--tinder-green);
+
+        }
+
+
+
+        /* סרגל תחתון צף */
+
+        .bottom-bar {
+
+            position: fixed;
+
+            bottom: 0;
+
+            left: 0;
+
+            right: 0;
+
+            background: rgba(255, 255, 255, 0.95);
+
+            backdrop-filter: blur(10px);
+
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.05);
+
+            padding: 12px 20px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            z-index: 1000;
+
+            border-top: 1px solid var(--border-color);
+
+        }
+
+        
+
+        .bottom-bar-btn {
+
+            background: transparent;
+
+            border: none;
+
+            color: var(--quizlet-blue);
+
+            font-weight: 700;
+
+            font-size: 16px;
+
+            font-family: 'Heebo', sans-serif;
+
+            cursor: pointer;
+
+            padding: 8px 12px;
+
+            border-radius: 12px;
+
+            transition: all 0.2s;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+        }
+
+
+
+        .bottom-bar-btn:hover {
+
+            background: #f0f2f5;
+
+        }
+
+
+
+        .bottom-bar-btn.center-btn {
+
+            color: var(--text-muted);
+
+        }
+
+
+
+        /* ================= 2027 App Design: Modal ================= */
+
+        .modal-overlay {
+
+            display: none;
+
+            position: fixed;
+
+            top: 0; left: 0; right: 0; bottom: 0;
+
+            background: rgba(15, 23, 42, 0.4);
+
+            z-index: 2000;
+
+            justify-content: center;
+
+            align-items: center;
+
+            backdrop-filter: blur(16px);
+
+            -webkit-backdrop-filter: blur(16px);
+
+            opacity: 0;
+
+            transition: opacity 0.3s ease;
+
+        }
+
+        .modal-overlay.show {
+
+            opacity: 1;
+
+        }
+
+        .modal-content {
+
+            background: linear-gradient(145deg, #ffffff, #f8fafc);
+
+            padding: 40px;
+
+            border-radius: 32px;
+
+            width: 90%;
+
+            max-width: 450px;
+
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,1);
+
+            border: 1px solid rgba(226, 232, 240, 0.8);
+
+            transform: scale(0.95) translateY(20px);
+
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+            direction: rtl;
+
+        }
+
+        .modal-overlay.show .modal-content {
+
+            transform: scale(1) translateY(0);
+
+        }
+
+        .modal-title {
+
+            font-size: 28px;
+
+            font-weight: 900;
+
+            background: linear-gradient(135deg, #4255ff, #8b5cf6);
+
+            -webkit-background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+
+            margin-bottom: 30px;
+
+            text-align: center;
+
+            letter-spacing: -0.5px;
+
+        }
+
+        .form-floating {
+
+            position: relative;
+
+            margin-bottom: 20px;
+
+        }
+
+        .form-floating input {
+
+            width: 100%;
+
+            padding: 16px 16px;
+
+            border: 2px solid transparent;
+
+            border-radius: 16px;
+
+            background: #f1f5f9;
+
+            font-family: 'Inter', 'Heebo', sans-serif;
+
+            font-size: 16px;
+
+            font-weight: 600;
+
+            color: #1e293b;
+
+            transition: all 0.3s ease;
+
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+
+            box-sizing: border-box;
+
+        }
+
+        .form-floating input:focus {
+
+            border-color: #8b5cf6;
+
+            background: #ffffff;
+
+            outline: none;
+
+            box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.1);
+
+        }
+
+        .form-floating label {
+
+            position: absolute;
+
+            top: 50%;
+
+            right: 16px;
+
+            transform: translateY(-50%);
+
+            font-weight: 600;
+
+            color: #64748b;
+
+            pointer-events: none;
+
+            transition: all 0.2s ease;
+
+            font-size: 16px;
+
+        }
+
+        .form-floating input:focus ~ label,
+
+        .form-floating input:not(:placeholder-shown) ~ label {
+
+            top: 0px;
+
+            right: 12px;
+
+            font-size: 13px;
+
+            background: linear-gradient(to bottom, #ffffff 50%, #f1f5f9 50%);
+
+            padding: 0 6px;
+
+            color: #8b5cf6;
+
+            border-radius: 4px;
+
+        }
+
+        .modal-actions {
+
+            display: flex;
+
+            gap: 15px;
+
+            margin-top: 35px;
+
+        }
+
+        .btn-modal {
+
+            flex: 1;
+
+            padding: 16px;
+
+            border-radius: 16px;
+
+            font-weight: 800;
+
+            font-size: 16px;
+
+            cursor: pointer;
+
+            transition: all 0.3s;
+
+            border: none;
+
+            font-family: inherit;
+
+        }
+
+        .btn-save {
+
+            background: linear-gradient(135deg, #4255ff, #8b5cf6);
+
+            color: white;
+
+            box-shadow: 0 10px 20px -5px rgba(139, 92, 246, 0.4);
+
+        }
+
+        .btn-save:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow: 0 15px 25px -5px rgba(139, 92, 246, 0.5);
+
+        }
+
+        .btn-cancel {
+
+            background: #e2e8f0;
+
+            color: #475569;
+
+        }
+
+        .btn-cancel:hover {
+
+            background: #cbd5e1;
+
+            color: #1e293b;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+
+<!-- סרגל עליון עם ברכה וסרגל התקדמות -->
+
+<div class="top-navbar">
+
+    <div class="greeting-text" id="greeting">שלום אביב 👋</div>
+
+    
+
+    <div class="progress-wrapper">
+
+        <div class="progress-header">
+
+            <span id="progress-title">מתחיל 🌱</span>
+
+            <span id="progress-stats" class="progress-stats">0 / 0 (0%)</span>
+
+        </div>
+
+        <div class="progress-container">
+
+            <div class="progress-bar-fill" id="progress-fill"></div>
+
+        </div>
+
+    </div>
+
+    
+
+    <div class="global-stats-btn" title="התקדמות כללית במילון">סטטוס מילים</div>
+
+</div>
+
+
+
+<div class="container">
+
+    <div class="az-nav-container">
+
+        <div class="az-nav-header">
+
+            <div class="az-nav-title">בחר אות לתרגול:</div>
+
+            <button class="add-word-btn" onclick="openAddWordModal()">
+
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+
+                הוסף מילה
+
+            </button>
+
+        </div>
+
+        <div class="az-grid" id="az-grid">
+
+            <!-- Grid generated by JS -->
+
+        </div>
+
+    </div>
+
+
+
+    <div class="filters-container">
+
+        <button class="filter-btn active" onclick="setFilter('all', this)">
+
+            הכל (All) <span class="filter-count" id="count-all">0</span>
+
+        </button>
+
+        <button class="filter-btn" onclick="setFilter('green', this)">
+
+            יודע הכל 🟢 <span class="filter-count" id="count-green">0</span>
+
+        </button>
+
+        <button class="filter-btn" onclick="setFilter('yellow', this)">
+
+            יודע חלקית 🟡 <span class="filter-count" id="count-yellow">0</span>
+
+        </button>
+
+        <button class="filter-btn" onclick="setFilter('red', this)">
+
+            לא יודע / טרם תורגל 🔴 <span class="filter-count" id="count-red">0</span>
+
+        </button>
+
+    </div>
+
+    
+
+    <div class="words-grid" id="words-grid">
+
+        <!-- Cards generated by JS -->
+
+    </div>
+
+    
+
+    <div id="pagination-action" class="pagination-action"></div>
+
+</div>
+
+
+
+<div class="bottom-bar">
+
+    <button id="bar-btn-next" class="bottom-bar-btn" onclick="nextLetter()">
+
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+
+        לאות הבאה
+
+    </button>
+
+    <button class="bottom-bar-btn center-btn" onclick="scrollToTop()">
+
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+
+        חזור למעלה
+
+    </button>
+
+    <button id="bar-btn-prev" class="bottom-bar-btn" onclick="prevLetter()">
+
+        לאות הקודמת
+
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+
+    </button>
+
+</div>
+
+
+
+<!-- חלון הוספת מילה - עיצוב 2027 -->
+
+<div id="addWordModal" class="modal-overlay">
+
+    <div class="modal-content">
+
+        <div class="modal-title">הוספת מילה חדשה</div>
+
+        
+
+        <div class="form-floating">
+
+            <input type="text" id="custom-word" placeholder=" " dir="ltr">
+
+            <label>מילה באנגלית</label>
+
+        </div>
+
+        
+
+        <div class="form-floating">
+
+            <input type="text" id="custom-meaning" placeholder=" ">
+
+            <label>פירוש בעברית</label>
+
+        </div>
+
+        
+
+        <div class="form-floating">
+
+            <input type="text" id="custom-phonetic" placeholder=" ">
+
+            <label>הגייה (לדוגמה: אוֹ-סָם)</label>
+
+        </div>
+
+        
+
+        <div class="modal-actions">
+
+            <button class="btn-modal btn-cancel" onclick="closeAddWordModal()">ביטול</button>
+
+            <button class="btn-modal btn-save" onclick="saveCustomWord()">שמור מילה</button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- ============================================== -->
+
+<!-- חיבור לקובץ המילון החיצוני (ייצרנו אותו בנפרד) -->
+
+<!-- ============================================== -->
+
+<script src="dictionary.js"></script>
+
+
+
+<script>
+
+    function setGreeting() {
+
+        const hour = new Date().getHours();
+
+        let greeting = "לילה טוב";
+
+        if (hour >= 5 && hour < 12) greeting = "בוקר טוב";
+
+        else if (hour >= 12 && hour < 17) greeting = "צהריים טובים";
+
+        else if (hour >= 17 && hour < 21) greeting = "ערב טוב";
+
+        document.getElementById('greeting').innerText = `שלום אביב, ${greeting} 👋`;
+
+    }
+
+    setGreeting();
+
+
+
+    // בדיקה האם קובץ ה-dictionary.js נטען כראוי
+
+    if (typeof baseWordsData === 'undefined') {
+
+        console.error("קובץ dictionary.js לא נטען. בדוק שהוא נמצא באותה תיקייה ושמו מדויק.");
+
+        window.baseWordsData = []; 
+
+    }
+
+
+
+    // משיכת ההגיות שהמשתמש שמר בעבר (כדי למנוע דריסה כשהוא מעדכן דרך הממשק)
+
+    let savedPhonetics = JSON.parse(localStorage.getItem('englishAppPhoneticsV1')) || {};
+
+    
+
+    // עדכון בסיס הנתונים החיצוני עם ההגיות שהוזנו ידנית בדפדפן
+
+    baseWordsData.forEach(w => {
+
+        if (savedPhonetics[w.id]) w.phonetic = savedPhonetics[w.id];
+
+        if (w.derivatives) {
+
+            w.derivatives.forEach(d => {
+
+                if (savedPhonetics[d.id]) d.phonetic = savedPhonetics[d.id];
+
+            });
+
+        }
+
+    });
+
+
+
+    let customUserWords = JSON.parse(localStorage.getItem('englishAppCustomWordsV5')) || [];
+
+    let wordsData = [...baseWordsData, ...customUserWords];
+
+
+
+    let userProgress = JSON.parse(localStorage.getItem('englishAppProgressV6')) || {};
+
+    let currentLetter = 'A';
+
+    let currentFilter = 'all';
+
+    let wordsLimit = 25;
+
+
+
+    // עריכת הגייה ידנית ולשמור אותה לזכרון
+
+    function editPhonetic(id, wordText) {
+
+        const el = document.getElementById('phonetic-' + id);
+
+        let current = el.innerText;
+
+        if (current.includes('לחץ כאן') || current.includes('הוסף הגייה')) current = '';
+
+        
+
+        let newPhonetic = prompt(`הכנס הגייה בעברית עבור המילה "${wordText}":`, current);
+
+        
+
+        if (newPhonetic !== null) {
+
+            newPhonetic = newPhonetic.trim();
+
+            if (newPhonetic === '') newPhonetic = 'לחץ כאן להוספת הגייה ידנית';
+
+            
+
+            el.innerText = newPhonetic;
+
+            
+
+            // שמירה ל-LocalStorage שתשרוד רענונים
+
+            let sp = JSON.parse(localStorage.getItem('englishAppPhoneticsV1')) || {};
+
+            sp[id] = newPhonetic;
+
+            localStorage.setItem('englishAppPhoneticsV1', JSON.stringify(sp));
+
+            
+
+            // עדכון המערך הקיים בזיכרון הנוכחי
+
+            let wordObj = wordsData.find(w => w.id === id) || 
+
+                          wordsData.find(w => w.derivatives && w.derivatives.some(d => d.id === id))?.derivatives.find(d => d.id === id);
+
+            
+
+            if (wordObj) {
+
+                wordObj.phonetic = newPhonetic;
+
+                // אם זו מילה מותאמת אישית (שנוספה מהאפליקציה), נעדכן גם אותה בזיכרון הקבוע
+
+                if (id.startsWith('custom_')) {
+
+                    let cw = customUserWords.find(w => w.id === id);
+
+                    if (cw) {
+
+                        cw.phonetic = newPhonetic;
+
+                        localStorage.setItem('englishAppCustomWordsV5', JSON.stringify(customUserWords));
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+
+
+    // סימון מילה בכוכב (מועדפים)
+
+    function toggleStar(id) {
+
+        if (!userProgress[id]) userProgress[id] = { m: 0, p: 0, starred: false };
+
+        userProgress[id].starred = !userProgress[id].starred;
+
+        localStorage.setItem('englishAppProgressV6', JSON.stringify(userProgress));
+
+        
+
+        const starBtn = document.getElementById('star-' + id);
+
+        if (starBtn) {
+
+            if (userProgress[id].starred) {
+
+                starBtn.classList.add('starred');
+
+            } else {
+
+                starBtn.classList.remove('starred');
+
+            }
+
+        }
+
+    }
+
+
+
+    function speakWord(word) {
+
+        if ('speechSynthesis' in window) {
+
+            window.speechSynthesis.cancel();
+
+            const utterance = new SpeechSynthesisUtterance(word);
+
+            utterance.lang = 'en-US';
+
+            utterance.rate = 0.35; 
+
+            window.speechSynthesis.speak(utterance);
+
+        }
+
+    }
+
+
+
+    function toggleMeaning(id) {
+
+        const meaningDiv = document.getElementById('meaning-' + id);
+
+        const btn = document.getElementById('btn-meaning-' + id);
+
+        if (meaningDiv.style.display === 'block') {
+
+            meaningDiv.style.display = 'none';
+
+            btn.innerText = 'הצג פירוש (Show Meaning)';
+
+        } else {
+
+            meaningDiv.style.display = 'block';
+
+            btn.innerText = 'הסתר פירוש (Hide Meaning)';
+
+        }
+
+    }
+
+    
+
+    function toggleDerivatives(id) {
+
+        const derivDiv = document.getElementById('deriv-' + id);
+
+        const btn = document.getElementById('btn-deriv-' + id);
+
+        if (derivDiv.style.display === 'block') {
+
+            derivDiv.style.display = 'none';
+
+            btn.classList.remove('open');
+
+        } else {
+
+            derivDiv.style.display = 'block';
+
+            btn.classList.add('open');
+
+        }
+
+    }
+
+
+
+    function setStatus(id, type, value) {
+
+        if (!userProgress[id]) userProgress[id] = { m: 0, p: 0, starred: false }; 
+
+        userProgress[id][type] = value;
+
+        localStorage.setItem('englishAppProgressV6', JSON.stringify(userProgress));
+
+        renderWords();
+
+    }
+
+
+
+    function resetStatus(id) {
+
+        if (userProgress[id]) {
+
+            let wasStarred = userProgress[id].starred;
+
+            userProgress[id] = { m: 0, p: 0, starred: wasStarred };
+
+            localStorage.setItem('englishAppProgressV6', JSON.stringify(userProgress));
+
+            renderWords();
+
+        }
+
+    }
+
+
+
+    function setFilter(filterType, btnElement) {
+
+        currentFilter = filterType;
+
+        wordsLimit = 25;
+
+        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+
+        btnElement.classList.add('active');
+
+        renderWords();
+
+    }
+
+
+
+    function generateControls(id) {
+
+        const heartSVG = `<svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`;
+
+        return `
+
+            <div class="tinder-controls">
+
+                <div class="tinder-row">
+
+                    <div class="tinder-label">הגייה <span class="eng">(Pronunciation)</span></div>
+
+                    <div class="tinder-actions">
+
+                        <button id="btn-${id}-p-no" class="btn-tinder btn-tinder-no" onclick="setStatus('${id}', 'p', -1)">✖</button>
+
+                        <button id="btn-${id}-p-yes" class="btn-tinder btn-tinder-yes" onclick="setStatus('${id}', 'p', 1)">${heartSVG}</button>
+
+                    </div>
+
+                </div>
+
+                <div class="tinder-row">
+
+                    <div class="tinder-label">פירוש <span class="eng">(Meaning)</span></div>
+
+                    <div class="tinder-actions">
+
+                        <button id="btn-${id}-m-no" class="btn-tinder btn-tinder-no" onclick="setStatus('${id}', 'm', -1)">✖</button>
+
+                        <button id="btn-${id}-m-yes" class="btn-tinder btn-tinder-yes" onclick="setStatus('${id}', 'm', 1)">${heartSVG}</button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        `;
+
+    }
+
+
+
+    function generateCardHTML(item, isDerivative = false) {
+
+        let state = userProgress[item.id] || {m:0, p:0, starred: false};
+
+        let starClass = state.starred ? 'starred' : '';
+
+        let escapedWord = item.word.replace(/'/g, "\\'");
+
+
+
+        if (isDerivative) {
+
+            return `
+
+                <div class="sub-card" id="card-${item.id}">
+
+                    <button class="btn-reset" onclick="resetStatus('${item.id}')" title="אפס בחירה">↺</button>
+
+                    <button id="star-${item.id}" class="star-btn ${starClass}" onclick="toggleStar('${item.id}')" title="סמן מילה בכוכב">★</button>
+
+                    
+
+                    <div class="tense-badge">${item.tense}</div>
+
+                    <div class="english-word">${item.word}</div>
+
+                    
+
+                    <div class="phonetic" id="phonetic-${item.id}" onclick="editPhonetic('${item.id}', '${escapedWord}')" title="לחץ לעריכת הגייה">${item.phonetic}</div>
+
+                    <button class="btn-audio" onclick="speakWord('${escapedWord}')">🔊 Listen (שמע)</button>
+
+                    
+
+                    <div class="meaning-section">
+
+                        <button id="btn-meaning-${item.id}" class="btn-meaning-toggle" onclick="toggleMeaning('${item.id}')">הצג פירוש (Show Meaning)</button>
+
+                        <div id="meaning-${item.id}" class="meaning-text">${item.meaning}</div>
+
+                    </div>
+
+                    ${generateControls(item.id)}
+
+                </div>
+
+            `;
+
+        }
+
+
+
+        let derivativesHTML = '';
+
+        if (item.derivatives && item.derivatives.length > 0) {
+
+            let innerCards = item.derivatives.map(d => generateCardHTML(d, true)).join('');
+
+            derivativesHTML = `
+
+                <button id="btn-deriv-${item.id}" class="derivatives-toggle" onclick="toggleDerivatives('${item.id}')">
+
+                    <span>זמנים ונגזרות (Tenses & Derivatives)</span>
+
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+
+                </button>
+
+                <div class="derivatives-container" id="deriv-${item.id}">
+
+                    ${innerCards}
+
+                </div>
+
+            `;
+
+        }
+
+
+
+        return `
+
+            <div class="card" id="card-${item.id}">
+
+                <button class="btn-reset" onclick="resetStatus('${item.id}')" title="אפס בחירה">↺</button>
+
+                <button id="star-${item.id}" class="star-btn ${starClass}" onclick="toggleStar('${item.id}')" title="סמן מילה בכוכב">★</button>
+
+                
+
+                <div class="english-word">${item.word}</div>
+
+                
+
+                <div class="phonetic" id="phonetic-${item.id}" onclick="editPhonetic('${item.id}', '${escapedWord}')" title="לחץ לעריכת הגייה">${item.phonetic}</div>
+
+                <button class="btn-audio" onclick="speakWord('${escapedWord}')">🔊 Listen (שמע)</button>
+
+                
+
+                <div class="meaning-section">
+
+                    <button id="btn-meaning-${item.id}" class="btn-meaning-toggle" onclick="toggleMeaning('${item.id}')">הצג פירוש (Show Meaning)</button>
+
+                    <div id="meaning-${item.id}" class="meaning-text">${item.meaning}</div>
+
+                </div>
+
+                
+
+                <div class="divider"></div>
+
+                ${generateControls(item.id)}
+
+                ${derivativesHTML}
+
+            </div>
+
+        `;
+
+    }
+
+
+
+    function renderAZNav() {
+
+        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+
+        const nav = document.getElementById('az-grid');
+
+        
+
+        let html = '';
+
+        letters.forEach(letter => {
+
+            const baseWords = wordsData.filter(w => w.letter === letter);
+
+            
+
+            if (baseWords.length === 0) {
+
+                html += `<div class="az-badge disabled"><div class="az-badge-letter">${letter}</div><div class="az-badge-stats">-</div></div>`;
+
+                return;
+
+            }
+
+
+
+            let totalItems = 0;
+
+            let knownItems = 0;
+
+
+
+            baseWords.forEach(w => {
+
+                totalItems++;
+
+                let s = userProgress[w.id] || {m:0, p:0};
+
+                if(s.m === 1 && s.p === 1) knownItems++;
+
+
+
+                if(w.derivatives) {
+
+                    w.derivatives.forEach(d => {
+
+                        totalItems++;
+
+                        let ds = userProgress[d.id] || {m:0, p:0};
+
+                        if(ds.m === 1 && ds.p === 1) knownItems++;
+
+                    });
+
+                }
+
+            });
+
+
+
+            const activeClass = (letter === currentLetter) ? 'active' : '';
+
+            html += `
+
+                <div class="az-badge ${activeClass}" onclick="changeLetter('${letter}')">
+
+                    <div class="az-badge-letter">${letter}</div>
+
+                    <div class="az-badge-stats">${knownItems}/${totalItems}</div>
+
+                </div>
+
+            `;
+
+        });
+
+        nav.innerHTML = html;
+
+    }
+
+
+
+    function changeLetter(letter) {
+
+        currentLetter = letter;
+
+        wordsLimit = 25;
+
+        renderAZNav(); 
+
+        renderWords(); 
+
+        scrollToTop(); 
+
+    }
+
+
+
+    function getCardState(id) {
+
+        const s = userProgress[id] || {m:0, p:0};
+
+        if (s.m === 1 && s.p === 1) return 'green';
+
+        if (s.m === -1 && s.p === -1) return 'red';
+
+        if (s.m === 0 && s.p === 0) return 'unanswered';
+
+        return 'yellow'; 
+
+    }
+
+
+
+    function renderWords() {
+
+        const grid = document.getElementById('words-grid');
+
+        const paginationAction = document.getElementById('pagination-action');
+
+        let html = '';
+
+        
+
+        let filteredItems = [];
+
+
+
+        wordsData.filter(item => item.letter === currentLetter).forEach(item => {
+
+            const state = getCardState(item.id);
+
+            let shouldShow = false;
+
+
+
+            if (currentFilter === 'all') shouldShow = true;
+
+            else if (currentFilter === 'green' && state === 'green') shouldShow = true;
+
+            else if (currentFilter === 'yellow' && state === 'yellow') shouldShow = true;
+
+            else if (currentFilter === 'red' && (state === 'red' || state === 'unanswered')) shouldShow = true;
+
+
+
+            if (shouldShow) {
+
+                filteredItems.push(item);
+
+            }
+
+        });
+
+
+
+        const itemsToDisplay = filteredItems.slice(0, wordsLimit);
+
+
+
+        itemsToDisplay.forEach(item => {
+
+            html += generateCardHTML(item);
+
+        });
+
+
+
+        if (filteredItems.length === 0) {
+
+            let msg = 'לא נמצאו מילים בקטגוריה זו.';
+
+            if (currentFilter === 'green') msg = 'עוד לא סימנת מילים כידועות במלואן (ירוק) באות זו.';
+
+            if (currentFilter === 'yellow') msg = 'אין מילים הידועות חלקית באות זו.';
+
+            if (currentFilter === 'red') msg = 'איזה יופי! לא נשארו מילים שלא תירגלת או שאתה לא יודע באות זו.';
+
+            
+
+            grid.innerHTML = `<div class="no-results">${msg}</div>`;
+
+            if (paginationAction) paginationAction.innerHTML = '';
+
+        } else {
+
+            grid.innerHTML = html;
+
+            
+
+            if (paginationAction) {
+
+                if (filteredItems.length > wordsLimit) {
+
+                    paginationAction.innerHTML = `<button class="load-more-btn" onclick="loadMore()">טען עוד מילים (הוצגו ${wordsLimit} מתוך ${filteredItems.length}) ⬇</button>`;
+
+                } else {
+
+                    const next = getNextLetter();
+
+                    if (next) {
+
+                        paginationAction.innerHTML = `<button class="load-more-btn next-letter-btn" onclick="nextLetter()">עבור לאות הבאה (${next}) ➔</button>`;
+
+                    } else {
+
+                        paginationAction.innerHTML = `<div class="finished-msg">סיימת את כל האותיות! 🎉</div>`;
+
+                    }
+
+                }
+
+            }
+
+        }
+
+
+
+        updateUI(); 
+
+        renderAZNav(); 
+
+        updateBottomBarVisibility(); 
+
+    }
+
+
+
+    function updateUI() {
+
+        let fullyKnownCount = 0;
+
+        let totalWordsCount = 0;
+
+
+
+        let countAll = 0;
+
+        let countGreen = 0;
+
+        let countYellow = 0;
+
+        let countRed = 0;
+
+
+
+        function updateItem(item) {
+
+            const state = userProgress[item.id] || { m: 0, p: 0 };
+
+            
+
+            const pYes = document.getElementById(`btn-${item.id}-p-yes`);
+
+            if(!pYes) return; 
+
+
+
+            document.getElementById(`btn-${item.id}-p-yes`).className = 'btn-tinder btn-tinder-yes ' + (state.p === 1 ? 'active' : '');
+
+            document.getElementById(`btn-${item.id}-p-no`).className = 'btn-tinder btn-tinder-no ' + (state.p === -1 ? 'active' : '');
+
+
+
+            document.getElementById(`btn-${item.id}-m-yes`).className = 'btn-tinder btn-tinder-yes ' + (state.m === 1 ? 'active' : '');
+
+            document.getElementById(`btn-${item.id}-m-no`).className = 'btn-tinder btn-tinder-no ' + (state.m === -1 ? 'active' : '');
+
+
+
+            let cardEl = document.getElementById('card-' + item.id);
+
+            if(cardEl){
+
+                cardEl.classList.remove('state-green', 'state-yellow', 'state-red');
+
+                const cardState = getCardState(item.id);
+
+                if (cardState !== 'unanswered') {
+
+                    cardEl.classList.add('state-' + cardState);
+
+                }
+
+            }
+
+
+
+            if (item.derivatives) { item.derivatives.forEach(updateItem); }
+
+        }
+
+
+
+        wordsData.forEach(item => {
+
+            totalWordsCount++;
+
+            const state = userProgress[item.id] || {m:0, p:0};
+
+            if(state.m === 1 && state.p === 1) fullyKnownCount++;
+
+            
+
+            if(item.derivatives) {
+
+                item.derivatives.forEach(d => {
+
+                    totalWordsCount++;
+
+                    const ds = userProgress[d.id] || {m:0, p:0};
+
+                    if(ds.m === 1 && ds.p === 1) fullyKnownCount++;
+
+                });
+
+            }
+
+
+
+            if (item.letter === currentLetter) {
+
+                const processFilterCount = (w) => {
+
+                    countAll++;
+
+                    const wState = getCardState(w.id);
+
+                    if (wState === 'green') countGreen++;
+
+                    else if (wState === 'yellow') countYellow++;
+
+                    else countRed++;
+
+                };
+
+                processFilterCount(item);
+
+                if (item.derivatives) {
+
+                    item.derivatives.forEach(d => processFilterCount(d));
+
+                }
+
+            }
+
+        });
+
+
+
+        wordsData.filter(item => item.letter === currentLetter).forEach(updateItem);
+
+        
+
+        let percent = totalWordsCount === 0 ? 0 : Math.round((fullyKnownCount / totalWordsCount) * 100);
+
+        document.getElementById('progress-fill').style.width = percent + '%';
+
+        document.getElementById('progress-stats').innerText = `${fullyKnownCount} / ${totalWordsCount} (${percent}%)`;
+
+        
+
+        let levelText = 'מתחיל 🌱';
+
+        if(percent === 100) levelText = 'אלוף! 🏆';
+
+        else if(percent >= 80) levelText = 'מומחה 💎';
+
+        else if(percent >= 50) levelText = 'שולט 🚀';
+
+        else if(percent >= 20) levelText = 'מתקדם 🌟';
+
+        
+
+        let titleEl = document.getElementById('progress-title');
+
+        if(titleEl) titleEl.innerText = levelText;
+
+        
+
+        const countAllEl = document.getElementById('count-all');
+
+        if (countAllEl) {
+
+            countAllEl.innerText = countAll;
+
+            document.getElementById('count-green').innerText = countGreen;
+
+            document.getElementById('count-yellow').innerText = countYellow;
+
+            document.getElementById('count-red').innerText = countRed;
+
+        }
+
+    }
+
+
+
+    function loadMore() {
+
+        wordsLimit += 25; 
+
+        renderWords();
+
+    }
+
+
+
+    function getNextLetter() {
+
+        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+
+        const idx = letters.indexOf(currentLetter);
+
+        return idx < letters.length - 1 ? letters[idx + 1] : null;
+
+    }
+
+    
+
+    function getPrevLetter() {
+
+        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+
+        const idx = letters.indexOf(currentLetter);
+
+        return idx > 0 ? letters[idx - 1] : null;
+
+    }
+
+
+
+    function nextLetter() {
+
+        const next = getNextLetter();
+
+        if (next) changeLetter(next);
+
+    }
+
+    
+
+    function prevLetter() {
+
+        const prev = getPrevLetter();
+
+        if (prev) changeLetter(prev);
+
+    }
+
+
+
+    function scrollToTop() {
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    }
+
+
+
+    function updateBottomBarVisibility() {
+
+        const btnPrev = document.getElementById('bar-btn-prev');
+
+        const btnNext = document.getElementById('bar-btn-next');
+
+        if (btnPrev) btnPrev.style.visibility = getPrevLetter() ? 'visible' : 'hidden';
+
+        if (btnNext) btnNext.style.visibility = getNextLetter() ? 'visible' : 'hidden';
+
+    }
+
+
+
+    function openAddWordModal() {
+
+        const modal = document.getElementById('addWordModal');
+
+        modal.style.display = 'flex';
+
+        setTimeout(() => modal.classList.add('show'), 10);
+
+        
+
+        document.getElementById('custom-word').value = '';
+
+        document.getElementById('custom-meaning').value = '';
+
+        document.getElementById('custom-phonetic').value = '';
+
+    }
+
+
+
+    function closeAddWordModal() {
+
+        const modal = document.getElementById('addWordModal');
+
+        modal.classList.remove('show');
+
+        setTimeout(() => modal.style.display = 'none', 300);
+
+    }
+
+
+
+    function saveCustomWord() {
+
+        const word = document.getElementById('custom-word').value.trim();
+
+        const meaning = document.getElementById('custom-meaning').value.trim();
+
+        const phonetic = document.getElementById('custom-phonetic').value.trim() || 'לחץ כאן להוספת הגייה ידנית';
+
+
+
+        if(!word || !meaning) {
+
+            alert('אנא הזן מילה באנגלית ופירוש בעברית לפני השמירה.');
+
+            return;
+
+        }
+
+
+
+        const letter = word.charAt(0).toUpperCase();
+
+        
+
+        const newWordObj = {
+
+            id: 'custom_' + word.replace(/\s+/g, '_').toLowerCase() + '_' + Date.now(),
+
+            word: word,
+
+            phonetic: phonetic,
+
+            meaning: meaning,
+
+            letter: letter,
+
+            derivatives: []
+
+        };
+
+
+
+        let customWords = JSON.parse(localStorage.getItem('englishAppCustomWordsV5')) || [];
+
+        customWords.push(newWordObj);
+
+        localStorage.setItem('englishAppCustomWordsV5', JSON.stringify(customWords));
+
+
+
+        wordsData.push(newWordObj);
+
+
+
+        closeAddWordModal();
+
+        
+
+        if (currentLetter !== letter) {
+
+            changeLetter(letter);
+
+        } else {
+
+            renderAZNav();
+
+            renderWords();
+
+        }
+
+        
+
+        setTimeout(() => alert(`המילה "${word}" נוספה בהצלחה לאות ${letter}!`), 350);
+
+    }
+
+
+
+    renderAZNav();
+
+    renderWords();
+
+
+
+</script>
+
+</body>
+
+</html>
