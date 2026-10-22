@@ -1,0 +1,36 @@
+name: PronounceMe daily reminders
+
+on:
+  schedule:
+    # Every hour at minute 7 (UTC); script checks the chosen Israel-local hour.
+    # GitHub schedules are approximate, not guaranteed at the exact minute.
+    - cron: '7 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pronounceme-daily-reminders
+  cancel-in-progress: false
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install notification dependencies
+        working-directory: scripts
+        run: npm install --omit=dev --no-audit --no-fund
+      - name: Deliver eligible reminders
+        working-directory: scripts
+        env:
+          FIREBASE_SERVICE_ACCOUNT_JSON: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_JSON }}
+          FIREBASE_PROJECT_ID: proeng-23ae9
+        run: node send-reminders.cjs
