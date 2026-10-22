@@ -1,0 +1,3774 @@
+<!DOCTYPE html>
+
+<html lang="he" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PronounceMe · English pronunciation practice</title>
+    <meta name="theme-color" content="#f7f9fd">
+    <meta name="description" content="PronounceMe – practice English pronunciation and track your progress.">
+
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+
+        :root {
+
+            --bg-color: #f6f7fb;
+
+            --text-main: #282e3e;
+
+            --text-muted: #586380;
+
+            --border-color: #edeff4;
+
+            --quizlet-blue: #4255ff;
+
+            --quizlet-blue-hover: #3b4cca;
+
+            
+
+            --card-green: #e1fdf4;
+
+            --card-yellow: #fff9d6;
+
+            --card-red: #ffeaea;
+
+
+
+            --tinder-red: #ff725b;
+
+            --tinder-green: #23b26d;
+
+        }
+
+
+
+        body {
+
+            font-family: 'Heebo', sans-serif;
+
+            background-color: var(--bg-color);
+
+            margin: 0;
+
+            padding: 0;
+
+            padding-bottom: 80px;
+
+            color: var(--text-main);
+
+            box-sizing: border-box;
+
+        }
+
+
+
+        *, *::before, *::after { box-sizing: inherit; }
+
+
+
+        /* סרגל עליון - ברכה, התקדמות וסטטיסטיקה */
+
+        .top-navbar {
+
+            background-color: #ffffff;
+
+            box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.08);
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 100;
+
+            padding: 15px 30px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            flex-wrap: wrap;
+
+            gap: 15px;
+
+        }
+
+
+
+        .greeting-text {
+
+            font-size: 22px;
+
+            font-weight: 800;
+
+            color: var(--quizlet-blue);
+
+            min-width: 150px;
+
+        }
+
+
+
+        /* פס התקדמות עליון */
+
+        .progress-wrapper {
+
+            flex: 1;
+
+            max-width: 500px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 6px;
+
+            margin: 0 auto;
+
+        }
+
+        .progress-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            width: 100%;
+
+            font-size: 14px;
+
+            font-weight: 800;
+
+            color: var(--quizlet-blue);
+
+        }
+
+        .progress-container {
+
+            width: 100%;
+
+            height: 14px;
+
+            background-color: #edeff4;
+
+            border-radius: 10px;
+
+            overflow: hidden;
+
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+
+        }
+
+        .progress-bar-fill {
+
+            height: 100%;
+
+            background: linear-gradient(90deg, #34d399, var(--tinder-green));
+
+            width: 0%;
+
+            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+
+            border-radius: 10px;
+
+        }
+
+        .progress-stats {
+
+            color: var(--text-muted);
+
+        }
+
+
+
+        .global-stats-btn {
+
+            font-size: 16px;
+
+            font-weight: 700;
+
+            background: #f6f7fb;
+
+            padding: 8px 16px;
+
+            border-radius: 20px;
+
+            color: var(--text-muted);
+
+            min-width: 100px;
+
+            text-align: center;
+
+        }
+
+
+
+        .container {
+
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+            padding: 40px 20px;
+
+        }
+
+
+
+        /* סרגל ניווט A-Z */
+
+        .az-nav-container {
+
+            background: #ffffff;
+
+            border-radius: 16px;
+
+            padding: 25px;
+
+            margin-bottom: 30px;
+
+            box-shadow: 0 0.25rem 1rem rgba(0,0,0,0.05);
+
+        }
+
+        
+
+        .az-nav-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 15px;
+
+        }
+
+
+
+        .az-nav-title {
+
+            font-size: 18px;
+
+            font-weight: 800;
+
+            color: var(--text-main);
+
+        }
+
+
+
+        .add-word-btn {
+
+            background: linear-gradient(135deg, #23b26d, #1e995d);
+
+            color: white;
+
+            border: none;
+
+            padding: 10px 22px;
+
+            border-radius: 30px;
+
+            font-weight: 800;
+
+            font-size: 15px;
+
+            cursor: pointer;
+
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+            box-shadow: 0 4px 12px rgba(35, 178, 109, 0.25);
+
+            font-family: 'Heebo', sans-serif;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+        }
+
+        .add-word-btn:hover {
+
+            transform: translateY(-3px) scale(1.02);
+
+            box-shadow: 0 8px 20px rgba(35, 178, 109, 0.4);
+
+        }
+
+
+
+        .az-grid {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 12px;
+
+            direction: ltr;
+
+            justify-content: center;
+
+        }
+
+        
+
+        .az-badge {
+
+            background: #ffffff;
+
+            border: 2px solid var(--border-color);
+
+            padding: 10px 15px;
+
+            border-radius: 12px;
+
+            font-family: 'Inter', sans-serif;
+
+            cursor: pointer;
+
+            transition: all 0.2s;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            min-width: 70px;
+
+        }
+
+        
+
+        .az-badge:hover {
+
+            border-color: #c9d2e0;
+
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+
+        }
+
+
+
+        .az-badge.active {
+
+            background: var(--quizlet-blue);
+
+            border-color: var(--quizlet-blue);
+
+            color: white;
+
+            transform: translateY(-2px);
+
+            box-shadow: 0 6px 12px rgba(66, 85, 255, 0.2);
+
+        }
+
+
+
+        .az-badge-letter { font-size: 22px; font-weight: 900; }
+
+        .az-badge-stats { font-size: 12px; font-weight: 600; margin-top: 4px; opacity: 0.8; }
+
+        .az-badge.active .az-badge-stats { opacity: 1; }
+
+        .az-badge.disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
+
+
+
+        /* כפתורי סינון */
+
+        .filters-container {
+
+            display: flex;
+
+            gap: 12px;
+
+            margin-bottom: 30px;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+        }
+
+        
+
+        .filter-btn {
+
+            background: #ffffff;
+
+            border: 2px solid var(--border-color);
+
+            padding: 10px 20px;
+
+            border-radius: 30px;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+            color: var(--text-muted);
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+
+        }
+
+        
+
+        .filter-btn:hover { 
+
+            border-color: var(--quizlet-blue); 
+
+            color: var(--quizlet-blue); 
+
+            transform: translateY(-2px);
+
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+
+        }
+
+        
+
+        .filter-btn.active { 
+
+            background: var(--quizlet-blue); 
+
+            color: white; 
+
+            border-color: var(--quizlet-blue); 
+
+            box-shadow: 0 6px 15px rgba(66, 85, 255, 0.25);
+
+        }
+
+
+
+        .filter-count {
+
+            background: #f0f2f5;
+
+            color: var(--text-main);
+
+            padding: 2px 10px;
+
+            border-radius: 12px;
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            transition: all 0.3s;
+
+            margin-right: 4px;
+
+        }
+
+
+
+        .filter-btn.active .filter-count {
+
+            background: rgba(255, 255, 255, 0.25);
+
+            color: #ffffff;
+
+        }
+
+
+
+        /* רשת הכרטיסיות */
+
+        .words-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 30px;
+
+        }
+
+
+
+        /* עיצוב כרטיסיית Quizlet */
+
+        .card {
+
+            background-color: #ffffff;
+
+            border-radius: 12px;
+
+            padding: 35px 25px 25px 25px;
+
+            box-shadow: 0 0.125rem 0.5rem rgba(0,0,0,0.08);
+
+            border: 3px solid transparent;
+
+            display: flex;
+
+            flex-direction: column;
+
+            transition: all 0.3s ease;
+
+            position: relative;
+
+        }
+
+
+
+        .card:hover { box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.12); transform: translateY(-4px); }
+
+
+
+        .card.state-green { background-color: var(--card-green); border-color: #a7f3d0; }
+
+        .card.state-yellow { background-color: var(--card-yellow); border-color: #fde047; }
+
+        .card.state-red { background-color: var(--card-red); border-color: #fca5a5; }
+
+
+
+        /* כפתור איפוס */
+
+        .btn-reset {
+
+            position: absolute;
+
+            top: 15px;
+
+            left: 15px;
+
+            background: rgba(0,0,0,0.05);
+
+            border: none;
+
+            width: 32px;
+
+            height: 32px;
+
+            border-radius: 50%;
+
+            cursor: pointer;
+
+            font-size: 16px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            color: var(--text-muted);
+
+            transition: 0.2s;
+
+        }
+
+        .btn-reset:hover { background: rgba(0,0,0,0.1); color: var(--text-main); transform: rotate(-45deg); }
+
+
+
+        /* כפתור כוכב (מועדפים) */
+
+        .star-btn {
+
+            position: absolute;
+
+            top: 15px;
+
+            right: 15px;
+
+            background: none;
+
+            border: none;
+
+            font-size: 26px;
+
+            color: var(--border-color);
+
+            cursor: pointer;
+
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+            text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+
+            padding: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+        .star-btn:hover {
+
+            transform: scale(1.15);
+
+            color: #fcd34d;
+
+        }
+
+        .star-btn.starred {
+
+            color: #f59e0b;
+
+            text-shadow: 0 2px 8px rgba(245, 158, 11, 0.4);
+
+        }
+
+
+
+        .english-word {
+
+            font-family: 'Inter', sans-serif;
+
+            font-size: 36px;
+
+            font-weight: 900;
+
+            text-align: center;
+
+            margin-bottom: 10px;
+
+            color: var(--text-main);
+
+            direction: ltr;
+
+        }
+
+
+
+        /* תיבת ההגייה */
+
+        .phonetic {
+
+            text-align: center;
+
+            font-size: 22px; 
+
+            font-weight: 900; 
+
+            color: #b45309; 
+
+            margin-bottom: 20px;
+
+            background-color: #fef3c7;
+
+            padding: 8px 20px;
+
+            border-radius: 12px;
+
+            border: 2px dashed #f59e0b;
+
+            display: inline-block;
+
+            align-self: center;
+
+            letter-spacing: 1px;
+
+            cursor: pointer;
+
+            transition: transform 0.2s, box-shadow 0.2s;
+
+        }
+
+        .phonetic:hover {
+
+            transform: scale(1.03);
+
+            box-shadow: 0 4px 8px rgba(245, 158, 11, 0.15);
+
+        }
+
+
+
+        /* כפתור השמע 🔊 */
+
+        .btn-audio {
+
+            background-color: #ffffff;
+
+            border: 2px solid var(--border-color);
+
+            color: var(--text-main);
+
+            padding: 10px 20px;
+
+            border-radius: 25px;
+
+            font-size: 16px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+
+            margin: 0 auto 25px auto;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            font-family: 'Inter', 'Heebo', sans-serif;
+
+        }
+
+        .btn-audio:hover { border-color: var(--quizlet-blue); color: var(--quizlet-blue); background: #f5f6ff; }
+
+        .btn-audio:active { transform: scale(0.95); }
+
+
+
+        .meaning-section { text-align: center; margin-bottom: 25px; }
+
+        
+
+        .btn-meaning-toggle {
+
+            background: none;
+
+            border: none;
+
+            color: var(--quizlet-blue);
+
+            font-weight: 800;
+
+            font-size: 15px;
+
+            cursor: pointer;
+
+            text-decoration: underline;
+
+            font-family: 'Inter', 'Heebo', sans-serif;
+
+        }
+
+
+
+        .meaning-text {
+
+            display: none;
+
+            margin-top: 15px;
+
+            font-size: 24px;
+
+            font-weight: 800;
+
+            color: var(--text-main);
+
+            background-color: rgba(0, 0, 0, 0.03);
+
+            padding: 15px;
+
+            border-radius: 12px;
+
+        }
+
+
+
+        .divider { height: 2px; background-color: var(--border-color); margin: 0 0 20px 0; width: 100%; }
+
+
+
+        /* Tinder Controls */
+
+        .tinder-controls { display: flex; flex-direction: column; gap: 15px; }
+
+        .tinder-row { display: flex; justify-content: space-between; align-items: center; }
+
+        .tinder-label { font-weight: 800; font-size: 16px; display: flex; flex-direction: column; color: var(--text-main); }
+
+        .tinder-label span.eng { font-size: 13px; color: var(--text-muted); font-family: 'Inter', sans-serif; font-weight: 600;}
+
+        .tinder-actions { display: flex; gap: 15px; }
+
+
+
+        .btn-tinder {
+
+            width: 48px;
+
+            height: 48px;
+
+            border-radius: 50%;
+
+            border: 3px solid;
+
+            background: #ffffff;
+
+            cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+        }
+
+
+
+        .btn-tinder-no { border-color: var(--tinder-red); color: var(--tinder-red); font-size: 20px; }
+
+        .btn-tinder-yes { border-color: var(--tinder-green); }
+
+        .btn-tinder-yes svg { fill: var(--tinder-green); width: 22px; height: 22px; transition: fill 0.2s; }
+
+
+
+        .btn-tinder-no:hover, .btn-tinder-no.active { background: var(--tinder-red); color: white; transform: scale(1.1); border-color: var(--tinder-red); }
+
+        .btn-tinder-yes:hover, .btn-tinder-yes.active { background: var(--tinder-green); transform: scale(1.1); border-color: var(--tinder-green); }
+
+        .btn-tinder-yes:hover svg, .btn-tinder-yes.active svg { fill: white; }
+
+
+
+        /* נגזרות */
+
+        .derivatives-toggle {
+
+            margin-top: 25px;
+
+            width: 100%;
+
+            background: #f6f7fb;
+
+            border: 2px solid var(--border-color);
+
+            border-radius: 12px;
+
+            color: var(--text-main);
+
+            font-weight: 800;
+
+            font-size: 14px;
+
+            cursor: pointer;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding: 12px 0;
+
+            transition: 0.2s;
+
+        }
+
+        .derivatives-toggle:hover { background: #edeff4; border-color: #c9d2e0; }
+
+        .derivatives-toggle svg { width: 18px; height: 18px; transition: transform 0.3s; }
+
+        .derivatives-toggle.open svg { transform: rotate(180deg); }
+
+
+
+        .derivatives-container { display: none; margin-top: 15px; }
+
+
+
+        .sub-card {
+
+            background-color: #ffffff;
+
+            border-radius: 12px;
+
+            padding: 25px 20px;
+
+            margin-bottom: 15px;
+
+            border: 2px solid var(--border-color);
+
+            display: flex;
+
+            flex-direction: column;
+
+            position: relative;
+
+        }
+
+        
+
+        .sub-card .english-word { font-size: 26px; margin-bottom: 5px; }
+
+        .sub-card .phonetic { font-size: 20px; padding: 6px 14px; margin-bottom: 20px; }
+
+        
+
+        .tense-badge {
+
+            align-self: center;
+
+            font-size: 12px;
+
+            background: var(--text-muted);
+
+            color: white;
+
+            padding: 4px 10px;
+
+            border-radius: 12px;
+
+            margin-bottom: 15px;
+
+            font-family: 'Inter', sans-serif;
+
+            letter-spacing: 0.5px;
+
+            font-weight: 800;
+
+        }
+
+
+
+        .no-results {
+
+            grid-column: 1 / -1;
+
+            text-align: center;
+
+            padding: 60px;
+
+            font-size: 22px;
+
+            font-weight: 800;
+
+            color: var(--text-muted);
+
+            background: white;
+
+            border-radius: 16px;
+
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+
+        }
+
+
+
+        @media (max-width: 1024px) { .words-grid { grid-template-columns: repeat(2, 1fr); } }
+
+        @media (max-width: 768px) { .words-grid { grid-template-columns: 1fr; } }
+
+
+
+        /* כפתורי פאגינציה */
+
+        .pagination-action {
+
+            display: flex;
+
+            justify-content: center;
+
+            margin-top: 40px;
+
+        }
+
+        
+
+        .load-more-btn {
+
+            background-color: var(--quizlet-blue);
+
+            color: white;
+
+            border: none;
+
+            padding: 15px 40px;
+
+            border-radius: 30px;
+
+            font-size: 18px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+            transition: all 0.3s;
+
+            box-shadow: 0 4px 15px rgba(66, 85, 255, 0.3);
+
+            font-family: 'Heebo', sans-serif;
+
+        }
+
+
+
+        .load-more-btn:hover {
+
+            background-color: var(--quizlet-blue-hover);
+
+            transform: translateY(-2px);
+
+            box-shadow: 0 6px 20px rgba(66, 85, 255, 0.4);
+
+        }
+
+        
+
+        .next-letter-btn {
+
+            background-color: var(--text-main);
+
+            box-shadow: 0 4px 15px rgba(40, 46, 62, 0.3);
+
+        }
+
+
+
+        .next-letter-btn:hover {
+
+            background-color: #1a1e28;
+
+            box-shadow: 0 6px 20px rgba(40, 46, 62, 0.4);
+
+        }
+
+        
+
+        .finished-msg {
+
+            font-size: 20px;
+
+            font-weight: 800;
+
+            color: var(--tinder-green);
+
+        }
+
+
+
+        /* סרגל תחתון צף */
+
+        .bottom-bar {
+
+            position: fixed;
+
+            bottom: 0;
+
+            left: 0;
+
+            right: 0;
+
+            background: rgba(255, 255, 255, 0.95);
+
+            backdrop-filter: blur(10px);
+
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.05);
+
+            padding: 12px 20px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            z-index: 1000;
+
+            border-top: 1px solid var(--border-color);
+
+        }
+
+        
+
+        .bottom-bar-btn {
+
+            background: transparent;
+
+            border: none;
+
+            color: var(--quizlet-blue);
+
+            font-weight: 700;
+
+            font-size: 16px;
+
+            font-family: 'Heebo', sans-serif;
+
+            cursor: pointer;
+
+            padding: 8px 12px;
+
+            border-radius: 12px;
+
+            transition: all 0.2s;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+        }
+
+
+
+        .bottom-bar-btn:hover {
+
+            background: #f0f2f5;
+
+        }
+
+
+
+        .bottom-bar-btn.center-btn {
+
+            color: var(--text-muted);
+
+        }
+
+
+
+        /* ================= 2027 App Design: Modal ================= */
+
+        .modal-overlay {
+
+            display: none;
+
+            position: fixed;
+
+            top: 0; left: 0; right: 0; bottom: 0;
+
+            background: rgba(15, 23, 42, 0.4);
+
+            z-index: 2000;
+
+            justify-content: center;
+
+            align-items: center;
+
+            backdrop-filter: blur(16px);
+
+            -webkit-backdrop-filter: blur(16px);
+
+            opacity: 0;
+
+            transition: opacity 0.3s ease;
+
+        }
+
+        .modal-overlay.show {
+
+            opacity: 1;
+
+        }
+
+        .modal-content {
+
+            background: linear-gradient(145deg, #ffffff, #f8fafc);
+
+            padding: 40px;
+
+            border-radius: 32px;
+
+            width: 90%;
+
+            max-width: 450px;
+
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,1);
+
+            border: 1px solid rgba(226, 232, 240, 0.8);
+
+            transform: scale(0.95) translateY(20px);
+
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+            direction: rtl;
+
+        }
+
+        .modal-overlay.show .modal-content {
+
+            transform: scale(1) translateY(0);
+
+        }
+
+        .modal-title {
+
+            font-size: 28px;
+
+            font-weight: 900;
+
+            background: linear-gradient(135deg, #4255ff, #8b5cf6);
+
+            -webkit-background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+
+            margin-bottom: 30px;
+
+            text-align: center;
+
+            letter-spacing: -0.5px;
+
+        }
+
+        .form-floating {
+
+            position: relative;
+
+            margin-bottom: 20px;
+
+        }
+
+        .form-floating input {
+
+            width: 100%;
+
+            padding: 16px 16px;
+
+            border: 2px solid transparent;
+
+            border-radius: 16px;
+
+            background: #f1f5f9;
+
+            font-family: 'Inter', 'Heebo', sans-serif;
+
+            font-size: 16px;
+
+            font-weight: 600;
+
+            color: #1e293b;
+
+            transition: all 0.3s ease;
+
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+
+            box-sizing: border-box;
+
+        }
+
+        .form-floating input:focus {
+
+            border-color: #8b5cf6;
+
+            background: #ffffff;
+
+            outline: none;
+
+            box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.1);
+
+        }
+
+        .form-floating label {
+
+            position: absolute;
+
+            top: 50%;
+
+            right: 16px;
+
+            transform: translateY(-50%);
+
+            font-weight: 600;
+
+            color: #64748b;
+
+            pointer-events: none;
+
+            transition: all 0.2s ease;
+
+            font-size: 16px;
+
+        }
+
+        .form-floating input:focus ~ label,
+
+        .form-floating input:not(:placeholder-shown) ~ label {
+
+            top: 0px;
+
+            right: 12px;
+
+            font-size: 13px;
+
+            background: linear-gradient(to bottom, #ffffff 50%, #f1f5f9 50%);
+
+            padding: 0 6px;
+
+            color: #8b5cf6;
+
+            border-radius: 4px;
+
+        }
+
+        .modal-actions {
+
+            display: flex;
+
+            gap: 15px;
+
+            margin-top: 35px;
+
+        }
+
+        .btn-modal {
+
+            flex: 1;
+
+            padding: 16px;
+
+            border-radius: 16px;
+
+            font-weight: 800;
+
+            font-size: 16px;
+
+            cursor: pointer;
+
+            transition: all 0.3s;
+
+            border: none;
+
+            font-family: inherit;
+
+        }
+
+        .btn-save {
+
+            background: linear-gradient(135deg, #4255ff, #8b5cf6);
+
+            color: white;
+
+            box-shadow: 0 10px 20px -5px rgba(139, 92, 246, 0.4);
+
+        }
+
+        .btn-save:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow: 0 15px 25px -5px rgba(139, 92, 246, 0.5);
+
+        }
+
+        .btn-cancel {
+
+            background: #e2e8f0;
+
+            color: #475569;
+
+        }
+
+        .btn-cancel:hover {
+
+            background: #cbd5e1;
+
+            color: #1e293b;
+
+        }
+
+
+/* ============================================================
+   PronounceMe mobile-first design layer.
+   All original selectors, logic and dictionary integration retained.
+   ============================================================ */
+:root { --bg-color:#f7f9fd;--text-main:#102044;--text-muted:#65718d;--border-color:#e9edf5;--quizlet-blue:#3567f7;--quizlet-blue-hover:#2457da;--tinder-red:#ed6272;--tinder-green:#24b77b; }
+html { -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
+body { font-family:'Heebo',sans-serif; padding-bottom:88px; }
+button { -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
+button:focus-visible,.phonetic:focus-visible,.az-badge:focus-visible { outline:3px solid #94b7ff;outline-offset:3px; }
+#app-shell[hidden],#auth-gate[hidden] { display:none!important; }
+.top-navbar { position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px max(18px, calc((100vw - 1170px)/2));box-shadow:0 3px 22px rgba(18,42,91,.045);border-bottom:1px solid #edf0f7; background:rgba(255,255,255,.97); flex-wrap:nowrap; }
+.brand { display:flex;gap:10px;align-items:center;direction:ltr;flex-shrink:0;text-decoration:none;color:#102044; }
+.brand-name { font-family:'Inter',sans-serif;font-weight:900;font-size:23px;letter-spacing:-1.25px;white-space:nowrap; }
+.brand-name span {color:#3567f7;}
+.brand-icon { display:block;width:34px;height:34px;position:relative;flex:0 0 34px; }
+.brand-icon .bubble {position:absolute;display:block;border-radius:45% 48% 48% 45%;transform:rotate(-12deg);box-shadow:0 2px 3px rgba(24,58,133,.07)}
+.brand-icon .blue { width:22px;height:20px;left:0;bottom:2px;background:#386df6; }
+.brand-icon .mint { width:18px;height:20px;left:8px;top:0;background:#73d7b3;opacity:.96;transform:rotate(24deg); }
+.brand-icon .gold { width:13px;height:14px;right:0;top:5px;background:#ffd36f; }
+.brand-icon .blue:after {content:'';position:absolute;left:2px;bottom:-4px;width:9px;height:8px;background:#386df6;clip-path:polygon(0 0,100% 0,0 100%);}
+.nav-account { border:1px solid #edf1f7;background:#f7f9fc;color:#566786;display:flex;align-items:center;justify-content:center;border-radius:50%;width:39px;height:39px;cursor:pointer;font-size:18px;flex-shrink:0; }
+.top-progress { order:0; display:flex;align-items:center;gap:9px;border:1px solid #e9edf6;background:#f8faff;border-radius:999px;padding:6px 12px;cursor:pointer;min-width:180px;max-width:380px;flex:1;text-align:start;color:#536386; }
+.progress-medal {font-size:20px;line-height:1;}
+.progress-wrapper { display:flex;min-width:0;max-width:none;gap:5px;flex:1;margin:0; }
+.progress-header { display:flex;justify-content:space-between;align-items:center;gap:7px;line-height:1.1;font-size:11px;color:#344569; }
+.progress-header #progress-title {overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.progress-header #progress-stats {font-family:'Inter',sans-serif;font-size:11px;white-space:nowrap;color:#54648a;}
+.progress-container {height:4px;min-height:4px;box-shadow:none;background:#e8edf8;border-radius:10px;}
+.progress-bar-fill {background:linear-gradient(90deg,#5b8df8,#4ac3b0);}
+.container {max-width:1160px;margin:auto;padding:22px 18px;}
+.az-nav-container {padding:12px 16px;background:#fff;border:1px solid #eef1f6;border-radius:18px;margin-bottom:16px;box-shadow:0 5px 25px rgba(20,39,75,.035)}
+.az-nav-header {margin:0;gap:8px;}
+.az-nav-title {font-size:15px;white-space:nowrap;}
+.letter-trigger {background:#f5f7ff;border:1px solid #e5eafd;border-radius:12px;display:flex;gap:9px;align-items:center;padding:8px 12px;color:#1b3383;cursor:pointer;font-family:'Inter','Heebo',sans-serif;font-weight:750; }
+.letter-trigger strong {font-size:20px;line-height:1;}
+.letter-trigger svg {width:16px;height:16px;transition:transform .2s;}
+.letter-trigger.open svg {transform:rotate(180deg);}
+.letter-tools {display:flex;gap:8px;align-items:center;}
+.add-word-btn {padding:9px 12px;min-height:40px;background:#e7f8ef;color:#168254;border-radius:11px;border:1px solid #d3efdf;box-shadow:none;font-size:13px;}
+.add-word-btn:hover {background:#d7f3e5;box-shadow:none;transform:none;}
+.add-word-btn svg {width:17px;height:17px;}
+.az-grid {display:none;padding-top:16px;gap:8px;}
+.az-grid.open {display:flex;}
+.az-badge {min-width:57px;padding:7px 9px;border-radius:12px;border:1px solid #e9edf5;}
+.az-badge-letter {font-size:18px;}.az-badge-stats {font-size:10px;margin-top:2px;}
+.az-badge.active {background:#396df5;border-color:#396df5;box-shadow:0 4px 10px rgba(54,108,245,.16);transform:none;}
+.filters-container {gap:8px;margin-bottom:20px;justify-content:center;flex-wrap:wrap;}
+.filter-btn {border:1px solid #e9edf5;padding:8px 12px;gap:7px;font-size:13px;box-shadow:none;border-radius:13px;line-height:1.25;white-space:nowrap; }
+.filter-btn:hover {transform:none;box-shadow:none;}
+.filter-btn.active {background:#3669f5;border-color:#3669f5;box-shadow:0 4px 12px rgba(54,105,245,.17);}
+.filter-count {padding:2px 7px;border-radius:20px;font-size:11px;margin-right:0;background:#f0f3f8;}
+.filter-dot {height:7px;width:7px;border-radius:50%;display:inline-block;flex-shrink:0;}
+.filter-dot.green {background:#39c78a;}.filter-dot.yellow {background:#f5bd53;}.filter-dot.red {background:#ed7780;}
+.words-grid {gap:18px;grid-template-columns:repeat(3,minmax(0,1fr));}
+.card,.sub-card {background:#fff;border:1px solid #e9edf5;border-radius:22px;padding:48px 22px 22px;box-shadow:0 10px 30px rgba(14,35,78,.055);transition:box-shadow .15s,transform .15s;}
+.card:hover {transform:none;box-shadow:0 12px 32px rgba(14,35,78,.075);}
+.card.state-green {background:#fff;border-color:#d6efdf;}.card.state-yellow {background:#fff;border-color:#efeadb;}.card.state-red {background:#fff;border-color:#f3e1e3;}
+.btn-reset,.star-btn {top:14px;width:38px;height:38px;border:1px solid #f0f2f6;background:#f8faff;color:#8290a6;display:flex;align-items:center;justify-content:center;border-radius:50%;font-size:22px;}
+.star-btn {right:15px;font-family:'Inter',sans-serif;font-size:24px;line-height:1;}
+.star-btn.starred {color:#e7af32;background:#fff8e7;border-color:#f8e4af;text-shadow:none;}
+.btn-reset {left:15px;font-size:21px;}
+.card-counter {direction:ltr;font-family:'Inter',sans-serif;text-align:center;font-size:11px;color:#93a0b5;margin: -29px auto 19px;min-height:14px;}
+.english-word {font-size:clamp(31px,3.4vw,39px);letter-spacing:-1.3px;margin-bottom:12px;overflow-wrap:anywhere;line-height:1.17;}
+.phonetic {font-family:'Heebo',sans-serif;font-size:clamp(24px,2.9vw,32px);font-weight:900;line-height:1.45;color:#935318;background:linear-gradient(135deg,#fff8e6,#fff0cc);border:1px solid #eccd8c;border-radius:16px;box-shadow:0 3px 9px rgba(166,111,33,.07);padding:6px 22px;margin-bottom:18px;letter-spacing:.05px;max-width:100%;white-space:normal;overflow-wrap:anywhere;}
+.phonetic:hover {transform:none;box-shadow:0 4px 10px rgba(166,111,33,.11);}
+.btn-audio {border:0;background:#e9edff;color:#315bdc;box-shadow:none;padding:10px 20px;min-height:44px;margin-bottom:18px;font-size:14px;border-radius:40px;gap:7px;}
+.btn-audio:hover {color:#315bdc;background:#dde6ff;border:0;}
+.meaning-section {margin-bottom:20px;min-height:41px;}
+.btn-meaning-toggle {text-decoration:none;border:1px solid #e7ebf6;background:#fbfcff;color:#315bdc;min-height:41px;border-radius:15px;padding:9px 18px;box-shadow:none;font-size:14px;}
+.btn-meaning-toggle:hover {border-color:#c7d4fa;background:#f5f7ff;}
+.meaning-text {padding:12px;background:#f7f9fd;border-radius:12px;font-size:21px;margin-top:11px;}
+.divider {height:1px;background:#edf0f5;margin-bottom:14px;}
+.tinder-controls {gap:11px;}
+.tinder-row {gap:12px;min-height:47px;}
+.tinder-label {font-size:15px;gap:1px;line-height:1.15;}
+.tinder-label span.eng {font-family:'Heebo',sans-serif;font-size:11px;font-weight:500;color:#8c97ab;}
+.tinder-actions {gap:10px;}
+.btn-tinder {width:42px;height:42px;border:1.5px solid;border-radius:50%;background:#fff;transition:background .15s, transform .15s;}
+.btn-tinder-no {color:#ee6575;border-color:#efb1ba;font-size:23px;font-family:'Inter',sans-serif;font-weight:500;}
+.btn-tinder-yes {color:#22ab76;border-color:#9ee0bc;}
+.btn-tinder-yes svg {width:23px;height:23px;stroke:currentColor;stroke-width:2.7;fill:none;}
+.btn-tinder-no:hover,.btn-tinder-no.active {background:#fde9ec;border-color:#ec7583;color:#e4495e;transform:none;}
+.btn-tinder-yes:hover,.btn-tinder-yes.active {background:#e3f7ed;border-color:#59c994;color:#16a571;transform:none;}
+.btn-tinder-yes:hover svg,.btn-tinder-yes.active svg {fill:none;}
+.derivatives-toggle {font-size:13px;border:1px solid #e7edf6;border-radius:13px;background:#f7f9fd;padding:11px 8px;margin-top:18px;}
+.derivatives-container {margin-top:12px;}.sub-card {padding-top:44px;border-radius:15px;box-shadow:none;border-color:#e7ebf4;}
+.tense-badge {margin-bottom:12px;background:#edf1ff;color:#4c64a2;}
+.word-navigation {display:none;}
+.word-nav-btn {border:1px solid #e8edf6;background:#fff;color:#3f5e93;width:48px;height:45px;border-radius:14px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 3px 10px rgba(14,35,78,.04);}
+.word-nav-btn:disabled {opacity:.34;cursor:not-allowed;}
+.word-nav-btn svg {width:21px;height:21px;}
+.shuffle-btn {display:flex;gap:7px;width:auto;min-width:100px;padding:0 13px;font-family:'Inter',sans-serif;font-size:12px;font-weight:700;}
+.shuffle-btn.active {color:#3569ee;background:#eaf0ff;border-color:#c4d5ff;}
+.mobile-bottom-tabs {display:none;}
+.desktop-actions {display:flex;justify-content:center;gap:12px;margin-top:15px;}
+.desktop-shuffle {border:1px solid #e7edf6;color:#52668b;background:#fff;border-radius:13px;padding:8px 13px;cursor:pointer;}
+.desktop-shuffle.active {background:#eaf0ff;color:#305cdd;}
+/* Dialogs */
+.pm-dialog {position:fixed;inset:0;z-index:3000;background:rgba(18,31,58,.42);display:none;align-items:center;justify-content:center;padding:18px;backdrop-filter:blur(6px);}
+.pm-dialog.open {display:flex;}
+.pm-dialog-card {background:#fff;border-radius:24px;padding:24px;width:min(100%,480px);max-height:90dvh;overflow:auto;box-shadow:0 24px 65px rgba(0,0,0,.18);}
+.pm-dialog-head {display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:16px;}
+.pm-dialog-head h2 {margin:0;font-size:21px;}
+.pm-x {background:#f3f6fa;border:0;width:35px;height:35px;border-radius:50%;font-size:23px;color:#65728a;cursor:pointer;}
+.pm-awards {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;}
+.pm-award {padding:15px 10px;border:1px solid #e8edf6;background:#f8faff;border-radius:15px;display:flex;gap:8px;align-items:center;}
+.pm-award.locked {opacity:.57;filter:grayscale(.6);}
+.pm-award-icon {font-size:27px;}.pm-award-desc {display:flex;flex-direction:column;font-size:12px;line-height:1.55;}
+.pm-award-desc b {font-size:14px;}
+.pm-account-btn {border:1px solid #e6ebf6;background:#f7f9fd;color:#254a86;border-radius:12px;padding:11px 14px;cursor:pointer;font-family:inherit;font-weight:700;}
+.pm-account-grid {display:grid;gap:11px;}
+/* Login gate: never show the underlying dictionary until account data loaded */
+#auth-gate {min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:20px;background:radial-gradient(circle at 50% 0%,#e9f0ff 0%,#f8faff 49%,#f7f9fc 100%);}
+.auth-panel {background:#fff;border:1px solid #ecf0f8;border-radius:27px;box-shadow:0 15px 45px rgba(18,43,101,.075);width:min(100%,390px);padding:30px 24px;text-align:center;}
+.auth-panel .brand {justify-content:center;margin-bottom:25px;}
+.auth-panel h1 {font-size:23px;color:#182a50;margin:0 0 9px;}
+.auth-panel p {color:#67758f;font-size:14px;line-height:1.65;margin:0 0 25px;}
+.google-signin {width:100%;display:flex;gap:13px;align-items:center;justify-content:center;background:#fff;border:1px solid #d9e0ec;border-radius:15px;min-height:52px;cursor:pointer;font-family:inherit;font-size:15px;font-weight:750;color:#294061;}
+.google-signin:disabled {opacity:.55;cursor:not-allowed;}
+.google-g {font-family:'Inter',sans-serif;color:#4285f4;font-weight:900;font-size:23px;}
+.auth-state {margin-top:15px;color:#65728e;font-size:12px;min-height:21px;white-space:pre-wrap;line-height:1.5;}
+.sync-state {color:#607394;font-size:11px;line-height:1.4;}
+.sync-state.error {color:#d14555;}
+.pm-muted {font-size:13px;color:#697994;line-height:1.65;}
+.pm-primary {background:#3567f7;color:white;border:0;border-radius:12px;padding:12px 14px;font-weight:800;font-family:inherit;cursor:pointer;}
+.pm-secondary {background:#eef2f9;color:#415373;border:0;border-radius:12px;padding:12px 14px;font-weight:700;font-family:inherit;cursor:pointer;}
+.pm-dialog-actions {display:flex;gap:8px;margin-top:15px;}
+.pm-dialog-actions button {flex:1;}
+#auth-legacy-choice {display:none;margin-top:22px;}
+#auth-legacy-choice.open {display:block;}
+/* Mobile view concentrates screen area around a single learning word */
+@media(max-width:767px) {
+ body {padding-bottom:83px;background:#f7f9fd;}
+ .top-navbar {padding:10px 16px 8px;display:grid;grid-template-columns:minmax(0,1fr) 38px;gap:6px 8px;}
+ .brand {grid-column:1;grid-row:1;gap:7px;}
+ .brand-icon {width:29px;height:29px;flex-basis:29px;transform:scale(.86);transform-origin:left center;}
+ .brand-name {font-size:21px;letter-spacing:-1px;}
+ .nav-account {grid-column:2;grid-row:1;width:34px;height:34px;font-size:17px;}
+ .top-progress {grid-column:1/-1;grid-row:2;max-width:none;min-width:0;padding:5px 10px;height:33px;gap:8px;}
+ .progress-medal {font-size:16px;}
+ .progress-header {font-size:10px;}.progress-header #progress-stats {font-size:10px;}
+ .progress-container {height:3px;min-height:3px;}
+ .container {padding:11px 12px 0;}
+ .az-nav-container {padding:8px 10px;margin-bottom:11px;border-radius:14px;box-shadow:none;}
+ .az-nav-title {font-size:11px;color:#8693a8;}
+ .letter-trigger {padding:5px 10px;min-height:37px;gap:7px;}
+ .letter-trigger strong {font-size:18px;}
+ .letter-tools {gap:6px;}
+ .add-word-btn {min-height:37px;padding:7px 9px;font-size:12px;gap:4px;}
+ .az-grid.open {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;max-height:350px;overflow-y:auto;}
+ .az-badge {min-width:0;}
+ .filters-container {margin:0 -12px 10px;padding:0 12px 5px;flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;scrollbar-width:none;overscroll-behavior-x:contain;}
+ .filters-container::-webkit-scrollbar {display:none;}
+ .filter-btn {flex:none;padding:7px 10px;border-radius:11px;font-size:12px;}
+ .filter-count {font-size:10px;}
+ .words-grid {display:block;}
+ .card {border-radius:21px;padding:47px 22px 19px;min-height:0;box-shadow:0 9px 28px rgba(16,40,88,.06);}
+ .card-counter {margin:-25px auto 17px;font-size:11px;}
+ .english-word {font-size:clamp(34px,9vw,46px);margin-bottom:12px;line-height:1.1;}
+ .phonetic {font-size:clamp(27px,7.1vw,37px);padding:5px 20px;border-radius:15px;margin-bottom:16px;}
+ .btn-audio {min-height:43px;padding:9px 19px;font-size:14px;margin-bottom:13px;}
+ .meaning-section {margin-bottom:16px;}
+ .btn-meaning-toggle {min-height:40px;padding:7px 16px;}
+ .tinder-actions {gap:9px;}
+ .tinder-row {min-height:44px;}
+ .btn-tinder {height:43px;width:43px;}
+ .word-navigation {display:flex;align-items:center;justify-content:space-between;gap:10px;margin:12px 0 6px;padding:0 4px;direction:ltr;}
+ .bottom-bar {display:none;}
+ .mobile-bottom-tabs {position:fixed;bottom:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.98);border-top:1px solid #e9edf5;display:flex;align-items:center;justify-content:space-around;padding:7px 6px max(7px,env(safe-area-inset-bottom));box-shadow:0 -4px 18px rgba(13,36,78,.04);}
+ .mobile-tab {display:flex;flex-direction:column;gap:2px;align-items:center;justify-content:center;min-width:70px;border:0;background:transparent;color:#8690a5;font-size:11px;font-family:'Inter',sans-serif;font-weight:700;padding:5px 10px;border-radius:15px;cursor:pointer;}
+ .mobile-tab svg {width:20px;height:20px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+ .mobile-tab.active {color:#3569ef;background:#eef2ff;}
+ .pagination-action {margin-top:16px;}
+ .desktop-actions {display:none;}
+ .modal-content {padding:24px 19px;border-radius:22px;}
+ .modal-title {font-size:22px;margin-bottom:21px;}
+ .form-floating {margin-bottom:13px;}
+ .form-floating input {padding:13px 14px;}
+ .no-results {padding:30px 20px;font-size:16px;}
+ .pm-dialog-card {padding:19px;}
+}
+@media(min-width:768px) and (max-width:1030px) {.words-grid {grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(prefers-reduced-motion:reduce) {*,*::before,*::after {animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important;}}
+
+
+/* ========= PronounceMe v2: compact, balanced mobile learning ========= */
+.brand-icon {filter:none;}
+.nav-account svg{width:20px;height:20px;stroke-linecap:round;stroke-linejoin:round;}
+.progress-medal{display:flex;align-items:center;justify-content:center;color:#c99334;}
+.progress-medal svg{width:21px;height:21px;stroke-linecap:round;stroke-linejoin:round;}
+.total-label{font-family:Inter,Heebo,sans-serif;font-weight:700;color:#61718e;white-space:nowrap;}
+.stage-label{white-space:nowrap;display:flex;align-items:center;gap:5px;}
+.top-progress {max-width:440px;min-width:250px;padding:6px 11px;gap:7px;border-radius:15px;}
+.progress-header {gap:12px;}
+.phonetic {background:linear-gradient(145deg,#fff9e9,#fff2d2);border:1px solid #edd6a4;border-radius:15px;box-shadow:0 2px 7px rgba(127,82,24,.045);padding:6px 21px;}
+.btn-reset,.star-btn{color:#7788a4;border:1px solid #eef1f6;background:#f8fafd;}
+.btn-reset svg,.star-btn svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;}
+.star-btn.starred{color:#d6a12c;background:#fffaec;border-color:#f0dbab;}
+.star-btn.starred svg{fill:#ffd16a;}
+.btn-audio{color:#315fe9;gap:7px;font-weight:700;}
+.btn-audio svg{height:19px;width:19px;flex:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none;}
+.btn-meaning-toggle{border:0;background:transparent!important;box-shadow:none!important;min-height:40px;padding:8px 6px;color:#3567f7;text-decoration:none;display:inline-flex;gap:6px;align-items:center;justify-content:center;white-space:nowrap;}
+.btn-meaning-toggle svg{width:16px;height:16px;stroke:currentColor;stroke-width:1.9;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.btn-meaning-toggle:hover {border:0;background:transparent;}
+.word-quick-actions{display:flex;align-items:flex-start;justify-content:center;gap:10px;direction:ltr;}
+.word-quick-actions .btn-audio{margin:0;min-width:0;}
+.word-quick-actions .meaning-section{margin:0;min-width:0;position:relative;}
+.word-quick-actions .meaning-text{position:absolute;z-index:4;top:100%;left:50%;transform:translateX(-50%);min-width:190px;max-width:min(78vw,320px);max-height:100px;overflow:auto;line-height:1.35;margin-top:5px;box-shadow:0 9px 20px rgba(19,36,66,.13);font-size:15px;padding:10px;text-align:center;border:1px solid #e8edf6;background:#fff;}
+.tinder-label {font-family:Inter,Heebo,sans-serif;font-size:14px;font-weight:750;}
+.tinder-label .eng{display:none;}
+.btn-tinder {width:39px;height:39px;border:1.4px solid;}
+.btn-tinder svg{height:21px;width:21px;stroke:currentColor;stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.btn-tinder-no{font-size:0;}
+.btn-tinder-yes svg {height:21px;width:21px;stroke-width:2.2;}
+.card-counter{direction:ltr;font-family:Inter,sans-serif;letter-spacing:.1px;white-space:nowrap;}
+.az-nav-title{display:none;}
+.letters-dialog-card{max-width:430px;}
+.pm-dialog .az-grid,.pm-dialog .az-grid.open{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;max-height:min(60dvh,440px);overflow:auto;padding:4px;direction:ltr;}
+.pm-dialog .az-badge{min-width:0;padding:9px 4px;text-align:center;}
+.pm-dialog .derivatives-container{display:block!important;margin-top:0;}
+.pm-dialog .sub-card{height:auto;min-height:0;overflow:visible;margin-bottom:12px;}
+.pm-award-icon svg{height:27px;width:27px;color:#be9343;}
+.pm-dialog .word-quick-actions{display:flex;}
+.pm-dialog .az-badge-stats{font-size:10px;}
+#pm-play-screen[hidden]{display:none!important;}
+#pm-play-screen{width:100%;max-width:560px;margin:0 auto;min-height:0;flex:1;padding:12px 14px 18px;display:flex;align-items:stretch;justify-content:center;}
+.play-panel{flex:1;display:flex;flex-direction:column;min-height:0;background:white;border:1px solid #e9edf6;border-radius:23px;padding:18px;box-shadow:0 8px 30px rgba(19,37,76,.045);}
+.play-back{background:none;border:0;color:#647995;font-size:12px;font-weight:700;cursor:pointer;}
+.play-head{display:flex;align-items:center;justify-content:space-between;gap:8px;color:#7c89a3;font:600 12px Inter,sans-serif;direction:ltr;}
+.play-pill{display:flex;align-items:center;gap:7px;color:#365cdd;font-size:14px;font-weight:800;}
+.play-pill svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.pm-game-content{display:flex;flex:1;flex-direction:column;justify-content:center;gap:20px;min-height:0;}
+.quiz-prompt{text-align:center;display:flex;flex-direction:column;gap:9px;}
+.quiz-word{font:900 clamp(30px,8vw,49px)/1.12 Inter,sans-serif;direction:ltr;overflow-wrap:anywhere;color:#102044;}
+.quiz-subtitle{color:#77859f;font-size:13px;font-weight:600;}
+.quiz-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;}
+.quiz-answer{background:#f8faff;border:1px solid #e8eef9;border-radius:15px;padding:14px 9px;min-height:70px;max-height:115px;overflow:auto;cursor:pointer;color:#17284e;font-family:Heebo,sans-serif;font-size:15px;font-weight:700;overflow-wrap:anywhere;}
+.quiz-answer.correct{background:#e7f8ec;border-color:#5dcc9d;color:#087d50;}
+.quiz-answer.incorrect{background:#fff0f1;border-color:#f1a6af;color:#b43f54;}
+.quiz-answer:disabled{cursor:default;}
+.quiz-feedback{text-align:center;min-height:18px;color:#64738c;font-size:13px;font-weight:700;}
+.quiz-footer{display:flex;justify-content:center;align-items:center;gap:10px;}
+.quiz-button{background:#3567f7;color:#fff;border:0;border-radius:13px;padding:12px 22px;font-family:Inter,Heebo,sans-serif;font-weight:700;cursor:pointer;}
+.quiz-button.soft{background:#eef3ff;color:#3567f7;}
+.completion-notice{font-size:13px;font-weight:700;color:#1c9d6d;text-align:center;}
+@media(max-width:767px){
+ html,body{width:100%;height:100%;overflow:hidden;overscroll-behavior:none;}
+ body{height:100dvh;padding:0;}
+ #app-shell{height:100dvh;min-height:0;display:flex;flex-direction:column;overflow:hidden;}
+ .top-navbar{order:0;flex:0 0 auto;padding:7px 12px 6px;grid-template-columns:36px minmax(0,1fr);gap:5px 8px;box-shadow:none;}
+ .nav-account{grid-column:1;grid-row:1;width:34px;height:34px;justify-self:start;}
+ .brand{grid-column:2;grid-row:1;justify-self:end;max-width:100%;overflow:hidden;gap:7px;}
+ .brand-icon{width:27px;height:27px;flex-basis:27px;transform:scale(.83);}
+ .brand-name{font-size:clamp(17px,5.2vw,22px);}
+ .top-progress{grid-column:1/-1;grid-row:2;width:100%;min-width:0;height:29px;padding:3px 10px;border-radius:11px;margin:0;}
+ .progress-medal svg{width:17px;height:17px;}
+ .progress-header{font-size:10px;gap:8px;}
+ .progress-header #progress-stats,.progress-header #progress-title,.total-label{font-size:10px;}
+ .progress-container{height:3px;min-height:3px;}
+ .container{order:1;flex:1 1 auto;min-height:0;overflow:hidden;padding:5px 10px 3px;display:flex;flex-direction:column;gap:5px;}
+ .az-nav-container{flex:0 0 auto;margin:0;padding:4px 7px;border-radius:12px;}
+ .az-nav-header{min-height:31px;}
+ .letter-trigger{min-height:29px;padding:3px 8px;border-radius:9px;}
+ .letter-trigger strong{font-size:16px;}
+ .add-word-btn{min-height:29px;padding:3px 9px;border-radius:9px;gap:5px;}
+ .add-word-btn svg{width:15px;height:15px;}
+ .filters-container{flex:0 0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;overflow:hidden;padding:0;margin:0;width:100%;}
+ .filter-btn{min-width:0;justify-content:center;padding:6px 2px;font-size:clamp(10px,2.7vw,12px);border-radius:10px;gap:4px;min-height:31px;}
+ .filter-count{padding:1px 5px;font-size:10px;}
+ .filter-dot{height:6px;width:6px;}
+ .filters-container .filter-btn:last-child{display:none;}
+ .words-grid{flex:1 1 auto;min-height:0;display:block;overflow:hidden;}
+ .words-grid>.no-results{height:100%;display:flex;align-items:center;justify-content:center;padding:14px;box-shadow:none;font-size:14px;}
+ .card,.sub-card{height:100%;padding:36px 15px 9px;min-height:0;border-radius:19px;display:flex;flex-direction:column;justify-content:space-evenly;overflow:hidden;gap:0;}
+ .card-counter{position:absolute;top:14px;left:50%;transform:translateX(-50%);margin:0;font-size:11px;line-height:17px;}
+ .btn-reset,.star-btn{top:9px;width:30px;height:30px;}
+ .btn-reset{left:10px;}.star-btn{right:10px;}
+ .btn-reset svg,.star-btn svg{width:18px;height:18px;}
+ .english-word{font-size:clamp(27px,9vw,41px);line-height:1.07;letter-spacing:-1px;margin:0;flex-shrink:1;}
+ .phonetic{font-size:clamp(24px,7.5vw,35px);margin:0;padding:3px 16px;line-height:1.28;border-radius:13px;max-height:85px;overflow:auto;flex:0 1 auto;}
+ .word-quick-actions{width:100%;gap:7px;justify-content:center;align-items:center;flex:0 0 auto;}
+ .word-quick-actions .btn-audio{min-height:36px;padding:5px 13px;font-size:13px;border-radius:20px;}
+ .word-quick-actions .btn-audio svg{width:18px;height:18px;}
+ .word-quick-actions .btn-meaning-toggle{min-height:36px;padding:5px 2px;font-size:13px;}
+ .word-quick-actions .meaning-section{min-height:0;}
+ .divider{height:1px;margin:0;flex:0 0 auto;}
+ .tinder-controls{flex:0 0 auto;gap:6px;}
+ .tinder-row{min-height:35px;}
+ .tinder-label{font-size:clamp(12px,3.4vw,14px);}
+ .tinder-actions{gap:9px;}
+ .btn-tinder{width:34px;height:34px;}
+ .btn-tinder svg{width:18px;height:18px;}
+ .derivatives-toggle{flex:0 0 auto;padding:5px 9px;margin:2px auto 0;max-width:100%;width:auto;font-size:11px;border-radius:9px;min-height:27px;}
+ .derivatives-toggle svg{width:14px;height:14px;}
+ .derivatives-container{display:none!important;}
+ .word-navigation{flex:0 0 auto;display:flex!important;min-height:39px;margin:0;padding:0 2px;justify-content:space-between;}
+ .word-nav-btn{width:41px;height:36px;border-radius:11px;}
+ .word-nav-btn svg{width:19px;height:19px;}
+ .shuffle-btn{width:auto;min-width:91px;font-size:11px;}
+ .mobile-bottom-tabs{order:10;position:relative;bottom:auto;flex:0 0 auto;padding:3px 7px max(4px,env(safe-area-inset-bottom));min-height:51px;box-shadow:none;}
+ .mobile-tab{min-width:65px;padding:3px 8px;gap:1px;font-size:10px;}
+ .mobile-tab svg{width:19px;height:19px;}
+ #pm-play-screen{order:1;padding:9px 10px;}
+ .play-panel{padding:14px 12px;}
+ .pm-dialog .az-grid{grid-template-columns:repeat(4,minmax(0,1fr));}
+ .modal-overlay .modal-content{max-height:calc(100dvh - 35px);overflow:auto;}
+}
+@media(max-width:767px) and (max-height:680px){
+ .top-navbar{padding-top:4px;padding-bottom:3px;}
+ .container{gap:3px;padding-top:3px;}
+ .card{padding-top:31px;padding-bottom:5px;}
+ .english-word{font-size:clamp(26px,8vw,35px);}
+ .phonetic{font-size:clamp(22px,6.8vw,29px);padding:2px 12px;}
+ .tinder-row{min-height:31px;}.btn-tinder{width:30px;height:30px;}
+ .word-quick-actions .btn-audio,.word-quick-actions .btn-meaning-toggle{min-height:31px;}
+ .mobile-bottom-tabs{min-height:46px;}
+}
+
+
+/* PronounceMe v3: compact Web Speech controls & Word Rush */
+.speech-pair{width:min(100%,260px);height:38px;min-height:38px;display:flex;align-items:stretch;direction:ltr;border:1px solid #dfe7f6;border-radius:12px;background:#f9fbff;overflow:hidden;box-shadow:0 2px 8px rgba(15,39,89,.025)}
+.speech-pair .btn-audio,.speech-pair .btn-speak{display:flex;flex:1 1 0;width:50%;min-width:0;height:100%;min-height:0;margin:0;padding:0 7px;justify-content:center;align-items:center;gap:6px;border:0;border-radius:0;background:transparent;color:#3260da;font:750 13px Inter,Heebo,sans-serif;box-shadow:none;white-space:nowrap;cursor:pointer;transition:background .18s,color .18s}
+.speech-pair .btn-speak{border-left:1px solid #e0e8f7;color:#365c92}
+.speech-pair .btn-audio:hover,.speech-pair .btn-speak:hover{background:#eef3ff;color:#315bdc;transform:none}
+.speech-pair .btn-speak svg,.speech-pair .btn-audio svg{height:17px;width:17px;flex:none;stroke:currentColor;stroke-width:1.95;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.speech-pair .btn-speak.speech-listening{color:#315fe9;background:#eef3ff}
+.speech-pair .btn-speak.speech-listening svg{animation:pmMicPulse 1.1s ease-in-out infinite}
+.speech-pair .btn-speak.speech-correct{background:#e7f7ed;color:#0d9a63}
+.speech-pair .btn-speak.speech-wrong{background:#fff0f2;color:#d54b60}
+.speech-pair .btn-speak.speech-error{background:#fff7e9;color:#9a641b}
+.speech-pair .btn-speak:disabled{opacity:.45;cursor:not-allowed}
+.word-quick-actions{flex-direction:column;gap:1px;align-items:center;justify-content:center;min-width:0}
+.word-quick-actions .meaning-section{min-height:0;height:auto;line-height:1;margin:0}
+.word-quick-actions .btn-meaning-toggle{font-size:12px;min-height:28px;height:28px;padding:2px 6px;border:0!important;background:transparent!important}
+.word-quick-actions .btn-meaning-toggle:hover{text-decoration:underline}
+.word-quick-actions .meaning-text{z-index:40;}
+@keyframes pmMicPulse{50%{opacity:.35;transform:scale(1.08)}}
+/* Word Rush compact HUD */
+.play-pill{font-size:13px;}
+.pm-game-content{gap:12px;}
+.rush-hud{display:flex;flex-direction:column;gap:8px;flex:0 0 auto;}
+.rush-hud-top{display:flex;justify-content:space-between;align-items:center;gap:7px;direction:ltr}
+.rush-hearts{display:flex;align-items:center;gap:3px;}
+.rush-heart{width:21px;height:21px;color:#ed7180;fill:#ef7382;stroke:currentColor;stroke-width:1.6}
+.rush-heart.lost{color:#dbe1ed;fill:none;}
+.rush-xp{font:850 14px Inter,Heebo,sans-serif;color:#d49c2d;display:flex;align-items:center;gap:4px;}
+.rush-streak{font:750 11px Inter,Heebo,sans-serif;background:#fff6e8;color:#b96b1d;border:1px solid #f8e3b9;border-radius:20px;padding:4px 7px;}
+.rush-trail{direction:ltr;display:flex;gap:4px;height:7px}
+.rush-trail span{height:100%;flex:1;border-radius:5px;background:#ecf0f7;}
+.rush-trail span.correct{background:#39bd8a;}.rush-trail span.wrong{background:#f07b89;}.rush-trail span.current{background:#4a75fa;}
+.rush-visited{color:#8391a8;font-size:11px;text-align:center;}
+.rush-question{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;flex:1 1 auto;min-height:0;}
+.rush-question .quiz-word{font-size:clamp(29px,7vw,47px)}
+.rush-listen{min-width:90px;min-height:54px;display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:9px 18px;border-radius:19px;border:1px solid #cbd9ff;background:#eef3ff;color:#315ddc;font:750 15px Inter,Heebo,sans-serif;cursor:pointer}
+.rush-listen svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.rush-audio-note{font-size:12px;color:#8897b0;}
+.rush-game-answer{display:flex;flex-direction:column;gap:8px;flex:0 0 auto;}
+.quiz-answer{min-height:58px;max-height:95px;font-size:clamp(12px,3.4vw,15px);padding:10px 7px;line-height:1.25;}
+.quiz-answer:focus-visible{outline:3px solid #a6baff;outline-offset:2px;}
+.quiz-answer.correct{animation:rushCorrect .32s ease-out}
+@keyframes rushCorrect{50%{transform:scale(1.035)}}
+.quiz-feedback{min-height:18px;font-size:12px;}
+.rush-next{min-height:36px;padding:7px 15px;font-size:12px}
+.rush-feedback-wrong{color:#c84f62}.rush-feedback-good{color:#15a06d}
+.rush-end{flex:1;min-height:0;position:relative;isolation:isolate;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;padding:3px 1px 9px;display:flex;flex-direction:column;gap:12px;}
+.rush-end::before{content:'';position:absolute;z-index:-1;pointer-events:none;top:0;left:6%;right:6%;height:108px;opacity:.56;background:radial-gradient(circle at 5% 25%,#ffca54 0 3px,transparent 4px),radial-gradient(circle at 17% 59%,#83d9b6 0 3px,transparent 4px),radial-gradient(circle at 87% 28%,#9cb5ff 0 4px,transparent 5px),radial-gradient(circle at 73% 67%,#f59cad 0 3px,transparent 4px),radial-gradient(circle at 48% 6%,#f4bf73 0 2px,transparent 3px),radial-gradient(circle at 31% 23%,#a2b9ff 0 2px,transparent 3px);animation:pmConfettiFloat 1.5s ease-out both;}
+@keyframes pmConfettiFloat{0%{opacity:0;transform:translateY(-15px) scale(.85)}100%{opacity:.56;transform:translateY(0) scale(1)}}
+.rush-confetti{display:flex;align-items:center;justify-content:center;gap:12px;color:#dbab40;}
+.rush-confetti svg{height:48px;width:48px;fill:none;stroke:currentColor;stroke-width:1.5;filter:drop-shadow(0 4px 7px rgba(213,157,29,.20));}
+.rush-confetti span{font-size:17px;color:#66bfac;animation:rushSpark .7s ease-in-out alternate 2}
+@keyframes rushSpark{to{transform:translateY(-8px) rotate(17deg)}}
+.rush-end-title{text-align:center;direction:ltr;font:900 23px Inter,Heebo,sans-serif;color:#172954;}
+.rush-end-sub{text-align:center;direction:ltr;color:#7a88a4;font-size:12px;}
+.rush-end-xp{text-align:center;font:900 29px Inter,Heebo,sans-serif;color:#386df4;}
+.rush-new-best{text-align:center;color:#1c9e6e;font-size:12px;font-weight:800;}
+.rush-summary-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;}
+.rush-summary-stat{background:#f6f9ff;border:1px solid #edf1fa;border-radius:12px;padding:9px 3px;text-align:center;min-width:0;}
+.rush-summary-stat strong{display:block;font:850 18px Inter,Heebo,sans-serif;color:#1c315b;}
+.rush-summary-stat small{font:600 10px Inter,Heebo,sans-serif;color:#8a98b0;}
+.rush-results-title{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:13px;font-weight:850;}
+.rush-results{display:flex;flex-direction:column;gap:6px;}
+.rush-result{border:1px solid #e9eef7;background:#fcfdff;border-radius:12px;padding:8px 9px;display:flex;align-items:center;gap:9px;direction:ltr;min-width:0;}
+.rush-result .rush-result-icon{width:17px;height:17px;flex:0 0 17px;}
+.rush-result-icon.good{color:#1aae78}.rush-result-icon.bad{color:#e56d78}
+.rush-result-word{flex:1 1 auto;min-width:0;text-align:left;overflow-wrap:anywhere;}
+.rush-result-word strong{display:block;font:800 13px Inter,Heebo,sans-serif;color:#152b55;}
+.rush-result-word small{display:block;font-size:11px;color:#7c8a9e;direction:rtl;text-align:left;}
+.rush-result-star{flex:0 0 35px;width:35px;height:35px;border:1px solid #ecedf2;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#a3aec0;}
+.rush-result-star svg{width:18px;height:18px;stroke:currentColor;stroke-width:1.9;stroke-linejoin:round;fill:none}
+.rush-result-star.starred{color:#d49b27;background:#fffaed;border-color:#efdbab}
+.rush-result-star.starred svg{fill:#ffd36e}
+.rush-end-buttons{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding-bottom:5px}
+.rush-end-buttons .quiz-button{font-size:12px;padding:9px 13px;}
+@media(max-width:767px){
+ .speech-pair{height:34px;min-height:34px;width:min(100%,247px);border-radius:11px}
+ .speech-pair .btn-audio,.speech-pair .btn-speak{font-size:12px;min-height:0!important;padding:0 5px!important;height:100%;gap:5px}
+ .speech-pair .btn-speak svg,.speech-pair .btn-audio svg{width:16px;height:16px}
+ .word-quick-actions{flex-direction:column;gap:0;}
+ .word-quick-actions .btn-meaning-toggle{font-size:11px;height:26px;min-height:26px;padding:2px 5px}
+ #pm-play-screen{padding:6px 9px;}
+ .play-panel{padding:10px 10px;}
+ .pm-game-content{gap:8px;justify-content:space-between;}
+ .rush-hud{gap:5px;}.rush-heart{width:19px;height:19px;}
+ .rush-question{gap:7px;padding:2px 0;}
+ .quiz-grid{gap:7px;}.quiz-answer{min-height:48px;max-height:80px;padding:7px 5px;}
+ .rush-listen{min-height:49px;padding:7px 15px;}
+ .rush-end{gap:8px;}
+}
+@media(max-width:767px) and (max-height:680px){
+ .speech-pair{height:31px;min-height:31px}
+ .word-quick-actions .btn-meaning-toggle{height:22px;min-height:22px;}
+ .play-panel{padding:7px 9px;}.rush-hud{gap:4px;}.rush-question{gap:3px}
+ .quiz-answer{min-height:39px;max-height:69px}.rush-listen{min-height:40px;}
+}
+@media(prefers-reduced-motion:reduce){.speech-pair .speech-listening svg,.quiz-answer.correct,.rush-confetti span,.rush-end::before{animation:none!important}}
+
+    </style>
+
+</head>
+
+<body>
+<div id="app-shell" hidden>
+
+
+
+<!-- Compact branded header; original progress element IDs preserved -->
+<div class="top-navbar">
+    <div class="brand" aria-label="PronounceMe">
+        <span class="brand-icon" aria-hidden="true"><span class="bubble blue"></span><span class="bubble mint"></span><span class="bubble gold"></span></span>
+        <span class="brand-name">Pronounce<span>Me</span></span>
+    </div>
+    <button type="button" class="top-progress" onclick="openAchievementsModal()" title="Achievements & progress" aria-label="Your learning progress and awards">
+        <span class="progress-medal" id="progress-medal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="14" r="6"/><path d="m8 2 4 6 4-6M7 2h10"/><path d="m10 14 1.4 1.4L14 12.8"/></svg></span>
+        <span class="progress-wrapper">
+          <span class="progress-header"><span class="stage-label"><span id="progress-title">Starter</span> <span id="progress-stats">0/25</span></span><span class="total-label" id="pm-global-total">0 / 0 · 0%</span></span>
+          <span class="progress-container"><span class="progress-bar-fill" id="progress-fill"></span></span>
+        </span>
+    </button>
+    <button type="button" class="nav-account" onclick="openAccountModal()" title="חשבון וגיבוי" aria-label="חשבון וגיבוי"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z"/><path d="M19.4 15a1.7 1.7 0 0 1 .34 1.87l-.42.72a1.7 1.7 0 0 1-1.8.81l-1.2-.25a7.8 7.8 0 0 1-1.54.9l-.42 1.18a1.7 1.7 0 0 1-1.59 1.1h-1.5a1.7 1.7 0 0 1-1.6-1.1l-.4-1.18a7.7 7.7 0 0 1-1.54-.9l-1.22.25a1.7 1.7 0 0 1-1.8-.81l-.42-.72A1.7 1.7 0 0 1 4.6 15l.8-.92a8.2 8.2 0 0 1 0-1.78l-.8-.92a1.7 1.7 0 0 1-.34-1.88l.42-.72a1.7 1.7 0 0 1 1.8-.81l1.2.25a7.8 7.8 0 0 1 1.54-.9l.42-1.18a1.7 1.7 0 0 1 1.59-1.1h1.5a1.7 1.7 0 0 1 1.6 1.1l.4 1.18a7.8 7.8 0 0 1 1.54.9l1.22-.25a1.7 1.7 0 0 1 1.8.81l.42.72a1.7 1.7 0 0 1-.34 1.88l-.8.92c.07.6.07 1.18 0 1.78z" transform="translate(0,-1) scale(.97)"/></svg></button>
+</div>
+
+<div class="container">
+
+    <div class="az-nav-container">
+        <div class="az-nav-header">
+            <div class="letter-tools">
+                <span class="az-nav-title">Choose letter</span>
+                <button type="button" id="letter-chooser-btn" class="letter-trigger" onclick="toggleLetters()" aria-expanded="false">
+                    <strong id="selected-letter">A</strong>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+            </div>
+            <button class="add-word-btn" onclick="openAddWordModal()" title="הוסף מילה">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+                <span>Add Word</span>
+            </button>
+        </div>
+        <!-- Letter selection is shown in its own modal below. -->
+    </div>
+
+    <div class="filters-container" id="filters-row" aria-label="Word filters">
+        <button class="filter-btn active" onclick="setFilter('all', this)">All <span class="filter-count" id="count-all">0</span></button>
+        <button class="filter-btn" onclick="setFilter('green', this)"><span class="filter-dot green"></span>Known <span class="filter-count" id="count-green">0</span></button>
+        <button class="filter-btn" onclick="setFilter('yellow', this)"><span class="filter-dot yellow"></span>Partial <span class="filter-count" id="count-yellow">0</span></button>
+        <button class="filter-btn" onclick="setFilter('red', this)"><span class="filter-dot red"></span>To Learn <span class="filter-count" id="count-red">0</span></button>
+        <button class="filter-btn" onclick="setFilter('practice', this)">★ Practice List <span class="filter-count" id="count-practice">0</span></button>
+    </div>
+
+    <div class="words-grid" id="words-grid">
+
+        <!-- Cards generated by JS -->
+
+    </div>
+
+    
+
+    <div class="word-navigation" id="word-navigation" aria-label="דפדוף בין מילים">
+        <button type="button" class="word-nav-btn" id="word-prev" onclick="pmMoveWord(-1)" aria-label="Previous word" title="Previous">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+        <button type="button" class="word-nav-btn shuffle-btn" id="shuffle-button" onclick="pmToggleShuffle()" aria-label="Shuffle words">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 3 4 4-4 4M4 7h4c5 0 5 10 10 10h2M16 21l4-4-4-4M4 17h4c1.7 0 2.8-1.1 3.7-2.7M12.3 9.8C13.5 7.9 14.5 7 18 7h2"/></svg>
+            <span>Shuffle</span>
+        </button>
+        <button type="button" class="word-nav-btn" id="word-next" onclick="pmMoveWord(1)" aria-label="Next word" title="Next">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+    </div>
+    <div class="desktop-actions"><button type="button" class="desktop-shuffle" id="desktop-shuffle" onclick="pmToggleShuffle()">⇄ Shuffle</button><button type="button" class="desktop-shuffle" onclick="pmShowTab('play')">▷ Word Rush</button></div>
+    <div id="pagination-action" class="pagination-action"></div>
+
+</div>
+
+
+
+<div class="bottom-bar">
+
+    <button id="bar-btn-next" class="bottom-bar-btn" onclick="nextLetter()">
+
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+
+        לאות הבאה
+
+    </button>
+
+    <button class="bottom-bar-btn center-btn" onclick="scrollToTop()">
+
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+
+        חזור למעלה
+
+    </button>
+
+    <button id="bar-btn-prev" class="bottom-bar-btn" onclick="prevLetter()">
+
+        לאות הקודמת
+
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+
+    </button>
+
+</div>
+
+
+
+<nav class="mobile-bottom-tabs" aria-label="Main navigation" dir="ltr">
+    <button type="button" class="mobile-tab active" id="pm-tab-learn" onclick="pmShowTab('learn')"><svg viewBox="0 0 24 24"><path d="M12 6c-4-2-7-2-10-1v14c3-1 6-1 10 1 4-2 7-2 10-1V5c-3-1-6-1-10 1ZM12 6v14"/></svg>Learn</button>
+    <button type="button" class="mobile-tab" id="pm-tab-play" onclick="pmShowTab('play')"><svg viewBox="0 0 24 24"><path d="M6.2 8.5c-2.5.2-4.1 2.6-4.1 5.6 0 3.3 1.7 5.6 3.7 5.6 1.4 0 2.1-1.3 3.4-2.6h5.6c1.3 1.3 2 2.6 3.4 2.6 2 0 3.7-2.3 3.7-5.6 0-3-1.6-5.4-4.1-5.6h-11.6zM7 12v4m-2-2h4m7-1h.01m2 2h.01"/></svg>Play</button>
+    <button type="button" class="mobile-tab" id="pm-tab-practice" onclick="pmShowTab('practice')"><svg viewBox="0 0 24 24"><path d="m12 3 2.8 5.9 6.5.9-4.8 4.7 1.1 6.5-5.6-3-5.6 3 1.1-6.5-4.8-4.7 6.5-.9z"/></svg>Practice</button>
+</nav>
+
+<div class="pm-dialog" id="pm-derivatives-dialog" role="dialog" aria-modal="true" aria-label="Tenses and derivatives">
+ <div class="pm-dialog-card"><div class="pm-dialog-head"><h2>Tenses & Derivatives</h2><button class="pm-x" onclick="pmCloseDialogs()" aria-label="סגור">×</button></div><div id="pm-derivatives-content"></div></div>
+</div>
+<div class="pm-dialog" id="pm-letters-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-letters-title">
+  <div class="pm-dialog-card letters-dialog-card">
+    <div class="pm-dialog-head"><h2 id="pm-letters-title">Choose a letter</h2><button class="pm-x" type="button" onclick="pmCloseDialogs()" aria-label="סגור">×</button></div>
+    <div class="az-grid open" id="az-grid" aria-label="בחירת אותיות"></div>
+  </div>
+</div>
+
+<!-- חלון הוספת מילה - עיצוב 2027 -->
+
+<div id="addWordModal" class="modal-overlay">
+
+    <div class="modal-content">
+
+        <div class="modal-title">הוספת מילה חדשה</div>
+
+        
+
+        <div class="form-floating">
+
+            <input type="text" id="custom-word" placeholder=" " dir="ltr">
+
+            <label>מילה באנגלית</label>
+
+        </div>
+
+        
+
+        <div class="form-floating">
+
+            <input type="text" id="custom-meaning" placeholder=" ">
+
+            <label>פירוש בעברית</label>
+
+        </div>
+
+        
+
+        <div class="form-floating">
+
+            <input type="text" id="custom-phonetic" placeholder=" ">
+
+            <label>הגייה (לדוגמה: אוֹ-סָם)</label>
+
+        </div>
+
+        
+
+        <div class="modal-actions">
+
+            <button class="btn-modal btn-cancel" onclick="closeAddWordModal()">ביטול</button>
+
+            <button class="btn-modal btn-save" onclick="saveCustomWord()">שמור מילה</button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- ============================================== -->
+
+
+<section id="pm-play-screen" aria-label="Quick Play" hidden>
+ <div class="play-panel">
+  <div class="play-head"><button class="play-back" type="button" onclick="pmShowTab('learn')" aria-label="Return to learning">← Learn</button><span class="play-pill"><svg viewBox="0 0 24 24"><path d="M6.2 8.5c-2.5.2-4.1 2.6-4.1 5.6 0 3.3 1.7 5.6 3.7 5.6 1.4 0 2.1-1.3 3.4-2.6h5.6c1.3 1.3 2 2.6 3.4 2.6 2 0 3.7-2.3 3.7-5.6 0-3-1.6-5.4-4.1-5.6h-11.6zM7 12v4m-2-2h4m7-1h.01m2 2h.01"/></svg> Word Rush</span><span id="pm-quiz-position">10 questions</span></div>
+  <div id="pm-game-content" class="pm-game-content"></div>
+ </div>
+</section>
+
+</div><!-- /#app-shell -->
+<div id="auth-gate">
+    <section class="auth-panel" aria-live="polite">
+        <div class="brand"><span class="brand-icon" aria-hidden="true"><span class="bubble blue"></span><span class="bubble mint"></span><span class="bubble gold"></span></span><span class="brand-name">Pronounce<span>Me</span></span></div>
+        <h1>Welcome to PronounceMe</h1>
+        <p>מתרגלים הגייה באנגלית, עוקבים אחר ההתקדמות ושומרים את כל העבודה בחשבון Google.</p>
+        <button type="button" id="pm-google-button" class="google-signin" onclick="pmGoogleLogin()"><span class="google-g">G</span><span>Continue with Google</span></button>
+        <div class="auth-state" id="pm-auth-state">מתחבר לשירות השמירה...</div>
+        <div id="auth-legacy-choice">
+          <div class="pm-muted">מצאנו עבודה שנשמרה בעבר בדפדפן. אפשר לייבא אותה לחשבון Google שלך, בלי למחוק את העותק המקורי.</div>
+          <div class="pm-dialog-actions">
+            <button class="pm-primary" onclick="pmChooseLegacy(true)">ייבא נתונים קיימים</button>
+            <button class="pm-secondary" onclick="pmChooseLegacy(false)">השתמש בנתוני הענן</button>
+          </div>
+        </div>
+    </section>
+</div>
+<div class="pm-dialog" id="pm-awards-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-awards-title">
+    <div class="pm-dialog-card">
+        <div class="pm-dialog-head"><h2 id="pm-awards-title">🏆 Your Journey</h2><button class="pm-x" onclick="pmCloseDialogs()" aria-label="Close">×</button></div>
+        <p class="pm-muted" id="pm-award-summary"></p>
+        <div class="pm-awards" id="pm-awards-grid"></div>
+    </div>
+</div>
+<div class="pm-dialog" id="pm-account-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-account-title">
+    <div class="pm-dialog-card">
+        <div class="pm-dialog-head"><h2 id="pm-account-title">Your account</h2><button class="pm-x" onclick="pmCloseDialogs()" aria-label="Close">×</button></div>
+        <div class="pm-account-grid">
+            <div id="pm-account-email" class="pm-muted"></div>
+            <div id="pm-sync-indicator" class="sync-state">Cloud sync</div>
+            <button class="pm-account-btn" onclick="pmExportBackup()">↓ הורד גיבוי JSON של כל הנתונים</button>
+            <button class="pm-account-btn" onclick="pmSignOut()">יציאה מחשבון Google</button>
+        </div>
+    </div>
+</div>
+<!-- Firebase credentials: paste the Web App configuration from your own Firebase project here. -->
+<script>
+const PM_FIREBASE_CONFIG = {
+    apiKey: "AIzaSyAPTMeQFZxN9yTQxUMjBisDeJFIMUGh1sE",
+    authDomain: "proeng-23ae9.firebaseapp.com",
+    projectId: "proeng-23ae9",
+    storageBucket: "proeng-23ae9.firebasestorage.app",
+    messagingSenderId: "863824200149",
+    appId: "1:863824200149:web:971785e5e0f59e69dd3d5c",
+    measurementId: "G-B79G6VMY18"
+};
+</script>
+<script src="https://www.gstatic.com/firebasejs/12.19.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.19.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore-compat.js"></script>
+
+<!-- חיבור לקובץ המילון החיצוני (לא לשנות את שם הקובץ / מבנה הנתונים) -->
+
+<!-- ============================================== -->
+
+<script src="dictionary.js"></script>
+<script>
+window.PM_ORIGINAL_WORDS = (typeof baseWordsData !== 'undefined') ? JSON.parse(JSON.stringify(baseWordsData)) : [];
+</script>
+
+
+
+<script>
+
+    function setGreeting() {
+
+        const hour = new Date().getHours();
+
+        let greeting = "לילה טוב";
+
+        if (hour >= 5 && hour < 12) greeting = "בוקר טוב";
+
+        else if (hour >= 12 && hour < 17) greeting = "צהריים טובים";
+
+        else if (hour >= 17 && hour < 21) greeting = "ערב טוב";
+
+        const el = document.getElementById('greeting');
+        if (el) el.innerText = `שלום אביב, ${greeting} 👋`;
+
+    }
+
+    setGreeting();
+
+
+
+    // בדיקה האם קובץ ה-dictionary.js נטען כראוי
+
+    if (typeof baseWordsData === 'undefined') {
+
+        console.error("קובץ dictionary.js לא נטען. בדוק שהוא נמצא באותה תיקייה ושמו מדויק.");
+
+        window.baseWordsData = []; 
+
+    }
+
+
+
+    // משיכת ההגיות שהמשתמש שמר בעבר (כדי למנוע דריסה כשהוא מעדכן דרך הממשק)
+
+    let savedPhonetics = JSON.parse(localStorage.getItem('englishAppPhoneticsV1')) || {};
+
+    
+
+    // עדכון בסיס הנתונים החיצוני עם ההגיות שהוזנו ידנית בדפדפן
+
+    baseWordsData.forEach(w => {
+
+        if (savedPhonetics[w.id]) w.phonetic = savedPhonetics[w.id];
+
+        if (w.derivatives) {
+
+            w.derivatives.forEach(d => {
+
+                if (savedPhonetics[d.id]) d.phonetic = savedPhonetics[d.id];
+
+            });
+
+        }
+
+    });
+
+
+
+    let customUserWords = JSON.parse(localStorage.getItem('englishAppCustomWordsV5')) || [];
+
+    let wordsData = [...baseWordsData, ...customUserWords];
+
+
+
+    let userProgress = JSON.parse(localStorage.getItem('englishAppProgressV6')) || {};
+
+    let currentLetter = 'A';
+
+    let currentFilter = 'all';
+
+    let wordsLimit = 25;
+
+
+
+    // עריכת הגייה ידנית ולשמור אותה לזכרון
+
+    function editPhonetic(id, wordText) {
+
+        const el = document.getElementById('phonetic-' + id);
+
+        let current = el.innerText;
+
+        if (current.includes('לחץ כאן') || current.includes('הוסף הגייה')) current = '';
+
+        
+
+        let newPhonetic = prompt(`הכנס הגייה בעברית עבור המילה "${wordText}":`, current);
+
+        
+
+        if (newPhonetic !== null) {
+
+            newPhonetic = newPhonetic.trim();
+
+            if (newPhonetic === '') newPhonetic = 'לחץ כאן להוספת הגייה ידנית';
+
+            
+
+            el.innerText = newPhonetic;
+
+            
+
+            // שמירה ל-LocalStorage שתשרוד רענונים
+
+            let sp = JSON.parse(localStorage.getItem('englishAppPhoneticsV1')) || {};
+
+            sp[id] = newPhonetic;
+
+            localStorage.setItem('englishAppPhoneticsV1', JSON.stringify(sp));
+                pmScheduleSync();
+
+            
+
+            // עדכון המערך הקיים בזיכרון הנוכחי
+
+            let wordObj = wordsData.find(w => w.id === id) || 
+
+                          wordsData.find(w => w.derivatives && w.derivatives.some(d => d.id === id))?.derivatives.find(d => d.id === id);
+
+            
+
+            if (wordObj) {
+
+                wordObj.phonetic = newPhonetic;
+
+                // אם זו מילה מותאמת אישית (שנוספה מהאפליקציה), נעדכן גם אותה בזיכרון הקבוע
+
+                if (id.startsWith('custom_')) {
+
+                    let cw = customUserWords.find(w => w.id === id);
+
+                    if (cw) {
+
+                        cw.phonetic = newPhonetic;
+
+                        localStorage.setItem('englishAppCustomWordsV5', JSON.stringify(customUserWords));
+                pmScheduleSync();
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+
+
+    // סימון מילה בכוכב (מועדפים)
+
+    function toggleStar(id) {
+
+        if (!userProgress[id]) userProgress[id] = { m: 0, p: 0, starred: false };
+
+        userProgress[id].starred = !userProgress[id].starred;
+
+        localStorage.setItem('englishAppProgressV6', JSON.stringify(userProgress));
+                pmScheduleSync();
+
+        
+
+        const starBtn = document.getElementById('star-' + id);
+
+        if (starBtn) {
+
+            if (userProgress[id].starred) {
+
+                starBtn.classList.add('starred');
+
+            } else {
+
+                starBtn.classList.remove('starred');
+
+            }
+
+        }
+
+    }
+
+
+
+    function speakWord(word) {
+
+        if ('speechSynthesis' in window) {
+
+            window.speechSynthesis.cancel();
+
+            const utterance = new SpeechSynthesisUtterance(word);
+
+            utterance.lang = 'en-US';
+
+            utterance.rate = 0.35; 
+
+            window.speechSynthesis.speak(utterance);
+
+        }
+
+    }
+
+
+
+    function toggleMeaning(id) {
+
+        const meaningDiv = document.getElementById('meaning-' + id);
+
+        const btn = document.getElementById('btn-meaning-' + id);
+
+        if (meaningDiv.style.display === 'block') {
+
+            meaningDiv.style.display = 'none';
+
+            btn.innerText = 'Show Meaning';
+
+        } else {
+
+            meaningDiv.style.display = 'block';
+
+            btn.innerText = 'Hide Meaning';
+
+        }
+
+    }
+
+    
+
+    function toggleDerivatives(id) {
+
+        const derivDiv = document.getElementById('deriv-' + id);
+
+        const btn = document.getElementById('btn-deriv-' + id);
+
+        if (derivDiv.style.display === 'block') {
+
+            derivDiv.style.display = 'none';
+
+            btn.classList.remove('open');
+
+        } else {
+
+            derivDiv.style.display = 'block';
+
+            btn.classList.add('open');
+
+        }
+
+    }
+
+
+
+    function setStatus(id, type, value) {
+
+        if (!userProgress[id]) userProgress[id] = { m: 0, p: 0, starred: false }; 
+
+        userProgress[id][type] = value;
+
+        localStorage.setItem('englishAppProgressV6', JSON.stringify(userProgress));
+                pmScheduleSync();
+
+        renderWords();
+
+    }
+
+
+
+    function resetStatus(id) {
+
+        if (userProgress[id]) {
+
+            let wasStarred = userProgress[id].starred;
+
+            userProgress[id] = { m: 0, p: 0, starred: wasStarred };
+
+            localStorage.setItem('englishAppProgressV6', JSON.stringify(userProgress));
+                pmScheduleSync();
+
+            renderWords();
+
+        }
+
+    }
+
+
+
+    function setFilter(filterType, btnElement) {
+
+        currentFilter = filterType;
+
+        wordsLimit = 25;
+
+        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+
+        btnElement.classList.add('active');
+
+        renderWords();
+
+    }
+
+
+
+    function generateControls(id) {
+
+        const heartSVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4.5 4.5L19 7"/></svg>`;
+
+        return `
+
+            <div class="tinder-controls">
+
+                <div class="tinder-row">
+
+                    <div class="tinder-label">Pronunciation <span class="eng">הגייה</span></div>
+
+                    <div class="tinder-actions">
+
+                        <button id="btn-${id}-p-no" class="btn-tinder btn-tinder-no" onclick="setStatus('${id}', 'p', -1)">✖</button>
+
+                        <button id="btn-${id}-p-yes" class="btn-tinder btn-tinder-yes" onclick="setStatus('${id}', 'p', 1)">${heartSVG}</button>
+
+                    </div>
+
+                </div>
+
+                <div class="tinder-row">
+
+                    <div class="tinder-label">Meaning <span class="eng">פירוש</span></div>
+
+                    <div class="tinder-actions">
+
+                        <button id="btn-${id}-m-no" class="btn-tinder btn-tinder-no" onclick="setStatus('${id}', 'm', -1)">✖</button>
+
+                        <button id="btn-${id}-m-yes" class="btn-tinder btn-tinder-yes" onclick="setStatus('${id}', 'm', 1)">${heartSVG}</button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        `;
+
+    }
+
+
+
+    function escapeDisplayHTML(value) { return String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+    function generateCardHTML(item, isDerivative = false) {
+
+        let state = userProgress[item.id] || {m:0, p:0, starred: false};
+
+        let starClass = state.starred ? 'starred' : '';
+
+        let escapedWord = JSON.stringify(String(item.word)).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+
+
+
+        if (isDerivative) {
+
+            return `
+
+                <div class="sub-card" id="card-${item.id}">
+
+                    <button class="btn-reset" onclick="resetStatus('${item.id}')" title="אפס בחירה">↺</button>
+
+                    <button id="star-${item.id}" class="star-btn ${starClass}" onclick="toggleStar('${item.id}')" title="הוסף או הסר מרשימת התרגול">★</button>
+
+                    
+
+                    <div class="tense-badge">${escapeDisplayHTML(item.tense)}</div>
+
+                    <div class="english-word">${escapeDisplayHTML(item.word)}</div>
+
+                    
+
+                    <div class="phonetic" id="phonetic-${item.id}" onclick="editPhonetic('${item.id}', ${escapedWord})" title="לחץ לעריכת הגייה">${escapeDisplayHTML(item.phonetic)}</div>
+
+                    <button class="btn-audio" onclick="speakWord(${escapedWord})">🔊 Listen</button>
+
+                    
+
+                    <div class="meaning-section">
+
+                        <button id="btn-meaning-${item.id}" class="btn-meaning-toggle" onclick="toggleMeaning('${item.id}')">Show Meaning</button>
+
+                        <div id="meaning-${item.id}" class="meaning-text">${escapeDisplayHTML(item.meaning)}</div>
+
+                    </div>
+
+                    ${generateControls(item.id)}
+
+                </div>
+
+            `;
+
+        }
+
+
+
+        let derivativesHTML = '';
+
+        if (item.derivatives && item.derivatives.length > 0) {
+
+            let innerCards = item.derivatives.map(d => generateCardHTML(d, true)).join('');
+
+            derivativesHTML = `
+
+                <button id="btn-deriv-${item.id}" class="derivatives-toggle" onclick="toggleDerivatives('${item.id}')">
+
+                    <span>זמנים ונגזרות (Tenses & Derivatives)</span>
+
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+
+                </button>
+
+                <div class="derivatives-container" id="deriv-${item.id}">
+
+                    ${innerCards}
+
+                </div>
+
+            `;
+
+        }
+
+
+
+        return `
+
+            <div class="card" id="card-${item.id}">
+
+                <button class="btn-reset" onclick="resetStatus('${item.id}')" title="אפס בחירה">↺</button>
+
+                <button id="star-${item.id}" class="star-btn ${starClass}" onclick="toggleStar('${item.id}')" title="הוסף או הסר מרשימת התרגול">★</button>
+
+                
+
+                <div class="english-word">${escapeDisplayHTML(item.word)}</div>
+
+                
+
+                <div class="phonetic" id="phonetic-${item.id}" onclick="editPhonetic('${item.id}', ${escapedWord})" title="לחץ לעריכת הגייה">${escapeDisplayHTML(item.phonetic)}</div>
+
+                <button class="btn-audio" onclick="speakWord(${escapedWord})">🔊 Listen</button>
+
+                
+
+                <div class="meaning-section">
+
+                    <button id="btn-meaning-${item.id}" class="btn-meaning-toggle" onclick="toggleMeaning('${item.id}')">Show Meaning</button>
+
+                    <div id="meaning-${item.id}" class="meaning-text">${escapeDisplayHTML(item.meaning)}</div>
+
+                </div>
+
+                
+
+                <div class="divider"></div>
+
+                ${generateControls(item.id)}
+
+                ${derivativesHTML}
+
+            </div>
+
+        `;
+
+    }
+
+
+
+    function renderAZNav() {
+
+        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+
+        const nav = document.getElementById('az-grid');
+
+        
+
+        let html = '';
+
+        letters.forEach(letter => {
+
+            const baseWords = wordsData.filter(w => w.letter === letter);
+
+            
+
+            if (baseWords.length === 0) {
+
+                html += `<div class="az-badge disabled"><div class="az-badge-letter">${letter}</div><div class="az-badge-stats">-</div></div>`;
+
+                return;
+
+            }
+
+
+
+            let totalItems = 0;
+
+            let knownItems = 0;
+
+
+
+            baseWords.forEach(w => {
+
+                totalItems++;
+
+                let s = userProgress[w.id] || {m:0, p:0};
+
+                if(s.m === 1 && s.p === 1) knownItems++;
+
+
+
+                if(w.derivatives) {
+
+                    w.derivatives.forEach(d => {
+
+                        totalItems++;
+
+                        let ds = userProgress[d.id] || {m:0, p:0};
+
+                        if(ds.m === 1 && ds.p === 1) knownItems++;
+
+                    });
+
+                }
+
+            });
+
+
+
+            const activeClass = (letter === currentLetter) ? 'active' : '';
+
+            html += `
+
+                <div class="az-badge ${activeClass}" onclick="changeLetter('${letter}')">
+
+                    <div class="az-badge-letter">${letter}</div>
+
+                    <div class="az-badge-stats">${knownItems}/${totalItems}</div>
+
+                </div>
+
+            `;
+
+        });
+
+        nav.innerHTML = html;
+
+    }
+
+
+
+    function changeLetter(letter) {
+
+        currentLetter = letter;
+
+        wordsLimit = 25;
+
+        renderAZNav(); 
+
+        renderWords(); 
+
+        scrollToTop(); 
+
+    }
+
+
+
+    function getCardState(id) {
+
+        const s = userProgress[id] || {m:0, p:0};
+
+        if (s.m === 1 && s.p === 1) return 'green';
+
+        if (s.m === -1 && s.p === -1) return 'red';
+
+        if (s.m === 0 && s.p === 0) return 'unanswered';
+
+        return 'yellow'; 
+
+    }
+
+
+
+    function renderWords() {
+
+        const grid = document.getElementById('words-grid');
+
+        const paginationAction = document.getElementById('pagination-action');
+
+        let html = '';
+
+        
+
+        let filteredItems = [];
+
+
+
+        wordsData.filter(item => item.letter === currentLetter).forEach(item => {
+
+            const state = getCardState(item.id);
+
+            let shouldShow = false;
+
+
+
+            if (currentFilter === 'all') shouldShow = true;
+
+            else if (currentFilter === 'green' && state === 'green') shouldShow = true;
+
+            else if (currentFilter === 'yellow' && state === 'yellow') shouldShow = true;
+
+            else if (currentFilter === 'red' && (state === 'red' || state === 'unanswered')) shouldShow = true;
+
+
+
+            if (shouldShow) {
+
+                filteredItems.push(item);
+
+            }
+
+        });
+
+
+
+        const itemsToDisplay = filteredItems.slice(0, wordsLimit);
+
+
+
+        itemsToDisplay.forEach(item => {
+
+            html += generateCardHTML(item);
+
+        });
+
+
+
+        if (filteredItems.length === 0) {
+
+            let msg = 'לא נמצאו מילים בקטגוריה זו.';
+
+            if (currentFilter === 'green') msg = 'עוד לא סימנת מילים כידועות במלואן (ירוק) באות זו.';
+
+            if (currentFilter === 'yellow') msg = 'אין מילים הידועות חלקית באות זו.';
+
+            if (currentFilter === 'red') msg = 'איזה יופי! לא נשארו מילים שלא תירגלת או שאתה לא יודע באות זו.';
+
+            
+
+            grid.innerHTML = `<div class="no-results">${msg}</div>`;
+
+            if (paginationAction) paginationAction.innerHTML = '';
+
+        } else {
+
+            grid.innerHTML = html;
+
+            
+
+            if (paginationAction) {
+
+                if (filteredItems.length > wordsLimit) {
+
+                    paginationAction.innerHTML = `<button class="load-more-btn" onclick="loadMore()">טען עוד מילים (הוצגו ${wordsLimit} מתוך ${filteredItems.length}) ⬇</button>`;
+
+                } else {
+
+                    const next = getNextLetter();
+
+                    if (next) {
+
+                        paginationAction.innerHTML = `<button class="load-more-btn next-letter-btn" onclick="nextLetter()">עבור לאות הבאה (${next}) ➔</button>`;
+
+                    } else {
+
+                        paginationAction.innerHTML = `<div class="finished-msg">סיימת את כל האותיות! 🎉</div>`;
+
+                    }
+
+                }
+
+            }
+
+        }
+
+
+
+        updateUI(); 
+
+        renderAZNav(); 
+
+        updateBottomBarVisibility(); 
+
+    }
+
+
+
+    function updateUI() {
+
+        let fullyKnownCount = 0;
+
+        let totalWordsCount = 0;
+
+
+
+        let countAll = 0;
+
+        let countGreen = 0;
+
+        let countYellow = 0;
+
+        let countRed = 0;
+
+
+
+        function updateItem(item) {
+
+            const state = userProgress[item.id] || { m: 0, p: 0 };
+
+            
+
+            const pYes = document.getElementById(`btn-${item.id}-p-yes`);
+
+            if(!pYes) return; 
+
+
+
+            document.getElementById(`btn-${item.id}-p-yes`).className = 'btn-tinder btn-tinder-yes ' + (state.p === 1 ? 'active' : '');
+
+            document.getElementById(`btn-${item.id}-p-no`).className = 'btn-tinder btn-tinder-no ' + (state.p === -1 ? 'active' : '');
+
+
+
+            document.getElementById(`btn-${item.id}-m-yes`).className = 'btn-tinder btn-tinder-yes ' + (state.m === 1 ? 'active' : '');
+
+            document.getElementById(`btn-${item.id}-m-no`).className = 'btn-tinder btn-tinder-no ' + (state.m === -1 ? 'active' : '');
+
+
+
+            let cardEl = document.getElementById('card-' + item.id);
+
+            if(cardEl){
+
+                cardEl.classList.remove('state-green', 'state-yellow', 'state-red');
+
+                const cardState = getCardState(item.id);
+
+                if (cardState !== 'unanswered') {
+
+                    cardEl.classList.add('state-' + cardState);
+
+                }
+
+            }
+
+
+
+            if (item.derivatives) { item.derivatives.forEach(updateItem); }
+
+        }
+
+
+
+        wordsData.forEach(item => {
+
+            totalWordsCount++;
+
+            const state = userProgress[item.id] || {m:0, p:0};
+
+            if(state.m === 1 && state.p === 1) fullyKnownCount++;
+
+            
+
+            if(item.derivatives) {
+
+                item.derivatives.forEach(d => {
+
+                    totalWordsCount++;
+
+                    const ds = userProgress[d.id] || {m:0, p:0};
+
+                    if(ds.m === 1 && ds.p === 1) fullyKnownCount++;
+
+                });
+
+            }
+
+
+
+            if (item.letter === currentLetter) {
+
+                const processFilterCount = (w) => {
+
+                    countAll++;
+
+                    const wState = getCardState(w.id);
+
+                    if (wState === 'green') countGreen++;
+
+                    else if (wState === 'yellow') countYellow++;
+
+                    else countRed++;
+
+                };
+
+                processFilterCount(item);
+
+                if (item.derivatives) {
+
+                    item.derivatives.forEach(d => processFilterCount(d));
+
+                }
+
+            }
+
+        });
+
+
+
+        wordsData.filter(item => item.letter === currentLetter).forEach(updateItem);
+
+        
+
+        let percent = totalWordsCount === 0 ? 0 : Math.round((fullyKnownCount / totalWordsCount) * 100);
+
+        document.getElementById('progress-fill').style.width = percent + '%';
+
+        document.getElementById('progress-stats').innerText = `${fullyKnownCount} / ${totalWordsCount} (${percent}%)`;
+
+        
+
+        let levelText = 'מתחיל 🌱';
+
+        if(percent === 100) levelText = 'אלוף! 🏆';
+
+        else if(percent >= 80) levelText = 'מומחה 💎';
+
+        else if(percent >= 50) levelText = 'שולט 🚀';
+
+        else if(percent >= 20) levelText = 'מתקדם 🌟';
+
+        
+
+        let titleEl = document.getElementById('progress-title');
+
+        if(titleEl) titleEl.innerText = levelText;
+
+        
+
+        const countAllEl = document.getElementById('count-all');
+
+        if (countAllEl) {
+
+            countAllEl.innerText = countAll;
+
+            document.getElementById('count-green').innerText = countGreen;
+
+            document.getElementById('count-yellow').innerText = countYellow;
+
+            document.getElementById('count-red').innerText = countRed;
+
+        }
+
+    }
+
+
+
+    function loadMore() {
+
+        wordsLimit += 25; 
+
+        renderWords();
+
+    }
+
+
+
+    function getNextLetter() {
+
+        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+
+        const idx = letters.indexOf(currentLetter);
+
+        return idx < letters.length - 1 ? letters[idx + 1] : null;
+
+    }
+
+    
+
+    function getPrevLetter() {
+
+        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+
+        const idx = letters.indexOf(currentLetter);
+
+        return idx > 0 ? letters[idx - 1] : null;
+
+    }
+
+
+
+    function nextLetter() {
+
+        const next = getNextLetter();
+
+        if (next) changeLetter(next);
+
+    }
+
+    
+
+    function prevLetter() {
+
+        const prev = getPrevLetter();
+
+        if (prev) changeLetter(prev);
+
+    }
+
+
+
+    function scrollToTop() {
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    }
+
+
+
+    function updateBottomBarVisibility() {
+
+        const btnPrev = document.getElementById('bar-btn-prev');
+
+        const btnNext = document.getElementById('bar-btn-next');
+
+        if (btnPrev) btnPrev.style.visibility = getPrevLetter() ? 'visible' : 'hidden';
+
+        if (btnNext) btnNext.style.visibility = getNextLetter() ? 'visible' : 'hidden';
+
+    }
+
+
+
+    function openAddWordModal() {
+
+        const modal = document.getElementById('addWordModal');
+
+        modal.style.display = 'flex';
+
+        setTimeout(() => modal.classList.add('show'), 10);
+
+        
+
+        document.getElementById('custom-word').value = '';
+
+        document.getElementById('custom-meaning').value = '';
+
+        document.getElementById('custom-phonetic').value = '';
+
+    }
+
+
+
+    function closeAddWordModal() {
+
+        const modal = document.getElementById('addWordModal');
+
+        modal.classList.remove('show');
+
+        setTimeout(() => modal.style.display = 'none', 300);
+
+    }
+
+
+
+    function saveCustomWord() {
+
+        const word = document.getElementById('custom-word').value.trim();
+
+        const meaning = document.getElementById('custom-meaning').value.trim();
+
+        const phonetic = document.getElementById('custom-phonetic').value.trim() || 'לחץ כאן להוספת הגייה ידנית';
+
+
+
+        if(!word || !meaning) {
+
+            alert('אנא הזן מילה באנגלית ופירוש בעברית לפני השמירה.');
+
+            return;
+
+        }
+
+
+
+        const letter = word.charAt(0).toUpperCase();
+
+        
+
+        const newWordObj = {
+
+            id: 'custom_' + word.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase() + '_' + Date.now(),
+
+            word: word,
+
+            phonetic: phonetic,
+
+            meaning: meaning,
+
+            letter: letter,
+
+            derivatives: []
+
+        };
+
+
+
+        let customWords = JSON.parse(localStorage.getItem('englishAppCustomWordsV5')) || [];
+
+        customWords.push(newWordObj);
+
+        localStorage.setItem('englishAppCustomWordsV5', JSON.stringify(customWords));
+                pmScheduleSync();
+
+
+
+        wordsData.push(newWordObj);
+
+
+
+        closeAddWordModal();
+
+        
+
+        if (currentLetter !== letter) {
+
+            changeLetter(letter);
+
+        } else {
+
+            renderAZNav();
+
+            renderWords();
+
+        }
+
+        
+
+        setTimeout(() => alert(`המילה "${word}" נוספה בהצלחה לאות ${letter}!`), 350);
+
+    }
+
+
+
+    renderAZNav();
+
+    renderWords();
+
+
+
+</script>
+
+
+<script>
+/* PronounceMe enhancements: UI adapter + cloud sync. Original dictionary.js stays untouched. */
+(function () {
+'use strict';
+const STORAGE_KEYS = {progress:'englishAppProgressV6',words:'englishAppCustomWordsV5',phonetics:'englishAppPhoneticsV1'};
+const MILESTONES = [
+  {n:25,label:'Starter',icon:'🌱'}, {n:100,label:'Bronze Medal',icon:'🥉'},
+  {n:250,label:'Silver Medal',icon:'🥈'}, {n:500,label:'Gold Medal',icon:'🥇'},
+  {n:1000,label:'Champion',icon:'🏆'}, {n:2000,label:'Word Master',icon:'👑'}
+];
+const safeRead = (key,fallback) => {try {let v=localStorage.getItem(key);return v===null?fallback:JSON.parse(v);} catch{return fallback;}};
+const asObj = val => val && typeof val === 'object' && !Array.isArray(val) ? val : {};
+const asArr = val => Array.isArray(val) ? val : [];
+const clone = val => JSON.parse(JSON.stringify(val));
+const emptyGameData = () => ({schemaVersion:1, bestScore:0, sessions:0, words:{}, recent:[]});
+let gameData = emptyGameData();
+function normalizedGameData(value){
+  const v = asObj(value);
+  return {
+    schemaVersion:1,
+    bestScore:Number.isFinite(v.bestScore)?Math.max(0,v.bestScore):0,
+    sessions:Number.isFinite(v.sessions)?Math.max(0,v.sessions):0,
+    words:asObj(v.words),
+    recent:asArr(v.recent).filter(s=>typeof s==='string').slice(-40)
+  };
+}
+const getLocal = () => ({progress:asObj(safeRead(STORAGE_KEYS.progress,{})),customWords:asArr(safeRead(STORAGE_KEYS.words,[])),phonetics:asObj(safeRead(STORAGE_KEYS.phonetics,{}))});
+const hasContent = obj => Object.keys(obj.progress||{}).length>0 || (obj.customWords||[]).length>0 || Object.keys(obj.phonetics||{}).length>0;
+const mergeState = (first,second) => {
+  const a=first||{},b=second||{},byId=new Map();
+  for (const word of [...asArr(a.customWords),...asArr(b.customWords)]) if (word && word.id) byId.set(word.id,word);
+  return {progress:{...asObj(a.progress),...asObj(b.progress)},customWords:[...byId.values()],phonetics:{...asObj(a.phonetics),...asObj(b.phonetics)},gameData:normalizedGameData(b.gameData ?? a.gameData)};
+};
+const phone = () => window.matchMedia('(max-width:767px)').matches;
+const escapeHTML = x => String(x??'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const ui = id => document.getElementById(id);
+let firebaseAuth=null, firebaseStore=null, signedUser=null, accountReady=false, saving=null, saveTimer=null, localRevision=0;
+let pendingLegacy=null, proposedState=null, pendingDecisionResolve=null, firebaseConfigured=false;
+let currentWordIndex=0, shuffleActive=false, shuffledKeys=[], lastListSignature='', mobileList=[];
+const pristineWords=window.PM_ORIGINAL_WORDS||[];
+const namespace = uid => 'pronounceme:v1:'+uid;
+function updateSync(text,error=false) { let label=ui('pm-sync-indicator'); if(label){label.textContent=text;label.classList.toggle('error',!!error);} }
+function setAuthMessage(text){ui('pm-auth-state').textContent=text;}
+function userStateRef(){return firebaseStore.collection('users').doc(signedUser.uid);}
+function snapshot(){return {...getLocal(),gameData:clone(gameData)};}
+function applyState(data){
+  const parsed=mergeState(null,data||{});
+  for(const [storageKey,field] of [[STORAGE_KEYS.progress,'progress'],[STORAGE_KEYS.words,'customWords'],[STORAGE_KEYS.phonetics,'phonetics']]) {
+    localStorage.setItem(storageKey,JSON.stringify(parsed[field]));
+  }
+  baseWordsData.length=0;
+  pristineWords.forEach(item=>baseWordsData.push(clone(item)));
+  savedPhonetics=parsed.phonetics;
+  baseWordsData.forEach(w=>{if(savedPhonetics[w.id])w.phonetic=savedPhonetics[w.id];(w.derivatives||[]).forEach(d=>{if(savedPhonetics[d.id])d.phonetic=savedPhonetics[d.id];});});
+  customUserWords=parsed.customWords;
+  userProgress=parsed.progress;
+  gameData=normalizedGameData(parsed.gameData);
+  wordsData=[...baseWordsData,...customUserWords];
+  currentWordIndex=0;shuffledKeys=[];lastListSignature='';
+  if(!wordsData.some(w=>w.letter===currentLetter)) currentLetter=wordsData.find(w=>w.letter)?.letter||'A';
+  renderAZNav();renderWords();
+  ui('selected-letter').textContent=currentLetter;
+}
+function storeScoped(shouldMarkDirty=true){
+  if(!signedUser||!accountReady)return;
+  const key=namespace(signedUser.uid);
+  localStorage.setItem(key+':snapshot',JSON.stringify(snapshot()));
+  if(shouldMarkDirty)localStorage.setItem(key+':dirty','1');
+}
+window.pmScheduleSync = function(){
+  if(!accountReady||!signedUser)return;
+  ++localRevision;storeScoped(true);
+  updateSync('⏳ Saving to Google...');
+  clearTimeout(saveTimer);saveTimer=setTimeout(()=>{pmFlushSync().catch(()=>{});},400);
+};
+async function pmFlushSync(){
+  if(!signedUser||!accountReady)return;
+  if(saving){await saving;if(localStorage.getItem(namespace(signedUser.uid)+':dirty')==='1')return pmFlushSync();return;}
+  clearTimeout(saveTimer);saveTimer=null;
+  const uid=signedUser.uid,rev=localRevision,data=snapshot();
+  saving=(async()=>{
+    try {
+      await userStateRef().set({...data,updatedAt:firebase.firestore.FieldValue.serverTimestamp(),schemaVersion:1});
+      if(rev===localRevision){localStorage.setItem(namespace(uid)+':dirty','0');updateSync('✓ All changes saved to Google');}
+    }catch(err){updateSync('⚠ לא ניתן לסנכרן. העבודה נשמרה גם במכשיר.',true);throw err;}
+  })();
+  try {await saving;}finally {saving=null;}
+  if(rev!==localRevision && localStorage.getItem(namespace(uid)+':dirty')==='1')return pmFlushSync();
+}
+window.pmGoogleLogin=async function(){
+  if(!firebaseConfigured){setAuthMessage('כדי להפעיל התחברות: יש להכניס את פרטי Firebase בקובץ HTML.');return;}
+  const btn=ui('pm-google-button');btn.disabled=true;setAuthMessage('פותח את Google...');
+  try {await firebaseAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());}
+  catch(err){setAuthMessage('Google sign-in: '+(err.message||err.code));if(err.code==='auth/popup-blocked'||err.code==='auth/operation-not-supported-in-this-environment') {try{await firebaseAuth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());}catch(e){setAuthMessage(e.message||String(e));}}}
+  finally{btn.disabled=false;}
+};
+function chooseLegacy(){return new Promise(resolve=>{
+  pendingDecisionResolve=resolve;
+  ui('auth-legacy-choice').classList.add('open');
+  ui('pm-google-button').style.display='none';
+  setAuthMessage('בחר אם לייבא את העבודה שכבר שמרת בדפדפן.');
+});}
+window.pmChooseLegacy=function(importLegacy){
+  ui('auth-legacy-choice').classList.remove('open');
+  if(pendingDecisionResolve)pendingDecisionResolve(Boolean(importLegacy));
+  pendingDecisionResolve=null;
+};
+async function pmInitializeAccount(user){
+  accountReady=false;signedUser=user;
+  ui('app-shell').hidden=true;ui('auth-gate').hidden=false;
+  setAuthMessage('טוען את ההתקדמות שלך מהענן...');
+  const key=namespace(user.uid);let cloud=null,cloudUnavailable=false;
+  try {const doc=await userStateRef().get({source:'server'});if(doc.exists)cloud=doc.data();}
+  catch(err){cloudUnavailable=true;console.warn('Cloud not available:',err);}
+  const scoped=asObj(safeRead(key+':snapshot',null));
+  const scopedDirty=localStorage.getItem(key+':dirty')==='1';
+  // Only import previous, unscoped localStorage once, into a Google account chosen by the owner.
+  const migrationAlreadyDecided=localStorage.getItem('pronounceme:legacyDecisionV1')==='yes';
+  const legacy=getLocal();
+  if(cloudUnavailable && !hasContent(scoped)){
+    setAuthMessage('לא הצלחנו לטעון נתונים מהענן. בדוק חיבור אינטרנט והרשאות Firestore ורענן את הדף. הנתונים המקומיים לא נמחקו.');
+    return;
+  }
+  let state=cloud||scoped||{progress:{},customWords:[],phonetics:{}};
+  if(scopedDirty)state=mergeState(state,scoped);
+  if(!migrationAlreadyDecided && hasContent(legacy)) {
+    const importExisting=await chooseLegacy();
+    if(importExisting)state=mergeState(state,legacy);
+    localStorage.setItem('pronounceme:legacyDecisionV1','yes');
+    // Preserve a backup of the historical browser data even when import was skipped.
+    localStorage.setItem('pronounceme:legacyBackupV1',JSON.stringify(legacy));
+    if(importExisting)scopedDirty||localStorage.setItem(key+':dirty','1');
+  }
+  localStorage.setItem('pronounceme:legacyDecisionV1','yes');
+  applyState(state);
+  accountReady=true;
+  ui('pm-account-email').textContent=user.email||'Google account';
+  ui('auth-gate').hidden=true;ui('app-shell').hidden=false;
+  pmUpdateMilestones();
+  updateSync(cloudUnavailable?'⚠ Offline. Changes pending sync.':'✓ Connected to Google');
+  // Always create a durable cloud state at first login; never delete legacy backup.
+  const mustSave=!cloud || localStorage.getItem(key+':dirty')==='1' || !cloudUnavailable && !hasContent(cloud);
+  storeScoped(mustSave);
+  if(mustSave){++localRevision;pmFlushSync().catch(()=>{});}
+}
+window.pmSignOut=async function(){
+  if(!signedUser)return;
+  try {if(localStorage.getItem(namespace(signedUser.uid)+':dirty')==='1')await pmFlushSync();}
+  catch {alert('שמירה לענן טרם הושלמה. לא נבצע יציאה כדי להגן על הנתונים שלך.');return;}
+  // Scoped backup remains; unscoped cache is cleared to avoid cross-account mixing.
+  Object.values(STORAGE_KEYS).forEach(k=>localStorage.removeItem(k));
+  ui('app-shell').hidden=true;accountReady=false;
+  await firebaseAuth.signOut();location.reload();
+};
+window.pmExportBackup=function(){
+  if(!accountReady)return;
+  const data={app:'PronounceMe',exportedAt:new Date().toISOString(),account:signedUser.email,...snapshot()};
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json;charset=utf-8'});
+  const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='pronounceme-backup-'+new Date().toISOString().slice(0,10)+'.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);
+};
+window.addEventListener('online',()=>{if(accountReady&&signedUser&&localStorage.getItem(namespace(signedUser.uid)+':dirty')==='1')pmFlushSync().catch(()=>{});});
+window.addEventListener('pagehide',()=>{if(accountReady&&signedUser&&localStorage.getItem(namespace(signedUser.uid)+':dirty')==='1')pmFlushSync().catch(()=>{});});
+function pmFullyKnown(){let total=0,known=0;for(const w of wordsData){for(const item of [w,...(w.derivatives||[])]){total++;const st=userProgress[item.id]||{};if(st.p===1&&st.m===1)known++;}}return {total,known};}
+function pmUpdateMilestones(){
+  const {known,total}=pmFullyKnown();
+  const next=MILESTONES.find(x=>known<x.n);
+  const previous=[...MILESTONES].reverse().find(x=>known>=x.n);
+  const start=previous?.n||0;
+  const goal=next?.n||Math.max(total,known,1);
+  const stageProgress=next?Math.max(0,Math.min(100,(known-start)/(goal-start)*100)):100;
+  ui('progress-medal').innerHTML=next ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="14" r="6"/><path d="m8 2 4 6 4-6M7 2h10"/><path d="m10 14 1.4 1.4L14 12.8"/></svg>' : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M8 21h8M12 17v4M7 3h10v8a5 5 0 0 1-10 0V3zM7 6H3v2a4 4 0 0 0 4 4M17 6h4v2a4 4 0 0 1-4 4"/></svg>';
+  ui('pm-global-total').textContent=`${known.toLocaleString('en-US')} / ${total.toLocaleString('en-US')} · ${total?Math.round(100*known/total):0}%`;
+  ui('progress-title').textContent=next?next.label:'All rewards earned!';
+  ui('progress-stats').textContent=next?`${known}/${goal}`:`${known}/${total}`;
+  ui('progress-fill').style.width=stageProgress+'%';
+  ui('pm-award-summary').textContent=`${known} / ${total} words mastered · both pronunciation and meaning`;
+  const awardShapes=[
+    '<path d="M12 21V11m0 5c-5 0-7-2-7-6 4 0 7 2 7 6Zm0-7c0-4 3-6 7-6 0 4-2 7-7 7Z"/>',
+    '<circle cx="12" cy="14" r="6"/><path d="M7 2h4l1 6m5-6h-4l-1 6m0 3 1 2 2.2.3-1.6 1.5.4 2.2-2-1.1-2 1.1.4-2.2-1.6-1.5 2.2-.3z"/>',
+    '<circle cx="12" cy="14" r="6"/><path d="M7 2h4l1 6m5-6h-4l-1 6M12 11v6M9 14h6"/>',
+    '<circle cx="12" cy="14" r="6"/><path d="M7 2h4l1 6m5-6h-4l-1 6m-5 3 1.3 2.5 2.7.5-2 1.9.4 2.8-2.4-1.3-2.4 1.3.4-2.8-2-1.9 2.7-.5z"/>',
+    '<path d="M8 21h8M12 17v4M7 3h10v8a5 5 0 0 1-10 0V3zM7 6H3v2a4 4 0 0 0 4 4M17 6h4v2a4 4 0 0 1-4 4"/>',
+    '<path d="M3 7 7 12l5-7 5 7 4-5-2 12H5L3 7Zm4 14h10"/>'
+  ];
+  ui('pm-awards-grid').innerHTML=MILESTONES.map((m,i)=>`<div class="pm-award ${known<m.n?'locked':''}"><span class="pm-award-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${awardShapes[i]}</svg></span><span class="pm-award-desc"><b>${escapeHTML(m.label)}</b><span>${m.n} words · ${known>=m.n?'Unlocked':'Locked'}</span></span></div>`).join('');
+}
+const updateUILegacy=updateUI;
+updateUI=function(){updateUILegacy();pmUpdateMilestones();const practiceCount=Object.values(userProgress).filter(p=>p&&p.starred).length;const el=ui('count-practice');if(el)el.textContent=practiceCount;};
+window.openAchievementsModal=function(){pmUpdateMilestones();ui('pm-awards-dialog').classList.add('open');};
+window.openAccountModal=function(){if(!accountReady)return;ui('pm-account-dialog').classList.add('open');};
+window.pmCloseDialogs=function(){
+ const moved=ui('pm-derivatives-content')?.querySelector('.derivatives-container');
+ if(moved){
+   const parent=ui('card-'+moved.id.replace('deriv-',''));
+   if(parent){parent.appendChild(moved);moved.style.display='none';}
+   else moved.remove();
+ }
+ document.querySelectorAll('.pm-dialog').forEach(el=>el.classList.remove('open'));
+ ui('letter-chooser-btn')?.setAttribute('aria-expanded','false');
+};
+document.querySelectorAll('.pm-dialog').forEach(el=>el.addEventListener('click',ev=>{if(ev.target===el)pmCloseDialogs();}));
+window.toggleLetters=function(){ui('pm-letters-dialog').classList.add('open');ui('letter-chooser-btn').setAttribute('aria-expanded','true');};
+const originalChangeLetter=changeLetter;
+changeLetter=function(letter){currentWordIndex=0;lastListSignature='';if(currentFilter==='practice'){currentFilter='all';document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));document.querySelector('.filter-btn')?.classList.add('active');}originalChangeLetter(letter);ui('selected-letter').textContent=currentLetter;ui('az-grid').classList.remove('open');ui('letter-chooser-btn').classList.remove('open');ui('letter-chooser-btn').setAttribute('aria-expanded','false');ui('pm-letters-dialog').classList.remove('open');};
+const originalSetFilter=setFilter;
+setFilter=function(type,btn){currentWordIndex=0;lastListSignature='';originalSetFilter(type,btn);};
+function eligibleItems(){
+  const result=[];
+  if(currentFilter==='practice'){
+    for(const w of wordsData){if(userProgress[w.id]?.starred)result.push(w);for(const d of (w.derivatives||[]))if(userProgress[d.id]?.starred)result.push({...d,__pmDerivative:true});}
+    return result;
+  }
+  for(const w of wordsData){
+    if(w.letter!==currentLetter)continue;
+    const state=getCardState(w.id);
+    if(currentFilter==='all'||(currentFilter==='green'&&state==='green')||(currentFilter==='yellow'&&state==='yellow')||(currentFilter==='red'&&(state==='red'||state==='unanswered')))result.push(w);
+  }
+  return result;
+}
+function pmOrderedList(){
+  const list=eligibleItems();
+  const sig=`${currentLetter}|${currentFilter}|${list.map(w=>w.id).join('|')}`;
+  if(sig!==lastListSignature){
+    const previouslyShown=mobileList[currentWordIndex]?.id;
+    lastListSignature=sig;
+    const retainedIndex=list.findIndex(item=>item.id===previouslyShown);
+    currentWordIndex=retainedIndex>=0?retainedIndex:Math.max(0,Math.min(currentWordIndex,list.length-1));
+    if(shuffleActive){
+      shuffledKeys=list.map(x=>x.id);
+      for(let i=shuffledKeys.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[shuffledKeys[i],shuffledKeys[j]]=[shuffledKeys[j],shuffledKeys[i]];}
+    }
+  }
+  if(!shuffleActive)return list;
+  const byId=new Map(list.map(x=>[x.id,x]));return shuffledKeys.map(k=>byId.get(k)).filter(Boolean);
+}
+const originalRenderWords=renderWords;
+renderWords=function(){
+  const list=pmOrderedList();
+  // Preserve original desktop pagination and placement for the ordinary letter filters.
+  if(!phone()&&currentFilter!=='practice'&&!shuffleActive){originalRenderWords();pmPostRender(list);return;}
+  const grid=ui('words-grid'),action=ui('pagination-action');
+  if(phone())currentWordIndex=Math.max(0,Math.min(currentWordIndex,list.length-1));
+  const visible=phone()?(list[currentWordIndex]?[list[currentWordIndex]]:[]):list.slice(0,wordsLimit);
+  if(!list.length){grid.innerHTML='<div class="no-results">'+(currentFilter==='practice'?'אין עדיין מילים ב־Practice List. הקש על הכוכב ליד מילה כדי להוסיף אותה.':'לא נמצאו מילים בסינון שבחרת.')+'</div>';}
+  else grid.innerHTML=visible.map(x=>generateCardHTML(x,!!x.__pmDerivative)).join('');
+  if(phone())action.innerHTML='';
+  else if(list.length>wordsLimit) action.innerHTML=`<button class="load-more-btn" onclick="loadMore()">Load more (${wordsLimit}/${list.length})</button>`;
+  else action.innerHTML='';
+  updateUI();renderAZNav();updateBottomBarVisibility();pmPostRender(list);
+};
+function pmPostRender(list){
+  mobileList=list;
+  ui('selected-letter').textContent=currentLetter;
+  const nav=ui('word-navigation');
+  nav.style.display=(phone()&&list.length>0)?'flex':'none';
+  ui('word-prev').disabled=currentWordIndex<=0;
+  ui('word-next').disabled=currentWordIndex>=list.length-1;
+  for(const id of ['shuffle-button','desktop-shuffle'])ui(id).classList.toggle('active',shuffleActive);
+  // Show a small counter at the card top without changing the original card template.
+  const card=ui('words-grid').querySelector('.card, .sub-card');
+  if(phone()&&card){let counter=card.querySelector('.card-counter');if(!counter){counter=document.createElement('div');counter.className='card-counter';card.insertBefore(counter,card.querySelector('.english-word'));}counter.textContent=`${currentWordIndex+1} / ${list.length}`;}
+  // Keep one row for playback and meaning, preserving original handlers.
+  for(const c of ui('words-grid').querySelectorAll('.card,.sub-card')){
+    const audio=c.querySelector(':scope > .btn-audio'),meaning=c.querySelector(':scope > .meaning-section');
+    if(audio&&meaning){
+      let wrap=c.querySelector(':scope > .word-quick-actions');
+      if(!wrap){wrap=document.createElement('div');wrap.className='word-quick-actions';audio.before(wrap);}
+      const pair=document.createElement('div');pair.className='speech-pair';
+      const speak=document.createElement('button');speak.type='button';speak.className='btn-speak';
+      const id=c.id.startsWith('card-')?c.id.slice(5):'';
+      speak.dataset.speechWordId=id;
+      speak.setAttribute('aria-label','Check pronunciation with microphone');
+      speak.addEventListener('click',()=>window.pmStartSpeech(speak));
+      pair.append(audio,speak);
+      wrap.append(pair,meaning);
+      paintSpeechButton(speak,id);
+    }
+  }
+  const icons={
+    star:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.6 2.9 6.15 6.8.88-4.92 4.82 1.18 6.8L12 18.02l-5.96 3.23 1.18-6.8L2.3 9.63l6.8-.88z"/></svg>',
+    reset:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.8 11a8.2 8.2 0 1 1 2.7 7.3M3.8 4.9v6.2H10"/></svg>',
+    audio:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4zM16.5 9a4.2 4.2 0 0 1 0 6M19 6a8 8 0 0 1 0 12"/></svg>',
+    eye:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.2 12s3.6-6 9.8-6 9.8 6 9.8 6-3.6 6-9.8 6-9.8-6-9.8-6z"/><circle cx="12" cy="12" r="2.5"/></svg>',
+    x:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>',
+    yes:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4.5 12.5 5 5L19.5 7"/></svg>'
+  };
+  for(const c of ui('words-grid').querySelectorAll('.card,.sub-card')){
+    const reset=c.querySelector('.btn-reset');if(reset)reset.innerHTML=icons.reset;
+    const audio=c.querySelector('.btn-audio');if(audio)audio.innerHTML=icons.audio+'<span>Listen</span>';
+    const reveal=c.querySelector('.btn-meaning-toggle');if(reveal){reveal.innerHTML=icons.eye+'<span>'+ (c.querySelector('.meaning-text')?.style.display==='block'?'Hide Meaning':'Show Meaning') +'</span>';}
+    for(const no of c.querySelectorAll('.btn-tinder-no')){no.innerHTML=icons.x;no.setAttribute('aria-label',"Don\'t know");}
+    for(const yes of c.querySelectorAll('.btn-tinder-yes')){yes.innerHTML=icons.yes;yes.setAttribute('aria-label','I know');}
+    for(const label of c.querySelectorAll('.tinder-label .eng'))label.remove();
+  }
+  for(const btn of document.querySelectorAll('.star-btn')){
+    const id=btn.id.slice(5),active=Boolean(userProgress[id]?.starred);
+    btn.innerHTML=icons.star;btn.classList.toggle('starred',active);
+    btn.setAttribute('aria-label',active?'Remove from Practice List':'Add to Practice List');
+  }
+  // Also paint standalone starred derivative cards (their parent might not be visible).
+  for(const item of list){
+    const cardEl=ui('card-'+item.id);if(!cardEl)continue;
+    const state=userProgress[item.id]||{};
+    for(const [type,value] of [['p',state.p],['m',state.m]]){
+      const yes=ui('btn-'+item.id+'-'+type+'-yes'),no=ui('btn-'+item.id+'-'+type+'-no');
+      if(yes)yes.classList.toggle('active',value===1);
+      if(no)no.classList.toggle('active',value===-1);
+    }
+  }
+}
+
+/* Speech recognition is an independent practice aid: it NEVER edits manual p/m ratings. */
+const speechIcon={
+ mic:'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21m-4 0h8"/></svg>',
+ good:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5 10 17l9-10"/></svg>',
+ fail:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 1 3 6M4 6v6h6"/></svg>'
+};
+const speechStates=new Map();
+let activeSpeech=null, activeSpeechId=null;
+const SpeechCtor=window.SpeechRecognition||window.webkitSpeechRecognition;
+function normalizeRecognized(s){return String(s||'').toLowerCase().normalize('NFKC').replace(/[‘’]/g,"'").replace(/[^a-z0-9'\s]/g,' ').replace(/\s+/g,' ').trim();}
+function findSpeechWord(id){for(const w of wordsData){if(String(w.id)===String(id))return w;for(const d of (w.derivatives||[]))if(String(d.id)===String(id))return d;}return null;}
+function paintSpeechButton(btn,id){
+  if(!btn)return;
+  const state=speechStates.get(String(id))||{status:'idle'};
+  const status=state.status;
+  btn.classList.remove('speech-listening','speech-correct','speech-wrong','speech-error');
+  if(status==='listening')btn.classList.add('speech-listening');
+  if(status==='correct')btn.classList.add('speech-correct');
+  if(status==='wrong')btn.classList.add('speech-wrong');
+  if(status==='error')btn.classList.add('speech-error');
+  const labels={idle:'Speak',listening:'Listening…',correct:'Correct!',wrong:'Try again',error:'Retry'};
+  btn.innerHTML=(status==='correct'?speechIcon.good:status==='wrong'?speechIcon.fail:speechIcon.mic)+'<span>'+labels[status]+'</span>';
+  btn.title=state.detail||(SpeechCtor?'Tap to check the word you say':'Speech recognition is not supported in this browser');
+  btn.setAttribute('aria-label',state.detail||labels[status]);
+  btn.disabled=!SpeechCtor;
+}
+function updateSpeechState(id,status,detail=''){
+  speechStates.set(String(id),{status,detail});
+  document.querySelectorAll('.btn-speak').forEach(el=>{if(el.dataset.speechWordId===String(id))paintSpeechButton(el,id);});
+}
+function stopActiveSpeech(){
+  const old=activeSpeech;
+  activeSpeech=null;activeSpeechId=null;
+  if(old){try{old.abort();}catch{}}
+}
+window.pmStartSpeech=function(button){
+  const id=button?.dataset?.speechWordId;
+  if(!id)return;
+  if(!SpeechCtor){updateSpeechState(id,'error','הדפדפן הזה לא תומך בזיהוי דיבור');return;}
+  const item=findSpeechWord(id);if(!item)return;
+  if(activeSpeech){
+    const oldId=activeSpeechId;
+    stopActiveSpeech();
+    if(oldId){updateSpeechState(oldId,'idle');if(oldId===id)return;}
+  }
+  if(window.speechSynthesis)window.speechSynthesis.cancel();
+  let recognition;
+  try{recognition=new SpeechCtor();}catch{updateSpeechState(id,'error','לא ניתן להפעיל זיהוי דיבור בדפדפן זה');return;}
+  recognition.lang='en-US';recognition.continuous=false;recognition.interimResults=false;recognition.maxAlternatives=5;
+  activeSpeech=recognition;activeSpeechId=id;
+  updateSpeechState(id,'listening','דבר כעת באנגלית…');
+  recognition.onresult=e=>{
+    if(activeSpeech!==recognition)return;
+    const alternatives=[];
+    for(let i=e.resultIndex||0;i<e.results.length;i++){
+      const r=e.results[i];for(let j=0;j<r.length;j++)alternatives.push(r[j].transcript||'');
+    }
+    const heard=alternatives[0]||'';
+    const target=normalizeRecognized(item.word);
+    const correct=alternatives.some(t=>normalizeRecognized(t)===target);
+    updateSpeechState(id,correct?'correct':'wrong',correct?'המילה זוהתה: '+item.word:'זוהה: '+(heard||'לא זוהתה מילה')+' — נסה שוב');
+  };
+  recognition.onerror=e=>{
+    if(activeSpeech!==recognition)return;
+    const text=({
+      'not-allowed':'יש לאשר גישה למיקרופון בהגדרות הדפדפן',
+      'service-not-allowed':'שירות זיהוי הדיבור לא זמין',
+      'no-speech':'לא זוהה דיבור. אפשר לנסות שוב',
+      'network':'אין גישה לשירות זיהוי הדיבור. בדוק חיבור לרשת',
+      'audio-capture':'לא נמצא מיקרופון זמין',
+      'language-not-supported':'זיהוי אנגלית אינו זמין בדפדפן זה'
+    })[e.error]||'זיהוי הדיבור נכשל. נסה שוב';
+    updateSpeechState(id,'error',text);
+  };
+  recognition.onend=()=>{
+    if(activeSpeech!==recognition)return;
+    activeSpeech=null;activeSpeechId=null;
+    if(speechStates.get(String(id))?.status==='listening')updateSpeechState(id,'error','לא זוהתה מילה. לחץ כדי לנסות שוב');
+  };
+  try{recognition.start();}catch(err){activeSpeech=null;activeSpeechId=null;updateSpeechState(id,'error',err.message||'לא ניתן להפעיל מיקרופון');}
+};
+const originalSpeakWordForMic=speakWord;
+speakWord=function(word){if(activeSpeech){const id=activeSpeechId;stopActiveSpeech();if(id)updateSpeechState(id,'idle');}originalSpeakWordForMic(word);};
+
+window.pmMoveWord=function(step){const next=currentWordIndex+step;if(next<0||next>=mobileList.length)return;currentWordIndex=next;renderWords();};
+window.pmToggleShuffle=function(){shuffleActive=!shuffleActive;shuffledKeys=[];lastListSignature='';currentWordIndex=0;renderWords();};
+
+let pmPlaying=false,gameDeck=[],gameStep=0,gameScore=0,gameAnswered=false,gameHearts=3,gameStreak=0,gameBestStreak=0,gameResults=[];
+function randomOrder(array){const a=[...array];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function playPool(){
+ const pool=[];const seen=new Set();
+ for(const w of wordsData){for(const obj of [w,...(w.derivatives||[])]){
+   const meaning=String(obj.meaning||'').trim(),word=String(obj.word||'').trim(),id=String(obj.id||'');
+   if(!id||!word||!meaning||seen.has(id))continue;
+   seen.add(id);pool.push({id,word,meaning});
+ }}return pool;
+}
+function pickForGame(all){
+  // Seven new words + up to three reviews; prioritizes historically missed ones.
+  const never=all.filter(w=>!gameData.words[w.id]?.seen);
+  const seen=all.filter(w=>gameData.words[w.id]?.seen);
+  const newest=randomOrder(never).slice(0,Math.min(7,never.length));
+  const targetCount=Math.min(10,all.length);
+  const selected=new Set(newest.map(w=>w.id));
+  function weighted(array,count){
+    return array.map(w=>{
+      const st=gameData.words[w.id]||{},days=(Date.now()-(st.lastPlayed||0))/86400000;
+      const difficulty=1+(st.wrong||0)*1.5/(1+(st.correct||0)*0.25);
+      const freshness=days<1?.18:days<3?.48:1;
+      const weight=Math.max(.06,difficulty*freshness);
+      return {w,key:-Math.log(Math.max(1e-10,Math.random()))/weight};
+    }).sort((a,b)=>a.key-b.key).slice(0,count).map(x=>x.w);
+  }
+  const review=weighted(seen.filter(w=>!selected.has(w.id)),targetCount-newest.length);
+  const chosen=[...newest,...review];for(const w of chosen)selected.add(w.id);
+  chosen.push(...weighted(never.filter(w=>!selected.has(w.id)),targetCount-chosen.length));
+  return randomOrder(chosen);
+}
+function buildOptions(all,item,kind){
+  const attr=kind==='audio'?'word':'meaning';const correct=String(item[attr]).trim();
+  const used=new Set([correct.toLocaleLowerCase()]);
+  const pool=[];
+  for(const x of randomOrder(all)){
+    const label=String(x[attr]||'').trim();const k=label.toLocaleLowerCase();
+    if(x.id===item.id||!label||used.has(k))continue;
+    used.add(k);pool.push({id:x.id,label});
+    if(pool.length===3)break;
+  }
+  if(pool.length<1)return null;
+  return randomOrder([{id:item.id,label:correct},...pool]);
+}
+function newGame(){
+ if(activeSpeech){const id=activeSpeechId;stopActiveSpeech();if(id)updateSpeechState(id,'idle');}
+ const all=playPool();gameScore=0;gameStep=0;gameAnswered=false;gameHearts=3;gameStreak=0;gameBestStreak=0;gameResults=[];gameDeck=[];
+ const picked=pickForGame(all);
+ for(const [i,item] of picked.entries()){
+   let kind=i%2===0?'meaning':'audio';
+   let options=buildOptions(all,item,kind);
+   if(!options){kind=kind==='audio'?'meaning':'audio';options=buildOptions(all,item,kind);}
+   if(options)gameDeck.push({item,kind,options});
+ }
+ renderGame();
+}
+function saveGameAnswer(item,correct){
+ const data=gameData.words[item.id]||{seen:0,correct:0,wrong:0,lastPlayed:0};
+ data.seen=(data.seen||0)+1;
+ if(correct)data.correct=(data.correct||0)+1;else data.wrong=(data.wrong||0)+1;
+ data.lastPlayed=Date.now();gameData.words[item.id]=data;
+ gameData.recent=[...gameData.recent.filter(id=>id!==item.id),item.id].slice(-40);
+ pmScheduleSync(); // same authenticated Firebase document; manual learning status stays unchanged
+}
+function rushHUD(){
+ const total=gameDeck.length;
+ const heart='<svg viewBox="0 0 24 24" class="rush-heart" aria-hidden="true"><path d="M20.6 5.5a5 5 0 0 0-7.1 0L12 7l-1.5-1.5a5 5 0 1 0-7.1 7.1L12 21l8.6-8.4a5 5 0 0 0 0-7.1Z"/></svg>';
+ let hearts='';for(let i=0;i<3;i++)hearts+=heart.replace('rush-heart"',`rush-heart ${i>=gameHearts?'lost':''}"`);
+ const cells=Array.from({length:total},(_,i)=>`<span class="${i<gameResults.length?(gameResults[i].correct?'correct':'wrong'):i===gameStep?'current':''}"></span>`).join('');
+ return `<div class="rush-hud"><div class="rush-hud-top"><div class="rush-hearts" aria-label="${gameHearts} hearts remaining">${hearts}</div><span class="rush-streak">${gameStreak>=2?'🔥 '+gameStreak+'x Streak':'Keep your streak!'}</span><div class="rush-xp">★ ${gameScore} XP</div></div><div class="rush-trail" aria-label="${gameResults.length} of ${total} answered">${cells}</div></div>`;
+}
+function renderGame(){
+ const el=ui('pm-game-content'),pos=ui('pm-quiz-position');if(!el)return;
+ if(!gameDeck.length){pos.textContent='Word Rush';el.innerHTML='<p class="quiz-feedback">אין כרגע מספיק מילים עם פירושים למשחק.</p>';return;}
+ if(gameStep>=gameDeck.length||gameHearts<=0){renderGameEnd();return;}
+ const q=gameDeck[gameStep];gameAnswered=false;pos.textContent=`${gameStep+1} / ${gameDeck.length}`;
+ const heard=Object.values(gameData.words).filter(x=>x?.seen>0).length;
+ const label=q.kind==='meaning'?'Choose the correct meaning':'Listen and choose the English word';
+ const prompt=q.kind==='meaning'?`<div class="quiz-word" lang="en" dir="ltr">${escapeHTML(q.item.word)}</div>`:
+ `<button type="button" class="rush-listen" onclick="pmSpeakGameWord()" aria-label="Play English word"><svg viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4zM16 9a4 4 0 0 1 0 6M19 6a8 8 0 0 1 0 12"/></svg>Listen</button><div class="rush-audio-note">Tap to hear the word</div>`;
+ el.innerHTML=rushHUD()+`<div class="rush-question"><div class="quiz-subtitle">${label}</div>${prompt}</div>`+
+ `<div class="rush-game-answer"><div class="quiz-grid">${q.options.map((o,i)=>`<button type="button" class="quiz-answer" onclick="pmAnswerGame(${i})">${escapeHTML(o.label)}</button>`).join('')}</div><div class="quiz-feedback" id="pm-game-feedback" aria-live="polite"></div><div class="quiz-footer"><button type="button" class="quiz-button rush-next" id="pm-game-next" onclick="pmNextGame()" hidden>Continue →</button></div></div>`+
+ `<div class="rush-visited">${heard.toLocaleString('en-US')} / ${pmFullyKnown().total.toLocaleString('en-US')} words played</div>`;
+}
+window.pmSpeakGameWord=function(){const q=gameDeck[gameStep];if(q)speakWord(q.item.word);};
+window.pmAnswerGame=function(index){
+ if(gameAnswered||gameHearts<=0)return;
+ const q=gameDeck[gameStep],choice=q.options[index];if(!choice)return;
+ gameAnswered=true;
+ const correct=choice.id===q.item.id;
+ if(correct){gameStreak++;gameBestStreak=Math.max(gameBestStreak,gameStreak);gameScore+=10+(gameStreak%3===0?5:0);}else{gameHearts--;gameStreak=0;}
+ gameResults.push({id:q.item.id,word:q.item.word,meaning:q.item.meaning,correct,kind:q.kind,chosen:choice.label});
+ saveGameAnswer(q.item,correct);
+ for(const [i,b] of [...ui('pm-game-content').querySelectorAll('.quiz-answer')].entries()){
+   b.disabled=true;
+   if(q.options[i].id===q.item.id)b.classList.add('correct');
+   else if(i===index)b.classList.add('incorrect');
+ }
+ const feedback=ui('pm-game-feedback');feedback.className='quiz-feedback '+(correct?'rush-feedback-good':'rush-feedback-wrong');
+ feedback.textContent=correct?(gameStreak%3===0?'Perfect! +15 XP · Combo bonus!':'Correct! +10 XP'):'Not quite · '+gameHearts+' hearts left';
+ ui('pm-game-next').hidden=false;
+ ui('pm-game-next').textContent=gameHearts===0||gameResults.length===gameDeck.length?'See Results →':'Next →';
+ const parent=ui('pm-game-content');const old=parent.querySelector('.rush-hud');if(old)old.outerHTML=rushHUD();
+};
+window.pmNextGame=function(){
+ if(!gameAnswered)return;
+ gameStep++;
+ if(gameHearts<=0||gameStep>=gameDeck.length){gameData.sessions++;const newBest=gameScore>gameData.bestScore;gameData.bestScore=Math.max(gameData.bestScore,gameScore);pmScheduleSync();renderGameEnd(newBest);}
+ else renderGame();
+};
+function gameIcon(good){return good?'<svg class="rush-result-icon good" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" aria-hidden="true"><path d="M4 12.5 9.5 18 20 6"/></svg>':'<svg class="rush-result-icon bad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" aria-hidden="true"><path d="M5 5 19 19M19 5 5 19"/></svg>';}
+const resultStarSVG='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.6 2.9 6.15 6.8.88-4.92 4.82 1.18 6.8L12 18.02l-5.96 3.23 1.18-6.8L2.3 9.63l6.8-.88z"/></svg>';
+function renderGameEnd(isNewBest=false){
+ const el=ui('pm-game-content'),pos=ui('pm-quiz-position');if(!el)return;
+ pos.textContent='Results';const num=gameResults.length,correct=gameResults.filter(r=>r.correct).length;
+ const pct=num?Math.round(correct*100/num):0;
+ const bad=gameResults.filter(r=>!r.correct).length;
+ const crown='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 21h8M12 17v4M7 3h10v8a5 5 0 0 1-10 0V3zM7 6H3v2a4 4 0 0 0 4 4M17 6h4v2a4 4 0 0 1-4 4"/></svg>';
+ el.innerHTML=`<div class="rush-end"><div class="rush-confetti"><span>✦</span>${crown}<span>✧</span></div>`+
+ `<div class="rush-end-title">${gameHearts===0?'Great effort!':'Amazing Run!'}</div><div class="rush-end-sub">${gameHearts===0?'Out of hearts · You can try again!':'Word Rush completed!'}</div>`+
+ `<div class="rush-end-xp">${gameScore} XP</div>`+(isNewBest?'<div class="rush-new-best">✦ New Personal Best!</div>':'')+
+ `<div class="rush-summary-stats"><div class="rush-summary-stat"><strong style="color:#16a473">${correct}</strong><small>Correct</small></div><div class="rush-summary-stat"><strong style="color:#dc6675">${bad}</strong><small>Wrong</small></div><div class="rush-summary-stat"><strong>${pct}%</strong><small>Accuracy</small></div></div>`+
+ `<div class="rush-results-title"><span>Your Words</span><span class="pm-muted">${correct}/${num} correct</span></div>`+
+ `<div class="rush-results">${gameResults.map(r=>`<div class="rush-result">${gameIcon(r.correct)}<div class="rush-result-word"><strong lang="en">${escapeHTML(r.word)}</strong><small>${escapeHTML(r.meaning)}</small></div>${r.correct?'':`<button type="button" class="rush-result-star ${userProgress[r.id]?.starred?'starred':''}" data-word-id="${escapeHTML(r.id)}" aria-label="${userProgress[r.id]?.starred?'Remove from':'Add to'} Practice List" onclick="pmToggleGameStar(this)">${resultStarSVG}</button>`}</div>`).join('')}</div>`+
+ `<div class="rush-end-buttons">${bad?'<button type="button" class="quiz-button soft" onclick="pmPracticeMissed()">★ Practice Mistakes</button>':''}<button type="button" class="quiz-button" onclick="pmNewGame()">↻ Play Again</button><button type="button" class="quiz-button soft" onclick="pmShowTab('learn')">Learn</button></div>`+
+ `<div class="rush-end-sub">Best: ${gameData.bestScore} XP · ${gameData.sessions} runs · Game results never change your manual knowledge ratings</div></div>`;
+}
+window.pmToggleGameStar=function(button){
+ const id=button?.dataset?.wordId;if(!id)return;
+ if(!userProgress[id])userProgress[id]={m:0,p:0,starred:false};
+ userProgress[id].starred=!userProgress[id].starred;
+ localStorage.setItem(STORAGE_KEYS.progress,JSON.stringify(userProgress));
+ pmScheduleSync();
+ button.classList.toggle('starred',userProgress[id].starred);
+ button.setAttribute('aria-label',(userProgress[id].starred?'Remove from':'Add to')+' Practice List');
+ updateUI();
+};
+window.pmPracticeMissed=function(){
+ const missed=gameResults.filter(r=>!r.correct);
+ for(const r of missed){if(!userProgress[r.id])userProgress[r.id]={m:0,p:0,starred:false};userProgress[r.id].starred=true;}
+ if(missed.length){localStorage.setItem(STORAGE_KEYS.progress,JSON.stringify(userProgress));pmScheduleSync();}
+ pmShowTab('practice');
+};
+window.pmNewGame=newGame;
+window.pmShowTab=function(tab){
+ pmPlaying=tab==='play';
+ ui('pm-play-screen').hidden=!pmPlaying;
+ document.querySelector('.container').style.display=pmPlaying?'none':'';
+ if(tab==='practice'){
+   let btn=[...document.querySelectorAll('.filter-btn')].find(el=>el.getAttribute('onclick')?.includes("'practice'"));
+   if(btn)setFilter('practice',btn);
+ }else if(tab==='learn'){
+   let btn=[...document.querySelectorAll('.filter-btn')].find(el=>el.getAttribute('onclick')?.includes("'all'"));
+   if(btn)setFilter('all',btn);
+ }else if(pmPlaying){newGame();}
+ for(const id of ['learn','play','practice'])ui('pm-tab-'+id)?.classList.toggle('active',id===tab);
+};
+const oldToggleStar=toggleStar;
+toggleStar=function(id){oldToggleStar(id);if(currentFilter==='practice'){renderWords();}else {updateUI();const b=ui('star-'+id);if(b){b.classList.toggle('starred',Boolean(userProgress[id]?.starred));b.setAttribute('aria-label',userProgress[id]?.starred?'Remove from Practice List':'Add to Practice List');}}};
+// Rating auto-advance: only when both dimensions become green, and only for the current word.
+const originalSetStatus=setStatus;
+let finishTimer=null;
+setStatus=function(id,type,value){
+  clearTimeout(finishTimer);
+  const prev=userProgress[id]||{};
+  const active=mobileList[currentWordIndex]?.id===id;
+  const completedBefore=prev.p===1 && prev.m===1;
+  const completedAfter=(type==='p'?value:prev.p)===1 && (type==='m'?value:prev.m)===1;
+  const advance=phone() && !pmPlaying && active && value===1 && !completedBefore && completedAfter;
+  const beforeNextId=mobileList[currentWordIndex+1]?.id;
+  const oldIndex=currentWordIndex;
+  if(ui('pm-derivatives-dialog').classList.contains('open'))pmCloseDialogs();
+  originalSetStatus(id,type,value); // preserves storage keys, Firestore sync, status and UI refresh
+  if(advance){
+    const currentCard=ui('words-grid').querySelector('.card,.sub-card');
+    if(currentCard){currentCard.classList.add('just-mastered');}
+    finishTimer=setTimeout(()=>{
+      if(pmPlaying || !phone())return;
+      if(beforeNextId){
+        let next=mobileList.findIndex(w=>w.id===beforeNextId);
+        if(next<0)next=Math.min(oldIndex,mobileList.length-1);
+        if(next>=0){currentWordIndex=next;renderWords();}
+        else {showCompletedMessage();}
+      } else if(mobileList.length>oldIndex+1){currentWordIndex=oldIndex+1;renderWords();}
+      else {showCompletedMessage();}
+    },420);
+  }
+};
+function showCompletedMessage(){
+  const card=ui('words-grid').querySelector('.card,.sub-card');
+  if(!card)return;
+  let n=card.querySelector('.completion-notice');
+  if(!n){n=document.createElement('div');n.className='completion-notice';card.append(n);}
+  n.textContent='✓ Finished this list!';
+}
+// Preserve the meaning reveal handler and show the SVG icon even after the label changes.
+const originalToggleMeaning=toggleMeaning;
+toggleMeaning=function(id){originalToggleMeaning(id);const button=ui('btn-meaning-'+id);if(button){
+  const visible=ui('meaning-'+id)?.style.display==='block';
+  button.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M2.2 12s3.6-6 9.8-6 9.8 6 9.8 6-3.6 6-9.8 6-9.8-6-9.8-6z"/><circle cx="12" cy="12" r="2.5"/></svg><span>'+(visible?'Hide Meaning':'Show Meaning')+'</span>';
+}};
+// Mobile: derivatives open in a separate modal. Original toggle works unchanged on desktop.
+const oldResetStatus=resetStatus;
+resetStatus=function(id){if(ui('pm-derivatives-dialog').classList.contains('open'))pmCloseDialogs();oldResetStatus(id);};
+const originalToggleDerivatives=toggleDerivatives;
+toggleDerivatives=function(id){
+ if(!phone())return originalToggleDerivatives(id);
+ const source=ui('deriv-'+id);if(!source)return;
+ const target=ui('pm-derivatives-content');target.replaceChildren();target.appendChild(source);source.style.display='block';
+ ui('pm-derivatives-dialog').classList.add('open');
+};
+// Keep controls correct on phone orientation changes without rerender storms.
+// Manual navigation always overrides a pending automatic transition.
+const pmManualMove=window.pmMoveWord;
+window.pmMoveWord=function(step){stopActiveSpeech();clearTimeout(finishTimer);pmManualMove(step);};
+const pmManualShuffle=window.pmToggleShuffle;
+window.pmToggleShuffle=function(){stopActiveSpeech();clearTimeout(finishTimer);pmManualShuffle();};
+const pmManualChangeLetter=changeLetter;
+changeLetter=function(letter){stopActiveSpeech();clearTimeout(finishTimer);pmManualChangeLetter(letter);};
+const pmManualSetFilter=setFilter;
+setFilter=function(type,btn){stopActiveSpeech();clearTimeout(finishTimer);pmManualSetFilter(type,btn);};
+// Original save/reset/edit/add routines and every original localStorage key are still in use.
+// Re-render navigation when phone orientation changes.
+window.addEventListener('resize',()=>{if(accountReady)renderWords();});
+function setupFirebase(){
+  firebaseConfigured=Boolean(PM_FIREBASE_CONFIG.apiKey && !PM_FIREBASE_CONFIG.apiKey.includes('PASTE_') && PM_FIREBASE_CONFIG.projectId && !PM_FIREBASE_CONFIG.projectId.includes('PASTE_') && PM_FIREBASE_CONFIG.appId && !PM_FIREBASE_CONFIG.appId.includes('PASTE_'));
+  if(!firebaseConfigured){setAuthMessage('כדי להתחיל יש להגדיר Firebase בקובץ HTML. ראו את הוראות ההתקנה.');ui('pm-google-button').disabled=true;return;}
+  if(typeof firebase==='undefined'){setAuthMessage('Firebase לא נטען. בדוק חיבור אינטרנט.');ui('pm-google-button').disabled=true;return;}
+  try {
+    firebase.initializeApp(PM_FIREBASE_CONFIG);
+    firebaseAuth=firebase.auth();firebaseStore=firebase.firestore();
+    firebaseAuth.onAuthStateChanged(async user=>{
+      if(!user){signedUser=null;accountReady=false;ui('app-shell').hidden=true;ui('auth-gate').hidden=false;ui('pm-google-button').style.display='flex';setAuthMessage('התחבר באמצעות Google כדי להמשיך.');return;}
+      try{await pmInitializeAccount(user);}catch(err){console.error(err);setAuthMessage('שגיאה בטעינת החשבון: '+(err.message||err));}
+    },err=>setAuthMessage('Authentication error: '+err.message));
+  }catch(err){setAuthMessage('שגיאת הגדרה ב־Firebase: '+(err.message||String(err)));}
+}
+setupFirebase();
+})();
+</script>
+
+</body>
+
+</html>
