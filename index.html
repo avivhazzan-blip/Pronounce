@@ -3957,8 +3957,8 @@ function setupFirebase(){
   }catch(err){setAuthMessage('שגיאת הגדרה ב־Firebase: '+(err.message||String(err)));}
 }
 /* PronounceMe v4 — Smart Review / Memory Links / Daily / Timed Word Rush / Push. */
-const PM_WEB_PUSH_VAPID_KEY = 'BPcNlWWmG-GETB7h1wcvQvV6y4OzzOSE5Cb-578Y-frmDlyVDl01y87qzPivsdiuolP9OcEWn1FycMfCWnp-hho';
-const pmDayKey=(date=new Date())=>{const p=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Jerusalem',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(date);const o=Object.fromEntries(p.map(x=>[x.type,x.value]));return `${o.year}-${o.month}-${o.day}`;};
+const PM_WEB_PUSH_VAPID_KEY = "BPcNlWWmG-GETB7h1wcvQvV6y4OzzOSE5Cb-578Y-frmDlyVDl01y87qzPivsdiuolP9OcEWn1FycMfCWnp-hho";
+    const pmDayKey=(date=new Date())=>{const p=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Jerusalem',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(date);const o=Object.fromEntries(p.map(x=>[x.type,x.value]));return `${o.year}-${o.month}-${o.day}`;};
 function pmPersistExtras(){if(!accountReady)return;for(const [key,data] of [[PM_EXTRA_KEYS.memory,memoryLinks],[PM_EXTRA_KEYS.reviews,reviewData],[PM_EXTRA_KEYS.daily,dailyData],[PM_EXTRA_KEYS.prefs,prefs]])localStorage.setItem(key,JSON.stringify(data));pmScheduleSync();}
 function pmMarkDaily(id){
  if(!accountReady||!id)return;
