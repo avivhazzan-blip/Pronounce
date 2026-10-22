@@ -10,6 +10,10 @@
 
     <title>PronounceMe · English pronunciation practice</title>
     <meta name="theme-color" content="#f7f9fd">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link rel="manifest" href="./manifest.webmanifest">
+    <link rel="apple-touch-icon" href="./icons/icon-192.png">
     <meta name="description" content="PronounceMe – practice English pronunciation and track your progress.">
 
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -1811,6 +1815,28 @@ button:focus-visible,.phonetic:focus-visible,.az-badge:focus-visible { outline:3
 }
 @media(prefers-reduced-motion:reduce){.speech-pair .speech-listening svg,.quiz-answer.correct,.rush-confetti span,.rush-end::before{animation:none!important}}
 
+<!-- PronounceMe v4 style -->
+/* v4 visual system — clean Learn palette, never grey review panels */
+.pm-daily-line{display:flex;align-items:center;gap:9px;flex-wrap:wrap;padding:10px 14px;margin:8px 0 10px;border:1px solid #e9ecf3;border-radius:13px;background:#fff;color:#58627a;font-size:12px;direction:ltr}
+.pm-daily-line strong{font-size:12px;color:#33415c}.pm-daily-icon{color:#d7ab59}.pm-daily-progress{height:5px;flex:1;min-width:45px;background:#edf0f5;border-radius:99px;overflow:hidden}.pm-daily-progress span{display:block;background:linear-gradient(90deg,#65baa2,#a0d8a8);height:100%;border-radius:99px}.pm-daily-done{font-size:11px;color:#26936b}
+.meaning-text{border:none!important;box-shadow:none!important;background:transparent!important;padding:7px 4px!important;color:#303e5b!important}
+.pm-memory-row{display:flex;justify-content:center;margin:7px 0 10px}.pm-memory-button{font:inherit;font-size:12px;color:#63759d;background:transparent;border:0;padding:8px;cursor:pointer}.pm-memory-button:hover{color:#4255ff}
+.pm-memory-label{display:block;font-size:12px;color:#687188;margin-bottom:8px}.pm-memory-dialog-card textarea{display:block;width:100%;border:1px solid #dfe5ef;border-radius:13px;padding:14px;font:inherit;resize:vertical;min-height:105px}.pm-memory-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:12px}.pm-mini-action{background:#fff;border:1px solid #dfe6f0;border-radius:11px;color:#526182;padding:10px 13px;font:inherit;font-size:12px;cursor:pointer}
+.pm-account-section{display:grid;gap:8px;border-top:1px solid #edf0f4;padding:14px 2px}.pm-account-section b{font-size:13px}.pm-account-section select{padding:10px 12px;border-radius:10px;border:1px solid #dfe6ef;background:#fff;max-width:220px;color:#3b465d}.pm-account-select{display:flex;gap:8px;flex-wrap:wrap}.pm-switch{font-size:12px;color:#586480}.pm-small-hint{font-size:11px;color:#788398;line-height:1.6;margin:0}.pm-account-btn.danger{color:#c55363!important;border-color:#f0d8de!important}
+.az-badge.pm-letter-complete{border-color:#79cfab!important;background:#e5f7ed!important}.az-badge.pm-letter-complete .az-badge-letter{color:#1e9c69!important}
+@media(max-width:767px){.word-navigation{display:none!important}.pm-counter-inline{position:relative!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:12px!important;max-width:240px;margin:2px auto 14px!important;padding:0 3px!important;font-size:11px!important;color:#8993a7!important}.pm-inside-arrow{font-family:inherit;font-size:25px!important;line-height:1;background:transparent;border:0;color:#c5cbd8;padding:0 7px;cursor:pointer}.pm-inside-arrow:disabled{opacity:.28}.pm-inside-shuffle{font-size:18px;position:absolute;right:-21px;color:#9fa9c1;background:transparent;border:0;padding:5px}.pm-inside-shuffle.active{color:#526ae9}}
+.pm-practice-screen{width:min(100%,820px);margin:0 auto;padding:14px 16px 110px;overflow-y:auto;max-height:calc(100dvh - 78px);scrollbar-width:thin}.pm-practice-title{display:flex;justify-content:space-between;align-items:center;gap:10px;direction:ltr;margin:8px 0 19px}.pm-eyebrow{font-size:10px;letter-spacing:.14em;color:#7990bf;font-weight:800}.pm-practice-title h2{font-size:25px;line-height:1.25;letter-spacing:-.8px;color:#29354a;margin:3px 0 2px}.pm-practice-title p{font-size:12px;margin:0;color:#8994a5}.pm-due-bubble{font-size:11px;white-space:nowrap;background:#f1f4fb;color:#6276a0;border-radius:99px;padding:9px 11px}.pm-review-meta{display:flex;justify-content:space-between;gap:12px;margin:15px 1px 13px;color:#7f8b9b;font-size:11px;direction:ltr}.pm-review-stages{display:flex;justify-content:space-between;gap:4px;margin:0 0 15px;direction:ltr}.pm-review-stages span{display:flex;align-items:center;flex:1;flex-direction:column;gap:7px;font-size:10px;color:#a4adbc;position:relative;white-space:nowrap}.pm-review-stages span i{height:5px;width:100%;display:block;border-radius:99px;background:#e8edf6}.pm-review-stages span.current{color:#5a76ad;font-weight:700}.pm-review-stages span.current i{background:#8da7e1}.pm-review-stages span.completed i{background:#65bda3}.pm-review-card{background:white;border:1px solid #e6eaf3;box-shadow:0 9px 32px rgba(48,65,105,.055);border-radius:24px;padding:25px 20px;min-height:320px;display:flex;justify-content:center;align-items:center;flex-direction:column;gap:17px;text-align:center;color:#26354e}.pm-review-card h1{font-family:Inter,system-ui,sans-serif;font-size:clamp(32px,9vw,49px);font-weight:800;letter-spacing:-1.7px;margin:4px 0;color:#283248;line-height:1.1;direction:ltr}.pm-card-label{font-size:10px;letter-spacing:.14em;color:#8c9bb3;font-weight:750}.pm-card-hint{font-size:13px;color:#6a7690;line-height:1.75;max-width:300px;margin:0}.pm-review-instruction{font-size:12px;color:#5c79b5;background:#f6f8ff;padding:11px 15px;border-radius:12px}.pm-review-phonetic{font-size:22px;color:#9b692c;background:#fff5dc;border:1px solid #f6e7c1;padding:7px 20px;border-radius:10px;line-height:1.4}.pm-review-meaning{color:#334564;font-size:23px;font-weight:700;direction:rtl}.pm-review-sound,.pm-review-edit{cursor:pointer;font:inherit;border:1px solid #e4eaf2;background:white;border-radius:14px;color:#6178a9;padding:12px 18px;font-size:13px}.pm-review-speech{display:flex;justify-content:center;align-items:center;gap:9px;border:1px solid #cddcfc!important;padding:13px 18px!important;border-radius:14px!important;min-width:154px}.pm-review-memory{width:100%;padding:13px;border-radius:13px;background:#f8faff;text-align:left;color:#505d78;font-size:12px}.pm-review-memory span{font-size:10px;letter-spacing:.1em;font-weight:700;color:#8397bf}.pm-review-memory p{line-height:1.7;direction:auto}.pm-review-next{border:0;border-radius:14px;background:#4d66dc;color:#fff;font:inherit;font-size:14px;font-weight:700;width:100%;min-height:49px;cursor:pointer;box-shadow:0 5px 14px rgba(72,92,218,.15)}.pm-review-next:disabled{opacity:.35;cursor:default}.pm-review-controls{margin-top:16px}.pm-review-footer{display:flex;justify-content:space-between;gap:9px;margin-top:17px;color:#98a2b2;font-size:11px;direction:ltr}.pm-review-footer button{border:0;background:transparent;color:#7283ad;font:inherit;cursor:pointer}.pm-grade-box{display:grid;gap:14px;width:100%;max-width:380px;direction:ltr}.pm-grade-box>div{display:flex;justify-content:space-between;align-items:center;gap:7px}.pm-grade-box>div>span{font-size:12px;font-weight:700}.pm-grade-box>div>div{display:flex;gap:6px}.pm-grade-box button{border:1px solid #e1e7ee;border-radius:10px;background:white;color:#727f92;cursor:pointer;padding:9px 10px;font:inherit;font-size:11px}.pm-grade-box .chosen-again{color:#c85369;border-color:#df929f;background:#fff5f6}.pm-grade-box .chosen-good{color:#21865e;border-color:#7ac5a6;background:#f0fbf4}.pm-review-empty{padding:45px 23px;margin-top:20px;border:1px solid #e8edf4;border-radius:22px;background:white;display:flex;align-items:center;flex-direction:column;gap:13px;text-align:center}.pm-review-empty h3{font-size:22px;margin:0}.pm-review-empty p{color:#7d8799;line-height:1.8;font-size:13px;max-width:330px;margin:0}.pm-review-spark{display:grid;place-items:center;width:68px;height:68px;font-size:32px;border-radius:50%;background:#eefaf4;color:#34a277}
+/* Milionaire-inspired, understated quiz-show stage. */
+.pm-rush-top{display:flex;align-items:center;justify-content:space-between;gap:10px;color:#5b6383;margin:12px 0 8px;direction:ltr}.pm-rush-eyebrow{font-size:10px;letter-spacing:.14em;font-weight:800;color:#b49867}.pm-rush-xp{font-size:13px;font-weight:800;color:#8c7137}.pm-rush-info{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:11px;letter-spacing:.08em;color:#8894aa;direction:ltr;margin:14px 1px}.pm-rush-clock{--clock-progress:100%;border-radius:100%;width:49px;height:49px;display:grid;place-items:center;font-size:12px;color:#53669b;font-weight:800;background:radial-gradient(closest-side,#fff 82%,transparent 84%),conic-gradient(#99addb var(--clock-progress),#edf1f6 0);font-variant-numeric:tabular-nums}.pm-rush-clock.low{background:radial-gradient(closest-side,#fff 82%,transparent 84%),conic-gradient(#d8b878 var(--clock-progress),#edf1f6 0);color:#ad873e}.pm-rush-question{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:184px;margin:7px 0 14px;background:linear-gradient(135deg,#fffefb,#fff);border:1px solid #e9e6e1;box-shadow:0 8px 25px rgba(58,70,103,.04);border-radius:21px;gap:11px;padding:18px}.pm-rush-question>span{font-size:10px;letter-spacing:.13em;color:#a3a4b0;font-weight:800}.pm-rush-question strong{font-size:clamp(30px,9vw,44px);color:#263655;font-weight:850;direction:ltr;letter-spacing:-1.4px}.pm-rush-question i{color:#cfaf69;font-size:22px;font-style:normal}.pm-rush-answer-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin:13px 0}.pm-quiz-choice{position:relative;display:flex!important;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:84px!important;background:#fff!important;border:1px solid #e5e9f1!important;border-radius:15px!important;padding:10px!important;color:#35415d!important;font:inherit;font-weight:700!important;cursor:pointer;box-shadow:0 3px 10px rgba(44,62,90,.035)}.pm-choice-letter{font-size:10px;color:#b49a69;border-radius:50%;border:1px solid #e8dfcc;width:23px;height:23px;line-height:22px;font-weight:800}.pm-quiz-choice.correct{background:#eefbf4!important;border-color:#66c9a1!important;color:#188b60!important}.pm-quiz-choice.incorrect{background:#fff3f3!important;border-color:#e7a3a7!important;color:#bc505a!important}.pm-quiz-choice:disabled{cursor:default}.pm-rush-footer{text-align:center;font-size:11px;color:#a1acba;margin:15px}.pm-rush-relaxed{color:#8397b6;font-size:11px}.rush-next{display:block;margin:12px auto;min-width:150px}.pm-rush-answer-grid .quiz-answer{max-height:none!important;min-height:80px!important}
+@media(max-width:420px){.pm-practice-screen{padding:12px 11px 100px}.pm-review-card{min-height:295px;padding:20px 13px}.pm-review-next{min-height:46px}.pm-rush-question{min-height:155px}.pm-quiz-choice{min-height:73px!important}.pm-review-phonetic{font-size:19px}}
+@media(prefers-reduced-motion:reduce){.pm-review-card,.pm-quiz-choice{animation:none!important;transition:none!important}}
+
+#pm-game-next[hidden],#pm-notify-disable[hidden]{display:none!important}.pm-rush-answer-grid{direction:ltr}.pm-quiz-choice{direction:rtl}.pm-rush-top .pm-rush-xp{display:none}
+
+.pm-spoken-ack{border:1px solid #d7e1f3;background:#f8faff;color:#6681b6;font-size:12px;font-family:inherit;border-radius:10px;padding:9px 14px;cursor:pointer}.pm-spoken-ack.complete{border-color:#7bc6a6;background:#f1fbf5;color:#2c9067}
+
+.pm-review-card .pm-reverse-meaning{direction:rtl;font-family:Heebo,system-ui,sans-serif;letter-spacing:0;font-size:clamp(26px,8vw,43px)}
+
     </style>
 
 </head>
@@ -1855,6 +1881,7 @@ button:focus-visible,.phonetic:focus-visible,.az-badge:focus-visible { outline:3
         <!-- Letter selection is shown in its own modal below. -->
     </div>
 
+    <div class="pm-daily-line" id="pm-daily-line" role="status" aria-live="polite"></div>
     <div class="filters-container" id="filters-row" aria-label="Word filters">
         <button class="filter-btn active" onclick="setFilter('all', this)">All <span class="filter-count" id="count-all">0</span></button>
         <button class="filter-btn" onclick="setFilter('green', this)"><span class="filter-dot green"></span>Known <span class="filter-count" id="count-green">0</span></button>
@@ -1993,6 +2020,7 @@ button:focus-visible,.phonetic:focus-visible,.az-badge:focus-visible { outline:3
 <!-- ============================================== -->
 
 
+<section id="pm-practice-screen" class="pm-practice-screen" aria-label="Smart Memory Practice" hidden><div id="pm-practice-root"></div></section>
 <section id="pm-play-screen" aria-label="Quick Play" hidden>
  <div class="play-panel">
   <div class="play-head"><button class="play-back" type="button" onclick="pmShowTab('learn')" aria-label="Return to learning">← Learn</button><span class="play-pill"><svg viewBox="0 0 24 24"><path d="M6.2 8.5c-2.5.2-4.1 2.6-4.1 5.6 0 3.3 1.7 5.6 3.7 5.6 1.4 0 2.1-1.3 3.4-2.6h5.6c1.3 1.3 2 2.6 3.4 2.6 2 0 3.7-2.3 3.7-5.6 0-3-1.6-5.4-4.1-5.6h-11.6zM7 12v4m-2-2h4m7-1h.01m2 2h.01"/></svg> Word Rush</span><span id="pm-quiz-position">10 questions</span></div>
@@ -2031,9 +2059,22 @@ button:focus-visible,.phonetic:focus-visible,.az-badge:focus-visible { outline:3
             <div id="pm-account-email" class="pm-muted"></div>
             <div id="pm-sync-indicator" class="sync-state">Cloud sync</div>
             <button class="pm-account-btn" onclick="pmExportBackup()">↓ הורד גיבוי JSON של כל הנתונים</button>
+            <div class="pm-account-section"><b>Daily Learning Goal</b><select id="pm-daily-goal" onchange="pmUpdatePreference('dailyGoal',Number(this.value))"><option value="5">5 words</option><option value="8">8 words</option><option value="12">12 words</option></select></div>
+            <div class="pm-account-section"><b>Word Rush timer</b><label class="pm-switch"><input type="checkbox" id="pm-game-timer" onchange="pmUpdatePreference('timer',this.checked)"> 20 seconds per question</label></div>
+            <div class="pm-account-section"><b>Daily reminder</b><div class="pm-account-select"><select id="pm-reminder-hour" onchange="pmUpdatePreference('reminderHour',Number(this.value))"></select><button type="button" class="pm-mini-action" onclick="pmEnableNotifications()" id="pm-notify-enable">Enable notifications</button><button type="button" class="pm-mini-action" id="pm-notify-disable" onclick="pmDisableNotifications()" hidden>Disable</button></div><p id="pm-notification-status" class="pm-small-hint">Notifications require HTTPS, an installed app where applicable, and Firebase Cloud Messaging configuration.</p></div>
+            <button class="pm-account-btn" onclick="pmResetLearning()">↻ Reset Learning Progress</button>
+            <button class="pm-account-btn danger" onclick="pmResetAll()">Delete all my learning data</button>
             <button class="pm-account-btn" onclick="pmSignOut()">יציאה מחשבון Google</button>
         </div>
     </div>
+</div>
+<div class="pm-dialog" id="pm-memory-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-memory-title">
+ <div class="pm-dialog-card pm-memory-dialog-card"><div class="pm-dialog-head"><h2 id="pm-memory-title">My Memory Link</h2><button class="pm-x" type="button" onclick="pmCloseDialogs()">×</button></div>
+ <p class="pm-muted" id="pm-memory-word"></p>
+ <label for="pm-memory-input" class="pm-memory-label">האסוציאציה האישית שלך (טקסט חופשי)</label>
+ <textarea id="pm-memory-input" rows="4" maxlength="700" placeholder="למשל קשר צלילי, תמונה שאתה מדמיין או זיכרון אישי…"></textarea>
+ <div class="pm-memory-actions"><button type="button" class="pm-mini-action" onclick="pmDeleteMemoryLink()">Remove</button><button type="button" class="quiz-button" onclick="pmSaveMemoryLink()">Save my link</button></div>
+ </div>
 </div>
 <!-- Firebase credentials: paste the Web App configuration from your own Firebase project here. -->
 <script>
@@ -2050,6 +2091,7 @@ const PM_FIREBASE_CONFIG = {
 <script src="https://www.gstatic.com/firebasejs/12.19.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/12.19.0/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.19.0/firebase-messaging-compat.js"></script>
 
 <!-- חיבור לקובץ המילון החיצוני (לא לשנות את שם הקובץ / מבנה הנתונים) -->
 
@@ -3135,6 +3177,8 @@ window.PM_ORIGINAL_WORDS = (typeof baseWordsData !== 'undefined') ? JSON.parse(J
 (function () {
 'use strict';
 const STORAGE_KEYS = {progress:'englishAppProgressV6',words:'englishAppCustomWordsV5',phonetics:'englishAppPhoneticsV1'};
+const PM_EXTRA_KEYS={memory:'pronounceme:memoryLinksV1',reviews:'pronounceme:reviewsV1',daily:'pronounceme:dailyV1',prefs:'pronounceme:prefsV1'};
+let memoryLinks={},reviewData={},dailyData={days:{}},prefs={dailyGoal:8,timer:true,reminderHour:18,reminders:false,pushDevices:{}};
 const MILESTONES = [
   {n:25,label:'Starter',icon:'🌱'}, {n:100,label:'Bronze Medal',icon:'🥉'},
   {n:250,label:'Silver Medal',icon:'🥈'}, {n:500,label:'Gold Medal',icon:'🥇'},
@@ -3161,7 +3205,7 @@ const hasContent = obj => Object.keys(obj.progress||{}).length>0 || (obj.customW
 const mergeState = (first,second) => {
   const a=first||{},b=second||{},byId=new Map();
   for (const word of [...asArr(a.customWords),...asArr(b.customWords)]) if (word && word.id) byId.set(word.id,word);
-  return {progress:{...asObj(a.progress),...asObj(b.progress)},customWords:[...byId.values()],phonetics:{...asObj(a.phonetics),...asObj(b.phonetics)},gameData:normalizedGameData(b.gameData ?? a.gameData)};
+  return {progress:{...asObj(a.progress),...asObj(b.progress)},customWords:[...byId.values()],phonetics:{...asObj(a.phonetics),...asObj(b.phonetics)},gameData:normalizedGameData(b.gameData ?? a.gameData),memoryLinks:asObj(b.memoryLinks??a.memoryLinks),reviewData:asObj(b.reviewData??a.reviewData),dailyData:asObj(b.dailyData??a.dailyData),prefs:asObj(b.prefs??a.prefs)};
 };
 const phone = () => window.matchMedia('(max-width:767px)').matches;
 const escapeHTML = x => String(x??'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -3174,7 +3218,7 @@ const namespace = uid => 'pronounceme:v1:'+uid;
 function updateSync(text,error=false) { let label=ui('pm-sync-indicator'); if(label){label.textContent=text;label.classList.toggle('error',!!error);} }
 function setAuthMessage(text){ui('pm-auth-state').textContent=text;}
 function userStateRef(){return firebaseStore.collection('users').doc(signedUser.uid);}
-function snapshot(){return {...getLocal(),gameData:clone(gameData)};}
+function snapshot(){return {...getLocal(),gameData:clone(gameData),memoryLinks:clone(memoryLinks),reviewData:clone(reviewData),dailyData:clone(dailyData),prefs:clone(prefs)};}
 function applyState(data){
   const parsed=mergeState(null,data||{});
   for(const [storageKey,field] of [[STORAGE_KEYS.progress,'progress'],[STORAGE_KEYS.words,'customWords'],[STORAGE_KEYS.phonetics,'phonetics']]) {
@@ -3187,10 +3231,13 @@ function applyState(data){
   customUserWords=parsed.customWords;
   userProgress=parsed.progress;
   gameData=normalizedGameData(parsed.gameData);
+  memoryLinks=asObj(parsed.memoryLinks);reviewData=asObj(parsed.reviewData);dailyData={days:{},...asObj(parsed.dailyData)};
+  prefs={dailyGoal:8,timer:true,reminderHour:18,reminders:false,pushDevices:{},...asObj(parsed.prefs)};
   wordsData=[...baseWordsData,...customUserWords];
   currentWordIndex=0;shuffledKeys=[];lastListSignature='';
   if(!wordsData.some(w=>w.letter===currentLetter)) currentLetter=wordsData.find(w=>w.letter)?.letter||'A';
   renderAZNav();renderWords();
+  pmRenderDaily();pmRenderAccountPrefs();
   ui('selected-letter').textContent=currentLetter;
 }
 function storeScoped(shouldMarkDirty=true){
@@ -3268,7 +3315,7 @@ async function pmInitializeAccount(user){
   accountReady=true;
   ui('pm-account-email').textContent=user.email||'Google account';
   ui('auth-gate').hidden=true;ui('app-shell').hidden=false;
-  pmUpdateMilestones();
+  pmUpdateMilestones();pmRenderDaily();pmRenderAccountPrefs();
   updateSync(cloudUnavailable?'⚠ Offline. Changes pending sync.':'✓ Connected to Google');
   // Always create a durable cloud state at first login; never delete legacy backup.
   const mustSave=!cloud || localStorage.getItem(key+':dirty')==='1' || !cloudUnavailable && !hasContent(cloud);
@@ -3281,6 +3328,7 @@ window.pmSignOut=async function(){
   catch {alert('שמירה לענן טרם הושלמה. לא נבצע יציאה כדי להגן על הנתונים שלך.');return;}
   // Scoped backup remains; unscoped cache is cleared to avoid cross-account mixing.
   Object.values(STORAGE_KEYS).forEach(k=>localStorage.removeItem(k));
+  Object.values(PM_EXTRA_KEYS).forEach(k=>localStorage.removeItem(k));
   ui('app-shell').hidden=true;accountReady=false;
   await firebaseAuth.signOut();location.reload();
 };
@@ -3576,11 +3624,9 @@ function newGame(){
  if(activeSpeech){const id=activeSpeechId;stopActiveSpeech();if(id)updateSpeechState(id,'idle');}
  const all=playPool();gameScore=0;gameStep=0;gameAnswered=false;gameHearts=3;gameStreak=0;gameBestStreak=0;gameResults=[];gameDeck=[];
  const picked=pickForGame(all);
- for(const [i,item] of picked.entries()){
-   let kind=i%2===0?'meaning':'audio';
-   let options=buildOptions(all,item,kind);
-   if(!options){kind=kind==='audio'?'meaning':'audio';options=buildOptions(all,item,kind);}
-   if(options)gameDeck.push({item,kind,options});
+ for(const item of picked){
+   const options=buildOptions(all,item,'meaning');
+   if(options&&options.length===4)gameDeck.push({item,kind:'meaning',options});
  }
  renderGame();
 }
@@ -3700,6 +3746,7 @@ setStatus=function(id,type,value){
   const beforeNextId=mobileList[currentWordIndex+1]?.id;
   const oldIndex=currentWordIndex;
   if(ui('pm-derivatives-dialog').classList.contains('open'))pmCloseDialogs();
+  if(value!==0)pmMarkDaily(id);
   originalSetStatus(id,type,value); // preserves storage keys, Firestore sync, status and UI refresh
   if(advance){
     const currentCard=ui('words-grid').querySelector('.card,.sub-card');
@@ -3725,7 +3772,7 @@ function showCompletedMessage(){
 }
 // Preserve the meaning reveal handler and show the SVG icon even after the label changes.
 const originalToggleMeaning=toggleMeaning;
-toggleMeaning=function(id){originalToggleMeaning(id);const button=ui('btn-meaning-'+id);if(button){
+toggleMeaning=function(id){pmMarkDaily(id);originalToggleMeaning(id);const button=ui('btn-meaning-'+id);if(button){
   const visible=ui('meaning-'+id)?.style.display==='block';
   button.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M2.2 12s3.6-6 9.8-6 9.8 6 9.8 6-3.6 6-9.8 6-9.8-6-9.8-6z"/><circle cx="12" cy="12" r="2.5"/></svg><span>'+(visible?'Hide Meaning':'Show Meaning')+'</span>';
 }};
@@ -3765,6 +3812,255 @@ function setupFirebase(){
     },err=>setAuthMessage('Authentication error: '+err.message));
   }catch(err){setAuthMessage('שגיאת הגדרה ב־Firebase: '+(err.message||String(err)));}
 }
+/* PronounceMe v4 — Smart Review / Memory Links / Daily / Timed Word Rush / Push. */
+const PM_WEB_PUSH_VAPID_KEY='REPLACE_WITH_YOUR_FIREBASE_WEB_PUSH_VAPID_KEY';
+const pmDayKey=(date=new Date())=>{const p=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Jerusalem',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(date);const o=Object.fromEntries(p.map(x=>[x.type,x.value]));return `${o.year}-${o.month}-${o.day}`;};
+function pmPersistExtras(){if(!accountReady)return;for(const [key,data] of [[PM_EXTRA_KEYS.memory,memoryLinks],[PM_EXTRA_KEYS.reviews,reviewData],[PM_EXTRA_KEYS.daily,dailyData],[PM_EXTRA_KEYS.prefs,prefs]])localStorage.setItem(key,JSON.stringify(data));pmScheduleSync();}
+function pmMarkDaily(id){
+ if(!accountReady||!id)return;
+ const day=pmDayKey();if(!dailyData.days||typeof dailyData.days!=='object')dailyData.days={};
+ const list=Array.isArray(dailyData.days[day])?dailyData.days[day]:[];
+ if(!dailyData.introduced||typeof dailyData.introduced!=='object')dailyData.introduced={};
+ if(dailyData.introduced[id]||userProgress[id]?.p||userProgress[id]?.m)return;
+ dailyData.introduced[id]=day;dailyData.days[day]=[...list,id];
+ const oldDays=Object.keys(dailyData.days).sort();for(const expired of oldDays.slice(0,-45))delete dailyData.days[expired];
+ pmPersistExtras();pmRenderDaily();
+}
+function pmRenderDaily(){
+ const el=ui('pm-daily-line');if(!el)return;
+ const day=pmDayKey(),today=Array.isArray(dailyData.days?.[day])?dailyData.days[day].length:0,goal=Number(prefs.dailyGoal)||8;
+ el.innerHTML=`<span class="pm-daily-icon">✦</span><strong>Today’s learning</strong><span>${Math.min(today,goal)} / ${goal}</span><div class="pm-daily-progress"><span style="width:${Math.min(100,100*today/goal)}%"></span></div>${today>=goal?'<span class="pm-daily-done">✓ Daily goal reached</span>':''}`;
+}
+window.pmUpdatePreference=function(name,value){
+ if(!accountReady)return;
+ if(name==='dailyGoal'&&! [5,8,12].includes(value))return;
+ if(name==='reminderHour'&&(!Number.isInteger(value)||value<5||value>23))return;
+ if(name==='timer')value=Boolean(value);
+ prefs[name]=value;pmPersistExtras();pmRenderDaily();pmRenderAccountPrefs();
+};
+function pmRenderAccountPrefs(){
+ const goal=ui('pm-daily-goal'),timer=ui('pm-game-timer'),hours=ui('pm-reminder-hour');
+ if(goal)goal.value=String(prefs.dailyGoal||8);
+ if(timer)timer.checked=prefs.timer!==false;
+ if(hours){if(!hours.options.length)for(let h=5;h<=23;h++){const op=document.createElement('option');op.value=h;op.textContent=String(h).padStart(2,'0')+':00';hours.append(op);}hours.value=String(prefs.reminderHour??18);}
+ const status=ui('pm-notification-status'),button=ui('pm-notify-enable');
+ if(status)status.textContent=prefs.reminders?'Push notifications enabled for this account (delivery depends on device permissions).':'Push is off. Requires VAPID key and Firebase Cloud Function deployment.';
+ if(button)button.textContent=prefs.reminders?'Refresh notification permission':'Enable notifications';
+ const off=ui('pm-notify-disable');if(off)off.hidden=!prefs.reminders;
+}
+let pmMemoryEditingId=null;
+window.pmOpenMemoryLink=function(id){
+ if(!accountReady)return;
+ pmMemoryEditingId=String(id);const item=findSpeechWord(id);
+ ui('pm-memory-word').textContent=item?.word||'';
+ ui('pm-memory-input').value=String(memoryLinks[id]||'');
+ ui('pm-memory-dialog').classList.add('open');
+ setTimeout(()=>ui('pm-memory-input').focus(),50);
+};
+window.pmSaveMemoryLink=function(){
+ if(pmMemoryEditingId===null)return;
+ const content=ui('pm-memory-input').value.trim();if(content)memoryLinks[pmMemoryEditingId]=content;else delete memoryLinks[pmMemoryEditingId];
+ pmPersistExtras();pmCloseDialogs();renderWords();if(!ui('pm-practice-screen')?.hidden)pmRenderReview();
+};
+window.pmDeleteMemoryLink=function(){if(pmMemoryEditingId!==null){delete memoryLinks[pmMemoryEditingId];pmPersistExtras();pmCloseDialogs();renderWords();if(!ui('pm-practice-screen')?.hidden)pmRenderReview();if(!ui('pm-practice-screen')?.hidden)pmRenderReview();}};
+const pmPostRenderOld=pmPostRender;
+pmPostRender=function(list){
+ pmPostRenderOld(list);
+ for(const card of ui('words-grid').querySelectorAll('.card,.sub-card')){
+   const id=card.id.slice(5),star=card.querySelector('.star-btn'),meaning=card.querySelector('.meaning-section');
+   if(!meaning)continue;
+   const row=document.createElement('div');row.className='pm-memory-row';
+   const link=document.createElement('button');link.type='button';link.className='pm-memory-button';link.textContent=memoryLinks[id]?'🔗  My Memory Link · Edit':'🔗  My Memory Link · Add';link.onclick=()=>pmOpenMemoryLink(id);
+   row.append(link);meaning.after(row);
+   if(phone()){
+     const ctr=card.querySelector('.card-counter');if(ctr){ctr.classList.add('pm-counter-inline');ctr.innerHTML=`<button type="button" class="pm-inside-arrow" onclick="pmMoveWord(-1)" ${currentWordIndex===0?'disabled':''} aria-label="Previous word">‹</button><span>${currentWordIndex+1} / ${list.length}</span><button type="button" class="pm-inside-arrow" onclick="pmMoveWord(1)" ${currentWordIndex>=list.length-1?'disabled':''} aria-label="Next word">›</button><button type="button" class="pm-inside-shuffle ${shuffleActive?'active':''}" onclick="pmToggleShuffle()" aria-label="Shuffle words">⇄</button>`;}
+   }
+ }
+};
+// A-Z letters are green only if ALL letter items (including derivatives) are fully green.
+const pmOldRenderAZ=renderAZNav;
+renderAZNav=function(){pmOldRenderAZ();for(const badge of ui('az-grid').querySelectorAll('.az-badge:not(.disabled)')){
+  const letter=badge.querySelector('.az-badge-letter')?.textContent;
+  let ids=[];for(const w of wordsData)if(w.letter===letter)ids.push(w.id,...(w.derivatives||[]).map(d=>d.id));
+  badge.classList.toggle('pm-letter-complete',ids.length>0&&ids.every(id=>userProgress[id]?.p===1&&userProgress[id]?.m===1));
+}};
+
+// Review state is independent of manual Learn checks and game correctness.
+const pmReviewIntervals=[1,3,7,14,30,60,90];
+let pmReviewQueue=[],pmReviewCurrent=null,pmReviewStage=0,pmReviewGrades={m:null,p:null},pmReviewSessionCount=0,pmReviewListened=false,pmReviewSpoken=false;
+function pmReviewItems(){const result=[];for(const w of wordsData){for(const item of [w,...(w.derivatives||[])])if(userProgress[item.id]?.starred)result.push(item);}return result;}
+function pmReviewRecord(id){const rec=reviewData[id]||{};const base=()=>({reps:0,successes:0,failures:0,due:0,firstAt:0,lastAt:0});return {introduced:!!rec.introduced,m:{...base(),...asObj(rec.m)},p:{...base(),...asObj(rec.p)}};}
+function pmDue(id){const r=pmReviewRecord(id),now=Date.now();return !r.introduced||r.m.due<=now||r.p.due<=now;}
+function pmReviewLabel(rec){
+ const level=Math.min(rec.m.reps,rec.p.reps);const days=(Date.now()-Math.min(rec.m.firstAt||Date.now(),rec.p.firstAt||Date.now()))/86400000;
+ if(level>=5&&days>=28)return 'Mastered';
+ if(level>=3)return 'Strong Memory';
+ if(level>=1)return 'Building Memory';
+ return 'Needs Practice';
+}
+function pmStartReview(){
+ const items=pmReviewItems(),due=items.filter(x=>pmDue(x.id));
+ due.sort((a,b)=>{const x=pmReviewRecord(a.id),y=pmReviewRecord(b.id);return Math.min(x.m.due,x.p.due)-Math.min(y.m.due,y.p.due);});
+ pmReviewQueue=due.slice(0,12);pmReviewSessionCount=0;pmReviewOpenNext();
+}
+function pmReviewOpenNext(){pmReviewCurrent=pmReviewQueue.shift()||null;pmReviewStage=0;pmReviewGrades={m:null,p:null};pmReviewListened=false;pmReviewSpoken=false;pmRenderReview();}
+function pmReviewPlainTitle(){const count=pmReviewItems().length,due=pmReviewItems().filter(x=>pmDue(x.id)).length;return `<div class="pm-practice-title"><div><span class="pm-eyebrow">SMART PRACTICE</span><h2>Memory Studio</h2><p>Practice now, remember later.</p></div><span class="pm-due-bubble">${due} due · ${count} saved</span></div>`;}
+function pmReviewProgress(){const rec=pmReviewRecord(pmReviewCurrent.id);const stages=rec.introduced?['Recall','Check','Rate']:['Recall','Listen','Speak','Connect','Rate'];const display=rec.introduced? (pmReviewStage===0?0:pmReviewStage===4?2:1):pmReviewStage;
+ return `<div class="pm-review-stages">${stages.map((name,i)=>`<span class="${i<display?'completed':i===display?'current':''}"><i></i>${name}</span>`).join('')}</div>`;}
+function pmReviewFoot(){return `<div class="pm-review-footer"><span>✓ ${pmReviewSessionCount} reviewed this session</span><button type="button" onclick="pmStartReview()">Restart due queue</button></div>`;}
+function pmRenderReview(){
+ const root=ui('pm-practice-root');if(!root)return;
+ const title=pmReviewPlainTitle();
+ if(!pmReviewCurrent){
+  const list=pmReviewItems();const waiting=list.filter(x=>!pmDue(x.id)).map(x=>Math.min(pmReviewRecord(x.id).m.due,pmReviewRecord(x.id).p.due)).filter(t=>t>Date.now());
+  const future=waiting.length?new Date(Math.min(...waiting)).toLocaleDateString('en-GB',{day:'numeric',month:'short'}):'';
+  root.innerHTML=title+`<div class="pm-review-empty"><div class="pm-review-spark">${list.length?'✓':'☆'}</div><h3>${list.length?'All caught up!':'Your practice list is empty'}</h3><p>${list.length?'Great work! Your next scheduled review will appear '+(future?'around '+future+'.':'soon.'):'Tap the star next to a word in Learn or after Word Rush to begin.'}</p><button type="button" onclick="pmShowTab('learn')" class="quiz-button">Explore words →</button></div>`;return;
+ }
+ const item=pmReviewCurrent,rec=pmReviewRecord(item.id),deep=!rec.introduced;
+ const stage=pmReviewStage;let body='';
+ const reverse=rec.introduced&&((rec.m.successes+rec.p.successes)%4>=2);
+ if(stage===0){body=reverse?`<span class="pm-card-label">REVERSE RECALL · PRODUCE ENGLISH</span><h1 class="pm-reverse-meaning">${escapeHTML(item.meaning)}</h1><p class="pm-card-hint">מה המילה באנגלית? נסה לומר אותה בקול לפני שתחשוף.</p><div class="pm-review-instruction">זו שליפה בכיוון ההפוך</div>`:`<span class="pm-card-label">RECALL FIRST</span><h1 lang="en">${escapeHTML(item.word)}</h1><p class="pm-card-hint">מה הפירוש? נסה גם לומר את המילה בקול.</p><div class="pm-review-instruction">נסח תשובה לעצמך לפני שאתה ממשיך</div>`;}
+ if(stage===1&&deep){body=`<span class="pm-card-label">LISTEN & COMPARE</span><h1 lang="en">${escapeHTML(item.word)}</h1><div class="pm-review-phonetic">${escapeHTML(item.phonetic||'')}</div><button class="pm-review-sound" type="button" onclick="pmReviewListen()">◖)) ${pmReviewListened?'Play once more':'Listen to the word'}</button><p class="pm-card-hint">האם ההגייה הייתה כמו שחשבת?</p>`;}
+ if(stage===2&&deep){body=`<span class="pm-card-label">SAY IT YOURSELF</span><h1 lang="en">${escapeHTML(item.word)}</h1><button class="pm-review-speech btn-speak" type="button" data-speech-word-id="${escapeHTML(item.id)}" onclick="pmStartSpeech(this)">🎙 Speak</button><p class="pm-card-hint">דבר בקול. בדיקת הדיבור היא כלי עזר, לא ציון הגייה מקצועי.</p><button type="button" class="pm-spoken-ack ${pmReviewSpoken?'complete':''}" onclick="pmReviewMarkSpoken()">${pmReviewSpoken?'✓ Said it aloud':'✓ I said it aloud'}</button>`;}
+ if((stage===3&&deep)||(stage===1&&!deep)){
+  body=`<span class="pm-card-label">FLIP · CHECK YOUR ANSWER</span><h1 lang="en">${escapeHTML(item.word)}</h1><div class="pm-review-meaning">${escapeHTML(item.meaning)}</div><div class="pm-review-phonetic">${escapeHTML(item.phonetic||'')}</div><button class="pm-review-sound" type="button" onclick="pmReviewSpeak()">◖)) Listen</button>${memoryLinks[item.id]?`<div class="pm-review-memory"><span>🔗 YOUR MEMORY LINK</span><p>${escapeHTML(memoryLinks[item.id])}</p></div>`:''}<button class="pm-review-edit" type="button" onclick="pmReviewEditLink()">${memoryLinks[item.id]?'Edit':'＋ Add'} My Memory Link</button>`;
+ }
+ if(stage===4){body=`<span class="pm-card-label">HONEST SELF-CHECK</span><h1 lang="en">${escapeHTML(item.word)}</h1><div class="pm-review-meaning">${escapeHTML(item.meaning)}</div><div class="pm-review-phonetic">${escapeHTML(item.phonetic||'')}</div><div class="pm-grade-box"><div><span>Meaning</span><div><button type="button" class="${pmReviewGrades.m===false?'chosen-again':''}" onclick="pmGradeReview('m',false)">Again</button><button type="button" class="${pmReviewGrades.m===true?'chosen-good':''}" onclick="pmGradeReview('m',true)">Remembered ✓</button></div></div><div><span>Pronunciation</span><div><button type="button" class="${pmReviewGrades.p===false?'chosen-again':''}" onclick="pmGradeReview('p',false)">Again</button><button type="button" class="${pmReviewGrades.p===true?'chosen-good':''}" onclick="pmGradeReview('p',true)">Remembered ✓</button></div></div></div>`;}
+ const canContinue=stage===4?(pmReviewGrades.m!==null&&pmReviewGrades.p!==null):stage===1&&deep?pmReviewListened:stage===2&&deep?pmReviewSpoken:true;
+ const buttonTitle=stage===0?'I have my answer →':stage===1&&deep?'Next: Say it →':stage===2?'Reveal meaning →':stage===3?'Rate my memory →':stage===1?'Rate my memory →':'Save & next word →';
+ const stageText=deep?'Deep practice · First encounter':'Quick review · Spaced retrieval';
+ root.innerHTML=title+`<div class="pm-review-meta"><span>${stageText}</span><span>${pmReviewLabel(rec)}</span></div>`+pmReviewProgress()+`<div class="pm-review-card" aria-live="polite">${body}</div><div class="pm-review-controls"><button type="button" class="pm-review-next" ${canContinue?'':'disabled'} onclick="pmReviewContinue()">${buttonTitle}</button></div>`+pmReviewFoot();
+ if(stage===2){const btn=root.querySelector('.pm-review-speech');paintSpeechButton(btn,item.id);}
+}
+window.pmReviewSpeak=function(){if(pmReviewCurrent)speakWord(pmReviewCurrent.word);};
+window.pmReviewListen=function(){pmReviewListened=true;pmReviewSpeak();pmRenderReview();};
+window.pmReviewMarkSpoken=function(){pmReviewSpoken=true;pmRenderReview();};
+window.pmReviewEditLink=function(){if(pmReviewCurrent)pmOpenMemoryLink(pmReviewCurrent.id);};
+const pmSpeechReviewOriginal=window.pmStartSpeech;
+window.pmStartSpeech=function(button){if(!ui('pm-practice-screen')?.hidden){pmReviewSpoken=true;const next=ui('pm-practice-root')?.querySelector('.pm-review-next');if(next)next.disabled=false;}pmSpeechReviewOriginal(button);};
+window.pmGradeReview=function(skill,result){pmReviewGrades[skill]=Boolean(result);pmRenderReview();};
+window.pmReviewContinue=function(){
+ if(!pmReviewCurrent)return;const rec=pmReviewRecord(pmReviewCurrent.id);
+ if(pmReviewStage!==4){if(!rec.introduced&&pmReviewStage<3){pmReviewStage++;}else if(rec.introduced&&pmReviewStage===0){pmReviewStage=1;}else pmReviewStage=4;pmRenderReview();return;}
+ if(pmReviewGrades.m===null||pmReviewGrades.p===null)return;
+ const now=Date.now();let failed=false;
+ for(const k of ['m','p']){
+  const skill=rec[k];if(skill.due>now)continue;skill.firstAt ||= now;skill.lastAt=now;
+  if(pmReviewGrades[k]){skill.reps=Math.min(pmReviewIntervals.length,skill.reps+1);skill.successes++;skill.due=now+86400000*pmReviewIntervals[Math.min(skill.reps-1,pmReviewIntervals.length-1)];}
+  else{skill.reps=0;skill.failures++;skill.due=now;failed=true;}
+ }
+ rec.introduced=true;reviewData[pmReviewCurrent.id]=rec;pmReviewSessionCount++;
+ if(failed){const id=pmReviewCurrent.id;if(!pmReviewQueue.some(w=>w.id===id))pmReviewQueue.push(pmReviewCurrent);}
+ pmPersistExtras();pmReviewOpenNext();
+};
+// Keep all starred items in Practice; make its navigation independent from Learn's filters.
+const pmOldShowTab=window.pmShowTab;
+window.pmShowTab=function(tab){
+ if(tab==='practice'){
+   pmPlaying=false;ui('pm-play-screen').hidden=true;ui('pm-practice-screen').hidden=false;
+   document.querySelector('.container').style.display='none';
+   for(const key of ['learn','play','practice'])ui('pm-tab-'+key)?.classList.toggle('active',key===tab);
+   pmStartReview();return;
+ }
+ ui('pm-practice-screen').hidden=true;pmOldShowTab(tab);
+};
+
+// Word Rush: one question mode, tasteful quiz-show UI, optional 20s countdown.
+let pmRushTimer=null,pmRushSeconds=20,pmRushTimeout=false;
+function pmStopRushTimer(){if(pmRushTimer){clearInterval(pmRushTimer);pmRushTimer=null;}}
+function pmRushClockUpdate(){
+ const el=ui('pm-rush-clock');if(!el)return;
+ el.textContent=pmRushSeconds+'s';el.style.setProperty('--clock-progress',(pmRushSeconds/20*100)+'%');el.classList.toggle('low',pmRushSeconds<=5);
+}
+function pmStartRushTimer(){pmStopRushTimer();pmRushSeconds=20;pmRushClockUpdate();if(prefs.timer===false)return;pmRushTimer=setInterval(()=>{
+  if(!pmPlaying||gameAnswered){pmStopRushTimer();return;}
+  pmRushSeconds=Math.max(0,pmRushSeconds-1);pmRushClockUpdate();if(pmRushSeconds===0){pmStopRushTimer();pmRushTimeout=true;pmAnswerGame(-1);}
+ },1000);}
+const pmBaseNewGame=newGame;
+newGame=function(){pmStopRushTimer();pmRushTimeout=false;pmBaseNewGame();};
+renderGame=function(){
+ const el=ui('pm-game-content'),pos=ui('pm-quiz-position');if(!el)return;
+ if(!gameDeck.length){pos.textContent='Word Rush';el.innerHTML='<p class="quiz-feedback">אין מספיק מילים עם ארבע תשובות שונות.</p>';return;}
+ if(gameStep>=gameDeck.length||gameHearts<=0){pmStopRushTimer();renderGameEnd();return;}
+ const q=gameDeck[gameStep];gameAnswered=false;pos.textContent=`${gameStep+1} / ${gameDeck.length}`;
+ const choices=q.options.map((o,i)=>`<button type="button" class="quiz-answer pm-quiz-choice" onclick="pmAnswerGame(${i})"><span class="pm-choice-letter">${'ABCD'[i]}</span><span>${escapeHTML(o.label)}</span></button>`).join('');
+ el.innerHTML=`<div class="pm-rush-top"><span class="pm-rush-eyebrow">✦ THE WORD CHALLENGE</span><span class="pm-rush-xp">★ ${gameScore} XP</span></div>`+rushHUD()+`<div class="pm-rush-info"><span>QUESTION ${gameStep+1} OF ${gameDeck.length}</span>${prefs.timer!==false?'<span class="pm-rush-clock" id="pm-rush-clock">20s</span>':'<span class="pm-rush-relaxed">Relaxed mode</span>'}</div>`+
+ `<div class="pm-rush-question"><span>WHAT DOES THIS WORD MEAN?</span><strong lang="en">${escapeHTML(q.item.word)}</strong><i>✧</i></div><div class="pm-rush-answer-grid">${choices}</div><div class="quiz-feedback" id="pm-game-feedback" aria-live="polite"></div><button class="quiz-button rush-next" id="pm-game-next" onclick="pmNextGame()" hidden>Continue →</button><div class="pm-rush-footer">Choose one answer · Build your streak</div>`;
+ pmStartRushTimer();
+};
+window.pmAnswerGame=function(index){
+ if(gameAnswered||gameHearts<=0)return;
+ pmStopRushTimer();
+ const q=gameDeck[gameStep],choice=q.options[index],timedOut=index===-1;
+ if(!timedOut&&!choice)return;
+ gameAnswered=true;
+ const correct=!timedOut&&choice.id===q.item.id;
+ const speedBonus=correct&&prefs.timer!==false?Math.floor(pmRushSeconds/5):0;
+ if(correct){gameStreak++;gameBestStreak=Math.max(gameBestStreak,gameStreak);gameScore+=10+(gameStreak%3===0?5:0)+speedBonus;}
+ else {if(!timedOut)gameHearts--;gameStreak=0;}
+ gameResults.push({id:q.item.id,word:q.item.word,meaning:q.item.meaning,correct,kind:'meaning',chosen:choice?.label||'Time expired'});
+ saveGameAnswer(q.item,correct);
+ for(const [i,b] of [...ui('pm-game-content').querySelectorAll('.pm-quiz-choice')].entries()){
+   b.disabled=true;if(q.options[i].id===q.item.id)b.classList.add('correct');else if(i===index)b.classList.add('incorrect');
+ }
+ const feedback=ui('pm-game-feedback');feedback.className='quiz-feedback '+(correct?'rush-feedback-good':'rush-feedback-wrong');
+ feedback.textContent=correct?`✓ Correct! +${10+(gameStreak%3===0?5:0)+speedBonus} XP`:(timedOut?'Time is up · No heart lost':'Not quite · '+gameHearts+' hearts left');
+ const next=ui('pm-game-next');next.hidden=false;next.textContent=gameHearts===0||gameResults.length===gameDeck.length?'See Results →':'Next Question →';
+ const hud=ui('pm-game-content').querySelector('.rush-hud');if(hud)hud.outerHTML=rushHUD();
+ const xp=ui('pm-game-content').querySelector('.pm-rush-xp');if(xp)xp.textContent=`★ ${gameScore} XP`;
+};
+const pmOriginalNextGame=window.pmNextGame;
+window.pmNextGame=function(){pmStopRushTimer();pmOriginalNextGame();};
+const pmOldRenderGameEnd=renderGameEnd;
+renderGameEnd=function(isNewBest=false){pmStopRushTimer();pmOldRenderGameEnd(isNewBest);};
+window.pmNewGame=newGame;
+
+// Reset never imports old data: local scoped snapshot and cloud document are overwritten as one deliberate operation.
+async function pmResetData(all){
+ if(!accountReady)return;
+ if(!navigator.onLine){alert('איפוס נתונים דורש חיבור לרשת כדי לעדכן גם את Firebase.');return;}
+ const ask=all?'DELETE ALL':'RESET';const desc=all?'כל המילים האישיות, הכוכבים, ההתקדמות, האסוציאציות והיסטוריית המשחק':'סימוני הידע, היסטוריית החזרות והיעד היומי (מילים אישיות, תעתיקים וכוכבים נשמרים)';
+ if(prompt(`הפעולה תמחק ${desc}.\nמומלץ להוריד גיבוי JSON קודם.\nכדי לאשר הקלד בדיוק: ${ask}`)!==ask)return;
+ try{
+  if(saving)await saving;clearTimeout(saveTimer);
+  const clearedPrefs={dailyGoal:8,timer:true,reminderHour:18,reminders:false,pushDevices:{}};
+  const state=all?{progress:{},customWords:[],phonetics:{},gameData:emptyGameData(),memoryLinks:{},reviewData:{},dailyData:{days:{},introduced:{}},prefs:clearedPrefs}:
+  {...snapshot(),progress:Object.fromEntries(Object.entries(userProgress).map(([id,v])=>[id,{...v,m:0,p:0}])),reviewData:{},dailyData:{days:{},introduced:{}}};
+  applyState(state);if(all)gameData=emptyGameData();
+  storeScoped(true);++localRevision;await pmFlushSync();pmCloseDialogs();
+  alert('האיפוס נשמר ב־Firebase ובמכשיר. אפשר לייבא את הגיבוי שהורדת אם תצטרך.');
+ }catch(err){alert('האיפוס בוצע מקומית אך השמירה לענן עדיין לא הושלמה. אל תתנתק לפני שהסנכרון מצליח. '+(err.message||err));}
+}
+window.pmResetLearning=()=>pmResetData(false);
+window.pmResetAll=()=>pmResetData(true);
+
+// Firebase Web Push opt-in. The VAPID key and scheduled function must be configured after deployment.
+window.pmDisableNotifications=async function(){
+ if(!accountReady)return;
+ prefs.reminders=false;prefs.pushDevices={};pmPersistExtras();pmRenderAccountPrefs();
+ const out=ui('pm-notification-status');if(out)out.textContent='Notifications disabled for your account.';
+};
+window.pmEnableNotifications=async function(){
+ const out=ui('pm-notification-status');
+ if(!accountReady){return;}
+ if(!('serviceWorker' in navigator)||!('Notification' in window)){out.textContent='Push notifications are not supported in this browser.';return;}
+ if(PM_WEB_PUSH_VAPID_KEY.startsWith('REPLACE_')){out.textContent='To enable: add the Firebase Web Push VAPID key to index.html and deploy the scheduled Cloud Function. See SETUP_HE.md.';return;}
+ try{
+  if(!(await firebase.messaging.isSupported())){out.textContent='Firebase Messaging is unsupported on this device/browser.';return;}
+  const permission=await Notification.requestPermission();if(permission!=='granted'){out.textContent='Notification permission not granted.';return;}
+  const reg=await navigator.serviceWorker.ready;
+  const token=await firebase.messaging().getToken({vapidKey:PM_WEB_PUSH_VAPID_KEY,serviceWorkerRegistration:reg});
+  if(!token)throw Error('No push token returned');
+  const deviceKey='pronounceme:deviceId';let id=localStorage.getItem(deviceKey);
+  if(!id){id=(crypto.randomUUID?.()||'device-'+Date.now().toString(36));localStorage.setItem(deviceKey,id);}
+  prefs.pushDevices={...asObj(prefs.pushDevices),[id]:token};prefs.reminders=true;
+  pmPersistExtras();out.textContent='Push is enabled on this device. Cloud scheduler must be deployed for daily reminders.';
+ }catch(e){out.textContent='Push configuration error: '+(e.message||e);}
+};
+if('serviceWorker' in navigator && /^https?:$/.test(location.protocol))window.addEventListener('load',()=>{
+ navigator.serviceWorker.register('./service-worker.js',{scope:'./'}).catch(err=>console.warn('PWA service worker:',err));
+});
+
 setupFirebase();
 })();
 </script>

@@ -1,0 +1,19 @@
+{
+ "name":"PronounceMe — Learn & Remember English",
+ "short_name":"PronounceMe",
+ "description":"Your personal English vocabulary, pronunciation and memory trainer",
+ "id":"./",
+ "start_url":"./?source=pwa",
+ "scope":"./",
+ "display":"standalone",
+ "orientation":"any",
+ "lang":"en",
+ "dir":"ltr",
+ "background_color":"#f6f7fb",
+ "theme_color":"#f6f7fb",
+ "icons":[
+  {"src":"./icons/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any"},
+  {"src":"./icons/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any"},
+  {"src":"./icons/maskable-512.png","sizes":"512x512","type":"image/png","purpose":"maskable"}
+ ]
+}
