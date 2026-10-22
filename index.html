@@ -1837,6 +1837,145 @@ button:focus-visible,.phonetic:focus-visible,.az-badge:focus-visible { outline:3
 
 .pm-review-card .pm-reverse-meaning{direction:rtl;font-family:Heebo,system-ui,sans-serif;letter-spacing:0;font-size:clamp(26px,8vw,43px)}
 
+
+/* PronounceMe v5 — mobile layout corrections. Existing data and Firebase logic unchanged. */
+#pm-daily-line{display:none!important}
+.pm-account-section #pm-account-daily-status{margin:0;color:#4a6592}
+/* Learning: meaningful inline reveal, never floating over the personal memory link. */
+.word-quick-actions .meaning-text{
+ position:static!important;top:auto!important;left:auto!important;transform:none!important;
+ display:none;min-width:0!important;max-width:100%!important;max-height:74px!important;
+ overflow:auto;box-shadow:none!important;border:0!important;background:transparent!important;
+ margin:1px auto 0!important;padding:1px 8px 0!important;line-height:1.35!important;
+ font-size:clamp(15px,4.2vw,19px)!important;white-space:normal;overflow-wrap:anywhere;
+}
+.word-quick-actions .meaning-section{position:static!important;display:flex;align-items:center;flex-direction:column;justify-content:center;width:100%;flex:0 0 auto;}
+.word-quick-actions{display:flex;flex-direction:column;gap:2px!important;width:100%;min-width:0;}
+.pm-memory-row{margin:0!important;min-height:25px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;}
+.pm-memory-button{min-height:27px;padding:3px 9px!important;color:#7282a2;font-size:11px!important;line-height:1.25!important}
+.pm-counter-inline{position:absolute!important;top:7px!important;left:50%!important;transform:translateX(-50%)!important;max-width:none!important;width:176px!important;margin:0!important;padding:0!important;display:flex!important;flex-direction:column!important;justify-content:center!important;align-items:center!important;gap:0!important;z-index:2;white-space:nowrap;}
+.pm-word-pager{display:flex;align-items:center;justify-content:space-between;width:100%;height:26px;gap:7px;color:#74849f;font-weight:700;font-size:11px;letter-spacing:0;}
+.pm-inside-arrow{width:33px;height:29px;border:0;background:transparent;display:grid;place-items:center;padding:4px!important;cursor:pointer;color:#8e9eb9;}
+.pm-inside-arrow svg{width:18px;height:18px;stroke:currentColor;}
+.pm-inside-arrow:disabled{opacity:.22}
+.pm-inside-shuffle{position:static!important;margin:0!important;border:0;background:transparent;color:#9aaac5;display:grid;place-items:center;cursor:pointer;width:28px;height:21px;padding:0!important;font-size:0!important;}
+.pm-inside-shuffle svg{width:15px;height:15px;stroke:currentColor}
+.pm-inside-shuffle.active{color:#416bde}
+.card.just-mastered,.sub-card.just-mastered{border-color:#7ed7b3!important;box-shadow:0 0 0 3px rgba(62,182,130,.13),0 15px 30px rgba(41,134,98,.09)!important;}
+.pm-success-toast{position:absolute;z-index:20;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;background:rgba(250,255,252,.94);border-radius:inherit;color:#21895f;animation:pmVictory .28s ease-out;pointer-events:none}
+.pm-success-check{width:63px;height:63px;background:#e0f7eb;border:2px solid #69c89b;border-radius:50%;display:grid;place-items:center;color:#1d9a67;font-size:34px;box-shadow:0 0 0 9px rgba(77,191,136,.11)}
+.pm-success-toast strong{font-size:18px}.pm-success-toast small{font-size:12px;color:#579e7c}
+@keyframes pmVictory{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:scale(1)}}
+/* Quiz: truly minimal all-answers-visible layout */
+#pm-play-screen{min-height:0!important;overflow:hidden!important;}
+.play-panel{min-height:0!important;overflow:hidden!important;}
+.pm-game-content{min-height:0!important;display:flex!important;flex-direction:column!important;justify-content:space-between!important;gap:7px!important;}
+.pm-quiz-hud{display:flex;align-items:center;justify-content:space-between;gap:12px;flex:0 0 auto;min-height:36px}
+.pm-quiz-hearts{display:flex;gap:3px;align-items:center;line-height:1}
+.pm-live-heart{font-size:21px;color:#e67d92;}
+.pm-live-heart.empty{color:#e4e9f0}
+.pm-quiz-xp{color:#bb914a;font-size:13px;letter-spacing:.1px;}
+.pm-quiz-trail{margin-bottom:auto;display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:4px;flex:0 0 auto}
+.pm-quiz-trail i{height:5px;background:#eaf0f7;border-radius:10px}
+.pm-quiz-trail i.current{background:#5c80e7}
+.pm-quiz-trail i.correct{background:#62bea0}
+.pm-quiz-trail i.wrong{background:#e99aa5}
+.pm-game-content .pm-rush-question{min-height:75px!important;flex:0 1 136px!important;margin:0!important;padding:10px 12px!important;gap:5px!important;box-shadow:none!important;border-radius:17px;background:linear-gradient(130deg,#fffdfa,#fff);}
+.pm-game-content .pm-rush-question span{font-size:10px;letter-spacing:.08em;color:#8c98aa}
+.pm-game-content .pm-rush-question strong{font-size:clamp(27px,8vw,39px);line-height:1.13;overflow-wrap:anywhere;max-width:100%}
+.pm-game-content .pm-rush-answer-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;grid-template-rows:repeat(2,minmax(0,1fr));flex:0 1 186px!important;min-height:132px!important;gap:8px!important;margin:0!important;}
+.pm-game-content .pm-rush-answer-grid .quiz-answer{height:100%;min-height:0!important;max-height:none!important;overflow:hidden!important;display:flex!important;flex-direction:row!important;justify-content:flex-start;align-items:center;gap:9px!important;background:#fff!important;border:1px solid #e2e8f1!important;border-radius:14px!important;padding:10px!important;text-align:start!important;box-shadow:none!important;font-size:clamp(12px,3.3vw,15px)!important;font-weight:700!important;line-height:1.3!important}
+.pm-game-content .pm-rush-answer-grid .quiz-answer>span:last-child{flex:1;min-width:0;overflow-wrap:anywhere}
+.pm-game-content .pm-rush-answer-grid .quiz-answer.correct{background:#ecf9f1!important;border-color:#6ecba1!important;color:#167b59!important}
+.pm-game-content .pm-rush-answer-grid .quiz-answer.incorrect{background:#fff0f1!important;border-color:#e797a0!important;color:#b34557!important}
+.pm-choice-letter{display:grid;place-items:center;flex:0 0 22px;width:22px;height:22px;line-height:1;border:1px solid #e9e2d6;border-radius:50%;color:#b79a67}
+.pm-quiz-response{margin-bottom:auto;min-height:48px;display:flex;align-items:center;justify-content:center;gap:6px;flex:0 0 auto;min-height:37px;flex-wrap:wrap}
+.pm-quiz-response .quiz-feedback{font-size:11px;min-height:0;margin:0;flex:1 1 100%;line-height:1.15}
+.pm-quiz-response:has(#pm-game-next:not([hidden])){min-height:45px}
+.pm-quiz-response .rush-next{margin:0!important;min-width:0!important;padding:7px 14px;border-radius:10px;font-size:12px}
+.pm-rush-clock{width:38px!important;height:38px!important;font-size:11px!important;flex:0 0 auto}
+.pm-timer-free{font-size:11px;color:#8492a9}
+/* Smart practice: fixed flex layout, no document scrolling and full manual word control */
+#pm-practice-screen[hidden]{display:none!important}
+#pm-practice-screen{order:1;display:flex!important;flex:1 1 auto;min-height:0!important;min-width:0;overflow:hidden!important;padding:7px 11px 7px!important;max-height:none!important;}
+#pm-practice-root{width:100%;height:100%;min-height:0;display:flex;flex-direction:column;gap:7px;position:relative;}
+.pm-practice-title{flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;margin:0!important;gap:8px;min-height:37px}
+.pm-practice-heading{display:flex;gap:8px;align-items:baseline;min-width:0}
+.pm-practice-heading .pm-eyebrow{font-size:9px;letter-spacing:.08em;white-space:nowrap}
+.pm-practice-title h2{font-size:clamp(17px,4.7vw,23px);margin:0;line-height:1.1;white-space:nowrap}
+.pm-due-bubble{font-size:10px;padding:6px 9px}
+.pm-review-navigator{min-height:31px;flex:0 0 auto;display:flex;justify-content:center;align-items:center;gap:4px;direction:ltr}
+.pm-review-navigator button{font-family:Inter,Heebo,system-ui,sans-serif;background:transparent;border:0;cursor:pointer;color:#7e91b1;min-width:36px;min-height:31px;padding:3px;font-weight:650;font-size:25px;border-radius:10px}
+.pm-review-navigator button:disabled{opacity:.25}
+.pm-review-navigator .pm-review-picker-trigger{font-size:12px;display:flex;align-items:center;gap:7px;justify-content:center;min-width:91px;border:1px solid #e8edf5;background:#fff;color:#52688f;padding:4px 12px}
+.pm-review-navigator .pm-review-skip{font-size:11px;margin-left:auto;color:#5577c5;padding:4px 8px;min-width:0;background:#f3f6ff}
+.pm-review-meta{flex:0 0 auto;margin:0!important;padding:0 3px;font-size:10px;min-height:16px;align-items:center}
+.pm-review-stages{margin:0!important;flex:0 0 auto;gap:5px}
+.pm-review-stages span{font-size:9px;gap:4px}
+.pm-review-stages span i{height:4px}
+.pm-review-card{min-height:0!important;flex:1 1 0!important;gap:clamp(7px,1.4dvh,12px)!important;padding:10px 15px!important;overflow:hidden!important;border-radius:22px!important;box-shadow:0 7px 22px rgba(40,61,101,.045)!important;}
+.pm-review-card h1{font-size:clamp(29px,8vw,46px);margin:0!important;line-height:1.08!important}
+.pm-card-label{font-size:9px}
+.pm-card-hint{font-size:clamp(11px,3vw,13px);line-height:1.43!important;margin:0!important}
+.pm-review-instruction{padding:6px 10px;font-size:11px;border-radius:9px}
+.pm-review-phonetic{font-size:clamp(19px,5.3vw,25px);padding:5px 15px!important;border-radius:10px;line-height:1.23!important;max-width:100%;overflow-wrap:anywhere}
+.pm-review-meaning{font-size:clamp(17px,5.3vw,24px);line-height:1.2;max-width:100%;overflow-wrap:anywhere}
+.pm-review-sound,.pm-review-edit{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid #e3eaf4;background:white;color:#5f79af;border-radius:13px;font-size:12px;padding:8px 12px;max-width:100%;flex-shrink:0;}
+.pm-small-audio{width:16px;height:16px;stroke-linecap:round;stroke-linejoin:round}
+.pm-review-speech.btn-speak{height:auto!important;min-width:118px!important;min-height:40px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;border:1px solid #d3e0f6!important;border-radius:12px!important;background:#f7faff!important;color:#416bad!important;padding:9px 14px!important;font-size:13px!important;font-family:Inter,Heebo,system-ui,sans-serif!important;}
+.pm-review-speech.btn-speak svg{display:block!important;height:19px!important;width:19px!important;fill:none!important;stroke:#416bad!important;stroke-width:2!important;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0!important;}
+.pm-review-speech.btn-speak span{font-size:13px;font-weight:750}
+.pm-spoken-ack{font-family:Inter,Heebo,system-ui,sans-serif;font-size:11px;padding:7px 10px;background:#fff}
+.pm-review-memory{width:100%;max-height:62px;overflow:auto;padding:6px 10px;background:#f8fbff;text-align:center}
+.pm-review-memory p{margin:3px 0;font-size:11px;line-height:1.3}
+.pm-review-edit{padding:5px 9px;font-size:11px;border:0;}
+.pm-grade-box{width:100%;max-width:400px;gap:9px}
+.pm-grade-box>div{display:grid;grid-template-columns:1fr auto;align-items:center;gap:8px;text-align:left}
+.pm-grade-box>div>span{font-size:12px}
+.pm-grade-box>div>div{display:flex;gap:5px}
+.pm-grade-box button{padding:7px 9px;min-height:35px;white-space:nowrap;font-size:11px;border-radius:10px;font-family:Inter,Heebo,system-ui,sans-serif}
+.pm-review-controls{flex:0 0 auto;margin:0!important}
+.pm-review-next{height:44px;min-height:44px!important;border-radius:13px;font-size:13px!important;box-shadow:0 4px 13px rgba(76,103,220,.12)}
+.pm-review-footer{display:none!important}
+.pm-review-empty{flex:1;justify-content:center;margin:0;padding:12px}
+.pm-practice-picker{position:absolute;z-index:90;inset:35px 0 0;background:rgba(255,255,255,.985);border:1px solid #e5eaf2;border-radius:19px;box-shadow:0 10px 30px rgba(18,37,67,.11);padding:13px;display:flex;flex-direction:column;min-height:0;}
+.pm-picker-head{display:flex;align-items:center;justify-content:space-between;padding-bottom:8px;color:#293d5c}
+.pm-picker-head button{background:transparent;border:0;font-size:25px;color:#8290ab;cursor:pointer}
+.pm-picker-list{min-height:0;overflow:auto;display:grid;align-content:start;gap:5px}
+.pm-picker-list button{display:flex;justify-content:space-between;gap:9px;padding:9px 12px;background:#fff;border:1px solid #e8edf5;color:#2d3d5b;border-radius:10px;font-family:Inter,Heebo,system-ui,sans-serif;font-size:13px;cursor:pointer}
+.pm-picker-list button.active{border-color:#9ab3ee;background:#f2f6ff}
+.pm-picker-list small{color:#8291a6}
+@media(max-width:767px){
+ .card,.sub-card{padding-top:55px!important;padding-bottom:9px!important;justify-content:space-between!important;}
+ .card .english-word,.sub-card .english-word{flex-shrink:0;margin:0!important;}
+ .card .phonetic,.sub-card .phonetic{margin:0!important;max-height:65px!important}
+ .card .divider,.sub-card .divider{margin:0!important}
+ .tinder-controls{gap:4px!important}
+ .tinder-row{min-height:30px!important}
+ #pm-play-screen{padding:5px 10px 7px!important;}
+ .play-panel{padding:10px!important;border-radius:19px!important;}
+ .play-head{height:27px;min-height:27px;flex:0 0 auto}
+ .pm-game-content{padding:2px 0 0}
+}
+@media(max-width:767px) and (max-height:700px){
+ #pm-practice-screen{gap:4px!important;padding-top:4px!important;padding-bottom:4px!important}
+ #pm-practice-root{gap:4px!important}
+ .pm-practice-title{min-height:30px}
+ .pm-review-navigator{min-height:27px}
+ .pm-review-navigator button{min-height:27px}
+ .pm-review-meta{min-height:13px}
+ .pm-review-card{padding:7px 12px!important;gap:5px!important}
+ .pm-review-next{height:38px;min-height:38px!important}
+ .pm-review-card h1{font-size:clamp(26px,7.5vw,38px)}
+ .pm-review-phonetic{font-size:clamp(17px,5vw,22px)}
+ .pm-grade-box{gap:5px}
+ .pm-grade-box button{padding:5px 6px;min-height:30px;font-size:10px}
+ .pm-game-content .pm-rush-question{min-height:65px!important;flex-basis:100px!important}
+ .pm-game-content .pm-rush-answer-grid{min-height:119px!important;flex-basis:135px!important}
+ .pm-game-content .pm-rush-answer-grid .quiz-answer{padding:6px!important}
+ .pm-quiz-hud{min-height:29px}
+}
+
     </style>
 
 </head>
@@ -2059,7 +2198,7 @@ button:focus-visible,.phonetic:focus-visible,.az-badge:focus-visible { outline:3
             <div id="pm-account-email" class="pm-muted"></div>
             <div id="pm-sync-indicator" class="sync-state">Cloud sync</div>
             <button class="pm-account-btn" onclick="pmExportBackup()">↓ הורד גיבוי JSON של כל הנתונים</button>
-            <div class="pm-account-section"><b>Daily Learning Goal</b><select id="pm-daily-goal" onchange="pmUpdatePreference('dailyGoal',Number(this.value))"><option value="5">5 words</option><option value="8">8 words</option><option value="12">12 words</option></select></div>
+            <div class="pm-account-section"><b>Daily Learning Goal</b><p id="pm-account-daily-status" class="pm-small-hint">Today: 0 / 8</p><select id="pm-daily-goal" onchange="pmUpdatePreference('dailyGoal',Number(this.value))"><option value="5">5 words</option><option value="8">8 words</option><option value="12">12 words</option></select></div>
             <div class="pm-account-section"><b>Word Rush timer</b><label class="pm-switch"><input type="checkbox" id="pm-game-timer" onchange="pmUpdatePreference('timer',this.checked)"> 20 seconds per question</label></div>
             <div class="pm-account-section"><b>Daily reminder</b><div class="pm-account-select"><select id="pm-reminder-hour" onchange="pmUpdatePreference('reminderHour',Number(this.value))"></select><button type="button" class="pm-mini-action" onclick="pmEnableNotifications()" id="pm-notify-enable">Enable notifications</button><button type="button" class="pm-mini-action" id="pm-notify-disable" onclick="pmDisableNotifications()" hidden>Disable</button></div><p id="pm-notification-status" class="pm-small-hint">Notifications require HTTPS, an installed app where applicable, and Firebase Cloud Messaging configuration.</p></div>
             <button class="pm-account-btn" onclick="pmResetLearning()">↻ Reset Learning Progress</button>
@@ -3750,7 +3889,12 @@ setStatus=function(id,type,value){
   originalSetStatus(id,type,value); // preserves storage keys, Firestore sync, status and UI refresh
   if(advance){
     const currentCard=ui('words-grid').querySelector('.card,.sub-card');
-    if(currentCard){currentCard.classList.add('just-mastered');}
+    if(currentCard){
+      currentCard.classList.add('just-mastered');
+      const toast=document.createElement('div');toast.className='pm-success-toast';
+      toast.innerHTML='<span class="pm-success-check">✓</span><strong>Word completed!</strong><small>Meaning & pronunciation</small>';
+      currentCard.append(toast);
+    }
     finishTimer=setTimeout(()=>{
       if(pmPlaying || !phone())return;
       if(beforeNextId){
@@ -3760,7 +3904,7 @@ setStatus=function(id,type,value){
         else {showCompletedMessage();}
       } else if(mobileList.length>oldIndex+1){currentWordIndex=oldIndex+1;renderWords();}
       else {showCompletedMessage();}
-    },420);
+    },900);
   }
 };
 function showCompletedMessage(){
@@ -3830,6 +3974,7 @@ function pmRenderDaily(){
  const el=ui('pm-daily-line');if(!el)return;
  const day=pmDayKey(),today=Array.isArray(dailyData.days?.[day])?dailyData.days[day].length:0,goal=Number(prefs.dailyGoal)||8;
  el.innerHTML=`<span class="pm-daily-icon">✦</span><strong>Today’s learning</strong><span>${Math.min(today,goal)} / ${goal}</span><div class="pm-daily-progress"><span style="width:${Math.min(100,100*today/goal)}%"></span></div>${today>=goal?'<span class="pm-daily-done">✓ Daily goal reached</span>':''}`;
+ const accountInfo=ui('pm-account-daily-status');if(accountInfo)accountInfo.textContent=`Today: ${today} / ${goal} new words${today>=goal?' · Goal reached ✓':''}`;
 }
 window.pmUpdatePreference=function(name,value){
  if(!accountReady)return;
@@ -3873,7 +4018,11 @@ pmPostRender=function(list){
    const link=document.createElement('button');link.type='button';link.className='pm-memory-button';link.textContent=memoryLinks[id]?'🔗  My Memory Link · Edit':'🔗  My Memory Link · Add';link.onclick=()=>pmOpenMemoryLink(id);
    row.append(link);meaning.after(row);
    if(phone()){
-     const ctr=card.querySelector('.card-counter');if(ctr){ctr.classList.add('pm-counter-inline');ctr.innerHTML=`<button type="button" class="pm-inside-arrow" onclick="pmMoveWord(-1)" ${currentWordIndex===0?'disabled':''} aria-label="Previous word">‹</button><span>${currentWordIndex+1} / ${list.length}</span><button type="button" class="pm-inside-arrow" onclick="pmMoveWord(1)" ${currentWordIndex>=list.length-1?'disabled':''} aria-label="Next word">›</button><button type="button" class="pm-inside-shuffle ${shuffleActive?'active':''}" onclick="pmToggleShuffle()" aria-label="Shuffle words">⇄</button>`;}
+     const ctr=card.querySelector('.card-counter');
+     if(ctr){
+       ctr.classList.add('pm-counter-inline');
+       ctr.innerHTML=`<div class="pm-word-pager"><button type="button" class="pm-inside-arrow" onclick="pmMoveWord(-1)" ${currentWordIndex===0?'disabled':''} aria-label="Previous word"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg></button><span>${currentWordIndex+1} / ${list.length}</span><button type="button" class="pm-inside-arrow" onclick="pmMoveWord(1)" ${currentWordIndex>=list.length-1?'disabled':''} aria-label="Next word"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></button></div><button type="button" class="pm-inside-shuffle ${shuffleActive?'active':''}" onclick="pmToggleShuffle()" aria-label="Shuffle words" title="Shuffle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m16 3 4 4-4 4M4 7h4c5 0 5 10 10 10h2M16 21l4-4-4-4M4 17h4c1.7 0 2.8-1.1 3.7-2.7M12.3 9.8C13.5 7.9 14.5 7 18 7h2"/></svg></button>`;
+     }
    }
  }
 };
@@ -3901,10 +4050,33 @@ function pmReviewLabel(rec){
 function pmStartReview(){
  const items=pmReviewItems(),due=items.filter(x=>pmDue(x.id));
  due.sort((a,b)=>{const x=pmReviewRecord(a.id),y=pmReviewRecord(b.id);return Math.min(x.m.due,x.p.due)-Math.min(y.m.due,y.p.due);});
- pmReviewQueue=due.slice(0,12);pmReviewSessionCount=0;pmReviewOpenNext();
+ pmReviewQueue=due.slice(0,12);pmReviewSessionCount=0;pmReviewPickerOpen=false;pmReviewOpenNext();
 }
 function pmReviewOpenNext(){pmReviewCurrent=pmReviewQueue.shift()||null;pmReviewStage=0;pmReviewGrades={m:null,p:null};pmReviewListened=false;pmReviewSpoken=false;pmRenderReview();}
-function pmReviewPlainTitle(){const count=pmReviewItems().length,due=pmReviewItems().filter(x=>pmDue(x.id)).length;return `<div class="pm-practice-title"><div><span class="pm-eyebrow">SMART PRACTICE</span><h2>Memory Studio</h2><p>Practice now, remember later.</p></div><span class="pm-due-bubble">${due} due · ${count} saved</span></div>`;}
+function pmReviewPlainTitle(){
+ const all=pmReviewItems(),due=all.filter(x=>pmDue(x.id)).length;
+ return `<div class="pm-practice-title"><div class="pm-practice-heading"><span class="pm-eyebrow">SMART PRACTICE</span><h2>Memory Studio</h2></div><span class="pm-due-bubble">${due} due · ${all.length} saved</span></div>`;
+}
+function pmReviewNavigator(){
+ const items=pmReviewItems(),idx=items.findIndex(x=>String(x.id)===String(pmReviewCurrent?.id));
+ return `<div class="pm-review-navigator"><button type="button" onclick="pmReviewNavigate(-1)" ${items.length<2?'disabled':''} aria-label="Previous practice word">‹</button><button type="button" class="pm-review-picker-trigger" onclick="pmReviewTogglePicker()" aria-label="Choose a practice word"><span>${Math.max(1,idx+1)} / ${items.length}</span><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="m7 10 5 5 5-5"/></svg></button><button type="button" onclick="pmReviewNavigate(1)" ${items.length<2?'disabled':''} aria-label="Next practice word">›</button><button type="button" class="pm-review-skip" onclick="pmReviewNavigate(1)" ${items.length<2?'disabled':''}>Skip →</button></div>`;
+}
+let pmReviewPickerOpen=false;
+window.pmReviewTogglePicker=function(){pmReviewPickerOpen=!pmReviewPickerOpen;pmRenderReview();};
+window.pmReviewChoose=function(id){
+ const target=pmReviewItems().find(x=>String(x.id)===String(id));if(!target)return;
+ stopActiveSpeech();pmReviewPickerOpen=false;
+ if(pmReviewCurrent&&String(pmReviewCurrent.id)!==String(target.id)&&pmDue(pmReviewCurrent.id)&&!pmReviewQueue.some(x=>String(x.id)===String(pmReviewCurrent.id)))pmReviewQueue.push(pmReviewCurrent);
+ pmReviewQueue=pmReviewQueue.filter(x=>String(x.id)!==String(target.id));
+ pmReviewCurrent=target;pmReviewStage=0;pmReviewGrades={m:null,p:null};pmReviewListened=false;pmReviewSpoken=false;pmRenderReview();
+};
+window.pmReviewNavigate=function(direction){
+ const list=pmReviewItems(),idx=list.findIndex(w=>String(w.id)===String(pmReviewCurrent?.id));
+ if(list.length<2)return;
+ pmReviewChoose(list[(idx+direction+list.length)%list.length].id);
+};
+function pmReviewPicker(){const list=pmReviewItems();return pmReviewPickerOpen?`<div class="pm-practice-picker" role="dialog" aria-label="Select a word"><div class="pm-picker-head"><strong>Choose a word</strong><button type="button" onclick="pmReviewTogglePicker()" aria-label="Close">×</button></div><div class="pm-picker-list">${list.map(item=>`<button type="button" class="${String(item.id)===String(pmReviewCurrent?.id)?'active':''}" onclick="pmReviewChoose('${escapeHTML(String(item.id))}')"><span>${escapeHTML(item.word)}</span><small>${pmDue(item.id)?'Due':'Scheduled'}</small></button>`).join('')}</div></div>`:'';}
+
 function pmReviewProgress(){const rec=pmReviewRecord(pmReviewCurrent.id);const stages=rec.introduced?['Recall','Check','Rate']:['Recall','Listen','Speak','Connect','Rate'];const display=rec.introduced? (pmReviewStage===0?0:pmReviewStage===4?2:1):pmReviewStage;
  return `<div class="pm-review-stages">${stages.map((name,i)=>`<span class="${i<display?'completed':i===display?'current':''}"><i></i>${name}</span>`).join('')}</div>`;}
 function pmReviewFoot(){return `<div class="pm-review-footer"><span>✓ ${pmReviewSessionCount} reviewed this session</span><button type="button" onclick="pmStartReview()">Restart due queue</button></div>`;}
@@ -3920,16 +4092,16 @@ function pmRenderReview(){
  const stage=pmReviewStage;let body='';
  const reverse=rec.introduced&&((rec.m.successes+rec.p.successes)%4>=2);
  if(stage===0){body=reverse?`<span class="pm-card-label">REVERSE RECALL · PRODUCE ENGLISH</span><h1 class="pm-reverse-meaning">${escapeHTML(item.meaning)}</h1><p class="pm-card-hint">מה המילה באנגלית? נסה לומר אותה בקול לפני שתחשוף.</p><div class="pm-review-instruction">זו שליפה בכיוון ההפוך</div>`:`<span class="pm-card-label">RECALL FIRST</span><h1 lang="en">${escapeHTML(item.word)}</h1><p class="pm-card-hint">מה הפירוש? נסה גם לומר את המילה בקול.</p><div class="pm-review-instruction">נסח תשובה לעצמך לפני שאתה ממשיך</div>`;}
- if(stage===1&&deep){body=`<span class="pm-card-label">LISTEN & COMPARE</span><h1 lang="en">${escapeHTML(item.word)}</h1><div class="pm-review-phonetic">${escapeHTML(item.phonetic||'')}</div><button class="pm-review-sound" type="button" onclick="pmReviewListen()">◖)) ${pmReviewListened?'Play once more':'Listen to the word'}</button><p class="pm-card-hint">האם ההגייה הייתה כמו שחשבת?</p>`;}
- if(stage===2&&deep){body=`<span class="pm-card-label">SAY IT YOURSELF</span><h1 lang="en">${escapeHTML(item.word)}</h1><button class="pm-review-speech btn-speak" type="button" data-speech-word-id="${escapeHTML(item.id)}" onclick="pmStartSpeech(this)">🎙 Speak</button><p class="pm-card-hint">דבר בקול. בדיקת הדיבור היא כלי עזר, לא ציון הגייה מקצועי.</p><button type="button" class="pm-spoken-ack ${pmReviewSpoken?'complete':''}" onclick="pmReviewMarkSpoken()">${pmReviewSpoken?'✓ Said it aloud':'✓ I said it aloud'}</button>`;}
+ if(stage===1&&deep){body=`<span class="pm-card-label">LISTEN & COMPARE</span><h1 lang="en">${escapeHTML(item.word)}</h1><div class="pm-review-phonetic">${escapeHTML(item.phonetic||'')}</div><button class="pm-review-sound" type="button" onclick="pmReviewListen()"><svg class="pm-small-audio" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9v6h4l5 4V5L8 9H4zM16 9a4 4 0 0 1 0 6M19 6a8 8 0 0 1 0 12"/></svg> ${pmReviewListened?'Play once more':'Listen to the word'}</button><p class="pm-card-hint">האם ההגייה הייתה כמו שחשבת?</p>`;}
+ if(stage===2&&deep){body=`<span class="pm-card-label">SAY IT YOURSELF</span><h1 lang="en">${escapeHTML(item.word)}</h1><button class="pm-review-speech btn-speak" type="button" data-speech-word-id="${escapeHTML(item.id)}" onclick="pmStartSpeech(this)">Speak</button><p class="pm-card-hint">דבר בקול. בדיקת הדיבור היא כלי עזר, לא ציון הגייה מקצועי.</p><button type="button" class="pm-spoken-ack ${pmReviewSpoken?'complete':''}" onclick="pmReviewMarkSpoken()">${pmReviewSpoken?'✓ Said it aloud':'✓ I said it aloud'}</button>`;}
  if((stage===3&&deep)||(stage===1&&!deep)){
-  body=`<span class="pm-card-label">FLIP · CHECK YOUR ANSWER</span><h1 lang="en">${escapeHTML(item.word)}</h1><div class="pm-review-meaning">${escapeHTML(item.meaning)}</div><div class="pm-review-phonetic">${escapeHTML(item.phonetic||'')}</div><button class="pm-review-sound" type="button" onclick="pmReviewSpeak()">◖)) Listen</button>${memoryLinks[item.id]?`<div class="pm-review-memory"><span>🔗 YOUR MEMORY LINK</span><p>${escapeHTML(memoryLinks[item.id])}</p></div>`:''}<button class="pm-review-edit" type="button" onclick="pmReviewEditLink()">${memoryLinks[item.id]?'Edit':'＋ Add'} My Memory Link</button>`;
+  body=`<span class="pm-card-label">FLIP · CHECK YOUR ANSWER</span><h1 lang="en">${escapeHTML(item.word)}</h1><div class="pm-review-meaning">${escapeHTML(item.meaning)}</div><div class="pm-review-phonetic">${escapeHTML(item.phonetic||'')}</div><button class="pm-review-sound" type="button" onclick="pmReviewSpeak()"><svg class="pm-small-audio" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9v6h4l5 4V5L8 9H4zM16 9a4 4 0 0 1 0 6M19 6a8 8 0 0 1 0 12"/></svg> Listen</button>${memoryLinks[item.id]?`<div class="pm-review-memory"><span>🔗 YOUR MEMORY LINK</span><p>${escapeHTML(memoryLinks[item.id])}</p></div>`:''}<button class="pm-review-edit" type="button" onclick="pmReviewEditLink()">${memoryLinks[item.id]?'Edit':'＋ Add'} My Memory Link</button>`;
  }
  if(stage===4){body=`<span class="pm-card-label">HONEST SELF-CHECK</span><h1 lang="en">${escapeHTML(item.word)}</h1><div class="pm-review-meaning">${escapeHTML(item.meaning)}</div><div class="pm-review-phonetic">${escapeHTML(item.phonetic||'')}</div><div class="pm-grade-box"><div><span>Meaning</span><div><button type="button" class="${pmReviewGrades.m===false?'chosen-again':''}" onclick="pmGradeReview('m',false)">Again</button><button type="button" class="${pmReviewGrades.m===true?'chosen-good':''}" onclick="pmGradeReview('m',true)">Remembered ✓</button></div></div><div><span>Pronunciation</span><div><button type="button" class="${pmReviewGrades.p===false?'chosen-again':''}" onclick="pmGradeReview('p',false)">Again</button><button type="button" class="${pmReviewGrades.p===true?'chosen-good':''}" onclick="pmGradeReview('p',true)">Remembered ✓</button></div></div></div>`;}
  const canContinue=stage===4?(pmReviewGrades.m!==null&&pmReviewGrades.p!==null):stage===1&&deep?pmReviewListened:stage===2&&deep?pmReviewSpoken:true;
  const buttonTitle=stage===0?'I have my answer →':stage===1&&deep?'Next: Say it →':stage===2?'Reveal meaning →':stage===3?'Rate my memory →':stage===1?'Rate my memory →':'Save & next word →';
  const stageText=deep?'Deep practice · First encounter':'Quick review · Spaced retrieval';
- root.innerHTML=title+`<div class="pm-review-meta"><span>${stageText}</span><span>${pmReviewLabel(rec)}</span></div>`+pmReviewProgress()+`<div class="pm-review-card" aria-live="polite">${body}</div><div class="pm-review-controls"><button type="button" class="pm-review-next" ${canContinue?'':'disabled'} onclick="pmReviewContinue()">${buttonTitle}</button></div>`+pmReviewFoot();
+ root.innerHTML=title+pmReviewNavigator()+`<div class="pm-review-meta"><span>${stageText}</span><span>${pmReviewLabel(rec)}</span></div>`+pmReviewProgress()+`<div class="pm-review-card" aria-live="polite">${body}</div><div class="pm-review-controls"><button type="button" class="pm-review-next" ${canContinue?'':'disabled'} onclick="pmReviewContinue()">${buttonTitle}</button></div>`+pmReviewPicker();
  if(stage===2){const btn=root.querySelector('.pm-review-speech');paintSpeechButton(btn,item.id);}
 }
 window.pmReviewSpeak=function(){if(pmReviewCurrent)speakWord(pmReviewCurrent.word);};
@@ -3962,7 +4134,7 @@ window.pmShowTab=function(tab){
    for(const key of ['learn','play','practice'])ui('pm-tab-'+key)?.classList.toggle('active',key===tab);
    pmStartReview();return;
  }
- ui('pm-practice-screen').hidden=true;pmOldShowTab(tab);
+ ui('pm-practice-screen').hidden=true;pmReviewPickerOpen=false;pmOldShowTab(tab);
 };
 
 // Word Rush: one question mode, tasteful quiz-show UI, optional 20s countdown.
@@ -3982,10 +4154,16 @@ renderGame=function(){
  const el=ui('pm-game-content'),pos=ui('pm-quiz-position');if(!el)return;
  if(!gameDeck.length){pos.textContent='Word Rush';el.innerHTML='<p class="quiz-feedback">אין מספיק מילים עם ארבע תשובות שונות.</p>';return;}
  if(gameStep>=gameDeck.length||gameHearts<=0){pmStopRushTimer();renderGameEnd();return;}
- const q=gameDeck[gameStep];gameAnswered=false;pos.textContent=`${gameStep+1} / ${gameDeck.length}`;
+ const q=gameDeck[gameStep];gameAnswered=false;
+ pos.textContent=`${gameStep+1} / ${gameDeck.length}`;
  const choices=q.options.map((o,i)=>`<button type="button" class="quiz-answer pm-quiz-choice" onclick="pmAnswerGame(${i})"><span class="pm-choice-letter">${'ABCD'[i]}</span><span>${escapeHTML(o.label)}</span></button>`).join('');
- el.innerHTML=`<div class="pm-rush-top"><span class="pm-rush-eyebrow">✦ THE WORD CHALLENGE</span><span class="pm-rush-xp">★ ${gameScore} XP</span></div>`+rushHUD()+`<div class="pm-rush-info"><span>QUESTION ${gameStep+1} OF ${gameDeck.length}</span>${prefs.timer!==false?'<span class="pm-rush-clock" id="pm-rush-clock">20s</span>':'<span class="pm-rush-relaxed">Relaxed mode</span>'}</div>`+
- `<div class="pm-rush-question"><span>WHAT DOES THIS WORD MEAN?</span><strong lang="en">${escapeHTML(q.item.word)}</strong><i>✧</i></div><div class="pm-rush-answer-grid">${choices}</div><div class="quiz-feedback" id="pm-game-feedback" aria-live="polite"></div><button class="quiz-button rush-next" id="pm-game-next" onclick="pmNextGame()" hidden>Continue →</button><div class="pm-rush-footer">Choose one answer · Build your streak</div>`;
+ const lives=Array.from({length:3},(_,i)=>`<span class="pm-live-heart ${i>=gameHearts?'empty':''}" aria-hidden="true">♥</span>`).join('');
+ const trail=Array.from({length:gameDeck.length},(_,i)=>`<i class="${i<gameResults.length?(gameResults[i].correct?'correct':'wrong'):i===gameStep?'current':''}"></i>`).join('');
+ el.innerHTML=`<div class="pm-quiz-hud"><div class="pm-quiz-hearts" aria-label="${gameHearts} hearts remaining">${lives}</div><strong class="pm-quiz-xp">${gameScore} XP</strong>${prefs.timer!==false?'<span class="pm-rush-clock" id="pm-rush-clock" aria-label="Seconds remaining">20s</span>':'<span class="pm-timer-free">No timer</span>'}</div>`+
+ `<div class="pm-quiz-trail" aria-hidden="true">${trail}</div>`+
+ `<div class="pm-rush-question"><span>WHAT DOES THIS WORD MEAN?</span><strong lang="en">${escapeHTML(q.item.word)}</strong></div>`+
+ `<div class="pm-rush-answer-grid">${choices}</div>`+
+ `<div class="pm-quiz-response"><div class="quiz-feedback" id="pm-game-feedback" aria-live="polite"></div><button class="quiz-button rush-next" id="pm-game-next" onclick="pmNextGame()" hidden>Continue →</button></div>`;
  pmStartRushTimer();
 };
 window.pmAnswerGame=function(index){
@@ -3997,17 +4175,18 @@ window.pmAnswerGame=function(index){
  const correct=!timedOut&&choice.id===q.item.id;
  const speedBonus=correct&&prefs.timer!==false?Math.floor(pmRushSeconds/5):0;
  if(correct){gameStreak++;gameBestStreak=Math.max(gameBestStreak,gameStreak);gameScore+=10+(gameStreak%3===0?5:0)+speedBonus;}
- else {if(!timedOut)gameHearts--;gameStreak=0;}
+ else {gameHearts=Math.max(0,gameHearts-1);gameStreak=0;}
  gameResults.push({id:q.item.id,word:q.item.word,meaning:q.item.meaning,correct,kind:'meaning',chosen:choice?.label||'Time expired'});
  saveGameAnswer(q.item,correct);
  for(const [i,b] of [...ui('pm-game-content').querySelectorAll('.pm-quiz-choice')].entries()){
-   b.disabled=true;if(q.options[i].id===q.item.id)b.classList.add('correct');else if(i===index)b.classList.add('incorrect');
+   b.disabled=true;if(!timedOut&&q.options[i].id===q.item.id)b.classList.add('correct');else if(i===index)b.classList.add('incorrect');
  }
  const feedback=ui('pm-game-feedback');feedback.className='quiz-feedback '+(correct?'rush-feedback-good':'rush-feedback-wrong');
- feedback.textContent=correct?`✓ Correct! +${10+(gameStreak%3===0?5:0)+speedBonus} XP`:(timedOut?'Time is up · No heart lost':'Not quite · '+gameHearts+' hearts left');
+ feedback.textContent=correct?`✓ Correct! +${10+(gameStreak%3===0?5:0)+speedBonus} XP`:(timedOut?'Time is up · Counted as incorrect · −1 heart':'Not quite · '+gameHearts+' hearts left');
  const next=ui('pm-game-next');next.hidden=false;next.textContent=gameHearts===0||gameResults.length===gameDeck.length?'See Results →':'Next Question →';
- const hud=ui('pm-game-content').querySelector('.rush-hud');if(hud)hud.outerHTML=rushHUD();
- const xp=ui('pm-game-content').querySelector('.pm-rush-xp');if(xp)xp.textContent=`★ ${gameScore} XP`;
+ const xp=ui('pm-game-content').querySelector('.pm-quiz-xp');if(xp)xp.textContent=`${gameScore} XP`;
+ ui('pm-game-content').querySelectorAll('.pm-live-heart').forEach((h,i)=>h.classList.toggle('empty',i>=gameHearts));
+ ui('pm-game-content').querySelectorAll('.pm-quiz-trail i').forEach((t,i)=>t.className=i<gameResults.length?(gameResults[i].correct?'correct':'wrong'):i===gameStep?'current':'');
 };
 const pmOriginalNextGame=window.pmNextGame;
 window.pmNextGame=function(){pmStopRushTimer();pmOriginalNextGame();};
