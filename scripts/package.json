@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "name": "pronounceme-reminder-job",
+  "version": "1.0.0",
+  "description": "Personal free-tier scheduled FCM reminders with GitHub Actions",
+  "engines": { "node": ">=22" },
+  "dependencies": { "firebase-admin": "^13.0.0" }
+}
