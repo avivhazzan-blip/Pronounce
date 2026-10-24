@@ -2423,6 +2423,18 @@ button:focus-visible,.phonetic:focus-visible,.az-badge:focus-visible { outline:3
   #words-grid .pm-three-controls .pm-action-orb{transition:none!important;}
 }
 
+/* 2026-10-24 minor cleanup: remove extra divider and bottom gray strip under the flashcard footer */
+#words-grid .card .divider,
+#words-grid .sub-card .divider{display:none!important;}
+#words-grid.words-grid{padding-bottom:0!important;overflow:visible!important;background:transparent!important;}
+#words-grid > .card{margin-bottom:0!important;}
+@media(max-width:767px){
+  #words-grid.words-grid{padding-bottom:0!important;overflow:visible!important;}
+  #words-grid > .card{padding-bottom:0!important;}
+  #words-grid .card > .tinder-controls.pm-three-controls,
+  #words-grid .sub-card > .tinder-controls.pm-three-controls{margin:0 -15px 0!important;}
+}
+
     </style>
 
 </head>
