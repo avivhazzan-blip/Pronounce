@@ -2245,6 +2245,184 @@ button:focus-visible,.phonetic:focus-visible,.az-badge:focus-visible { outline:3
   .pm-three-controls .pm-action-caption{font-size:9.5px!important}
 }
 
+
+/* ==============================================================
+   PronounceMe / Discover: approved flush flashcard action bar
+   and lavender phonetic tile. Visual-only. Handlers, IDs, Firebase,
+   filters and existing Practice + Play behavior stay untouched.
+   ============================================================= */
+/* Transcription: replace ONLY the former mustard yellow tile. */
+#words-grid .card .phonetic,
+#words-grid .sub-card .phonetic {
+  background:linear-gradient(135deg,#F8F5FF 0%,#F0EAFF 100%)!important;
+  border:1px solid #DED2F6!important;
+  color:#7758B4!important;
+  box-shadow:0 3px 10px rgba(115,86,170,.065)!important;
+}
+#words-grid .card .phonetic:hover,
+#words-grid .sub-card .phonetic:hover {
+  box-shadow:0 4px 12px rgba(115,86,170,.09)!important;
+}
+/* Layered flashcard depth: softly stacked sheets behind the active card. */
+#words-grid > .card {
+  box-shadow:
+    0 5px 0 -1px #FFFFFF,
+    0 6px 0 0 #DEE5F3,
+    0 11px 0 -2px #F8FAFF,
+    0 12px 0 -1px #E4EAF6,
+    0 17px 28px rgba(26,47,87,.09)!important;
+}
+/* Keep existing navigation / word layout, but make actions the true
+   bottom edge of one connected flashcard, not floating circles. */
+#words-grid .card > .tinder-controls.pm-three-controls,
+#words-grid .sub-card > .tinder-controls.pm-three-controls{
+  direction:ltr!important;
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  align-items:stretch!important;
+  justify-items:stretch!important;
+  gap:0!important;
+  background:#FFFFFF!important;
+  border-top:1px solid #E5EAF3!important;
+  overflow:hidden!important;
+  isolation:isolate!important;
+  box-shadow:0 -4px 16px rgba(36,56,100,.025)!important;
+}
+#words-grid .pm-three-controls .pm-know-btn,
+#words-grid .pm-three-controls .pm-save-btn,
+#words-grid .pm-three-controls .pm-know-btn.active,
+#words-grid .pm-three-controls .pm-save-btn.starred{
+  position:relative!important;
+  inset:auto!important;
+  transform:none!important;
+  width:100%!important;
+  min-width:0!important;
+  min-height:88px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  align-items:center!important;
+  gap:7px!important;
+  padding:12px 3px 14px!important;
+  background:#FFFFFF!important;
+  color:#344866!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  cursor:pointer!important;
+}
+#words-grid .pm-three-controls .pm-save-btn,
+#words-grid .pm-three-controls .pm-know-btn[id$="-m-yes"] {
+  border-right:1px solid #E5EAF3!important;
+}
+#words-grid .pm-three-controls .pm-save-btn{--orb-color:#C18A48;--orb-soft:#FBEBD9;order:1!important}
+#words-grid .pm-three-controls .pm-know-btn[id$="-m-yes"]{--orb-color:#32A881;--orb-soft:#DFF5EB;order:2!important}
+#words-grid .pm-three-controls .pm-know-btn[id$="-p-yes"]{--orb-color:#8875DF;--orb-soft:#EEE9FC;order:3!important}
+/* The meaning and pronunciation marks stay ✓; only shape changes. */
+#words-grid .pm-three-controls .pm-action-orb{
+  display:grid!important;
+  place-items:center!important;
+  width:37px!important;
+  height:37px!important;
+  flex:0 0 37px!important;
+  border-radius:11px!important;
+  border:1px solid rgba(255,255,255,.95)!important;
+  background:var(--orb-soft)!important;
+  color:var(--orb-color)!important;
+  box-shadow:0 3px 9px rgba(31,52,87,.05)!important;
+  transition:background .16s ease,transform .16s ease!important;
+}
+#words-grid .pm-three-controls .pm-action-orb svg{
+  width:21px!important;
+  height:21px!important;
+  stroke:var(--orb-color)!important;
+  stroke-width:2.8!important;
+  fill:none!important;
+  stroke-linecap:round!important;
+  stroke-linejoin:round!important;
+}
+#words-grid .pm-three-controls .pm-know-btn.active .pm-action-orb,
+#words-grid .pm-three-controls .pm-save-btn.starred .pm-action-orb{
+  background:var(--orb-color)!important;
+  box-shadow:0 4px 12px rgba(36,55,93,.095)!important;
+}
+#words-grid .pm-three-controls .pm-know-btn.active .pm-action-orb svg,
+#words-grid .pm-three-controls .pm-save-btn.starred .pm-action-orb svg{
+  stroke:#FFFFFF!important;
+}
+#words-grid .pm-three-controls .pm-action-caption{
+  color:#35496B!important;
+  font-size:clamp(10px,2.9vw,12px)!important;
+  font-weight:800!important;
+  letter-spacing:-.13px!important;
+  white-space:nowrap!important;
+  line-height:1.2!important;
+}
+#words-grid .pm-three-controls .pm-know-btn.active::after,
+#words-grid .pm-three-controls .pm-save-btn.starred::after{
+  content:"";
+  position:absolute;
+  bottom:5px;
+  width:23px;
+  height:3px;
+  border-radius:20px;
+  background:var(--orb-color);
+}
+#words-grid .pm-three-controls .pm-know-btn:hover,
+#words-grid .pm-three-controls .pm-save-btn:hover{
+  background:#F9FAFF!important;
+}
+#words-grid .pm-three-controls .pm-know-btn:active .pm-action-orb,
+#words-grid .pm-three-controls .pm-save-btn:active .pm-action-orb{
+  transform:scale(.94)!important;
+}
+#words-grid .pm-three-controls .pm-know-btn:focus-visible,
+#words-grid .pm-three-controls .pm-save-btn:focus-visible{
+  outline:2px solid #7D91DB!important;
+  outline-offset:-3px!important;
+}
+@media(max-width:767px){
+  /* 16px inside the existing words viewport reveals the back sheets. */
+  #words-grid.words-grid{padding-bottom:16px!important;overflow:hidden!important;}
+  #words-grid > .card{height:100%!important;padding-bottom:9px!important;}
+  #words-grid .card > .tinder-controls.pm-three-controls,
+  #words-grid .sub-card > .tinder-controls.pm-three-controls{
+    width:calc(100% + 30px)!important;
+    margin:4px -15px -9px!important;
+    border-radius:0 0 18px 18px!important;
+    flex:0 0 auto!important;
+  }
+  #words-grid .pm-three-controls .pm-know-btn,
+  #words-grid .pm-three-controls .pm-save-btn,
+  #words-grid .pm-three-controls .pm-know-btn.active,
+  #words-grid .pm-three-controls .pm-save-btn.starred{
+    min-height:82px!important;
+    padding:10px 2px 12px!important;
+    gap:6px!important;
+  }
+  #words-grid .pm-three-controls .pm-action-orb{
+    width:36px!important;height:36px!important;flex-basis:36px!important;
+    border-radius:11px!important;
+  }
+  #words-grid .pm-three-controls .pm-action-orb svg{width:21px!important;height:21px!important;}
+}
+@media(max-width:360px){
+  #words-grid .pm-three-controls .pm-know-btn,
+  #words-grid .pm-three-controls .pm-save-btn,
+  #words-grid .pm-three-controls .pm-know-btn.active,
+  #words-grid .pm-three-controls .pm-save-btn.starred{
+    min-height:73px!important;padding:7px 1px 11px!important;gap:5px!important;
+  }
+  #words-grid .pm-three-controls .pm-action-orb{
+    width:32px!important;height:32px!important;flex-basis:32px!important;
+  }
+  #words-grid .pm-three-controls .pm-action-orb svg{width:19px!important;height:19px!important;}
+  #words-grid .pm-three-controls .pm-action-caption{font-size:9.5px!important;}
+}
+@media(prefers-reduced-motion:reduce){
+  #words-grid .pm-three-controls .pm-action-orb{transition:none!important;}
+}
+
     </style>
 
 </head>
