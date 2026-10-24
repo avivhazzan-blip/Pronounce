@@ -2464,6 +2464,7 @@ let baseWordsData = [
 ///
 { id: "gen_x_axis", word: "X-axis", phonetic: "אֶקְס-אַק-סִיס", meaning: "ציר ה-X", letter: "X", derivatives: [] },
     { id: "gen_x_factor", word: "X-factor", phonetic: "אֶקְס-פַאק-טוֹר", meaning: "אקס-פקטור / גורם מסתורי", letter: "X", derivatives: [] },
+{ id: "gen_xenon", word: "Xenon", phonetic: "זִי-נוֹן", meaning: "קסנון (גז אציל)", letter: "X", derivatives: [] },
 ///
     { id: "gen_yawn", word: "Yawn", phonetic: "יוֹן", meaning: "לפהק", letter: "Y", derivatives: [] },
     { id: "gen_yet", word: "yet", phonetic: "יֶט", meaning: "עדיין / עם זאת", letter: "Y", derivatives: [] },
@@ -2475,6 +2476,13 @@ let baseWordsData = [
     { id: "gen_yard", word: "Yard", phonetic: "יַארְד", meaning: "חצר / יארד (מידת אורך)", letter: "Y", derivatives: [] },
     { id: "gen_youth", word: "Youth", phonetic: "יוּת'", meaning: "נוער / נעורים", letter: "Y", derivatives: [] },
     { id: "gen_yearly", word: "Yearly", phonetic: "יִיר-לִי", meaning: "שנתי", letter: "Y", derivatives: [] },
+{ id: "gen_you", word: "You", phonetic: "יוּ", meaning: "אתה / את / אתם / אתן", letter: "Y", derivatives: [] },
+    { id: "gen_your", word: "Your", phonetic: "יוֹר", meaning: "שלך / שלכם", letter: "Y", derivatives: [] },
+    { id: "gen_yourself", word: "Yourself", phonetic: "יוֹר-סֶלְף", meaning: "עצמך", letter: "Y", derivatives: [] },
+    { id: "gen_yourselves", word: "Yourselves", phonetic: "יוֹר-סֶלְבְז", meaning: "עצמכם", letter: "Y", derivatives: [] },
+    { id: "gen_yogurt", word: "Yogurt", phonetic: "יוֹ-גֶרְט", meaning: "יוגורט", letter: "Y", derivatives: [] },
+    { id: "gen_yell", word: "Yell", phonetic: "יֶל", meaning: "לצעוק / צעקה", letter: "Y", derivatives: [] },
+    { id: "gen_yolk", word: "Yolk", phonetic: "יוֹלְק", meaning: "חלמון (של ביצה)", letter: "Y", derivatives: [] },
 ///
     { id: "gen_zone", word: "Zone", phonetic: "זוֹן", meaning: "אזור", letter: "Z", derivatives: [] },
     { id: "gen_zero_sum", word: "Zero-sum", phonetic: "זִי-רוֹ-סַאם", meaning: "סכום אפס", letter: "Z", derivatives: [] },
@@ -2489,5 +2497,7 @@ let baseWordsData = [
     { id: "gen_zip_code", word: "zip code", phonetic: "זִיפּ קוֹד", meaning: "מיקוד (דואר)", letter: "Z", derivatives: [] },
     { id: "gen_zombie", word: "zombie", phonetic: "זוֹם-בִּי", meaning: "זומבי", letter: "Z", derivatives: [] },
     { id: "gen_zealot", word: "zealot", phonetic: "זֶ-לוֹט", meaning: "קנאי", letter: "Z", derivatives: [] }
+{ id: "gen_zesty", word: "Zesty", phonetic: "זֶס-טִי", meaning: "עסיסי / פיקנטי / רענן", letter: "Z", derivatives: [] },
+    { id: "gen_zip", word: "zip", phonetic: "זִיפּ", meaning: "רוכסן / מיקוד", letter: "Z", derivatives: [] },
 ///
 ];
