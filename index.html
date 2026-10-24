@@ -1976,6 +1976,118 @@ button:focus-visible,.phonetic:focus-visible,.az-badge:focus-visible { outline:3
  .pm-quiz-hud{min-height:29px}
 }
 
+
+/* PronounceMe approved targeted updates — all base theme colors stay intact. */
+/* Header search lives alongside the ORIGINAL settings button. */
+.pm-header-tools{display:flex;align-items:center;justify-content:flex-end;gap:7px;flex-shrink:0;direction:ltr}
+.pm-search-icon svg{width:19px;height:19px}
+@media(max-width:767px){.top-navbar{grid-template-columns:minmax(0,1fr) auto}.pm-header-tools{grid-column:2;grid-row:1}.pm-header-tools .nav-account{grid-column:auto;grid-row:auto;width:34px;height:34px}.mobile-tab{min-width:0;flex:1;padding:5px 2px;font-size:10px}}
+/* Preserve the original Discover cards, but group exactly THREE equal-size choices. */
+.tinder-controls.pm-three-controls{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px!important;width:100%;max-width:100%;margin-top:4px}
+.pm-three-controls .pm-know-btn,.pm-three-controls .pm-save-btn{appearance:none;position:static!important;inset:auto!important;transform:none!important;display:flex!important;flex-direction:column;justify-content:center;align-items:center;gap:5px;min-width:0;width:100%!important;min-height:65px!important;height:auto!important;border:1px solid #e5eaf3!important;border-radius:13px!important;background:#f8faff!important;color:#7c8ca9!important;box-shadow:none!important;padding:8px 3px!important;font-family:Inter,Heebo,system-ui,sans-serif!important;font-size:11px!important;font-weight:750!important;line-height:1.15;cursor:pointer;text-align:center}
+.pm-three-controls .pm-know-btn svg,.pm-three-controls .pm-save-btn svg{display:block;flex:none;width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+.pm-three-controls .pm-know-btn.active{background:#e9f8f0!important;border-color:#94d5b5!important;color:#218f62!important}
+.pm-three-controls .pm-save-btn.starred{background:#f0efff!important;border-color:#bcb3f5!important;color:#6659bf!important}
+.pm-three-controls .pm-know-btn span,.pm-three-controls .pm-save-btn span{display:block;max-width:100%;font-size:clamp(9px,2.5vw,11px);overflow-wrap:normal;word-break:normal;letter-spacing:-.2px}
+.pm-three-controls .pm-know-btn:focus-visible,.pm-three-controls .pm-save-btn:focus-visible{outline:3px solid #9dbaff;outline-offset:2px}
+@media(max-width:767px){.card .tinder-controls.pm-three-controls,.sub-card .tinder-controls.pm-three-controls{flex:0 0 auto!important;margin:3px 0!important;gap:6px!important}.pm-three-controls .pm-know-btn,.pm-three-controls .pm-save-btn{min-height:60px!important;padding:7px 2px!important}.pm-three-controls .pm-know-btn svg,.pm-three-controls .pm-save-btn svg{width:19px;height:19px}}
+.pm-memory-preview{display:block;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:10px;color:#596e91;margin-top:2px;text-align:center;direction:auto}
+.pm-memory-row:has(.pm-memory-preview){display:flex;flex-direction:column;gap:0}
+/* Search modal with backdrop supplied by the original .pm-dialog. */
+.pm-search-dialog-card{width:min(95vw,510px)!important;max-height:min(80dvh,620px)!important;display:flex;flex-direction:column;overflow:hidden}
+.pm-search-label{font-size:11px;color:#617293;display:block;margin-bottom:8px;font-weight:750}
+#pm-search-input{display:block;width:100%;min-height:46px;border:1px solid #dce4f3;background:#fafcff;border-radius:12px;padding:11px 15px;font-family:Inter,Heebo,sans-serif;font-size:15px;color:#253a60;direction:auto}
+#pm-search-input:focus{outline:2px solid #a5b7f8;outline-offset:1px}
+.pm-search-help{font-size:11px;color:#8895aa;margin:9px 0}
+.pm-search-results{overflow-y:auto;min-height:0;display:grid;align-content:start;gap:7px;max-height:50dvh}
+.pm-search-hit{border:1px solid #e7eaf4;border-radius:12px;background:#fff;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:11px 12px;color:#2f4266;text-align:start;font:inherit;cursor:pointer}
+.pm-search-hit strong{font-family:Inter,system-ui,sans-serif;font-size:15px;direction:ltr;display:block}
+.pm-search-hit small{font-size:11px;color:#7587a4}
+.pm-search-hit .pm-hit-play{font-size:18px;color:#4768bd;background:#f4f6ff;border-radius:50%;display:grid;place-items:center;width:32px;height:32px;flex:0 0 32px}
+.pm-search-hit:hover,.pm-search-hit:focus-visible{border-color:#a7b9f3;background:#f9faff}
+.pm-search-empty{padding:20px 10px;text-align:center;color:#7c88a1;font-size:13px}
+.pm-search-details{background:#f7f9ff;border:1px solid #e8ecfa;border-radius:14px;padding:13px;text-align:center}
+.pm-search-details h3{font-family:Inter,sans-serif;margin:4px 0 8px;direction:ltr}
+.pm-search-details p{margin:7px 0 11px;color:#5d6a88}
+.pm-search-detail-actions{display:flex;gap:8px;flex-wrap:wrap}
+.pm-search-detail-actions button{flex:1 1 100px;border:1px solid #dce5f7;background:#fff;border-radius:10px;padding:10px 9px;font:inherit;font-weight:750;font-size:11px;color:#4263ab;cursor:pointer}
+/* Daily Practice cap, keeping the existing Memory Studio progression/stages unchanged. */
+.pm-cap-banner{flex:0 0 auto;background:#f3f6fd;border:1px solid #e4e9f6;padding:7px 12px;border-radius:12px;display:flex;align-items:center;gap:9px;justify-content:space-between;font:700 11px Inter,Heebo,sans-serif;color:#5873a5}
+.pm-cap-bar{height:5px;border-radius:99px;background:#e0e7f6;min-width:65px;flex:1;max-width:140px;overflow:hidden}
+.pm-cap-bar span{display:block;background:linear-gradient(90deg,#87aaf3,#6ac7a4);height:100%;border-radius:99px}
+.pm-review-empty.pm-quota-finished{background:linear-gradient(165deg,#f9faff,#edf5ff);border:1px solid #cddaf4}
+.pm-review-empty.pm-quota-finished h3{color:#416ac0}
+/* Play ONLY: premium quiz-show presentation, unchanged question/answer/scoring behavior. */
+#pm-play-screen{background:radial-gradient(ellipse at 50% -10%,#cfd7ff 0,#eef0ff 37%,#f5f6fd 85%)!important;border-radius:17px;padding:7px 10px 9px!important}
+#pm-play-screen .play-panel{background:radial-gradient(ellipse at 55% 36%,#283d8c 0%,#172857 56%,#111c3e 100%)!important;border:1px solid #3b4e87!important;box-shadow:0 12px 36px rgba(24,40,97,.18),inset 0 1px 0 rgba(255,255,255,.13)!important;color:#fff!important;border-radius:22px!important;overflow:hidden!important;position:relative}
+#pm-play-screen .play-panel:before{content:"";position:absolute;pointer-events:none;inset:0;opacity:.45;background:radial-gradient(circle at 5% 30%,rgba(120,142,255,.27),transparent 31%),radial-gradient(circle at 95% 73%,rgba(202,155,255,.2),transparent 30%)}
+#pm-play-screen .play-head,#pm-play-screen .pm-game-content{position:relative;z-index:1}
+#pm-play-screen .play-head{border-bottom:1px solid rgba(255,255,255,.12);padding-bottom:5px;color:#d5ddff!important}
+#pm-play-screen .play-head .play-back{background:rgba(255,255,255,.1)!important;color:#edf1ff!important;border:1px solid rgba(255,255,255,.13)!important;border-radius:12px!important;padding:6px 9px!important}
+#pm-play-screen .play-pill{background:rgba(166,180,254,.16)!important;border:1px solid rgba(229,236,255,.2)!important;color:#e4e8ff!important}
+#pm-play-screen #pm-quiz-position{color:#dfe6ff!important}
+#pm-play-screen .pm-quiz-xp{display:inline-block!important;color:#f7da8d!important;font-size:14px!important;text-shadow:0 0 12px #ffc96860}
+#pm-play-screen .pm-live-heart{filter:drop-shadow(0 1px 3px #ff70903f)}
+#pm-play-screen .pm-quiz-trail{gap:5px!important}
+#pm-play-screen .pm-quiz-trail i{height:5px;border-radius:99px;background:#384978!important;border:0!important}
+#pm-play-screen .pm-quiz-trail i.current{background:linear-gradient(90deg,#f4d47f,#fff4c8)!important;box-shadow:0 0 9px #f5d37f6a}
+#pm-play-screen .pm-quiz-trail i.correct{background:#61d3a2!important}
+#pm-play-screen .pm-quiz-trail i.wrong{background:#ec8299!important}
+#pm-play-screen .pm-rush-clock{background:radial-gradient(closest-side,#1d3267 79%,transparent 83%),conic-gradient(#efd991 var(--clock-progress),#53639a 0)!important;color:#fff1c2!important;filter:drop-shadow(0 0 4px #efd99135);font-size:12px!important}
+#pm-play-screen .pm-rush-clock.low{background:radial-gradient(closest-side,#1d3267 79%,transparent 83%),conic-gradient(#ff9292 var(--clock-progress),#53639a 0)!important;color:#ffd2d2!important}
+#pm-play-screen .pm-timer-free{color:#d7def4!important}
+#pm-play-screen .pm-game-content .pm-rush-question{background:linear-gradient(145deg,rgba(102,124,211,.34),rgba(31,48,105,.34))!important;border:1px solid rgba(196,209,255,.25)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 6px 20px #0a153136!important;border-radius:19px!important}
+#pm-play-screen .pm-rush-question>span{color:#bfd0ff!important;letter-spacing:.13em}
+#pm-play-screen .pm-rush-question strong{color:#fff!important;text-shadow:0 2px 14px rgba(0,0,0,.18);font-weight:850!important;letter-spacing:-.5px}
+#pm-play-screen .pm-game-content .pm-rush-answer-grid{gap:9px!important}
+#pm-play-screen .pm-game-content .pm-rush-answer-grid .quiz-answer{background:linear-gradient(145deg,rgba(245,248,255,.99),rgba(230,235,255,.97))!important;border:1.5px solid #b4c1ec!important;box-shadow:inset 0 1px 0 #fff,0 4px 10px #050f3059!important;border-radius:17px!important;color:#283864!important;transition:transform .14s ease,box-shadow .14s ease,background .14s ease!important;min-height:0!important;justify-content:flex-start!important}
+#pm-play-screen .pm-game-content .pm-rush-answer-grid .quiz-answer:not(:disabled):active{transform:scale(.975)}
+#pm-play-screen .pm-game-content .pm-rush-answer-grid .quiz-answer:not(:disabled):hover{border-color:#ffe1a3!important;box-shadow:inset 0 1px 0 #fff,0 0 0 1px #f8da98,0 5px 15px #101f5870!important}
+#pm-play-screen .pm-choice-letter{background:#324c8a!important;color:#fff2bf!important;border:1px solid #7389b7!important;font-size:11px}
+#pm-play-screen .pm-game-content .pm-rush-answer-grid .quiz-answer.correct{background:linear-gradient(145deg,#d4f9e3,#b5eccc)!important;color:#145c41!important;border-color:#54d59a!important;box-shadow:0 0 13px #5ad69a7a!important}
+#pm-play-screen .pm-game-content .pm-rush-answer-grid .quiz-answer.incorrect{background:linear-gradient(145deg,#ffe0e7,#ffcbd8)!important;color:#8d3049!important;border-color:#f58ba4!important}
+#pm-play-screen .quiz-feedback{color:#e5eafa!important}
+#pm-play-screen .quiz-feedback.rush-feedback-good{color:#a3f5cf!important}
+#pm-play-screen .quiz-feedback.rush-feedback-wrong{color:#ffd4d7!important}
+#pm-play-screen .rush-next{background:linear-gradient(120deg,#eccb7b,#ffe6ac)!important;color:#303457!important;border:0!important;font-weight:800!important;box-shadow:0 5px 15px #0004!important}
+#pm-play-screen .rush-end h2,#pm-play-screen .rush-end strong{color:#fff!important}
+#pm-play-screen .rush-end{color:#e6edff!important}
+#pm-play-screen .rush-end .quiz-button{background:#e2e8ff!important;color:#1a3159!important}
+/* English Rules: an extension, not a replacement for the original Practice/Play screens. */
+#pm-rules-screen[hidden]{display:none!important}
+.pm-rules-screen{width:min(100%,820px);margin:0 auto;flex:1;overflow:auto;padding:19px 18px 105px;color:#29364e}
+.pm-rules-top{padding:2px 4px 15px}.pm-rules-top h2{font-family:Inter,Heebo,sans-serif;margin:7px 0;font-weight:850;font-size:clamp(24px,5vw,32px);letter-spacing:-1px}.pm-rules-top p{font-size:12px;line-height:1.6;color:#73839f;margin:0}
+.pm-rule-section-title{font:800 15px Inter,Heebo,sans-serif;margin:13px 0}
+.pm-rule-feature{background:#eef3ff;border:1px solid #dbe5fb;border-radius:17px;padding:16px 17px;margin:0 0 19px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.pm-rule-feature strong{display:block;font-family:Inter,Heebo,sans-serif;font-size:15px}.pm-rule-feature small{color:#6579a0;font-size:11px}
+.pm-rule-feature button,.pm-rule-lesson .pm-rule-btn{background:#506bdf;color:#fff;font:700 12px Inter,Heebo,sans-serif;border:0;border-radius:11px;padding:10px 14px;cursor:pointer}
+.pm-rule-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.pm-rule-topic{background:#fff;border:1px solid #e6ebf6;border-radius:17px;text-align:left;display:flex;flex-direction:column;gap:8px;padding:17px 15px;cursor:pointer;font:inherit;color:#354767;box-shadow:0 5px 20px #263e7208}
+.pm-rule-topic b{font-size:13px}.pm-rule-topic span{color:#7a88a3;font-size:11px;line-height:1.4}.pm-rule-topic .pm-rule-ico{font-size:21px;color:#5479c6;background:#eef3ff;border-radius:11px;width:41px;height:41px;display:grid;place-items:center}
+.pm-rule-back{background:transparent;border:0;color:#637cb0;font-weight:750;padding:9px 0;font:inherit;cursor:pointer}
+.pm-rule-list{display:grid;gap:8px}.pm-rule-item{background:white;border:1px solid #e6ebf6;border-radius:14px;padding:13px 15px;display:flex;justify-content:space-between;gap:12px;text-align:left;align-items:center;font:inherit;color:#354666;cursor:pointer}
+.pm-rule-item strong{display:block;font-family:Inter,Heebo,sans-serif;font-size:14px}.pm-rule-item small{color:#8291a8;font-size:11px}
+.pm-rule-lesson{background:#fff;border:1px solid #e5eafa;border-radius:21px;padding:18px;margin:10px 0;box-shadow:0 9px 28px #182e670b}
+.pm-rule-lesson h3{font-family:Inter,Heebo,sans-serif;font-size:23px;margin:5px 0 8px;letter-spacing:-.7px}.pm-rule-lesson p{line-height:1.8;color:#5e6e8b;font-size:13px}
+.pm-rule-examples{background:#f7f9fe;border-radius:14px;padding:12px 14px;margin:16px 0;display:grid;gap:10px;direction:ltr}
+.pm-rule-example{display:flex;justify-content:space-between;align-items:center;gap:7px;color:#324669;font-weight:750;font-size:14px}
+.pm-rule-example button{border:1px solid #dce4f5;background:#fff;color:#5876b6;border-radius:10px;padding:7px 10px;font-size:13px;cursor:pointer}
+.pm-rule-exercise{margin-top:18px;border-top:1px solid #e8ecf6;padding-top:16px}
+.pm-rule-exercise h4{margin:0 0 10px;font-size:14px;color:#2c3f68}.pm-rule-choice{display:block;width:100%;text-align:left;font:650 13px Inter,Heebo,sans-serif;margin:8px 0;padding:12px 14px;background:#f8faff;color:#344766;border:1px solid #e0e6f4;border-radius:11px;cursor:pointer}
+.pm-rule-choice.correct{background:#ebfaef;border-color:#85d4a2;color:#267750}.pm-rule-choice.incorrect{background:#fff0f0;border-color:#e8a1a6;color:#b74e5a}
+.pm-rule-feedback{color:#526c98;font-size:12px;line-height:1.6;margin:10px 0}
+.pm-rule-mic{display:flex;align-items:center;gap:9px;margin:13px 0;border-radius:12px;padding:12px;background:#eef5ff;font-size:12px;color:#476a9b}.pm-rule-mic button{border:1px solid #bfd3f7;background:#fff;border-radius:10px;padding:9px 12px;color:#4269ad;font:750 12px Inter,sans-serif;cursor:pointer}
+.pm-rule-progress{border-radius:12px;background:#eef2fb;padding:11px;font-size:11px;color:#59709d;margin-top:12px}
+@media(max-width:767px){.pm-rules-screen{padding:12px 12px 110px}.pm-rule-grid{gap:8px}.pm-rule-topic{padding:12px 10px}.pm-rule-feature{padding:13px}.pm-rule-lesson{padding:14px}}
+
+.pm-three-controls .pm-legacy-no[hidden]{display:none!important}
+.pm-three-controls [hidden]{display:none!important}
+@media(max-width:767px){.top-navbar{direction:ltr!important}.pm-header-tools{justify-self:end}}
+/* Mobile follows the ORIGINAL layout: account/search on the left, brand on the right. */
+@media(max-width:767px){.top-navbar{direction:ltr!important;grid-template-columns:auto minmax(0,1fr)!important}.top-navbar .brand{grid-column:2!important;grid-row:1!important;justify-self:end!important}.top-navbar .pm-header-tools{grid-column:1!important;grid-row:1!important;justify-self:start!important}}
+.pm-memory-preview{font-family:Inter,Heebo,sans-serif;max-width:90%;align-self:center;flex-shrink:0;font-size:10px;line-height:1.25;margin:0 auto;direction:auto}
+#pm-play-screen .pm-rush-question{direction:ltr!important}
+
     </style>
 
 </head>
@@ -1998,7 +2110,8 @@ button:focus-visible,.phonetic:focus-visible,.az-badge:focus-visible { outline:3
           <span class="progress-container"><span class="progress-bar-fill" id="progress-fill"></span></span>
         </span>
     </button>
-    <button type="button" class="nav-account" onclick="openAccountModal()" title="חשבון וגיבוי" aria-label="חשבון וגיבוי"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z"/><path d="M19.4 15a1.7 1.7 0 0 1 .34 1.87l-.42.72a1.7 1.7 0 0 1-1.8.81l-1.2-.25a7.8 7.8 0 0 1-1.54.9l-.42 1.18a1.7 1.7 0 0 1-1.59 1.1h-1.5a1.7 1.7 0 0 1-1.6-1.1l-.4-1.18a7.7 7.7 0 0 1-1.54-.9l-1.22.25a1.7 1.7 0 0 1-1.8-.81l-.42-.72A1.7 1.7 0 0 1 4.6 15l.8-.92a8.2 8.2 0 0 1 0-1.78l-.8-.92a1.7 1.7 0 0 1-.34-1.88l.42-.72a1.7 1.7 0 0 1 1.8-.81l1.2.25a7.8 7.8 0 0 1 1.54-.9l.42-1.18a1.7 1.7 0 0 1 1.59-1.1h1.5a1.7 1.7 0 0 1 1.6 1.1l.4 1.18a7.8 7.8 0 0 1 1.54.9l1.22-.25a1.7 1.7 0 0 1 1.8.81l.42.72a1.7 1.7 0 0 1-.34 1.88l-.8.92c.07.6.07 1.18 0 1.78z" transform="translate(0,-1) scale(.97)"/></svg></button>
+    <div class="pm-header-tools"><button type="button" id="pm-open-search" class="nav-account pm-search-icon" onclick="pmOpenSearch()" title="Search words" aria-label="Search words"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85"><circle cx="10.7" cy="10.7" r="6.8"/><path d="m16 16 5 5"/></svg></button>
+    <button type="button" class="nav-account" onclick="openAccountModal()" title="חשבון וגיבוי" aria-label="חשבון וגיבוי"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z"/><path d="M19.4 15a1.7 1.7 0 0 1 .34 1.87l-.42.72a1.7 1.7 0 0 1-1.8.81l-1.2-.25a7.8 7.8 0 0 1-1.54.9l-.42 1.18a1.7 1.7 0 0 1-1.59 1.1h-1.5a1.7 1.7 0 0 1-1.6-1.1l-.4-1.18a7.7 7.7 0 0 1-1.54-.9l-1.22.25a1.7 1.7 0 0 1-1.8-.81l-.42-.72A1.7 1.7 0 0 1 4.6 15l.8-.92a8.2 8.2 0 0 1 0-1.78l-.8-.92a1.7 1.7 0 0 1-.34-1.88l.42-.72a1.7 1.7 0 0 1 1.8-.81l1.2.25a7.8 7.8 0 0 1 1.54-.9l.42-1.18a1.7 1.7 0 0 1 1.59-1.1h1.5a1.7 1.7 0 0 1 1.6 1.1l.4 1.18a7.8 7.8 0 0 1 1.54.9l1.22-.25a1.7 1.7 0 0 1 1.8.81l.42.72a1.7 1.7 0 0 1-.34 1.88l-.8.92c.07.6.07 1.18 0 1.78z" transform="translate(0,-1) scale(.97)"/></svg></button></div>
 </div>
 
 <div class="container">
@@ -2026,7 +2139,7 @@ button:focus-visible,.phonetic:focus-visible,.az-badge:focus-visible { outline:3
         <button class="filter-btn" onclick="setFilter('green', this)"><span class="filter-dot green"></span>Known <span class="filter-count" id="count-green">0</span></button>
         <button class="filter-btn" onclick="setFilter('yellow', this)"><span class="filter-dot yellow"></span>Partial <span class="filter-count" id="count-yellow">0</span></button>
         <button class="filter-btn" onclick="setFilter('red', this)"><span class="filter-dot red"></span>To Learn <span class="filter-count" id="count-red">0</span></button>
-        <button class="filter-btn" onclick="setFilter('practice', this)">★ Practice List <span class="filter-count" id="count-practice">0</span></button>
+        <button class="filter-btn" onclick="setFilter('practice', this)">▣ Practice List <span class="filter-count" id="count-practice">0</span></button>
     </div>
 
     <div class="words-grid" id="words-grid">
@@ -2087,9 +2200,10 @@ button:focus-visible,.phonetic:focus-visible,.az-badge:focus-visible { outline:3
 
 
 <nav class="mobile-bottom-tabs" aria-label="Main navigation" dir="ltr">
-    <button type="button" class="mobile-tab active" id="pm-tab-learn" onclick="pmShowTab('learn')"><svg viewBox="0 0 24 24"><path d="M12 6c-4-2-7-2-10-1v14c3-1 6-1 10 1 4-2 7-2 10-1V5c-3-1-6-1-10 1ZM12 6v14"/></svg>Learn</button>
-    <button type="button" class="mobile-tab" id="pm-tab-play" onclick="pmShowTab('play')"><svg viewBox="0 0 24 24"><path d="M6.2 8.5c-2.5.2-4.1 2.6-4.1 5.6 0 3.3 1.7 5.6 3.7 5.6 1.4 0 2.1-1.3 3.4-2.6h5.6c1.3 1.3 2 2.6 3.4 2.6 2 0 3.7-2.3 3.7-5.6 0-3-1.6-5.4-4.1-5.6h-11.6zM7 12v4m-2-2h4m7-1h.01m2 2h.01"/></svg>Play</button>
+    <button type="button" class="mobile-tab active" id="pm-tab-learn" onclick="pmShowTab('learn')"><svg viewBox="0 0 24 24"><path d="M12 6c-4-2-7-2-10-1v14c3-1 6-1 10 1 4-2 7-2 10-1V5c-3-1-6-1-10 1ZM12 6v14"/></svg>Discover</button>
     <button type="button" class="mobile-tab" id="pm-tab-practice" onclick="pmShowTab('practice')"><svg viewBox="0 0 24 24"><path d="m12 3 2.8 5.9 6.5.9-4.8 4.7 1.1 6.5-5.6-3-5.6 3 1.1-6.5-4.8-4.7 6.5-.9z"/></svg>Practice</button>
+    <button type="button" class="mobile-tab" id="pm-tab-play" onclick="pmShowTab('play')"><svg viewBox="0 0 24 24"><path d="M6.2 8.5c-2.5.2-4.1 2.6-4.1 5.6 0 3.3 1.7 5.6 3.7 5.6 1.4 0 2.1-1.3 3.4-2.6h5.6c1.3 1.3 2 2.6 3.4 2.6 2 0 3.7-2.3 3.7-5.6 0-3-1.6-5.4-4.1-5.6h-11.6zM7 12v4m-2-2h4m7-1h.01m2 2h.01"/></svg>Play</button>
+    <button type="button" class="mobile-tab" id="pm-tab-rules" onclick="pmShowTab('rules')"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4zM8 9h8M8 13h5"/></svg>Rules</button>
 </nav>
 
 <div class="pm-dialog" id="pm-derivatives-dialog" role="dialog" aria-modal="true" aria-label="Tenses and derivatives">
@@ -2162,9 +2276,13 @@ button:focus-visible,.phonetic:focus-visible,.az-badge:focus-visible { outline:3
 <section id="pm-practice-screen" class="pm-practice-screen" aria-label="Smart Memory Practice" hidden><div id="pm-practice-root"></div></section>
 <section id="pm-play-screen" aria-label="Quick Play" hidden>
  <div class="play-panel">
-  <div class="play-head"><button class="play-back" type="button" onclick="pmShowTab('learn')" aria-label="Return to learning">← Learn</button><span class="play-pill"><svg viewBox="0 0 24 24"><path d="M6.2 8.5c-2.5.2-4.1 2.6-4.1 5.6 0 3.3 1.7 5.6 3.7 5.6 1.4 0 2.1-1.3 3.4-2.6h5.6c1.3 1.3 2 2.6 3.4 2.6 2 0 3.7-2.3 3.7-5.6 0-3-1.6-5.4-4.1-5.6h-11.6zM7 12v4m-2-2h4m7-1h.01m2 2h.01"/></svg> Word Rush</span><span id="pm-quiz-position">10 questions</span></div>
+  <div class="play-head"><button class="play-back" type="button" onclick="pmShowTab('learn')" aria-label="Return to learning">← Discover</button><span class="play-pill"><svg viewBox="0 0 24 24"><path d="M6.2 8.5c-2.5.2-4.1 2.6-4.1 5.6 0 3.3 1.7 5.6 3.7 5.6 1.4 0 2.1-1.3 3.4-2.6h5.6c1.3 1.3 2 2.6 3.4 2.6 2 0 3.7-2.3 3.7-5.6 0-3-1.6-5.4-4.1-5.6h-11.6zM7 12v4m-2-2h4m7-1h.01m2 2h.01"/></svg> Word Rush</span><span id="pm-quiz-position">10 questions</span></div>
   <div id="pm-game-content" class="pm-game-content"></div>
  </div>
+</section>
+<section id="pm-rules-screen" class="pm-rules-screen" hidden aria-label="English Rules">
+  <div class="pm-rules-top"><span class="pm-eyebrow">ENGLISH RULES</span><h2>Speak with confidence.</h2><p>Pronunciation, natural speech and useful sentence patterns. Short lessons with real practice.</p></div>
+  <div id="pm-rules-root"></div>
 </section>
 
 </div><!-- /#app-shell -->
@@ -2199,6 +2317,7 @@ button:focus-visible,.phonetic:focus-visible,.az-badge:focus-visible { outline:3
             <div id="pm-sync-indicator" class="sync-state">Cloud sync</div>
             <button class="pm-account-btn" onclick="pmExportBackup()">↓ הורד גיבוי JSON של כל הנתונים</button>
             <div class="pm-account-section"><b>Daily Learning Goal</b><p id="pm-account-daily-status" class="pm-small-hint">Today: 0 / 8</p><select id="pm-daily-goal" onchange="pmUpdatePreference('dailyGoal',Number(this.value))"><option value="5">5 words</option><option value="8">8 words</option><option value="12">12 words</option></select></div>
+            <div class="pm-account-section"><b>Daily Practice Cap</b><p id="pm-account-practice-status" class="pm-small-hint">Practice up to 8 different words each day.</p><select id="pm-practice-limit" onchange="pmUpdatePreference('practiceLimit',Number(this.value))"><option value="5">5 words</option><option value="8">8 words (recommended)</option><option value="10">10 words</option><option value="12">12 words</option></select></div>
             <div class="pm-account-section"><b>Word Rush timer</b><label class="pm-switch"><input type="checkbox" id="pm-game-timer" onchange="pmUpdatePreference('timer',this.checked)"> 20 seconds per question</label></div>
             <div class="pm-account-section"><b>Daily reminder</b><div class="pm-account-select"><select id="pm-reminder-hour" onchange="pmUpdatePreference('reminderHour',Number(this.value))"></select><button type="button" class="pm-mini-action" onclick="pmEnableNotifications()" id="pm-notify-enable">Enable notifications</button><button type="button" class="pm-mini-action" id="pm-notify-disable" onclick="pmDisableNotifications()" hidden>Disable</button></div><p id="pm-notification-status" class="pm-small-hint">Notifications require HTTPS, an installed app where applicable, and Firebase Cloud Messaging configuration.</p></div>
             <button class="pm-account-btn" onclick="pmResetLearning()">↻ Reset Learning Progress</button>
@@ -2214,6 +2333,15 @@ button:focus-visible,.phonetic:focus-visible,.az-badge:focus-visible { outline:3
  <textarea id="pm-memory-input" rows="4" maxlength="700" placeholder="למשל קשר צלילי, תמונה שאתה מדמיין או זיכרון אישי…"></textarea>
  <div class="pm-memory-actions"><button type="button" class="pm-mini-action" onclick="pmDeleteMemoryLink()">Remove</button><button type="button" class="quiz-button" onclick="pmSaveMemoryLink()">Save my link</button></div>
  </div>
+</div>
+<div class="pm-dialog" id="pm-search-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-search-title">
+  <div class="pm-dialog-card pm-search-dialog-card">
+    <div class="pm-dialog-head"><h2 id="pm-search-title">Search words</h2><button class="pm-x" type="button" onclick="pmCloseDialogs()" aria-label="Close search">×</button></div>
+    <label class="pm-search-label" for="pm-search-input">Search in English or Hebrew</label>
+    <input id="pm-search-input" type="search" placeholder="Type a word or meaning…" autocomplete="off" oninput="pmSearchUpdate()" />
+    <p class="pm-search-help">Searches the existing dictionary and words you added to your account.</p>
+    <div id="pm-search-results" class="pm-search-results" aria-live="polite"></div>
+  </div>
 </div>
 <!-- Firebase credentials: paste the Web App configuration from your own Firebase project here. -->
 <script>
@@ -3837,7 +3965,7 @@ function renderGameEnd(isNewBest=false){
  `<div class="rush-summary-stats"><div class="rush-summary-stat"><strong style="color:#16a473">${correct}</strong><small>Correct</small></div><div class="rush-summary-stat"><strong style="color:#dc6675">${bad}</strong><small>Wrong</small></div><div class="rush-summary-stat"><strong>${pct}%</strong><small>Accuracy</small></div></div>`+
  `<div class="rush-results-title"><span>Your Words</span><span class="pm-muted">${correct}/${num} correct</span></div>`+
  `<div class="rush-results">${gameResults.map(r=>`<div class="rush-result">${gameIcon(r.correct)}<div class="rush-result-word"><strong lang="en">${escapeHTML(r.word)}</strong><small>${escapeHTML(r.meaning)}</small></div>${r.correct?'':`<button type="button" class="rush-result-star ${userProgress[r.id]?.starred?'starred':''}" data-word-id="${escapeHTML(r.id)}" aria-label="${userProgress[r.id]?.starred?'Remove from':'Add to'} Practice List" onclick="pmToggleGameStar(this)">${resultStarSVG}</button>`}</div>`).join('')}</div>`+
- `<div class="rush-end-buttons">${bad?'<button type="button" class="quiz-button soft" onclick="pmPracticeMissed()">★ Practice Mistakes</button>':''}<button type="button" class="quiz-button" onclick="pmNewGame()">↻ Play Again</button><button type="button" class="quiz-button soft" onclick="pmShowTab('learn')">Learn</button></div>`+
+ `<div class="rush-end-buttons">${bad?'<button type="button" class="quiz-button soft" onclick="pmPracticeMissed()">★ Practice Mistakes</button>':''}<button type="button" class="quiz-button" onclick="pmNewGame()">↻ Play Again</button><button type="button" class="quiz-button soft" onclick="pmShowTab('learn')">Discover</button></div>`+
  `<div class="rush-end-sub">Best: ${gameData.bestScore} XP · ${gameData.sessions} runs · Game results never change your manual knowledge ratings</div></div>`;
 }
 window.pmToggleGameStar=function(button){
@@ -3957,8 +4085,8 @@ function setupFirebase(){
   }catch(err){setAuthMessage('שגיאת הגדרה ב־Firebase: '+(err.message||String(err)));}
 }
 /* PronounceMe v4 — Smart Review / Memory Links / Daily / Timed Word Rush / Push. */
-const PM_WEB_PUSH_VAPID_KEY = "BPcNlWWmG-GETB7h1wcvQvV6y4OzzOSE5Cb-578Y-frmDlyVDl01y87qzPivsdiuolP9OcEWn1FycMfCWnp-hho";
-    const pmDayKey=(date=new Date())=>{const p=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Jerusalem',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(date);const o=Object.fromEntries(p.map(x=>[x.type,x.value]));return `${o.year}-${o.month}-${o.day}`;};
+const PM_WEB_PUSH_VAPID_KEY="BPcNlWWmG-GETB7h1wcvQvV6y4OzzOSE5Cb-578Y-frmDlyVDl01y87qzPivsdiuolP9OcEWn1FycMfCWnp-hho";
+const pmDayKey=(date=new Date())=>{const p=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Jerusalem',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(date);const o=Object.fromEntries(p.map(x=>[x.type,x.value]));return `${o.year}-${o.month}-${o.day}`;};
 function pmPersistExtras(){if(!accountReady)return;for(const [key,data] of [[PM_EXTRA_KEYS.memory,memoryLinks],[PM_EXTRA_KEYS.reviews,reviewData],[PM_EXTRA_KEYS.daily,dailyData],[PM_EXTRA_KEYS.prefs,prefs]])localStorage.setItem(key,JSON.stringify(data));pmScheduleSync();}
 function pmMarkDaily(id){
  if(!accountReady||!id)return;
@@ -3979,12 +4107,15 @@ function pmRenderDaily(){
 window.pmUpdatePreference=function(name,value){
  if(!accountReady)return;
  if(name==='dailyGoal'&&! [5,8,12].includes(value))return;
+ if(name==='practiceLimit'&&! [5,8,10,12].includes(value))return;
  if(name==='reminderHour'&&(!Number.isInteger(value)||value<5||value>23))return;
  if(name==='timer')value=Boolean(value);
  prefs[name]=value;pmPersistExtras();pmRenderDaily();pmRenderAccountPrefs();
 };
 function pmRenderAccountPrefs(){
  const goal=ui('pm-daily-goal'),timer=ui('pm-game-timer'),hours=ui('pm-reminder-hour');
+ const practiceLimit=ui('pm-practice-limit');if(practiceLimit)practiceLimit.value=String([5,8,10,12].includes(Number(prefs.practiceLimit))?prefs.practiceLimit:8);
+ const pStat=ui('pm-account-practice-status');if(pStat)pStat.textContent=`Today: ${pmPracticeDailyCount()} / ${pmPracticeCap()} completed words · hard daily stop`;
  if(goal)goal.value=String(prefs.dailyGoal||8);
  if(timer)timer.checked=prefs.timer!==false;
  if(hours){if(!hours.options.length)for(let h=5;h<=23;h++){const op=document.createElement('option');op.value=h;op.textContent=String(h).padStart(2,'0')+':00';hours.append(op);}hours.value=String(prefs.reminderHour??18);}
@@ -4239,6 +4370,231 @@ window.pmEnableNotifications=async function(){
 if('serviceWorker' in navigator && /^https?:$/.test(location.protocol))window.addEventListener('load',()=>{
  navigator.serviceWorker.register('./service-worker.js',{scope:'./'}).catch(err=>console.warn('PWA service worker:',err));
 });
+
+/* ========= PronounceMe targeted improvements (2026-10) =========
+ * Original dictionary, Firebase account, Review scheduling, and Word Rush logic retained.
+ * New state lives in existing synced dailyData/prefs. Nothing is stored in a new JS dictionary.
+ */
+// Three *equal* action buttons replace only the old X/✓ area. Their state remains p/m/starred.
+const pmKnownCheckIcon='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4.5 12.5 5 5L19.5 7"/></svg>';
+const pmBookmarkIcon='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.5h12v16l-6-4-6 4z"/></svg>';
+generateControls=function(id){
+ const state=userProgress[id]||{p:0,m:0};
+ // id values originate in dictionary.js and from the app's own generated custom-word IDs.
+ return `<div class="tinder-controls pm-three-controls" aria-label="Mark knowledge and practice">
+ <button type="button" id="btn-${id}-p-yes" class="pm-know-btn ${state.p===1?'active':''}" aria-pressed="${state.p===1}" onclick="pmToggleKnown('${id}','p')">${pmKnownCheckIcon}<span>Pronunciation</span></button>
+ <button type="button" id="btn-${id}-p-no" class="pm-legacy-no" hidden aria-hidden="true" tabindex="-1"></button>
+ <button type="button" id="btn-${id}-m-yes" class="pm-know-btn ${state.m===1?'active':''}" aria-pressed="${state.m===1}" onclick="pmToggleKnown('${id}','m')">${pmKnownCheckIcon}<span>Meaning</span></button>
+ <button type="button" id="btn-${id}-m-no" class="pm-legacy-no" hidden aria-hidden="true" tabindex="-1"></button>
+ </div>`;
+};
+window.pmToggleKnown=function(id,skill){
+ const old=userProgress[id]?.[skill]||0;
+ // A second click clears the positive mark. Previous legacy -1 marks remain preserved until explicitly changed.
+ setStatus(id,skill,old===1?0:1);
+};
+const pmDiscoverRender=pmPostRender;
+pmPostRender=function(list){
+ pmDiscoverRender(list);
+ for(const card of ui('words-grid').querySelectorAll('.card,.sub-card')){
+  const controls=card.querySelector('.tinder-controls.pm-three-controls');
+  const saved=card.querySelector('.star-btn');
+  if(controls&&saved){
+   controls.appendChild(saved);
+   const active=Boolean(userProgress[card.id.slice(5)]?.starred);
+   saved.className='pm-save-btn'+(active?' starred':'');
+   saved.innerHTML=pmBookmarkIcon+'<span>Practice</span>';
+   saved.setAttribute('title',active?'Remove from Practice List':'Add to Practice List');
+   saved.setAttribute('aria-pressed',String(active));
+   saved.setAttribute('aria-label',active?'Remove from Practice List':'Add to Practice List');
+  }
+  for(const type of ['p','m']){
+   const btn=ui('btn-'+card.id.slice(5)+'-'+type+'-yes');
+   if(btn){const active=Boolean(userProgress[card.id.slice(5)]?.[type]===1);btn.className='pm-know-btn'+(active?' active':'');btn.innerHTML=pmKnownCheckIcon+'<span>'+(type==='p'?'Pronunciation':'Meaning')+'</span>';btn.setAttribute('aria-pressed',String(active));}
+  }
+  const row=card.querySelector('.pm-memory-row'),id=card.id.slice(5);
+  if(row&&memoryLinks[id]){
+   const memo=document.createElement('span');memo.className='pm-memory-preview';
+   memo.textContent='My Memory Link: '+String(memoryLinks[id]);memo.title=String(memoryLinks[id]);card.querySelector('.english-word')?.after(memo);
+  }
+ }
+};
+const pmOldUpdateUIForControls=updateUI;
+updateUI=function(){pmOldUpdateUIForControls();for(const btn of document.querySelectorAll('.tinder-controls.pm-three-controls .pm-know-btn')){const id=btn.id.split('-').slice(1,-2).join('-');const type=btn.id.includes('-p-')?'p':'m';const active=Boolean(userProgress[id]?.[type]===1);btn.className='pm-know-btn'+(active?' active':'');btn.innerHTML=pmKnownCheckIcon+'<span>'+(type==='p'?'Pronunciation':'Meaning')+'</span>';btn.setAttribute('aria-pressed',String(active));}};
+const pmStarOriginal=toggleStar;
+toggleStar=function(id){pmStarOriginal(id);const b=ui('star-'+id);if(b){b.classList.toggle('starred',Boolean(userProgress[id]?.starred));b.setAttribute('aria-pressed',String(Boolean(userProgress[id]?.starred)));b.setAttribute('aria-label',userProgress[id]?.starred?'Remove from Practice List':'Add to Practice List');}};
+// Semantic consistency: legacy red -1/-1 and new unmarked 0/0 both belong to "To Learn".
+// Status color/partial classification stays with the original getCardState, no migration.
+// Swipe a card (not an interactive button) to invoke the exact same navigation as the arrow buttons.
+let pmTouchBegin=null;
+ui('words-grid').addEventListener('touchstart',ev=>{
+ pmTouchBegin=null;
+ if(!phone()||!ui('pm-practice-screen').hidden||!ui('pm-play-screen').hidden)return;
+ if(ev.touches.length!==1||ev.target.closest('button,input,textarea,a,[contenteditable="true"]'))return;
+ pmTouchBegin={x:ev.touches[0].clientX,y:ev.touches[0].clientY};
+},{passive:true});
+ui('words-grid').addEventListener('touchend',ev=>{
+ if(!pmTouchBegin||!phone())return;
+ const t=ev.changedTouches[0];if(!t)return;
+ const dx=t.clientX-pmTouchBegin.x,dy=t.clientY-pmTouchBegin.y;pmTouchBegin=null;
+ if(Math.abs(dx)>65&&Math.abs(dx)>Math.abs(dy)*1.4)window.pmMoveWord(dx<0?1:-1);
+},{passive:true});
+ui('words-grid').addEventListener('touchcancel',()=>{pmTouchBegin=null;},{passive:true});
+
+// Search over base dictionary + synced custom words; derivatives included as independent entries.
+function pmDictionaryEntries(){const arr=[];for(const w of wordsData){arr.push({item:w,parent:w});for(const d of (w.derivatives||[]))arr.push({item:d,parent:w});}return arr;}
+window.pmOpenSearch=function(){
+ if(!accountReady)return;
+ ui('pm-search-dialog').classList.add('open');ui('pm-search-input').value='';pmSearchUpdate();
+ setTimeout(()=>ui('pm-search-input')?.focus(),40);
+};
+window.pmSearchUpdate=function(){
+ const box=ui('pm-search-results'),q=ui('pm-search-input').value.trim().toLocaleLowerCase();
+ const matches=pmDictionaryEntries().filter(({item})=>!q||String(item.word).toLocaleLowerCase().includes(q)||String(item.meaning||'').toLocaleLowerCase().includes(q)).slice(0,80);
+ if(!matches.length){box.innerHTML='<div class="pm-search-empty">No matching word in your dictionary.</div>';return;}
+ box.innerHTML=matches.map(({item})=>`<button class="pm-search-hit" type="button" data-pm-word="${escapeHTML(String(item.id))}" onclick="pmSearchDetails(this.dataset.pmWord)"><span><strong>${escapeHTML(item.word)}</strong><small>${escapeHTML(item.meaning||'')}</small></span><span class="pm-hit-play" aria-hidden="true">›</span></button>`).join('');
+};
+window.pmSearchDetails=function(id){
+ const record=pmDictionaryEntries().find(x=>String(x.item.id)===String(id));if(!record)return;
+ const {item,parent}=record,starred=Boolean(userProgress[item.id]?.starred);
+ ui('pm-search-results').innerHTML=`<div class="pm-search-details"><h3>${escapeHTML(item.word)}</h3><p>${escapeHTML(item.meaning||'')}</p><small>${escapeHTML(item.phonetic||'')}</small><div class="pm-search-detail-actions"><button type="button" id="pm-search-listen">🔊 Listen</button><button type="button" id="pm-search-practice">${starred?'✓ Saved to Practice':'＋ Add to Practice'}</button><button type="button" id="pm-search-find">Show in Discover →</button><button type="button" id="pm-search-back">← Back to search</button></div></div>`;
+ ui('pm-search-listen').onclick=()=>speakWord(item.word);
+ ui('pm-search-practice').onclick=()=>{toggleStar(item.id);ui('pm-search-practice').textContent=userProgress[item.id]?.starred?'✓ Saved to Practice':'＋ Add to Practice';};
+ ui('pm-search-back').onclick=()=>pmSearchUpdate();
+ ui('pm-search-find').onclick=()=>{
+  pmCloseDialogs();
+  pmShowTab('learn');
+  if(parent.letter&&currentLetter!==parent.letter)changeLetter(parent.letter);
+  // Show the parent card; derivatives retain their current modal functionality.
+  currentFilter='all';document.querySelectorAll('.filter-btn').forEach(b=>b.classList.toggle('active',b.getAttribute('onclick')?.includes("'all'")));
+  const items=pmOrderedList(),ix=items.findIndex(w=>String(w.id)===String(parent.id));
+  if(ix>=0){currentWordIndex=ix;renderWords();}
+  if(!phone())ui('card-'+parent.id)?.scrollIntoView({behavior:'smooth',block:'center'});
+  if(String(parent.id)!==String(item.id)&&phone()){setTimeout(()=>toggleDerivatives(parent.id),70);}
+ };
+};
+// Escape closes our modal as it already does for the other original dialogs.
+window.addEventListener('keydown',ev=>{if(ev.key==='Escape'&&ui('pm-search-dialog').classList.contains('open'))pmCloseDialogs();});
+
+// PRACTICE: count completed DISTINCT words per Israel-local day; cap means no new card after goal.
+function pmPracticeCap(){return [5,8,10,12].includes(Number(prefs.practiceLimit))?Number(prefs.practiceLimit):8;}
+function pmPracticeToday(){return Array.isArray(dailyData.practiceDays?.[pmDayKey()])?dailyData.practiceDays[pmDayKey()]:[];}
+function pmPracticeDailyCount(){return new Set(pmPracticeToday()).size;}
+function pmRecordPracticeWord(id){
+ const day=pmDayKey();dailyData.practiceDays=asObj(dailyData.practiceDays);
+ dailyData.practiceDays[day]=[...new Set([...pmPracticeToday(),String(id)])];
+ const sorted=Object.keys(dailyData.practiceDays).sort();for(const obsolete of sorted.slice(0,-120))delete dailyData.practiceDays[obsolete];
+ pmPersistExtras();pmRenderAccountPrefs();
+}
+function pmQuotaHeader(){const done=pmPracticeDailyCount(),limit=pmPracticeCap();return `<div class="pm-cap-banner"><span>Daily practice: ${done} / ${limit} words</span><div class="pm-cap-bar"><span style="width:${Math.min(100,100*done/limit)}%"></span></div></div>`;}
+function pmQuotaFinished(){
+ const root=ui('pm-practice-root');if(!root)return;
+ root.innerHTML=pmReviewPlainTitle()+pmQuotaHeader()+`<div class="pm-review-empty pm-quota-finished"><div class="pm-review-spark">✓</div><h3>Daily practice complete!</h3><p>You've reached today's limit of ${pmPracticeCap()} words. The next round opens tomorrow (Israel time). Your progress has been saved.</p><button class="quiz-button" type="button" onclick="pmShowTab('learn')">Back to Discover →</button></div>`;
+}
+const pmBaseStartReview=pmStartReview;
+pmStartReview=function(){if(pmPracticeDailyCount()>=pmPracticeCap()){pmReviewCurrent=null;pmQuotaFinished();return;}pmBaseStartReview();};
+const pmBaseRenderReview=pmRenderReview;
+pmRenderReview=function(){
+ if(pmPracticeDailyCount()>=pmPracticeCap()){pmQuotaFinished();return;}
+ pmBaseRenderReview();
+ const root=ui('pm-practice-root');if(root&&!root.querySelector('.pm-cap-banner'))root.querySelector('.pm-practice-title')?.insertAdjacentHTML('afterend',pmQuotaHeader());
+};
+const pmBaseReviewContinue=window.pmReviewContinue;
+window.pmReviewContinue=function(){
+ if(pmPracticeDailyCount()>=pmPracticeCap()){pmQuotaFinished();return;}
+ const finished=pmReviewCurrent&&pmReviewStage===4&&pmReviewGrades.m!==null&&pmReviewGrades.p!==null?String(pmReviewCurrent.id):null;
+ pmBaseReviewContinue();
+ if(finished){pmRecordPracticeWord(finished);pmRenderReview();}
+};
+const pmBaseReviewChoose=window.pmReviewChoose;
+window.pmReviewChoose=function(id){if(pmPracticeDailyCount()>=pmPracticeCap()){pmQuotaFinished();return;}pmBaseReviewChoose(id);};
+
+// English Rules: curated lessons supplement (not overwrite) dictionary.js.
+const PM_RULES=[
+ {id:'th',cat:'sounds',title:'TH: /θ/ and /ð/',he:'שני הצלילים של TH אינם ט או ד. ב־/θ/ מעבירים אוויר ליד קצה הלשון בין השיניים; ב־/ð/ מפעילים גם את מיתרי הקול. תרגול הצליל עצמו יקל גם על מילים קשות.',examples:['think','this','thoughts'],prompt:'Which word begins with the unvoiced TH sound /θ/?',choices:['think','sink','din'],correct:0,speech:'thoughts'},
+ {id:'clusters',cat:'sounds',title:'Consonant clusters',he:'במילים כמו thoughts מצטרפים כמה עיצורים ללא תנועת עזר. אימון הדרגתי: הפק /θ/, אחריו /ɔː/, ואז את הסיומת /ts/; חבר את הכול מבלי להוסיף תנועה בין העיצורים.',examples:['thought','thoughts','texts'],prompt:'Which word adds /s/ to the final /t/ of thought?',choices:['thoughts','though','through'],correct:0,speech:'thoughts'},
+ {id:'vw',cat:'sounds',title:'V vs W',he:'ב־V נוגעים עם השיניים העליונות בשפה התחתונה ומפיקים קול. ב־W מעגלים את השפתיים בלי מגע שיניים.',examples:['very','wary','west'],prompt:'Which word begins with W?',choices:['very','west','visit'],correct:1,speech:'west'},
+ {id:'stress',cat:'sounds',title:'Word stress',he:'באנגלית ההטעמה חשובה: הברות מסוימות בולטות בעוצמה, באורך ובתנועה. כדאי להקשיב לקצב המילה, ולא לתת לכל הברה משקל שווה.',examples:['PREsent','preSENT','imPORtant'],prompt:'Which form commonly means to give or show something?',choices:['PREsent (noun)','preSENT (verb)','Either always'],correct:1,speech:'important'},
+ {id:'silent',cat:'sounds',title:'Silent letters',he:'לא כל אות כתובה נשמעת. לדוגמה, האות k ב־know אינה נהגית, וה־b ב־doubt שקטה.',examples:['know','doubt','write'],prompt:'Which word has a silent K?',choices:['keep','know','kind'],correct:1,speech:'know'},
+ {id:'flap',cat:'flow',title:'Flap T (American English)',he:'באנגלית אמריקאית, T או D בין תנועות עשויה להישמע כנקישה קצרה של הלשון, שונה מעט מד רגילה. למשל water ו־better.',examples:['water','better','city'],prompt:'Which word commonly has a Flap T in American English?',choices:['stop','better','tea'],correct:1,speech:'water'},
+ {id:'glottal',cat:'flow',title:'Glottal Stop',he:'במבטאים והקשרים מסוימים T עשויה להיות עצירה קצרה בגרון, למשל ב־button. זה תלוי במבטא; לא בכל מקרה צריך להחליף T בעצירה.',examples:['button','mountain','football'],prompt:'Is a Glottal Stop required in every English accent?',choices:['Yes, always','No, it varies by accent and context'],correct:1,speech:'button'},
+ {id:'linking',cat:'flow',title:'Connected speech',he:'בדיבור טבעי מילים מתחברות, במיוחד כשמילה מסתיימת בעיצור והבאה מתחילה בתנועה. נסה לתרגל משפט שלם ולא רק מילה בודדת.',examples:['turn it on','pick it up','an apple'],prompt:'Which sounds more like natural connected speech?',choices:['Practicing words only in isolation','Practicing turn it on as a phrase'],correct:1,speech:'turn it on'},
+ {id:'reductions',cat:'flow',title:'Reduced speech',he:'בדיבור לא פורמלי can, to, going to ומילים תפקודיות אחרות עשויות להצטמצם. חשוב קודם לזהות את הצורה התקנית, ואז להכיר את ההגייה המהירה.',examples:["I'm gonna call.","I want to go.","Could you help?"],prompt:'In casual speech, “gonna” usually represents:',choices:['going to','gone','got to'],correct:0,speech:"I'm gonna call"},
+ {id:'wordorder',cat:'sentences',title:'Natural word order',he:'באנגלית, שם העצם המרכזי מגיע בדרך כלל אחרי שם עצם שמשמש כתיאור: toilet paper ולא paper toilet. כדאי ללמוד צירופים טבעיים כיחידה אחת.',examples:['toilet paper','coffee cup','school bus'],prompt:'Which phrase is natural English?',choices:['paper toilet','toilet paper'],correct:1},
+ {id:'questions',cat:'sentences',title:'Questions with do / does',he:'בשאלות רבות בהווה משתמשים ב־do או does לפני הנושא: Do you speak English? אבל עם הפועל be בונים שאלות אחרת.',examples:['Do you work here?','Does she drive?','Are you ready?'],prompt:'Which question is correct?',choices:['Does she speaks English?','Does she speak English?'],correct:1},
+ {id:'adjective',cat:'sentences',title:'Adjectives before nouns',he:'שמות תואר מופיעים בדרך כלל לפני שם העצם: a beautiful house. שים לב שבעברית סדר המילים לעיתים קרובות הפוך.',examples:['a new phone','a difficult word','a beautiful day'],prompt:'Choose the natural word order:',choices:['a phone new','a new phone'],correct:1},
+ {id:'buy',cat:'verbs',title:'Buy → bought → bought',he:'צורות הפועל הן משפחה אחת. כשמספרים על קנייה שהתרחשה בעבר, משתמשים ב־bought ולא ב־buyed.',examples:['I buy coffee.','I bought coffee.','I have bought coffee.'],prompt:'Yesterday, I ___ a ticket.',choices:['buy','bought','buyed'],correct:1},
+ {id:'go',cat:'verbs',title:'Go → went → gone',he:'ל־go יש שלוש צורות נפוצות. I went אתמול, I have gone כשמתייחסים להווה המושלם (לפי ההקשר).',examples:['I go to work.','I went home.','She has gone home.'],prompt:'Last night, I ___ home.',choices:['go','went','gone'],correct:1},
+ {id:'phrases',cat:'verbs',title:'Useful expressions',he:'כדי לדבר בצורה טבעית, לומדים צירופים שלמים ומתרגלים אותם בהקשר: make sense, on my way, take a break.',examples:['That makes sense.','I am on my way.','Let’s take a break.'],prompt:'Which phrase means “זה הגיוני”?',choices:['That makes sense.','That does a sense.'],correct:0}
+];
+const PM_CATEGORIES=[{id:'sounds',name:'Pronunciation',sub:'TH, tricky sounds, stress, silent letters',emoji:'◖))'},{id:'flow',name:'Connected Speech',sub:'Flap T, Glottal Stop, linking',emoji:'〰'},{id:'sentences',name:'Sentence Building',sub:'English word order and questions',emoji:'▤'},{id:'verbs',name:'Verbs & Expressions',sub:'Irregular verbs, real conversation',emoji:'↔'}];
+let pmRuleView={cat:null,id:null,answered:false};
+function pmRuleRecord(id){return asObj(dailyData.ruleProgress)?.[id]||{};}
+function pmRulesRender(){
+ const root=ui('pm-rules-root');if(!root)return;
+ if(!pmRuleView.cat){
+  const next=PM_RULES.find(r=>!pmRuleRecord(r.id).done)||PM_RULES.find(r=>(pmRuleRecord(r.id).due||0)<=Date.now())||PM_RULES[0];
+  const due=PM_RULES.filter(r=>pmRuleRecord(r.id).done && (pmRuleRecord(r.id).due||0)<=Date.now()).length;
+  root.innerHTML=`<div class="pm-rule-feature"><div><strong>Continue learning</strong><small>${escapeHTML(next.title)} · short practical lesson</small></div><button type="button" onclick="pmRuleOpen('${next.id}')">Continue →</button></div><h3 class="pm-rule-section-title">Explore topics</h3><div class="pm-rule-grid">${PM_CATEGORIES.map(c=>`<button type="button" class="pm-rule-topic" onclick="pmRuleCategory('${c.id}')"><span class="pm-rule-ico" aria-hidden="true">${escapeHTML(c.emoji)}</span><b>${escapeHTML(c.name)}</b><span>${escapeHTML(c.sub)}</span></button>`).join('')}</div><p class="pm-rule-progress">${PM_RULES.filter(r=>pmRuleRecord(r.id).done).length} / ${PM_RULES.length} lessons completed · ${due} ready for spaced review</p>`;
+  return;
+ }
+ const cat=PM_CATEGORIES.find(c=>c.id===pmRuleView.cat);
+ if(!pmRuleView.id){
+  root.innerHTML=`<button type="button" class="pm-rule-back" onclick="pmRuleHome()">← All topics</button><h3 class="pm-rule-section-title">${escapeHTML(cat.name)}</h3><div class="pm-rule-list">${PM_RULES.filter(r=>r.cat===cat.id).map(r=>{const rec=pmRuleRecord(r.id);return `<button type="button" class="pm-rule-item" onclick="pmRuleOpen('${r.id}')"><span><strong>${escapeHTML(r.title)}</strong><small>${rec.done?((rec.due||0)<=Date.now()?'↻ Review due':'✓ Learned · future review'):'New · quick lesson'}</small></span><span>›</span></button>`}).join('')}</div>`;
+  return;
+ }
+ const rule=PM_RULES.find(r=>r.id===pmRuleView.id);if(!rule)return;
+ const rec=pmRuleRecord(rule.id);
+ const examples=rule.examples.map((s,i)=>`<div class="pm-rule-example"><span lang="en">${escapeHTML(s)}</span><button type="button" onclick="pmRuleListen(${i})" aria-label="Listen to ${escapeHTML(s)}">🔊 Listen</button></div>`).join('');
+ const mic=(rule.speech)?`<div class="pm-rule-mic"><button type="button" onclick="pmRuleCheckSpeech()">🎙 Try saying it</button><span id="pm-rule-mic-feedback">${escapeHTML(rule.speech)} · browser speech recognition (not a phonetic score)</span></div>`:'';
+ root.innerHTML=`<button type="button" class="pm-rule-back" onclick="pmRuleCategory('${cat.id}')">← ${escapeHTML(cat.name)}</button><div class="pm-rule-lesson"><span class="pm-eyebrow">SHORT LESSON · ${escapeHTML(cat.name)}</span><h3>${escapeHTML(rule.title)}</h3><p dir="rtl">${escapeHTML(rule.he)}</p><div class="pm-rule-examples">${examples}</div>${mic}<div class="pm-rule-exercise"><h4>Check your understanding</h4><p>${escapeHTML(rule.prompt)}</p>${rule.choices.map((v,i)=>`<button class="pm-rule-choice" type="button" data-index="${i}" onclick="pmRuleAnswer(${i})">${escapeHTML(v)}</button>`).join('')}<div id="pm-rule-feedback" class="pm-rule-feedback" aria-live="polite">${rec.done?'Previously completed · practice again to strengthen memory.':'Choose an answer to finish this lesson.'}</div></div></div>`;
+};
+window.pmRuleHome=function(){pmRuleView={cat:null,id:null,answered:false};pmRulesRender();};
+window.pmRuleCategory=function(id){pmRuleView={cat:id,id:null,answered:false};pmRulesRender();};
+window.pmRuleOpen=function(id){const r=PM_RULES.find(r=>r.id===id);if(!r)return;pmRuleView={cat:r.cat,id,answered:false};pmRulesRender();};
+window.pmRuleListen=function(index){const r=PM_RULES.find(x=>x.id===pmRuleView.id);if(r&&r.examples[index])speakWord(r.examples[index].replace(/[A-Z]{2,}/g,x=>x.toLowerCase()));};
+window.pmRuleAnswer=function(index){
+ const r=PM_RULES.find(x=>x.id===pmRuleView.id);if(!r)return;
+ const all=ui('pm-rules-root').querySelectorAll('.pm-rule-choice');all.forEach((b,i)=>{b.classList.toggle('correct',i===r.correct);b.classList.toggle('incorrect',i===index&&index!==r.correct);});
+ const feedback=ui('pm-rule-feedback');if(index!==r.correct){feedback.textContent='Not quite. Review the explanation and try again.';return;}
+ if(pmRuleView.answered){feedback.textContent='✓ Correct — this rule is scheduled for a later review.';return;}
+ const existing=pmRuleRecord(r.id);if(existing.done&&Number(existing.due||0)>Date.now()){feedback.textContent='✓ Correct! This rule is already scheduled for a later review; practicing early does not move the date.';return;}
+ pmRuleView.answered=true;
+ const prev=pmRuleRecord(r.id),reps=Math.min(6,Number(prev.reps||0)+1),interval=[1,3,7,14,30,60][reps-1];
+ dailyData.ruleProgress=asObj(dailyData.ruleProgress);dailyData.ruleProgress[r.id]={done:true,reps,lastAt:Date.now(),due:Date.now()+interval*86400000};
+ pmPersistExtras();feedback.textContent=`✓ Correct! Review scheduled in ${interval} day${interval===1?'':'s'}.`;
+};
+window.pmRuleCheckSpeech=function(){
+ const r=PM_RULES.find(x=>x.id===pmRuleView.id);if(!r?.speech)return;
+ const el=ui('pm-rule-mic-feedback');if(!el)return;
+ if(!SpeechCtor){el.textContent='Speech recognition is not supported in this browser. You can still listen and say it aloud.';return;}
+ const expected=normalizeRecognized(r.speech),recognizer=new SpeechCtor();recognizer.lang='en-US';recognizer.interimResults=false;recognizer.maxAlternatives=3;
+ el.textContent='Listening…';
+ recognizer.onresult=(e)=>{
+  const options=Array.from(e.results[0]||[]).map(a=>normalizeRecognized(a.transcript));
+  const matches=options.some(t=>t===expected||t.includes(expected));
+  el.textContent=matches?'✓ Recognized: '+r.speech+' · Word recognition, not a pronunciation score.':'Heard: '+(options[0]||'(unrecognized)')+'. Listen and try again. This does not prove which sound was wrong.';
+ };
+ recognizer.onerror=(e)=>{el.textContent='Microphone: '+String(e.error||'unavailable')+'. You can still practice aloud.';};
+ recognizer.onnomatch=()=>{el.textContent='No confident recognition. Listen and try again.';};
+ try{recognizer.start()}catch(e){el.textContent='Unable to start the microphone: '+(e.message||String(e));}
+};
+// TAB ROUTING: retain exact original keys learn/play/practice and add only rules.
+const pmExistingTabs=window.pmShowTab;
+window.pmShowTab=function(tab){
+ if(tab==='rules'){
+  pmStopRushTimer();stopActiveSpeech();pmPlaying=false;
+  ui('pm-practice-screen').hidden=true;ui('pm-play-screen').hidden=true;
+  document.querySelector('.container').style.display='none';
+  ui('pm-rules-screen').hidden=false;
+  for(const key of ['learn','play','practice','rules'])ui('pm-tab-'+key)?.classList.toggle('active',key===tab);
+  pmRulesRender();return;
+ }
+ ui('pm-rules-screen').hidden=true;
+ pmExistingTabs(tab);
+ for(const key of ['learn','play','practice','rules'])ui('pm-tab-'+key)?.classList.toggle('active',key===tab);
+};
+// New features need the original login/app state and existing cloud-sync; no extra Firebase writes.
 
 setupFirebase();
 })();
