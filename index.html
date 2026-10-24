@@ -2042,15 +2042,15 @@ button:focus-visible,.phonetic:focus-visible,.az-badge:focus-visible { outline:3
 }
 .pm-three-controls .pm-know-btn[id$="-m-yes"]{--orb-color:#69BFA0;--orb-soft:#DEF5E9}
 .pm-three-controls .pm-save-btn{--orb-color:#E2AE73;--orb-soft:#FDF0DB}
-.pm-three-controls .pm-action-orb{width:clamp(52px,17vw,70px);height:clamp(52px,17vw,70px);border-radius:50%;background:var(--orb-soft);display:grid;place-items:center;box-shadow:0 5px 13px rgba(44,62,91,.065);border:2px solid rgba(255,255,255,.9);transition:background .18s ease,transform .15s ease,box-shadow .18s ease;flex:0 0 auto}
-.pm-three-controls .pm-action-orb svg{width:29px!important;height:29px!important;stroke:var(--orb-color)!important;fill:none!important;stroke-width:2.9!important;stroke-linecap:round;stroke-linejoin:round}
+.pm-three-controls .pm-action-orb{width:clamp(44px,14vw,56px);height:clamp(44px,14vw,56px);border-radius:50%;background:var(--orb-soft);display:grid;place-items:center;box-shadow:0 5px 13px rgba(44,62,91,.065);border:2px solid rgba(255,255,255,.9);transition:background .18s ease,transform .15s ease,box-shadow .18s ease;flex:0 0 auto}
+.pm-three-controls .pm-action-orb svg{width:23px!important;height:23px!important;stroke:var(--orb-color)!important;fill:none!important;stroke-width:2.9!important;stroke-linecap:round;stroke-linejoin:round}
 .pm-three-controls .pm-know-btn.active .pm-action-orb,.pm-three-controls .pm-save-btn.starred .pm-action-orb{background:var(--orb-color)!important;box-shadow:0 6px 15px rgba(64,68,102,.14)!important}
 .pm-three-controls .pm-know-btn.active .pm-action-orb svg,.pm-three-controls .pm-save-btn.starred .pm-action-orb svg{stroke:#fff!important}
 .pm-three-controls .pm-action-caption{display:block!important;max-width:100%;font-size:clamp(10px,2.6vw,12px)!important;font-weight:750!important;color:#40516a!important;white-space:nowrap;line-height:1.2}
 .pm-three-controls .pm-know-btn:focus-visible,.pm-three-controls .pm-save-btn:focus-visible{outline:2px solid #7987d8!important;outline-offset:3px!important;border-radius:12px!important}
 .pm-three-controls .pm-know-btn:active .pm-action-orb,.pm-three-controls .pm-save-btn:active .pm-action-orb{transform:scale(.94)}
-@media(max-width:767px){.card .tinder-controls.pm-three-controls,.sub-card .tinder-controls.pm-three-controls{margin:0!important;gap:3px!important}.pm-three-controls .pm-know-btn,.pm-three-controls .pm-save-btn{min-height:0!important;padding:0!important;gap:4px!important}.pm-three-controls .pm-action-orb svg{width:26px!important;height:26px!important}}
-@media(max-width:360px){.pm-three-controls .pm-action-orb{width:49px!important;height:49px!important}.pm-three-controls .pm-action-orb svg{width:23px!important;height:23px!important}.pm-three-controls .pm-action-caption{font-size:9px!important}}
+@media(max-width:767px){.card .tinder-controls.pm-three-controls,.sub-card .tinder-controls.pm-three-controls{margin:0!important;gap:3px!important}.pm-three-controls .pm-know-btn,.pm-three-controls .pm-save-btn{min-height:0!important;padding:0!important;gap:4px!important}.pm-three-controls .pm-action-orb svg{width:22px!important;height:22px!important}}
+@media(max-width:360px){.pm-three-controls .pm-action-orb{width:44px!important;height:44px!important}.pm-three-controls .pm-action-orb svg{width:20px!important;height:20px!important}.pm-three-controls .pm-action-caption{font-size:9px!important}}
 /* Play: gentle colors in the existing PronounceMe palette, clear dark-on-light typography. */
 #pm-play-screen{background:linear-gradient(160deg,#f5f7ff,#f7f9fc 65%,#f6fbf9)!important;padding:7px 10px 9px!important;border-radius:17px!important}
 #pm-play-screen .play-panel{position:relative;overflow:hidden!important;background:#fff!important;border:1px solid #e6eaf5!important;border-radius:23px!important;color:#2b3651!important;box-shadow:0 10px 35px rgba(48,61,104,.065)!important}
@@ -4561,183 +4561,9 @@ window.pmShowTab=function(tab){
 };
 // New features need the original login/app state and existing cloud-sync; no extra Firebase writes.
 
-
-
-/* ===== final compact flashcard action buttons override ===== */
-const pmFlashPracticeVisual=()=>'<span class="pm-flash-badge" aria-hidden="true">'+pmBookmarkIcon+'</span><span class="pm-action-caption">Practice</span>';
-const pmFlashKnowVisual=(type)=>{
-  const label=type==='p'?'Pronunciation':'Meaning';
-  const badge=type==='p'?'V':'✓';
-  return '<span class="pm-flash-badge" aria-hidden="true">'+badge+'</span><span class="pm-action-caption">'+label+'</span>';
-};
-generateControls=function(id){
- const state=userProgress[id]||{p:0,m:0};
- return `<div class="tinder-controls pm-three-controls" aria-label="Mark knowledge and practice">
-   <button type="button" id="btn-${id}-save" class="pm-save-btn ${userProgress[id]?.starred?'starred':''}" aria-pressed="${Boolean(userProgress[id]?.starred)}" onclick="toggleStar('${id}')">${pmFlashPracticeVisual()}</button>
-   <button type="button" id="btn-${id}-m-yes" data-kind="meaning" class="pm-know-btn ${state.m===1?'active':''}" aria-pressed="${state.m===1}" onclick="pmToggleKnown('${id}','m')">${pmFlashKnowVisual('m')}</button>
-   <button type="button" id="btn-${id}-p-yes" data-kind="pronunciation" class="pm-know-btn ${state.p===1?'active':''}" aria-pressed="${state.p===1}" onclick="pmToggleKnown('${id}','p')">${pmFlashKnowVisual('p')}</button>
- </div>`;
-};
-const pmFlashcardPostRenderBase=pmPostRender;
-pmPostRender=function(list){
- pmFlashcardPostRenderBase(list);
- for(const card of ui('words-grid').querySelectorAll('.card,.sub-card')){
-   const id=card.id.slice(5);
-   const controls=card.querySelector('.tinder-controls.pm-three-controls');
-   const strayStar=card.querySelector('.star-btn');
-   if(strayStar && (!controls || !controls.contains(strayStar))){strayStar.remove();}
-   const saveBtn=ui('btn-'+id+'-save');
-   if(saveBtn){
-     const active=Boolean(userProgress[id]?.starred);
-     saveBtn.className='pm-save-btn'+(active?' starred':'');
-     saveBtn.innerHTML=pmFlashPracticeVisual();
-     saveBtn.setAttribute('aria-pressed',String(active));
-     saveBtn.setAttribute('aria-label',active?'Remove from Practice List':'Add to Practice List');
-     saveBtn.setAttribute('title',active?'Remove from Practice List':'Add to Practice List');
-   }
-   const mBtn=ui('btn-'+id+'-m-yes');
-   if(mBtn){const active=Boolean(userProgress[id]?.m===1);mBtn.className='pm-know-btn'+(active?' active':'');mBtn.setAttribute('data-kind','meaning');mBtn.innerHTML=pmFlashKnowVisual('m');mBtn.setAttribute('aria-pressed',String(active));}
-   const pBtn=ui('btn-'+id+'-p-yes');
-   if(pBtn){const active=Boolean(userProgress[id]?.p===1);pBtn.className='pm-know-btn'+(active?' active':'');pBtn.setAttribute('data-kind','pronunciation');pBtn.innerHTML=pmFlashKnowVisual('p');pBtn.setAttribute('aria-pressed',String(active));}
- }
-};
-const pmFlashcardUpdateUIBase=updateUI;
-updateUI=function(){
- pmFlashcardUpdateUIBase();
- for(const card of document.querySelectorAll('#words-grid .card,#words-grid .sub-card')){
-   const id=card.id.slice(5);
-   const saveBtn=ui('btn-'+id+'-save');
-   if(saveBtn){
-     const active=Boolean(userProgress[id]?.starred);
-     saveBtn.className='pm-save-btn'+(active?' starred':'');
-     saveBtn.innerHTML=pmFlashPracticeVisual();
-     saveBtn.setAttribute('aria-pressed',String(active));
-   }
-   const mBtn=ui('btn-'+id+'-m-yes');
-   if(mBtn){const active=Boolean(userProgress[id]?.m===1);mBtn.className='pm-know-btn'+(active?' active':'');mBtn.setAttribute('data-kind','meaning');mBtn.innerHTML=pmFlashKnowVisual('m');mBtn.setAttribute('aria-pressed',String(active));}
-   const pBtn=ui('btn-'+id+'-p-yes');
-   if(pBtn){const active=Boolean(userProgress[id]?.p===1);pBtn.className='pm-know-btn'+(active?' active':'');pBtn.setAttribute('data-kind','pronunciation');pBtn.innerHTML=pmFlashKnowVisual('p');pBtn.setAttribute('aria-pressed',String(active));}
- }
-};
-const pmFlashcardToggleStarBase=toggleStar;
-toggleStar=function(id){pmFlashcardToggleStarBase(id);const saveBtn=ui('btn-'+id+'-save');if(saveBtn){const active=Boolean(userProgress[id]?.starred);saveBtn.className='pm-save-btn'+(active?' starred':'');saveBtn.innerHTML=pmFlashPracticeVisual();saveBtn.setAttribute('aria-pressed',String(active));saveBtn.setAttribute('aria-label',active?'Remove from Practice List':'Add to Practice List');}};
-/* ===== end final override ===== */
-
 setupFirebase();
 })();
 </script>
-
-
-<style id="pm-flashcard-buttons-override">
-/* Final override: compact flashcard-style action buttons */
-.tinder-controls.pm-three-controls{
-  position:relative!important;
-  display:grid!important;
-  grid-template-columns:repeat(3,minmax(0,1fr))!important;
-  gap:10px!important;
-  width:100%!important;
-  margin-top:10px!important;
-  padding:12px 10px 6px!important;
-}
-.tinder-controls.pm-three-controls::before,
-.tinder-controls.pm-three-controls::after{
-  content:"";
-  position:absolute;
-  left:10px; right:10px;
-  border-radius:20px;
-  background:#fff;
-  border:1px solid #edf1f7;
-  z-index:0;
-  pointer-events:none;
-}
-.tinder-controls.pm-three-controls::before{top:10px;bottom:0;transform:translateY(7px) scale(.985);opacity:.58}
-.tinder-controls.pm-three-controls::after{top:6px;bottom:4px;transform:translateY(3px) scale(.992);opacity:.82}
-.tinder-controls.pm-three-controls > *{position:relative;z-index:1}
-.pm-three-controls .pm-know-btn,
-.pm-three-controls .pm-save-btn{
-  appearance:none!important;
-  position:relative!important;
-  display:flex!important;
-  flex-direction:column!important;
-  justify-content:center!important;
-  align-items:center!important;
-  gap:8px!important;
-  width:100%!important;
-  min-width:0!important;
-  min-height:78px!important;
-  padding:10px 4px 8px!important;
-  border-radius:18px!important;
-  border:1px solid #e7ecf5!important;
-  background:#ffffff!important;
-  color:#40516a!important;
-  box-shadow:0 8px 18px rgba(35,54,88,.08)!important;
-  overflow:hidden!important;
-}
-.pm-three-controls .pm-know-btn::before,
-.pm-three-controls .pm-save-btn::before{
-  content:"";
-  position:absolute;
-  left:0; right:0; top:0;
-  height:4px;
-  background:var(--pm-accent,#c9d4e6);
-  opacity:.95;
-}
-.pm-three-controls .pm-know-btn[data-kind="meaning"]{--pm-accent:#69BFA0}
-.pm-three-controls .pm-know-btn[data-kind="pronunciation"]{--pm-accent:#8F82E9}
-.pm-three-controls .pm-save-btn{--pm-accent:#E2AE73}
-.pm-three-controls .pm-flash-badge{
-  width:38px;height:38px;
-  border-radius:12px;
-  display:grid;place-items:center;
-  font-weight:900;
-  font-size:24px;
-  line-height:1;
-  background:var(--pm-soft,#eef3fb);
-  color:var(--pm-accent,#65748b);
-  border:1px solid rgba(255,255,255,.95);
-  box-shadow:0 5px 12px rgba(43,58,85,.07);
-}
-.pm-three-controls .pm-know-btn[data-kind="meaning"] .pm-flash-badge{--pm-soft:#DEF5E9}
-.pm-three-controls .pm-know-btn[data-kind="pronunciation"] .pm-flash-badge{--pm-soft:#ECE8FF}
-.pm-three-controls .pm-save-btn .pm-flash-badge{--pm-soft:#FDF0DB}
-.pm-three-controls .pm-save-btn .pm-flash-badge svg{
-  width:21px!important;height:21px!important;
-  stroke:currentColor!important;fill:none!important;stroke-width:2.4!important;
-}
-.pm-three-controls .pm-action-caption{
-  display:block!important;
-  font-size:clamp(10px,2.8vw,12px)!important;
-  font-weight:780!important;
-  line-height:1.15!important;
-  color:#314768!important;
-  white-space:nowrap;
-}
-.pm-three-controls .pm-know-btn.active .pm-flash-badge,
-.pm-three-controls .pm-save-btn.starred .pm-flash-badge{
-  background:var(--pm-accent)!important;
-  color:#fff!important;
-}
-.pm-three-controls .pm-know-btn.active,
-.pm-three-controls .pm-save-btn.starred{
-  border-color:color-mix(in srgb, var(--pm-accent) 40%, white)!important;
-  box-shadow:0 10px 20px rgba(35,54,88,.1)!important;
-}
-.pm-three-controls .pm-know-btn:focus-visible,
-.pm-three-controls .pm-save-btn:focus-visible{outline:2px solid #90a4ef!important;outline-offset:2px!important}
-.pm-three-controls .pm-know-btn:active,
-.pm-three-controls .pm-save-btn:active{transform:translateY(1px)!important}
-@media(max-width:767px){
-  .tinder-controls.pm-three-controls{gap:8px!important;padding:10px 6px 4px!important}
-  .pm-three-controls .pm-know-btn,.pm-three-controls .pm-save-btn{min-height:72px!important;border-radius:16px!important;padding:8px 3px 7px!important}
-  .pm-three-controls .pm-flash-badge{width:34px!important;height:34px!important;font-size:21px!important;border-radius:11px!important}
-  .pm-three-controls .pm-action-caption{font-size:11px!important}
-}
-@media(max-width:360px){
-  .pm-three-controls .pm-know-btn,.pm-three-controls .pm-save-btn{min-height:68px!important}
-  .pm-three-controls .pm-flash-badge{width:32px!important;height:32px!important;font-size:20px!important}
-  .pm-three-controls .pm-action-caption{font-size:10px!important}
-}
-</style>
 
 </body>
 
