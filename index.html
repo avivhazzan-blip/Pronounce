@@ -2042,15 +2042,15 @@ button:focus-visible,.phonetic:focus-visible,.az-badge:focus-visible { outline:3
 }
 .pm-three-controls .pm-know-btn[id$="-m-yes"]{--orb-color:#69BFA0;--orb-soft:#DEF5E9}
 .pm-three-controls .pm-save-btn{--orb-color:#E2AE73;--orb-soft:#FDF0DB}
-.pm-three-controls .pm-action-orb{width:clamp(44px,14vw,56px);height:clamp(44px,14vw,56px);border-radius:50%;background:var(--orb-soft);display:grid;place-items:center;box-shadow:0 5px 13px rgba(44,62,91,.065);border:2px solid rgba(255,255,255,.9);transition:background .18s ease,transform .15s ease,box-shadow .18s ease;flex:0 0 auto}
-.pm-three-controls .pm-action-orb svg{width:23px!important;height:23px!important;stroke:var(--orb-color)!important;fill:none!important;stroke-width:2.9!important;stroke-linecap:round;stroke-linejoin:round}
+.pm-three-controls .pm-action-orb{width:clamp(52px,17vw,70px);height:clamp(52px,17vw,70px);border-radius:50%;background:var(--orb-soft);display:grid;place-items:center;box-shadow:0 5px 13px rgba(44,62,91,.065);border:2px solid rgba(255,255,255,.9);transition:background .18s ease,transform .15s ease,box-shadow .18s ease;flex:0 0 auto}
+.pm-three-controls .pm-action-orb svg{width:29px!important;height:29px!important;stroke:var(--orb-color)!important;fill:none!important;stroke-width:2.9!important;stroke-linecap:round;stroke-linejoin:round}
 .pm-three-controls .pm-know-btn.active .pm-action-orb,.pm-three-controls .pm-save-btn.starred .pm-action-orb{background:var(--orb-color)!important;box-shadow:0 6px 15px rgba(64,68,102,.14)!important}
 .pm-three-controls .pm-know-btn.active .pm-action-orb svg,.pm-three-controls .pm-save-btn.starred .pm-action-orb svg{stroke:#fff!important}
 .pm-three-controls .pm-action-caption{display:block!important;max-width:100%;font-size:clamp(10px,2.6vw,12px)!important;font-weight:750!important;color:#40516a!important;white-space:nowrap;line-height:1.2}
 .pm-three-controls .pm-know-btn:focus-visible,.pm-three-controls .pm-save-btn:focus-visible{outline:2px solid #7987d8!important;outline-offset:3px!important;border-radius:12px!important}
 .pm-three-controls .pm-know-btn:active .pm-action-orb,.pm-three-controls .pm-save-btn:active .pm-action-orb{transform:scale(.94)}
-@media(max-width:767px){.card .tinder-controls.pm-three-controls,.sub-card .tinder-controls.pm-three-controls{margin:0!important;gap:3px!important}.pm-three-controls .pm-know-btn,.pm-three-controls .pm-save-btn{min-height:0!important;padding:0!important;gap:4px!important}.pm-three-controls .pm-action-orb svg{width:22px!important;height:22px!important}}
-@media(max-width:360px){.pm-three-controls .pm-action-orb{width:44px!important;height:44px!important}.pm-three-controls .pm-action-orb svg{width:20px!important;height:20px!important}.pm-three-controls .pm-action-caption{font-size:9px!important}}
+@media(max-width:767px){.card .tinder-controls.pm-three-controls,.sub-card .tinder-controls.pm-three-controls{margin:0!important;gap:3px!important}.pm-three-controls .pm-know-btn,.pm-three-controls .pm-save-btn{min-height:0!important;padding:0!important;gap:4px!important}.pm-three-controls .pm-action-orb svg{width:26px!important;height:26px!important}}
+@media(max-width:360px){.pm-three-controls .pm-action-orb{width:49px!important;height:49px!important}.pm-three-controls .pm-action-orb svg{width:23px!important;height:23px!important}.pm-three-controls .pm-action-caption{font-size:9px!important}}
 /* Play: gentle colors in the existing PronounceMe palette, clear dark-on-light typography. */
 #pm-play-screen{background:linear-gradient(160deg,#f5f7ff,#f7f9fc 65%,#f6fbf9)!important;padding:7px 10px 9px!important;border-radius:17px!important}
 #pm-play-screen .play-panel{position:relative;overflow:hidden!important;background:#fff!important;border:1px solid #e6eaf5!important;border-radius:23px!important;color:#2b3651!important;box-shadow:0 10px 35px rgba(48,61,104,.065)!important}
@@ -2105,6 +2105,145 @@ button:focus-visible,.phonetic:focus-visible,.az-badge:focus-visible { outline:3
 #pm-play-screen .pm-play-welcome,#pm-play-screen .pm-play-welcome-facts,#pm-play-screen .pm-play-start{direction:ltr!important}
 #pm-play-screen .play-pill{white-space:nowrap!important}
 @media(max-width:365px){#pm-play-screen .play-pill{padding:4px 6px!important;font-size:11px!important;gap:4px!important}#pm-play-screen .play-pill svg{width:15px;height:15px}}
+
+
+/* 2026-10-24 verified patch: integrated flashcard footer, visual-only change.
+   Retains every legacy form control ID for updateUI and Firestore compatibility. */
+.card:has(> .tinder-controls.pm-three-controls){
+  box-shadow:0 6px 0 -3px #fff,0 11px 0 -5px #edf1f9,0 16px 25px rgba(23,43,87,.075)!important;
+}
+.card .tinder-controls.pm-three-controls,
+.sub-card .tinder-controls.pm-three-controls{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:0!important;
+  width:calc(100% + 44px)!important;
+  max-width:none!important;
+  margin:8px -22px -22px!important;
+  padding:0!important;
+  background:#fff!important;
+  border-top:1px solid #e6eaf2!important;
+  border-radius:0 0 20px 20px!important;
+  isolation:isolate;
+  direction:ltr!important;
+  box-shadow:0 -3px 16px rgba(36,56,100,.028)!important;
+}
+.pm-three-controls .pm-know-btn,
+.pm-three-controls .pm-save-btn,
+.pm-three-controls .pm-know-btn.active,
+.pm-three-controls .pm-save-btn.starred{
+  --orb-color:#9385df;
+  --orb-soft:#ece8fc;
+  position:relative!important;
+  inset:auto!important;
+  transform:none!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:100%!important;
+  min-height:85px!important;
+  height:auto!important;
+  gap:7px!important;
+  padding:12px 2px 11px!important;
+  border:0!important;
+  border-radius:0!important;
+  background:#fff!important;
+  color:#314568!important;
+  box-shadow:none!important;
+  font:inherit;
+  cursor:pointer;
+  text-align:center!important;
+}
+ .pm-three-controls .pm-save-btn,
+.pm-three-controls .pm-know-btn[id$="-m-yes"]{border-right:1px solid #e6eaf2!important}
+.pm-three-controls .pm-save-btn,
+.pm-three-controls .pm-save-btn.starred{--orb-color:#c18a48;--orb-soft:#fcecd9;order:1!important}
+.pm-three-controls .pm-know-btn[id$="-m-yes"],
+.pm-three-controls .pm-know-btn[id$="-m-yes"].active{--orb-color:#32a881;--orb-soft:#def5ea;order:2!important}
+.pm-three-controls .pm-know-btn[id$="-p-yes"],
+.pm-three-controls .pm-know-btn[id$="-p-yes"].active{--orb-color:#8875df;--orb-soft:#ede9fc;order:3!important}
+.pm-three-controls .pm-action-orb{
+  display:grid!important;
+  place-items:center!important;
+  width:37px!important;
+  height:37px!important;
+  flex:none!important;
+  border-radius:50%!important;
+  background:var(--orb-soft)!important;
+  color:var(--orb-color)!important;
+  border:0!important;
+  box-shadow:none!important;
+  transition:background .15s ease, transform .15s ease!important;
+}
+.pm-three-controls .pm-action-orb svg,
+.pm-three-controls .pm-know-btn svg,
+.pm-three-controls .pm-save-btn svg{
+  width:21px!important;
+  height:21px!important;
+  stroke:var(--orb-color)!important;
+  fill:none!important;
+  stroke-width:3!important;
+  stroke-linecap:round!important;
+  stroke-linejoin:round!important;
+}
+.pm-three-controls .pm-know-btn.active .pm-action-orb,
+.pm-three-controls .pm-save-btn.starred .pm-action-orb{
+  background:var(--orb-color)!important;
+}
+.pm-three-controls .pm-know-btn.active .pm-action-orb svg,
+.pm-three-controls .pm-save-btn.starred .pm-action-orb svg{stroke:#fff!important}
+.pm-three-controls .pm-action-caption,
+.pm-three-controls .pm-know-btn span.pm-action-caption,
+.pm-three-controls .pm-save-btn span.pm-action-caption{
+  display:block!important;
+  max-width:100%!important;
+  font-size:clamp(10px,2.7vw,12px)!important;
+  font-weight:760!important;
+  color:#354c70!important;
+  letter-spacing:-.2px!important;
+  white-space:nowrap!important;
+  line-height:1.2!important;
+}
+.pm-three-controls .pm-know-btn:active .pm-action-orb,
+.pm-three-controls .pm-save-btn:active .pm-action-orb{transform:scale(.92)!important}
+.pm-three-controls .pm-know-btn:focus-visible,
+.pm-three-controls .pm-save-btn:focus-visible{
+  outline:2px solid #7d91db!important;
+  outline-offset:-3px!important;
+}
+@media(max-width:767px){
+  .card > .tinder-controls.pm-three-controls{order:10!important}
+  .card > .derivatives-toggle,.card > .derivatives-container{order:9!important}
+  .card .tinder-controls.pm-three-controls,
+  .sub-card .tinder-controls.pm-three-controls{
+    width:calc(100% + 30px)!important;
+    margin:4px -15px -9px!important;
+    flex:0 0 auto!important;
+    gap:0!important;
+    border-radius:0 0 19px 19px!important;
+  }
+  .pm-three-controls .pm-know-btn,
+  .pm-three-controls .pm-save-btn,
+  .pm-three-controls .pm-know-btn.active,
+  .pm-three-controls .pm-save-btn.starred{
+    min-height:78px!important;
+    gap:6px!important;
+    padding:9px 1px!important;
+  }
+  .pm-three-controls .pm-action-orb{width:35px!important;height:35px!important}
+  .pm-three-controls .pm-action-orb svg{width:20px!important;height:20px!important}
+}
+@media(max-width:360px){
+  .pm-three-controls .pm-know-btn,
+  .pm-three-controls .pm-save-btn{
+    min-height:70px!important;
+    padding:6px 0!important;
+  }
+  .pm-three-controls .pm-action-orb{width:32px!important;height:32px!important}
+  .pm-three-controls .pm-action-orb svg{width:18px!important;height:18px!important}
+  .pm-three-controls .pm-action-caption{font-size:9.5px!important}
+}
 
     </style>
 
