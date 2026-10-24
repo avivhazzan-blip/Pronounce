@@ -2481,6 +2481,91 @@ button:focus-visible,.phonetic:focus-visible,.az-badge:focus-visible { outline:3
 @media(max-width:767px){#pm-recall-desktop-entry{display:none!important}#pm-recall-screen{padding:12px 14px 10px}#pm-recall-screen .pm-recall-header{margin-bottom:17px}#pm-recall-screen .pm-recall-card-main{min-height:clamp(205px,34dvh,285px)}.mobile-bottom-tabs .mobile-tab{min-width:0!important;flex:1 1 0!important}}
 @media(max-width:767px) and (max-height:650px){#pm-recall-screen{padding-top:8px}#pm-recall-screen .pm-recall-header{margin-bottom:9px}#pm-recall-screen .pm-recall-card-main{min-height:176px;padding:15px 12px 10px;gap:8px}#pm-recall-screen .pm-recall-grade button{min-height:71px;padding:7px 2px;gap:4px}#pm-recall-screen .pm-recall-tools{padding-bottom:10px}#pm-recall-screen .pm-recall-title h2{font-size:21px}}
 
+
+/* ================================================================
+   PronounceMe | new Practice Studio + focused Recall refinements
+   Other Discover / Play CSS is deliberately unchanged.
+   ================================================================ */
+#pm-practice-screen.pm-lab-screen{
+  width:100%;max-width:none;flex:1 1 auto;min-height:0;max-height:none;
+  padding:18px 16px 28px;background:linear-gradient(180deg,#fff 0%,#f9faff 100%);
+  font-family:Inter,Heebo,system-ui,sans-serif;overflow-y:auto;overscroll-behavior:contain;
+}
+#pm-practice-screen.pm-lab-screen *{box-sizing:border-box}
+#pm-practice-screen .pm-lab-layout{max-width:430px;margin:0 auto}
+#pm-practice-screen .pm-lab-header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0 2px 14px;direction:ltr}
+#pm-practice-screen .pm-lab-title{display:flex;align-items:center;gap:10px}
+#pm-practice-screen .pm-lab-title h2{font:850 24px/1.2 Inter,Heebo,sans-serif;letter-spacing:-.7px;color:#1e3159;margin:0}
+#pm-practice-screen .pm-lab-icon{width:38px;height:38px;display:grid;place-items:center;border-radius:12px;background:#eeebfc;color:#7664be}
+#pm-practice-screen .pm-lab-icon svg{width:23px;height:23px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+#pm-practice-screen .pm-lab-counter{font-size:12px;color:#665ab2;background:#eeebfc;border:1px solid #e7e1f9;border-radius:22px;padding:8px 11px;font-weight:800;white-space:nowrap;font-variant-numeric:tabular-nums}
+#pm-practice-screen .pm-lab-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:0 3px 11px;direction:ltr}
+#pm-practice-screen .pm-lab-step{text-align:center;color:#a2acc0;font:750 11px Inter,sans-serif;display:flex;flex-direction:column;gap:7px}
+#pm-practice-screen .pm-lab-step i{height:5px;display:block;border-radius:15px;background:#e8edf6}
+#pm-practice-screen .pm-lab-step.current{color:#7766bf}#pm-practice-screen .pm-lab-step.current i{background:#8c81d2}
+#pm-practice-screen .pm-lab-step.done{color:#41a47b}#pm-practice-screen .pm-lab-step.done i{background:#56b992}
+#pm-practice-screen .pm-lab-daily{height:5px;background:#edf0f7;border-radius:10px;margin:0 3px 17px;overflow:hidden}
+#pm-practice-screen .pm-lab-daily i{display:block;height:100%;background:#a498e6;border-radius:10px;transition:width .2s}
+#pm-practice-screen .pm-lab-stack{position:relative;padding-bottom:13px;margin:0 3px 16px}
+#pm-practice-screen .pm-lab-stack::before,#pm-practice-screen .pm-lab-stack::after{content:"";position:absolute;bottom:2px;left:13px;right:13px;height:26px;border:1px solid #e1e7f2;background:#fff;border-radius:20px;box-shadow:0 4px 12px rgba(39,59,108,.035)}
+#pm-practice-screen .pm-lab-stack::after{bottom:7px;left:7px;right:7px;background:#fefeff}
+#pm-practice-screen .pm-lab-card{position:relative;z-index:1;background:#fff;border:1px solid #e2e7f1;border-radius:20px;overflow:hidden;box-shadow:0 9px 24px rgba(30,51,93,.055)}
+#pm-practice-screen .pm-lab-main{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;min-height:235px;padding:24px 17px 19px;gap:13px}
+#pm-practice-screen .pm-lab-word{font:850 clamp(29px,8vw,39px)/1.25 Inter,sans-serif;color:#1c3159;overflow-wrap:anywhere}
+#pm-practice-screen .pm-lab-meaning{font:800 clamp(24px,6.5vw,32px)/1.4 Heebo,Arial,sans-serif;color:#1c3159;direction:rtl;overflow-wrap:anywhere}
+#pm-practice-screen .pm-lab-phonetic{font:750 18px/1.5 Heebo,sans-serif;color:#7354b2;background:#f2edfd;border:1px solid #dfd5f7;border-radius:11px;padding:6px 13px;direction:rtl;overflow-wrap:anywhere}
+#pm-practice-screen .pm-lab-sub{color:#7c8aa5;font-size:12px;line-height:1.55}
+#pm-practice-screen .pm-lab-flip{width:100%;border:0;background:transparent;padding:10px 0 5px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:14px;min-height:200px;justify-content:center}
+#pm-practice-screen .pm-lab-tap{font-size:11px;font-weight:750;color:#8190b1;display:flex;align-items:center;gap:6px}
+#pm-practice-screen .pm-lab-tap svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2}
+#pm-practice-screen .pm-lab-tools{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;width:100%}
+#pm-practice-screen .pm-lab-tool{display:flex;justify-content:center;align-items:center;gap:8px;min-height:41px;padding:8px 16px;border:1px solid #dedff0;border-radius:12px;background:#f3f0fc;color:#6e5abb;font:750 12px Inter,sans-serif;cursor:pointer}
+#pm-practice-screen .pm-lab-tool svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8}
+#pm-practice-screen .pm-lab-form{width:100%;text-align:left;display:flex;flex-direction:column;gap:10px}
+#pm-practice-screen .pm-lab-fieldlabel{color:#52627f;font-size:12px;font-weight:750;line-height:1.5;direction:rtl;text-align:right}
+#pm-practice-screen .pm-lab-field{width:100%;display:block;min-height:103px;padding:13px 14px;background:#f9faff;color:#243555;border:1px solid #dfe5f1;border-radius:13px;resize:vertical;font:500 14px/1.55 Inter,Heebo,sans-serif;outline:none}
+#pm-practice-screen .pm-lab-field:focus{border-color:#a398dd;box-shadow:0 0 0 3px rgba(151,134,219,.13)}
+#pm-practice-screen .pm-lab-example{width:100%;border-radius:11px;padding:12px 14px;background:#f2f5fe;text-align:left;direction:ltr;line-height:1.55;font-size:12px;color:#51648c}
+#pm-practice-screen .pm-lab-example small{display:block;font-weight:800;letter-spacing:.06em;font-size:9px;color:#8594af;margin-bottom:5px}
+#pm-practice-screen .pm-lab-action{display:block;width:100%;border:0;border-radius:13px;min-height:48px;background:#566ee3;color:white;font:800 13px Inter,sans-serif;cursor:pointer}
+#pm-practice-screen .pm-lab-action:disabled{background:#dce2f2;color:#919eb5;cursor:default}
+#pm-practice-screen .pm-lab-next{padding:0 16px 17px}
+#pm-practice-screen .pm-lab-grade{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #e5eaf3;direction:ltr}
+#pm-practice-screen .pm-lab-grade button{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px;min-height:84px;padding:10px 3px;background:#fff;color:#354968;border:0;border-radius:0;font:800 12px Inter,sans-serif;cursor:pointer}
+#pm-practice-screen .pm-lab-grade button+button{border-left:1px solid #e5eaf3}
+#pm-practice-screen .pm-lab-grade button:disabled{opacity:.45;cursor:default}
+#pm-practice-screen .pm-lab-orb{width:36px;height:36px;display:grid;place-items:center;border-radius:12px;background:#fff0e4;color:#cc8f55}
+#pm-practice-screen .pm-lab-grade .good .pm-lab-orb{background:#e4f7ec;color:#2fa478}
+#pm-practice-screen .pm-lab-orb svg{width:23px;height:23px;stroke:currentColor;fill:none;stroke-width:2.7;stroke-linecap:round;stroke-linejoin:round}
+#pm-practice-screen .pm-lab-empty{padding:28px 22px;text-align:center;background:#fff;border:1px solid #e3e8f2;border-radius:19px;box-shadow:0 6px 15px rgba(40,52,92,.03)}
+#pm-practice-screen .pm-lab-empty h3{margin:0 0 10px;font-size:19px;color:#253a62}
+#pm-practice-screen .pm-lab-empty p{margin:0 0 17px;font-size:13px;line-height:1.7;color:#7a8ba4}
+#pm-practice-screen .pm-lab-empty button{border:1px solid #d8e0f1;background:#f3f5ff;border-radius:12px;padding:12px 20px;font:750 12px Inter,sans-serif;color:#536abd;cursor:pointer}
+#pm-practice-screen .pm-lab-notice{font-size:11px;color:#7788a6;text-align:center;line-height:1.5;direction:rtl;margin:8px 3px}
+#pm-practice-screen .pm-lab-stage-caption{font:800 10px Inter,sans-serif;letter-spacing:1.1px;color:#998ac1}
+#pm-practice-screen .pm-lab-labeled{width:100%;display:flex;justify-content:space-between;gap:8px;align-items:center;direction:ltr}
+#pm-practice-screen .pm-lab-prev{border:0;background:transparent;color:#7b8cb1;cursor:pointer;font:700 11px Inter,sans-serif;padding:8px}
+#pm-practice-screen .pm-lab-missing{color:#b07668;font-size:11px;margin:0;direction:rtl;text-align:center}
+#pm-practice-screen .pm-lab-done-detail{font-size:11px;color:#7483a0;text-align:center;margin-top:9px}
+/* Refine the RECALL answer only: show phonetic and micro-actions after reveal. */
+#pm-recall-screen .pm-recall-answer{display:inline-block}
+#pm-recall-screen .pm-recall-answer-box{display:flex;align-items:center;justify-content:center;gap:8px;max-width:100%;flex-wrap:wrap}
+#pm-recall-screen .pm-recall-answer-box[hidden]{display:none!important}
+#pm-recall-screen .pm-recall-answer-icons{display:flex;gap:6px}
+#pm-recall-screen .pm-recall-micro{width:39px;height:39px;border:1px solid #e2ddf2;border-radius:12px;background:#fbfaff;color:#7962b7;display:grid;place-items:center;cursor:pointer}
+#pm-recall-screen .pm-recall-micro svg{width:19px;height:19px;stroke:currentColor;stroke-width:1.9;fill:none;stroke-linecap:round;stroke-linejoin:round}
+#pm-recall-screen .pm-recall-micro.listening{background:#e8e1fa;box-shadow:0 0 0 3px #e8e1fa}
+#pm-recall-screen .pm-recall-phonetic{font:700 17px/1.5 Heebo,Arial,sans-serif;color:#9885c5;direction:rtl;text-align:center;overflow-wrap:anywhere}
+#pm-recall-screen .pm-recall-phonetic[hidden]{display:none!important}
+#pm-recall-screen .pm-recall-count{display:flex;gap:10px;align-items:center}
+#pm-recall-screen .pm-recall-counter{display:inline-flex;align-items:center;gap:4px;padding:6px 8px;border-radius:11px;background:#eaf7ee;color:#2a956d;font:800 12px Inter,sans-serif;font-variant-numeric:tabular-nums}
+#pm-recall-screen .pm-recall-counter.to-strengthen{background:#f0ecfc;color:#7d65bf}
+#pm-recall-screen .pm-recall-counter svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.6}
+#pm-recall-screen .pm-recall-counters-help{border:0;padding:0;background:transparent;cursor:pointer}
+@media(min-width:768px){#pm-practice-screen.pm-lab-screen{padding:44px 16px 32px}}
+@media(max-width:767px){#pm-practice-screen.pm-lab-screen{padding:12px 14px 24px}#pm-practice-screen .pm-lab-header{margin-bottom:11px}#pm-practice-screen .pm-lab-main{min-height:clamp(210px,37dvh,280px);padding:19px 15px 17px}#pm-recall-screen .pm-recall-card-main{gap:11px}#pm-recall-screen .pm-recall-phonetic{font-size:15px}}
+@media(max-width:767px) and (max-height:650px){#pm-practice-screen .pm-lab-main{min-height:185px;gap:9px}#pm-practice-screen .pm-lab-field{min-height:73px}#pm-practice-screen .pm-lab-stack{margin-bottom:11px}}
+
     </style>
 
 </head>
@@ -2671,14 +2756,21 @@ button:focus-visible,.phonetic:focus-visible,.az-badge:focus-visible { outline:3
   <div class="pm-recall-layout">
     <header class="pm-recall-header">
       <div class="pm-recall-title"><span class="pm-recall-brain" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5a4 4 0 0 0-7.1-2.1A4 4 0 0 0 3.5 9a4 4 0 0 0 0 6A4 4 0 0 0 6 21a4 4 0 0 0 6-3"/><path d="M12 5a4 4 0 0 1 7.1-2.1A4 4 0 0 1 20.5 9a4 4 0 0 1 0 6A4 4 0 0 1 18 21a4 4 0 0 1-6-3M12 5v13M8 10l4 2m4-2-4 2"/></svg></span><h2>Recall</h2></div>
-      <span class="pm-recall-count" id="pm-recall-count" aria-live="polite">0 recalled</span>
+      <span class="pm-recall-count" id="pm-recall-count" aria-live="polite" title="First attempts this session — unique words"><span class="pm-recall-counter" id="pm-recall-known-count" title="Recalled independently"><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5L19.5 7"/></svg><span>0</span></span><span class="pm-recall-counter to-strengthen" id="pm-recall-strengthen-count" title="Needs reinforcement"><svg viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 1-2-5M20 4v5h-5"/></svg><span>0</span></span></span>
     </header>
     <div class="pm-recall-stack">
       <article class="pm-recall-card" aria-label="Recall flashcard">
         <div class="pm-recall-card-main">
           <div id="pm-recall-hebrew" class="pm-recall-hebrew" dir="rtl">—</div>
           <div id="pm-recall-placeholder" class="pm-recall-placeholder" aria-hidden="true"><i></i><i></i><i></i></div>
-          <div id="pm-recall-answer" class="pm-recall-answer" lang="en" hidden></div>
+          <div class="pm-recall-answer-box" id="pm-recall-answer-box" hidden>
+            <div id="pm-recall-answer" class="pm-recall-answer" lang="en" hidden></div>
+            <span class="pm-recall-answer-icons">
+              <button type="button" id="pm-recall-pronounce" class="pm-recall-micro" onclick="pmRecallPronounce()" aria-label="Check my pronunciation" title="Check pronunciation"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4m-4 0h8"/></svg></button>
+              <button type="button" id="pm-recall-listen" class="pm-recall-micro" onclick="pmRecallListen()" aria-label="Hear the word" title="Listen to the pronunciation"><svg viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4zM16 9a4 4 0 0 1 0 6M19 6a8 8 0 0 1 0 12"/></svg></button>
+            </span>
+          </div>
+          <div id="pm-recall-phonetic" class="pm-recall-phonetic" dir="rtl" hidden></div>
         </div>
         <div class="pm-recall-tools">
           <button id="pm-recall-speak" type="button" onclick="pmRecallSpeak()"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4m-4 0h8"/></svg><span>Speak</span></button>
@@ -2783,7 +2875,16 @@ const PM_FIREBASE_CONFIG = {
 
 <!-- ============================================== -->
 
-<script src="dictionary.js"></script>
+<script>
+/* Fetch a fresh dictionary on each ONLINE launch. Existing SW caches by URL, so a
+   unique query is required until the SW network-first upgrade is deployed.
+   Offline launches continue to use the already-cached canonical dictionary.js. */
+(function(){
+  const pmDictionaryUrl = navigator.onLine === false ? './dictionary.js' : './dictionary.js?pm_fresh='+Date.now();
+  window.pmDictionaryLoadedUrl=pmDictionaryUrl;
+  document.write('<script src="'+pmDictionaryUrl+'" onerror="window.pmDictionaryNetworkError=true"><\/script>');
+})();
+</script>
 <script>
 window.PM_ORIGINAL_WORDS = (typeof baseWordsData !== 'undefined') ? JSON.parse(JSON.stringify(baseWordsData)) : [];
 </script>
@@ -5124,6 +5225,289 @@ window.pmShowTab=function(tab){
  ui('pm-tab-recall')?.classList.remove('active');
 };
 
+/* ==================================================================
+   Practice 2.0 — three distinct stages, brand-new view in Recall style.
+   Previous user progress, stars, memory links, review history and daily
+   practice totals remain in their original keys / Firestore fields.
+   ================================================================== */
+const pmLabCheckSvg='<svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5L19.5 7"/></svg>';
+const pmLabXsvg='<svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg>';
+const pmLabSpeakerSvg='<svg viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4zM16 9a4 4 0 0 1 0 6M19 6a8 8 0 0 1 0 12"/></svg>';
+const pmLabFlipSvg='<svg viewBox="0 0 24 24"><path d="M4 7h13l-3-3m3 3-3 3M20 17H7l3-3m-3 3 3 3"/></svg>';
+let pmLabCurrent=null,pmLabStage=0,pmLabFlipped=false,pmLabLink='',pmLabSentence='',pmLabWarning='';
+let pmLabDraftCloudTimer=null;
+const pmLabExamples={
+ abandon:'She refused to abandon her dreams.',adapt:'We need to adapt to the new situation.',achieve:'You can achieve your goals with practice.',ability:'She has the ability to solve complex problems.',
+ accept:'I decided to accept the offer.',access:'Students can access the library online.',accident:'Nobody was hurt in the accident.',accomplish:'We can accomplish more together.',
+ accurate:'Please make sure the information is accurate.',acquire:'She wants to acquire new skills.',across:'We walked across the bridge.',act:'We must act before it is too late.',
+ actually:'I actually enjoyed the meeting.',add:'Please add your name to the list.',address:'We need to address the problem.',adjust:'It takes time to adjust to a new job.',
+ admire:'I admire how hard she works.',admit:'He finally agreed to admit his mistake.',adopt:'They decided to adopt a puppy.',advance:'Technology continues to advance.',
+ advantage:'Experience can give you an advantage.',advice:'She gave me useful advice.',affect:'Lack of sleep can affect your mood.',afford:'I cannot afford a new car right now.',
+ agree:'I agree with your suggestion.',aim:'We aim to finish by Friday.',allow:'The teacher will allow extra time.',amazing:'We had an amazing trip.',
+ analyze:'We need to analyze the results.',announce:'They will announce the decision tomorrow.',answer:'I do not know the answer yet.',anticipate:'We anticipate some changes.',
+ apologize:'I want to apologize for being late.',appear:'The stars appear after sunset.',apply:'I plan to apply for the job.',appreciate:'I really appreciate your help.',
+ approach:'We need a different approach.',approve:'The manager must approve the request.',argue:'They often argue about money.',arrange:'Can you arrange a meeting for us?',
+ arrive:'Please arrive ten minutes early.',ask:'You can ask me anything.',assume:'Do not assume that everyone agrees.',attempt:'She made another attempt to solve it.',
+ avoid:'Try to avoid unnecessary stress.',aware:'Are you aware of the changes?',balance:'It is important to balance work and rest.',believe:'I believe you can do it.',
+ benefit:'Regular exercise can benefit your health.',borrow:'Can I borrow your notebook?',build:'We hope to build a better future.',challenge:'Learning a language is a challenge.',
+ change:'Small actions can change your life.',choose:'You can choose your own path.',compare:'Let us compare the two options.',complete:'Please complete the form.',
+ concern:'Safety is our main concern.',consider:'Please consider another option.',continue:'We can continue tomorrow.',create:'I want to create something useful.',
+ decide:'I cannot decide what to do.',decline:'She had to decline the invitation.',define:'How would you define success?',deliver:'They will deliver the package tomorrow.',
+ demand:'There is strong demand for this product.',depend:'Children depend on their parents.',describe:'Can you describe what happened?',develop:'You can develop this skill with time.',
+ discover:'Scientists discover new things every year.',discuss:'We should discuss the next steps.',encourage:'Good teachers encourage curiosity.',enjoy:'I really enjoy learning English.',
+ explain:'Can you explain the rules?',explore:'I want to explore new places.',express:'It is important to express your feelings.',face:'We all face challenges sometimes.',
+ familiar:'This place looks familiar to me.',focus:'I need to focus on one task.',forget:'I do not want to forget this moment.',gain:'He hopes to gain more experience.',
+ gather:'We gather around the table every evening.',generate:'The system can generate a report.',grow:'Children grow quickly.',guide:'The teacher will guide the students.',
+ handle:'I can handle this situation.',hesitate:'Do not hesitate to ask questions.',identify:'Can you identify the problem?',improve:'I want to improve my English.',
+ include:'Please include your phone number.',increase:'Prices may increase next year.',influence:'Your words can influence others.',introduce:'Let me introduce my friend.',
+ involve:'The project will involve several teams.',join:'Would you like to join us?',keep:'Please keep the door closed.',learn:'We learn something new every day.',
+ limit:'There is a limit to how much time we have.',manage:'She can manage a large team.',mention:'He forgot to mention the meeting.',notice:'Did you notice the difference?',
+ obtain:'You must obtain permission first.',offer:'They made me a generous offer.',organize:'We need to organize the files.',participate:'Everyone can participate in the activity.',
+ perform:'The team will perform better with practice.',permit:'The rules permit visitors to enter.',persuade:'I tried to persuade him to stay.',plan:'We need to plan our trip.',
+ prevent:'Good habits help prevent mistakes.',provide:'The service will provide useful information.',realize:'I did not realize how late it was.',receive:'Did you receive my message?',
+ recognize:'I can recognize her voice.',reduce:'We need to reduce unnecessary spending.',reflect:'Take a moment to reflect on your progress.',regret:'I regret that decision.',
+ remind:'Please remind me tomorrow.',replace:'We need to replace the old computer.',require:'This job will require patience.',respond:'Please respond when you can.',
+ reveal:'The report may reveal new information.',review:'I need to review my notes.',share:'I want to share this story with you.',solve:'We can solve the problem together.',
+ succeed:'You can succeed with consistent effort.',support:'My family will always support me.',suggest:'Can you suggest a better solution?',understand:'I understand what you mean.',
+ use:'I use this app every day.',value:'I value your opinion.',wonder:'I wonder what will happen next.'
+};
+function pmLabExample(item){
+ const sample=String(item.example||item.exampleSentence||'').trim();
+ if(sample)return {text:sample,label:'EXAMPLE'};
+ const entry=pmLabExamples[String(item.word||'').trim().toLowerCase()];
+ if(entry)return {text:entry,label:'EXAMPLE'};
+ const meaning=String(item.meaning||item.word||'').trim();
+ const word=String(item.word||'').trim();
+ const cues=[
+  'Think of a real situation connected to “'+meaning+'”.',
+  'Describe a moment in your life that relates to “'+meaning+'”.',
+  'Imagine explaining “'+meaning+'” to a friend.',
+  'Use “'+word+'” in a sentence about someone you know.',
+  'Create a sentence that clearly shows the meaning “'+meaning+'”.',
+  'Think of a person or event connected with “'+meaning+'”.'
+ ];
+ const hash=[...word].reduce((v,c)=>v+c.charCodeAt(0),0);
+ return {text:cues[hash%cues.length],label:'WRITING IDEA'};
+}
+function pmLabCandidates(){
+ const today=new Set(pmPracticeToday().map(String));
+ const items=pmReviewItems().filter(w=>!today.has(String(w.id)));
+ const now=Date.now();
+ // First-time words and words due for review; never violate scheduled intervals.
+ return items.filter(w=>pmDue(w.id)).sort((a,b)=>{
+  const x=pmReviewRecord(a.id),y=pmReviewRecord(b.id);
+  const aNew=!x.introduced,bNew=!y.introduced;
+  if(aNew!==bNew)return aNew?-1:1;
+  return Math.min(x.m.due,x.p.due)-Math.min(y.m.due,y.p.due);
+ });
+}
+function pmLabSaveDraft(sync=false){
+ if(!accountReady||!pmLabCurrent)return;
+ dailyData.practiceDraft={date:pmDayKey(),id:String(pmLabCurrent.id),stage:pmLabStage,flipped:pmLabFlipped,link:pmLabLink,sentence:pmLabSentence};
+ localStorage.setItem(PM_EXTRA_KEYS.daily,JSON.stringify(dailyData));
+ if(sync){clearTimeout(pmLabDraftCloudTimer);pmLabDraftCloudTimer=setTimeout(()=>pmScheduleSync(),650);}
+}
+function pmLabClearDraft(){
+ delete dailyData.practiceDraft;
+ localStorage.setItem(PM_EXTRA_KEYS.daily,JSON.stringify(dailyData));
+ pmScheduleSync();
+}
+function pmLabStart(){
+ if(pmPracticeDailyCount()>=pmPracticeCap()){pmLabCurrent=null;pmLabRender();return;}
+ const draft=asObj(dailyData.practiceDraft),today=pmDayKey();
+ const match=draft.date===today?pmReviewItems().find(w=>String(w.id)===String(draft.id)&&!pmPracticeToday().some(id=>String(id)===String(w.id))):null;
+ if(match){
+  pmLabCurrent=match;pmLabStage=Math.max(0,Math.min(2,Number(draft.stage)||0));pmLabFlipped=Boolean(draft.flipped);
+  pmLabLink=String(draft.link??memoryLinks[match.id]??'');pmLabSentence=String(draft.sentence??dailyData.practiceSentences?.[match.id]??'');
+ }else{pmLabSelectNext();return;}
+ pmLabRender();
+}
+function pmLabSelectNext(){
+ if(pmPracticeDailyCount()>=pmPracticeCap()){
+  pmLabCurrent=null;
+  if(dailyData.practiceDraft)pmLabClearDraft();
+  pmLabRender();return;
+ }
+ const item=pmLabCandidates()[0]||null;
+ pmLabCurrent=item;pmLabStage=0;pmLabFlipped=false;pmLabWarning='';
+ pmLabLink=item?String(memoryLinks[item.id]||''):'';
+ pmLabSentence=item?String(asObj(dailyData.practiceSentences)[item.id]||''):'';
+ if(item)pmLabSaveDraft(true);else if(dailyData.practiceDraft)pmLabClearDraft();
+ pmLabRender();
+}
+function pmLabHeader(){
+ const done=pmPracticeDailyCount(),limit=pmPracticeCap(),step=Math.min(2,pmLabStage);
+ return `<header class="pm-lab-header"><div class="pm-lab-title"><span class="pm-lab-icon"><svg viewBox="0 0 24 24"><path d="M12 3 3 8l9 5 9-5-9-5ZM3 13l9 5 9-5M3 18l9 5 9-5"/></svg></span><h2>Practice</h2></div><span class="pm-lab-counter" aria-label="Daily completed words">${Math.min(done,limit)} / ${limit} words</span></header>
+   <div class="pm-lab-daily" role="progressbar" aria-label="Daily practice progress" aria-valuemin="0" aria-valuemax="${limit}" aria-valuenow="${Math.min(done,limit)}"><i style="width:${Math.min(100,100*done/limit)}%"></i></div>
+   ${pmLabCurrent?`<div class="pm-lab-steps">${['Flip','Connect','Use'].map((name,i)=>`<div class="pm-lab-step ${i===step?'current':i<step?'done':''}"><i></i>${name}</div>`).join('')}</div>`:''}`;
+}
+function pmLabStageBody(){
+ const item=pmLabCurrent;if(!item)return '';
+ const en=escapeHTML(item.word),he=escapeHTML(item.meaning||''),phon=escapeHTML(item.phonetic||'');
+ if(pmLabStage===0){
+  return `<div class="pm-lab-main"><span class="pm-lab-stage-caption">${pmLabFlipped?'MEANING':'ENGLISH'}</span>
+    <button class="pm-lab-flip" type="button" onclick="pmLabFlip()" aria-label="Flip vocabulary card">
+       ${pmLabFlipped?`<span class="pm-lab-meaning" dir="rtl">${he}</span>${phon?`<span class="pm-lab-phonetic" dir="rtl">${phon}</span>`:''}`:`<span class="pm-lab-word" lang="en">${en}</span>`}
+       <span class="pm-lab-tap">${pmLabFlipSvg} Tap to flip</span></button>
+    ${!pmLabFlipped?`<div class="pm-lab-tools"><button class="pm-lab-tool" type="button" onclick="pmLabListen()">${pmLabSpeakerSvg} Listen</button></div>`:''}
+    </div><div class="pm-lab-next"><button type="button" class="pm-lab-action" ${pmLabFlipped?'':'disabled'} onclick="pmLabNext()">Next · Connect →</button></div>`;
+ }
+ if(pmLabStage===1){
+  return `<div class="pm-lab-main"><div class="pm-lab-labeled"><button class="pm-lab-prev" onclick="pmLabBack()" type="button">← Back</button><span class="pm-lab-stage-caption">YOUR MEMORY LINK</span></div>
+    <div class="pm-lab-word" lang="en">${en}</div><div class="pm-lab-sub" dir="rtl">${he}</div>
+    <div class="pm-lab-form"><label class="pm-lab-fieldlabel" for="pm-lab-link">איזה קשר אישי יעזור לך לזכור את המילה?</label>
+    <textarea id="pm-lab-link" class="pm-lab-field" dir="auto" maxlength="1500" placeholder="חוויה, דימוי, משחק מילים או אסוציאציה משלך..." oninput="pmLabType('link',this.value)" onblur="pmLabStoreText()">${escapeHTML(pmLabLink)}</textarea></div>
+    </div><div class="pm-lab-next"><button id="pm-lab-connect-next" type="button" class="pm-lab-action" ${pmLabLink.trim().length>=4?'':'disabled'} onclick="pmLabNext()">Next · Use →</button></div>`;
+ }
+ const example=pmLabExample(item);
+ return `<div class="pm-lab-main"><div class="pm-lab-labeled"><button class="pm-lab-prev" onclick="pmLabBack()" type="button">← Back</button><span class="pm-lab-stage-caption">CREATE YOUR SENTENCE</span></div>
+     <div class="pm-lab-word" lang="en">${en}</div><div class="pm-lab-sub" dir="rtl">${he}</div>
+     <div class="pm-lab-example"><small>${escapeHTML(example.label)}</small>${escapeHTML(example.text)}</div>
+     <div class="pm-lab-form"><label for="pm-lab-sentence" class="pm-lab-fieldlabel">כתוב משפט משלך באנגלית עם המילה</label>
+     <textarea id="pm-lab-sentence" class="pm-lab-field" dir="ltr" lang="en" maxlength="2000" placeholder="Your own English sentence..." oninput="pmLabType('sentence',this.value)" onblur="pmLabStoreText()">${escapeHTML(pmLabSentence)}</textarea></div>
+     </div>
+     <div class="pm-lab-grade"><button type="button" class="no" id="pm-lab-no" onclick="pmLabGrade(false)" ${pmLabSentence.trim().length>=10?'':'disabled'}><span class="pm-lab-orb">${pmLabXsvg}</span><span>Not yet</span></button>
+       <button type="button" class="good" id="pm-lab-yes" onclick="pmLabGrade(true)" ${pmLabSentence.trim().length>=10?'':'disabled'}><span class="pm-lab-orb">${pmLabCheckSvg}</span><span>I knew it</span></button></div>`;
+}
+function pmLabRender(){
+ const root=ui('pm-practice-root'),screen=ui('pm-practice-screen');if(!root||!screen)return;
+ screen.classList.add('pm-lab-screen');
+ const header=pmLabHeader();
+ if(!pmLabCurrent){
+  const limitReached=pmPracticeDailyCount()>=pmPracticeCap();
+  const selected=pmReviewItems();const future=selected.filter(w=>!pmDue(w.id)).length;
+  const title=limitReached?'Daily practice complete!':!selected.length?'No practice words yet':'All caught up!';
+  const detail=limitReached?'You have completed '+pmPracticeCap()+' words today. Your next practice opens tomorrow.':!selected.length?'Save a word to Practice in Discover, and it will appear here.':future?'Your saved words are scheduled for later. Keep practicing recall in the meantime.':'Save new words from Discover to begin a new session.';
+  root.innerHTML=`<div class="pm-lab-layout">${header}<div class="pm-lab-empty"><h3>${title}</h3><p>${detail}</p><button type="button" onclick="pmShowTab('learn')">Explore Discover →</button></div></div>`;
+  return;
+ }
+ root.innerHTML=`<div class="pm-lab-layout">${header}<div class="pm-lab-stack"><article class="pm-lab-card">${pmLabStageBody()}</article></div><div class="pm-lab-notice" aria-live="polite" id="pm-lab-notice">${escapeHTML(pmLabWarning)}</div></div>`;
+}
+window.pmLabFlip=function(){if(!pmLabCurrent||pmLabStage!==0)return;pmLabFlipped=!pmLabFlipped;pmLabSaveDraft(true);pmLabRender();};
+window.pmLabListen=function(){if(pmLabCurrent)speakWord(pmLabCurrent.word);};
+window.pmLabType=function(field,value){
+ if(field==='link')pmLabLink=String(value);else if(field==='sentence')pmLabSentence=String(value);
+ pmLabWarning='';pmLabSaveDraft(true);
+ const connect=ui('pm-lab-connect-next');if(connect)connect.disabled=pmLabLink.trim().length<4;
+ for(const id of ['pm-lab-no','pm-lab-yes']){const b=ui(id);if(b)b.disabled=pmLabSentence.trim().length<10;}
+};
+window.pmLabStoreText=function(){if(pmLabCurrent)pmLabSaveDraft(true);};
+window.pmLabBack=function(){if(pmLabStage>0){pmLabStage--;pmLabWarning='';pmLabSaveDraft(true);pmLabRender();}};
+window.pmLabNext=function(){
+ if(!pmLabCurrent)return;
+ if(pmLabStage===0){if(!pmLabFlipped)return;pmLabStage=1;}
+ else if(pmLabStage===1){if(pmLabLink.trim().length<4)return;pmLabStage=2;}
+ else return;
+ pmLabWarning='';pmLabSaveDraft(true);pmLabRender();
+};
+window.pmLabGrade=function(known){
+ if(!accountReady||!pmLabCurrent||pmLabStage!==2||pmLabLink.trim().length<4||pmLabSentence.trim().length<10)return;
+ if(pmPracticeDailyCount()>=pmPracticeCap()){pmLabCurrent=null;pmLabRender();return;}
+ const item=pmLabCurrent,id=String(item.id),now=Date.now();
+ // Required association and original English sentence both persist with the word.
+ memoryLinks[id]=pmLabLink.trim();
+ dailyData.practiceSentences=asObj(dailyData.practiceSentences);
+ dailyData.practiceSentences[id]=pmLabSentence.trim();
+ const record=pmReviewRecord(id);
+ for(const type of ['m','p']){
+  const skill=record[type];skill.firstAt ||= now;skill.lastAt=now;
+  if(known){skill.reps=Math.min(pmReviewIntervals.length,skill.reps+1);skill.successes++;skill.due=now+86400000*pmReviewIntervals[Math.min(skill.reps-1,pmReviewIntervals.length-1)];}
+  else {skill.reps=0;skill.failures++;skill.due=now+86400000;}
+ }
+ record.introduced=true;reviewData[id]=record;
+ // The daily cap counts distinct completed words, never screen flips/steps.
+ const day=pmDayKey();dailyData.practiceDays=asObj(dailyData.practiceDays);
+ dailyData.practiceDays[day]=[...new Set([...pmPracticeToday().map(String),id])];
+ for(const oldDay of Object.keys(dailyData.practiceDays).sort().slice(0,-120))delete dailyData.practiceDays[oldDay];
+ delete dailyData.practiceDraft;pmLabCurrent=null;
+ pmPersistExtras(); // Includes both existing link + review + dailyData and Google sync.
+ pmRenderAccountPrefs();pmLabSelectNext();
+};
+// Keep existing entry, preference dialog and memory-editor behavior working.
+// Earlier Review functions remain in the file for backward-compatible data migration.
+pmStartReview=function(){pmLabStart();};
+pmRenderReview=function(){pmLabRender();};
+
+/* ================================================================
+   Recall refinements — first-attempt, UNIQUE word outcome counters;
+   pronunciation preview and optional verification on revealed answer.
+   The Recall spaced repetition algorithm and stored records are intact.
+   ================================================================ */
+const pmRecallFirstGrades=new Map();
+const pmRecallUpdateCountBase=pmRecallUpdateCount;
+pmRecallUpdateCount=function(){
+ const good=[...pmRecallFirstGrades.values()].filter(Boolean).length;
+ const strengthen=pmRecallFirstGrades.size-good;
+ const a=ui('pm-recall-known-count')?.querySelector('span'),b=ui('pm-recall-strengthen-count')?.querySelector('span');
+ if(a&&b){a.textContent=String(good);b.textContent=String(strengthen);}else pmRecallUpdateCountBase();
+};
+const pmRecallNextBase=pmRecallNext;
+pmRecallNext=function(){
+ pmRecallNextBase();
+ const e=ui('pm-recall-answer-box'),p=ui('pm-recall-phonetic');
+ if(e)e.hidden=true;
+ if(p){p.hidden=true;p.textContent=String(pmRecallCurrent?.phonetic||'').trim();}
+ ui('pm-recall-pronounce')?.classList.remove('listening');
+};
+const pmRecallRevealBase=window.pmRecallReveal;
+window.pmRecallReveal=function(){
+ pmRecallRevealBase();
+ if(!pmRecallRevealed)return;
+ const e=ui('pm-recall-answer-box'),p=ui('pm-recall-phonetic');
+ if(e)e.hidden=false;
+ if(p){p.hidden=!p.textContent.trim();}
+};
+const pmRecallGradeBase=window.pmRecallGrade;
+window.pmRecallGrade=function(known){
+ if(pmRecallRevealed&&pmRecallCurrent&&accountReady&&!pmRecallFirstGrades.has(String(pmRecallCurrent.id)))pmRecallFirstGrades.set(String(pmRecallCurrent.id),Boolean(known));
+ pmRecallGradeBase(known);pmRecallUpdateCount();
+};
+window.pmRecallListen=function(){if(pmRecallCurrent&&pmRecallRevealed)speakWord(pmRecallCurrent.word);};
+const pmRecallStopSpeechBase=pmRecallStopSpeech;
+pmRecallStopSpeech=function(){pmRecallStopSpeechBase();ui('pm-recall-pronounce')?.classList.remove('listening');};
+window.pmRecallPronounce=function(){
+ if(!pmRecallCurrent||!pmRecallRevealed)return;
+ if(pmRecallSpeech){pmRecallStopSpeech();return;}
+ const Recognizer=window.SpeechRecognition||window.webkitSpeechRecognition;
+ if(!Recognizer){pmRecallMessage('Speech recognition is unavailable here. You can still listen to the word.');return;}
+ const r=new Recognizer();r.lang='en-US';r.continuous=false;r.interimResults=false;r.maxAlternatives=4;
+ const serial=++pmRecallSpeechSerial;pmRecallSpeech=r;
+ const btn=ui('pm-recall-pronounce');btn.classList.add('listening');pmRecallMessage('Listening…');
+ r.onresult=e=>{
+  if(serial!==pmRecallSpeechSerial||!pmRecallCurrent)return;
+  const phrases=Array.from(e.results[0]||[]).map(t=>t.transcript).filter(Boolean);
+  const expected=pmRecallNormalized(pmRecallCurrent.word);
+  const best=phrases.find(t=>pmRecallNormalized(t)===expected)||phrases[0];
+  if(!best)return;
+  const matched=pmRecallNormalized(best)===expected;
+  const notice=ui('pm-recall-speech-result');notice.textContent=(matched?'✓ ':'')+'Heard: '+best+(matched?' — Recognized':' — Try again or listen');
+  notice.classList.toggle('mismatch',!matched);notice.hidden=false;pmRecallMessage('');
+ };
+ r.onerror=e=>{if(serial!==pmRecallSpeechSerial)return;pmRecallMessage(e.error==='not-allowed'?'Microphone permission denied.':'Speech recognition could not complete.');};
+ r.onend=()=>{if(serial!==pmRecallSpeechSerial)return;pmRecallSpeech=null;btn.classList.remove('listening');if(ui('pm-recall-message').textContent==='Listening…')pmRecallMessage('');};
+ try{r.start();}catch(e){pmRecallSpeech=null;btn.classList.remove('listening');pmRecallMessage('Microphone unavailable.');}
+};
+// Counters reset only when a fresh page session begins; switching tabs preserves them.
+
+
+// Keep PWA offline dictionary current without modifying progress or Firebase state.
+window.addEventListener('load',async()=>{
+  if(!('caches' in window)||!navigator.onLine||!window.pmDictionaryLoadedUrl)return;
+  try{
+    const names=(await caches.keys()).filter(n=>n.startsWith('pronounceme-'));
+    if(!names.length)return;
+    const response=await fetch(window.pmDictionaryLoadedUrl,{cache:'no-store'});
+    if(!response.ok)return;
+    for(const name of names){
+      const cache=await caches.open(name);
+      await cache.put('./dictionary.js',response.clone());
+      for(const key of await cache.keys()){
+        const u=new URL(key.url);
+        if(u.pathname.endsWith('/dictionary.js')&&u.searchParams.has('pm_fresh'))await cache.delete(key);
+      }
+    }
+  }catch(err){console.warn('Dictionary offline refresh skipped:',err);}
+});
 // Existing Firebase initialization remains last, and unchanged.
 setupFirebase();
 })();
