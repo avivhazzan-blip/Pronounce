@@ -2435,6 +2435,52 @@ button:focus-visible,.phonetic:focus-visible,.az-badge:focus-visible { outline:3
   #words-grid .sub-card > .tinder-controls.pm-three-controls{margin:0 -15px 0!important;}
 }
 
+
+/* Recall-only visual layer: all selectors scoped to the new screen. */
+#pm-recall-desktop-entry{display:flex;align-items:center;justify-content:center}
+#pm-recall-desktop-entry svg{width:19px;height:19px;stroke-linecap:round;stroke-linejoin:round}
+#pm-recall-screen[hidden]{display:none!important}
+#pm-recall-screen{order:1;flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:18px 16px 24px;background:linear-gradient(180deg,#fff 0%,#f9faff 100%);scrollbar-width:thin;font-family:Inter,Heebo,system-ui,sans-serif}
+#pm-recall-screen *{box-sizing:border-box}
+#pm-recall-screen .pm-recall-layout{max-width:430px;margin:0 auto}
+#pm-recall-screen .pm-recall-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 2px 25px;direction:ltr}
+#pm-recall-screen .pm-recall-title{display:flex;align-items:center;gap:10px}
+#pm-recall-screen .pm-recall-title h2{font:850 24px/1.2 Inter,Heebo,sans-serif;letter-spacing:-.7px;color:#1e3159;margin:0}
+#pm-recall-screen .pm-recall-brain{width:38px;height:38px;display:grid;place-items:center;border-radius:12px;background:#eeebfc;color:#7664be}
+#pm-recall-screen .pm-recall-brain svg{width:23px;height:23px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+#pm-recall-screen .pm-recall-count{font-size:12px;font-weight:750;color:#8290a9;white-space:nowrap}
+#pm-recall-screen .pm-recall-stack{position:relative;padding-bottom:13px;margin:0 3px 20px}
+#pm-recall-screen .pm-recall-stack::before,#pm-recall-screen .pm-recall-stack::after{content:"";position:absolute;bottom:2px;left:13px;right:13px;height:26px;border:1px solid #e1e7f2;background:#fff;border-radius:20px;box-shadow:0 4px 12px rgba(39,59,108,.035)}
+#pm-recall-screen .pm-recall-stack::after{bottom:7px;left:7px;right:7px;background:#fefeff}
+#pm-recall-screen .pm-recall-card{position:relative;z-index:1;background:#fff;border:1px solid #e2e7f1;border-radius:20px;overflow:hidden;box-shadow:0 9px 24px rgba(30,51,93,.055)}
+#pm-recall-screen .pm-recall-card-main{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;min-height:260px;padding:34px 20px 24px;text-align:center}
+#pm-recall-screen .pm-recall-hebrew{font:850 clamp(30px,8vw,42px)/1.35 Heebo,Arial,sans-serif;color:#1c3159;max-width:100%;overflow-wrap:anywhere}
+#pm-recall-screen .pm-recall-placeholder{display:flex;align-items:center;justify-content:center;gap:7px;min-height:48px}
+#pm-recall-screen .pm-recall-placeholder i{width:7px;height:7px;background:#e4e9f4;border-radius:50%}
+#pm-recall-screen .pm-recall-answer{font:800 clamp(21px,5.5vw,27px)/1.3 Inter,sans-serif;color:#7354b2;background:#f2edfd;border:1px solid #dfd5f7;border-radius:13px;padding:10px 22px;max-width:100%;overflow-wrap:anywhere}
+#pm-recall-screen .pm-recall-tools{display:grid;grid-template-columns:1fr 1fr;gap:9px;padding:0 16px 17px}
+#pm-recall-screen .pm-recall-tools button{display:flex;align-items:center;justify-content:center;gap:9px;font:750 13px Inter,sans-serif;min-width:0;min-height:45px;border:1px solid #e1e6f2;border-radius:12px;color:#566b96;background:#fff;box-shadow:none;cursor:pointer}
+#pm-recall-screen .pm-recall-tools button:first-child{background:#f0edfc;border-color:#ded7f5;color:#705bb8}
+#pm-recall-screen .pm-recall-tools button:disabled{opacity:.56;cursor:default}
+#pm-recall-screen .pm-recall-tools button.listening{background:#e4ddfb;box-shadow:0 0 0 3px rgba(116,91,191,.1);color:#6047af}
+#pm-recall-screen .pm-recall-tools svg,#pm-recall-screen .pm-recall-grade svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#pm-recall-screen .pm-recall-speech-result{margin:-4px 16px 14px;padding:10px 13px;border:1px solid #d9e9df;border-radius:11px;color:#3b8869;background:#f3faf6;font-size:12px;line-height:1.6;text-align:center;overflow-wrap:anywhere}
+#pm-recall-screen .pm-recall-speech-result.mismatch{background:#fff9ee;border-color:#eee4cc;color:#927040}
+#pm-recall-screen .pm-recall-grade{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #e5eaf3;direction:ltr}
+#pm-recall-screen .pm-recall-grade button{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px;min-height:91px;padding:13px 3px 12px;background:#fff;color:#354968;border:0;border-radius:0;font:800 12px Inter,sans-serif;cursor:pointer}
+#pm-recall-screen .pm-recall-grade button+button{border-left:1px solid #e5eaf3}
+#pm-recall-screen .pm-recall-grade button:disabled{opacity:.42;cursor:default}
+#pm-recall-screen .pm-recall-grade button:not(:disabled):hover{background:#f9faff}
+#pm-recall-screen .pm-recall-orb{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:#fff0e4;color:#cc8f55}
+#pm-recall-screen #pm-recall-yes .pm-recall-orb{background:#e4f7ec;color:#2fa478}
+#pm-recall-screen .pm-recall-orb svg{width:23px;height:23px;stroke-width:2.7}
+#pm-recall-screen .pm-recall-message{margin:0 6px;color:#7080a0;direction:rtl;text-align:center;font-size:12px;line-height:1.6}
+#pm-recall-screen .pm-recall-message[hidden],#pm-recall-screen .pm-recall-speech-result[hidden],#pm-recall-screen .pm-recall-placeholder[hidden],#pm-recall-screen .pm-recall-answer[hidden],#pm-recall-screen .pm-recall-empty[hidden]{display:none!important}
+#pm-recall-screen .pm-recall-empty{padding:30px 20px;border:1px solid #e2e6f2;background:#fff;border-radius:16px;text-align:center;color:#7e8ba0}
+@media(min-width:768px){#pm-recall-screen{padding-top:44px}#pm-recall-desktop-entry{width:35px;height:35px}#pm-recall-screen .pm-recall-card-main{min-height:290px}}
+@media(max-width:767px){#pm-recall-desktop-entry{display:none!important}#pm-recall-screen{padding:12px 14px 10px}#pm-recall-screen .pm-recall-header{margin-bottom:17px}#pm-recall-screen .pm-recall-card-main{min-height:clamp(205px,34dvh,285px)}.mobile-bottom-tabs .mobile-tab{min-width:0!important;flex:1 1 0!important}}
+@media(max-width:767px) and (max-height:650px){#pm-recall-screen{padding-top:8px}#pm-recall-screen .pm-recall-header{margin-bottom:9px}#pm-recall-screen .pm-recall-card-main{min-height:176px;padding:15px 12px 10px;gap:8px}#pm-recall-screen .pm-recall-grade button{min-height:71px;padding:7px 2px;gap:4px}#pm-recall-screen .pm-recall-tools{padding-bottom:10px}#pm-recall-screen .pm-recall-title h2{font-size:21px}}
+
     </style>
 
 </head>
@@ -2457,7 +2503,7 @@ button:focus-visible,.phonetic:focus-visible,.az-badge:focus-visible { outline:3
           <span class="progress-container"><span class="progress-bar-fill" id="progress-fill"></span></span>
         </span>
     </button>
-    <div class="pm-header-tools"><button type="button" id="pm-open-search" class="nav-account pm-search-icon" onclick="pmOpenSearch()" title="Search words" aria-label="Search words"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85"><circle cx="10.7" cy="10.7" r="6.8"/><path d="m16 16 5 5"/></svg></button>
+    <div class="pm-header-tools"><button type="button" id="pm-recall-desktop-entry" class="nav-account" onclick="pmShowTab('recall')" title="Recall — Hebrew to English" aria-label="Open Recall"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85"><path d="M5 11a7 7 0 1 1 2 5M5 18v-6h6m-1-1 3 3 4-5"/></svg></button><button type="button" id="pm-open-search" class="nav-account pm-search-icon" onclick="pmOpenSearch()" title="Search words" aria-label="Search words"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85"><circle cx="10.7" cy="10.7" r="6.8"/><path d="m16 16 5 5"/></svg></button>
     <button type="button" class="nav-account" onclick="openAccountModal()" title="חשבון וגיבוי" aria-label="חשבון וגיבוי"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z"/><path d="M19.4 15a1.7 1.7 0 0 1 .34 1.87l-.42.72a1.7 1.7 0 0 1-1.8.81l-1.2-.25a7.8 7.8 0 0 1-1.54.9l-.42 1.18a1.7 1.7 0 0 1-1.59 1.1h-1.5a1.7 1.7 0 0 1-1.6-1.1l-.4-1.18a7.7 7.7 0 0 1-1.54-.9l-1.22.25a1.7 1.7 0 0 1-1.8-.81l-.42-.72A1.7 1.7 0 0 1 4.6 15l.8-.92a8.2 8.2 0 0 1 0-1.78l-.8-.92a1.7 1.7 0 0 1-.34-1.88l.42-.72a1.7 1.7 0 0 1 1.8-.81l1.2.25a7.8 7.8 0 0 1 1.54-.9l.42-1.18a1.7 1.7 0 0 1 1.59-1.1h1.5a1.7 1.7 0 0 1 1.6 1.1l.4 1.18a7.8 7.8 0 0 1 1.54.9l1.22-.25a1.7 1.7 0 0 1 1.8.81l.42.72a1.7 1.7 0 0 1-.34 1.88l-.8.92c.07.6.07 1.18 0 1.78z" transform="translate(0,-1) scale(.97)"/></svg></button></div>
 </div>
 
@@ -2549,6 +2595,7 @@ button:focus-visible,.phonetic:focus-visible,.az-badge:focus-visible { outline:3
 <nav class="mobile-bottom-tabs" aria-label="Main navigation" dir="ltr">
     <button type="button" class="mobile-tab active" id="pm-tab-learn" onclick="pmShowTab('learn')"><svg viewBox="0 0 24 24"><path d="M12 6c-4-2-7-2-10-1v14c3-1 6-1 10 1 4-2 7-2 10-1V5c-3-1-6-1-10 1ZM12 6v14"/></svg>Discover</button>
     <button type="button" class="mobile-tab" id="pm-tab-practice" onclick="pmShowTab('practice')"><svg viewBox="0 0 24 24"><path d="m12 3 2.8 5.9 6.5.9-4.8 4.7 1.1 6.5-5.6-3-5.6 3 1.1-6.5-4.8-4.7 6.5-.9z"/></svg>Practice</button>
+    <button type="button" class="mobile-tab" id="pm-tab-recall" onclick="pmShowTab('recall')"><svg viewBox="0 0 24 24"><path d="M5 11a7 7 0 1 1 2 5M5 18v-6h6m-1-1 3 3 4-5"/></svg>Recall</button>
     <button type="button" class="mobile-tab" id="pm-tab-play" onclick="pmShowTab('play')"><svg viewBox="0 0 24 24"><path d="M6.2 8.5c-2.5.2-4.1 2.6-4.1 5.6 0 3.3 1.7 5.6 3.7 5.6 1.4 0 2.1-1.3 3.4-2.6h5.6c1.3 1.3 2 2.6 3.4 2.6 2 0 3.7-2.3 3.7-5.6 0-3-1.6-5.4-4.1-5.6h-11.6zM7 12v4m-2-2h4m7-1h.01m2 2h.01"/></svg>Play</button>
 </nav>
 
@@ -2618,6 +2665,36 @@ button:focus-visible,.phonetic:focus-visible,.az-badge:focus-visible { outline:3
 
 <!-- ============================================== -->
 
+
+<!-- Recall: independent Hebrew-to-English retrieval practice (no changes to existing screens). -->
+<section id="pm-recall-screen" aria-label="Recall Hebrew words in English" hidden>
+  <div class="pm-recall-layout">
+    <header class="pm-recall-header">
+      <div class="pm-recall-title"><span class="pm-recall-brain" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5a4 4 0 0 0-7.1-2.1A4 4 0 0 0 3.5 9a4 4 0 0 0 0 6A4 4 0 0 0 6 21a4 4 0 0 0 6-3"/><path d="M12 5a4 4 0 0 1 7.1-2.1A4 4 0 0 1 20.5 9a4 4 0 0 1 0 6A4 4 0 0 1 18 21a4 4 0 0 1-6-3M12 5v13M8 10l4 2m4-2-4 2"/></svg></span><h2>Recall</h2></div>
+      <span class="pm-recall-count" id="pm-recall-count" aria-live="polite">0 recalled</span>
+    </header>
+    <div class="pm-recall-stack">
+      <article class="pm-recall-card" aria-label="Recall flashcard">
+        <div class="pm-recall-card-main">
+          <div id="pm-recall-hebrew" class="pm-recall-hebrew" dir="rtl">—</div>
+          <div id="pm-recall-placeholder" class="pm-recall-placeholder" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div id="pm-recall-answer" class="pm-recall-answer" lang="en" hidden></div>
+        </div>
+        <div class="pm-recall-tools">
+          <button id="pm-recall-speak" type="button" onclick="pmRecallSpeak()"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4m-4 0h8"/></svg><span>Speak</span></button>
+          <button id="pm-recall-reveal" type="button" onclick="pmRecallReveal()"><svg viewBox="0 0 24 24"><path d="M2 12s4-6.5 10-6.5S22 12 22 12s-4 6.5-10 6.5S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/></svg><span>Reveal</span></button>
+        </div>
+        <div id="pm-recall-speech-result" class="pm-recall-speech-result" aria-live="polite" hidden></div>
+        <div class="pm-recall-grade">
+          <button type="button" id="pm-recall-no" onclick="pmRecallGrade(false)" disabled aria-label="I couldn't recall the word"><span class="pm-recall-orb"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></span><span>Not yet</span></button>
+          <button type="button" id="pm-recall-yes" onclick="pmRecallGrade(true)" disabled aria-label="I knew the word"><span class="pm-recall-orb"><svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5L19.5 7"/></svg></span><span>I knew it</span></button>
+        </div>
+      </article>
+    </div>
+    <p id="pm-recall-message" class="pm-recall-message" role="status" aria-live="polite" hidden></p>
+    <div id="pm-recall-empty" class="pm-recall-empty" hidden>No words with Hebrew meanings are available.</div>
+  </div>
+</section>
 
 <section id="pm-practice-screen" class="pm-practice-screen" aria-label="Smart Memory Practice" hidden><div id="pm-practice-root"></div></section>
 <section id="pm-play-screen" aria-label="Quick Play" hidden>
@@ -3786,8 +3863,8 @@ window.PM_ORIGINAL_WORDS = (typeof baseWordsData !== 'undefined') ? JSON.parse(J
 (function () {
 'use strict';
 const STORAGE_KEYS = {progress:'englishAppProgressV6',words:'englishAppCustomWordsV5',phonetics:'englishAppPhoneticsV1'};
-const PM_EXTRA_KEYS={memory:'pronounceme:memoryLinksV1',reviews:'pronounceme:reviewsV1',daily:'pronounceme:dailyV1',prefs:'pronounceme:prefsV1'};
-let memoryLinks={},reviewData={},dailyData={days:{}},prefs={dailyGoal:8,timer:true,reminderHour:18,reminders:false,pushDevices:{}};
+const PM_EXTRA_KEYS={memory:'pronounceme:memoryLinksV1',reviews:'pronounceme:reviewsV1',daily:'pronounceme:dailyV1',prefs:'pronounceme:prefsV1',recall:'pronounceme:recallV1'};
+let memoryLinks={},reviewData={},dailyData={days:{}},recallData={schemaVersion:1,words:{}},prefs={dailyGoal:8,timer:true,reminderHour:18,reminders:false,pushDevices:{}};
 const MILESTONES = [
   {n:25,label:'Starter',icon:'🌱'}, {n:100,label:'Bronze Medal',icon:'🥉'},
   {n:250,label:'Silver Medal',icon:'🥈'}, {n:500,label:'Gold Medal',icon:'🥇'},
@@ -3814,7 +3891,7 @@ const hasContent = obj => Object.keys(obj.progress||{}).length>0 || (obj.customW
 const mergeState = (first,second) => {
   const a=first||{},b=second||{},byId=new Map();
   for (const word of [...asArr(a.customWords),...asArr(b.customWords)]) if (word && word.id) byId.set(word.id,word);
-  return {progress:{...asObj(a.progress),...asObj(b.progress)},customWords:[...byId.values()],phonetics:{...asObj(a.phonetics),...asObj(b.phonetics)},gameData:normalizedGameData(b.gameData ?? a.gameData),memoryLinks:asObj(b.memoryLinks??a.memoryLinks),reviewData:asObj(b.reviewData??a.reviewData),dailyData:asObj(b.dailyData??a.dailyData),prefs:asObj(b.prefs??a.prefs)};
+  return {progress:{...asObj(a.progress),...asObj(b.progress)},customWords:[...byId.values()],phonetics:{...asObj(a.phonetics),...asObj(b.phonetics)},gameData:normalizedGameData(b.gameData ?? a.gameData),memoryLinks:asObj(b.memoryLinks??a.memoryLinks),reviewData:asObj(b.reviewData??a.reviewData),dailyData:asObj(b.dailyData??a.dailyData),recallData:asObj(b.recallData??a.recallData),prefs:asObj(b.prefs??a.prefs)};
 };
 const phone = () => window.matchMedia('(max-width:767px)').matches;
 const escapeHTML = x => String(x??'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -3827,7 +3904,7 @@ const namespace = uid => 'pronounceme:v1:'+uid;
 function updateSync(text,error=false) { let label=ui('pm-sync-indicator'); if(label){label.textContent=text;label.classList.toggle('error',!!error);} }
 function setAuthMessage(text){ui('pm-auth-state').textContent=text;}
 function userStateRef(){return firebaseStore.collection('users').doc(signedUser.uid);}
-function snapshot(){return {...getLocal(),gameData:clone(gameData),memoryLinks:clone(memoryLinks),reviewData:clone(reviewData),dailyData:clone(dailyData),prefs:clone(prefs)};}
+function snapshot(){return {...getLocal(),gameData:clone(gameData),memoryLinks:clone(memoryLinks),reviewData:clone(reviewData),dailyData:clone(dailyData),recallData:clone(recallData),prefs:clone(prefs)};}
 function applyState(data){
   const parsed=mergeState(null,data||{});
   for(const [storageKey,field] of [[STORAGE_KEYS.progress,'progress'],[STORAGE_KEYS.words,'customWords'],[STORAGE_KEYS.phonetics,'phonetics']]) {
@@ -3840,7 +3917,7 @@ function applyState(data){
   customUserWords=parsed.customWords;
   userProgress=parsed.progress;
   gameData=normalizedGameData(parsed.gameData);
-  memoryLinks=asObj(parsed.memoryLinks);reviewData=asObj(parsed.reviewData);dailyData={days:{},...asObj(parsed.dailyData)};
+  memoryLinks=asObj(parsed.memoryLinks);reviewData=asObj(parsed.reviewData);dailyData={days:{},...asObj(parsed.dailyData)};recallData={schemaVersion:1,words:{},...asObj(parsed.recallData)};recallData.words=asObj(recallData.words);localStorage.setItem(PM_EXTRA_KEYS.recall,JSON.stringify(recallData));
   prefs={dailyGoal:8,timer:true,reminderHour:18,reminders:false,pushDevices:{},...asObj(parsed.prefs)};
   wordsData=[...baseWordsData,...customUserWords];
   currentWordIndex=0;shuffledKeys=[];lastListSignature='';
@@ -4888,8 +4965,166 @@ window.pmShowTab=function(tab){
  pmExistingTabs(tab);
  for(const key of ['learn','play','practice'])ui('pm-tab-'+key)?.classList.toggle('active',key===tab);
 };
-// New features need the original login/app state and existing cloud-sync; no extra Firebase writes.
 
+/* ================================================================
+   Recall: independent Hebrew -> English retrieval with spaced review.
+   No edits to Discover/Practice/Play grading or their source data.
+   Each word is keyed by the immutable dictionary ID.
+   ================================================================ */
+const pmRecallIntervals=[1,3,7,14,30,60,120,240]; // days, conservative starting schedule
+const pmRecallDay=86400000;
+let pmRecallStarted=false,pmRecallCurrent=null,pmRecallRevealed=false;
+let pmRecallSessionTotal=0,pmRecallSessionSeen=new Set(),pmRecallRepeat=[];
+let pmRecallSpeech=null,pmRecallSpeechSerial=0;
+const pmRecallSvgCheck='<svg viewBox="0 0 24 24"><path d="m4.5 12.5 5 5L19.5 7"/></svg>';
+function pmRecallItems(){
+ const seen=new Set(),items=[];
+ for(const w of wordsData)for(const item of [w,...(w.derivatives||[])]){
+  if(!item||!item.id||seen.has(item.id)||!String(item.word||'').trim()||!/[\u0590-\u05FF]/.test(String(item.meaning||'')))continue;
+  seen.add(item.id);items.push(item);
+ }
+ return items;
+}
+function pmRecallRec(id){
+ const r=asObj(recallData.words[id]);
+ return {level:Math.max(0,Math.floor(Number(r.level)||0)),successes:Math.max(0,Math.floor(Number(r.successes)||0)),failures:Math.max(0,Math.floor(Number(r.failures)||0)),dueAt:Number(r.dueAt)||0,lastAt:Number(r.lastAt)||0,lastResult:r.lastResult||''};
+}
+function pmRecallUpdateCount(){ui('pm-recall-count').textContent=pmRecallSessionTotal+' recalled';}
+function pmRecallShuffle(arr){for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}return arr;}
+function pmRecallPick(){
+ const available=pmRecallItems();if(!available.length)return null;
+ const byId=new Map(available.map(item=>[item.id,item]));
+ // A failed card gets a second retrieval attempt after at least six OTHER prompts.
+ const repeatIndex=pmRecallRepeat.findIndex(r=>r.readyAt<=pmRecallSessionTotal&&byId.has(r.id));
+ if(repeatIndex!==-1){const [next]=pmRecallRepeat.splice(repeatIndex,1);return byId.get(next.id);}
+ const unseen=available.filter(item=>!pmRecallSessionSeen.has(item.id));
+ if(unseen.length){
+  const due=unseen.filter(item=>pmRecallRec(item.id).dueAt>0&&pmRecallRec(item.id).dueAt<=Date.now());
+  if(due.length){due.sort((a,b)=>pmRecallRec(a.id).dueAt-pmRecallRec(b.id).dueAt);return due[0];}
+  // First draw from personally known/starred words, then the rest of the dictionary.
+  const fresh=unseen.filter(item=>!recallData.words[item.id]);
+  if(fresh.length){
+   const favorites=fresh.filter(item=>userProgress[item.id]?.starred||userProgress[item.id]?.m===1||userProgress[item.id]?.p===1);
+   return pmRecallShuffle(favorites.length?favorites:fresh)[0];
+  }
+ }
+ // Any pending same-session retry is reachable even when fewer words remain.
+ if(pmRecallRepeat.length){const next=pmRecallRepeat.shift();if(byId.has(next.id))return byId.get(next.id);}
+ // All words for this session are already seen and none is due. Continue indefinitely
+ // by starting a new unbounded pass; respect next-day due dates for studied cards.
+ pmRecallSessionSeen.clear();
+ const remaining=available.filter(item=>!recallData.words[item.id]);
+ if(remaining.length){const favorites=remaining.filter(item=>userProgress[item.id]?.starred||userProgress[item.id]?.m===1||userProgress[item.id]?.p===1);return pmRecallShuffle(favorites.length?favorites:remaining)[0];}
+ const due=available.filter(item=>pmRecallRec(item.id).dueAt<=Date.now());
+ if(due.length){due.sort((a,b)=>pmRecallRec(a.id).dueAt-pmRecallRec(b.id).dueAt);return due[0];}
+ // Nothing is due. Rather than violating spaced repetition intervals, show a quiet completed state.
+ return null;
+}
+function pmRecallStopSpeech(){
+ pmRecallSpeechSerial++;
+ if(pmRecallSpeech){try{pmRecallSpeech.abort();}catch(e){}pmRecallSpeech=null;}
+ ui('pm-recall-speak')?.classList.remove('listening');
+}
+function pmRecallMessage(message){const e=ui('pm-recall-message');e.textContent=message||'';e.hidden=!message;}
+function pmRecallNext(){
+ pmRecallStopSpeech();pmRecallRevealed=false;
+ const item=pmRecallPick();pmRecallCurrent=item;
+ const empty=ui('pm-recall-empty'),stack=ui('pm-recall-screen').querySelector('.pm-recall-stack');
+ if(!item){stack.hidden=true;empty.hidden=false;empty.textContent=pmRecallItems().length?'You are all caught up. Come back when your next review is due.':'No Hebrew meanings found in the dictionary.';pmRecallMessage('');return;}
+ stack.hidden=false;empty.hidden=true;
+ pmRecallSessionSeen.add(item.id);
+ ui('pm-recall-hebrew').textContent=String(item.meaning||'').trim();
+ ui('pm-recall-answer').textContent=String(item.word||'').trim();
+ ui('pm-recall-answer').hidden=true;ui('pm-recall-placeholder').hidden=false;
+ ui('pm-recall-reveal').disabled=false;ui('pm-recall-speak').disabled=false;
+ ui('pm-recall-speech-result').hidden=true;ui('pm-recall-speech-result').classList.remove('mismatch');
+ ui('pm-recall-no').disabled=true;ui('pm-recall-yes').disabled=true;
+ pmRecallMessage('');pmRecallUpdateCount();
+}
+window.pmRecallReveal=function(){
+ if(!pmRecallCurrent)return;
+ pmRecallRevealed=true;
+ ui('pm-recall-answer').hidden=false;ui('pm-recall-placeholder').hidden=true;
+ ui('pm-recall-reveal').disabled=true;
+ ui('pm-recall-no').disabled=false;ui('pm-recall-yes').disabled=false;
+};
+function pmRecallNormalized(text){return String(text||'').toLocaleLowerCase('en').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9\s'-]/g,' ').replace(/[-\s]+/g,' ').trim();}
+function pmRecallRecognized(transcript){
+ if(!pmRecallCurrent)return;
+ const recognized=pmRecallNormalized(transcript),expected=pmRecallNormalized(pmRecallCurrent.word);
+ const accepted=recognized===expected || (expected.includes('/')&&expected.split('/').some(s=>pmRecallNormalized(s)===recognized));
+ const notice=ui('pm-recall-speech-result');notice.textContent=(accepted?'✓ ':'')+'Heard: '+transcript+(accepted?' — Match':' — Check the answer');
+ notice.hidden=false;notice.classList.toggle('mismatch',!accepted);
+ window.pmRecallReveal();
+}
+window.pmRecallSpeak=function(){
+ if(!pmRecallCurrent||pmRecallRevealed)return;
+ if(pmRecallSpeech){pmRecallStopSpeech();return;}
+ const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;
+ if(!SpeechRecognition){pmRecallMessage('Speech recognition is unavailable in this browser. Use Reveal instead.');return;}
+ const recognizer=new SpeechRecognition();recognizer.lang='en-US';recognizer.continuous=false;recognizer.interimResults=false;recognizer.maxAlternatives=3;
+ const serial=++pmRecallSpeechSerial;pmRecallSpeech=recognizer;
+ const button=ui('pm-recall-speak');button.classList.add('listening');
+ pmRecallMessage('Listening…');
+ recognizer.onresult=e=>{
+  if(serial!==pmRecallSpeechSerial)return;
+  const phrases=Array.from(e.results[0]||[]).map(a=>a.transcript).filter(Boolean);
+  const expected=pmRecallNormalized(pmRecallCurrent?.word);
+  const best=phrases.find(s=>pmRecallNormalized(s)===expected)||phrases[0];
+  if(best)pmRecallRecognized(best);
+  pmRecallMessage('');
+ };
+ recognizer.onerror=e=>{if(serial!==pmRecallSpeechSerial)return;pmRecallMessage(e.error==='not-allowed'?'Microphone access was blocked. You can use Reveal.':e.error==='no-speech'?'No speech detected. Try again or use Reveal.':'Could not recognize speech. Try Reveal.');};
+ recognizer.onend=()=>{if(serial!==pmRecallSpeechSerial)return;pmRecallSpeech=null;button.classList.remove('listening');if(ui('pm-recall-message').textContent==='Listening…')pmRecallMessage('');};
+ try{recognizer.start();}catch(e){pmRecallSpeech=null;button.classList.remove('listening');pmRecallMessage('Microphone unavailable. Use Reveal instead.');}
+};
+window.pmRecallGrade=function(known){
+ if(!pmRecallRevealed||!pmRecallCurrent||!accountReady)return;
+ const id=pmRecallCurrent.id,old=pmRecallRec(id),now=Date.now();
+ const recentlyFailed=old.lastResult==='again'&&now-old.lastAt<pmRecallDay;
+ let level,dueAt;
+ if(known){
+  level=recentlyFailed?Math.max(1,old.level):Math.min(old.level+1,pmRecallIntervals.length);
+  dueAt=now+(recentlyFailed?1:pmRecallIntervals[level-1])*pmRecallDay;
+ }else{
+  level=Math.max(0,old.level-2);
+  dueAt=now+pmRecallDay;
+  pmRecallRepeat=pmRecallRepeat.filter(r=>r.id!==id);
+  pmRecallRepeat.push({id,readyAt:pmRecallSessionTotal+7});
+ }
+ recallData.words[id]={level,successes:old.successes+(known?1:0),failures:old.failures+(known?0:1),dueAt,lastAt:now,lastResult:known?'known':'again'};
+ pmRecallSessionTotal++;
+ // Persist separate Recall data immediately, also synchronizing it with the existing Google account.
+ localStorage.setItem(PM_EXTRA_KEYS.recall,JSON.stringify(recallData));
+ pmScheduleSync();
+ pmRecallNext();
+};
+function pmRecallOpen(){
+ if(!pmRecallStarted){pmRecallStarted=true;pmRecallSessionTotal=0;pmRecallSessionSeen=new Set();pmRecallRepeat=[];pmRecallNext();}
+ else if(!pmRecallCurrent)pmRecallNext();
+ else pmRecallUpdateCount();
+}
+// Wrap the existing (final) tab router, preserving all prior functions untouched.
+const pmRecallOriginalShowTab=window.pmShowTab;
+window.pmShowTab=function(tab){
+ pmRecallStopSpeech();
+ if(tab==='recall'){
+  pmStopRushTimer();
+  pmPlaying=false;
+  ui('pm-practice-screen').hidden=true;
+  ui('pm-play-screen').hidden=true;
+  ui('pm-recall-screen').hidden=false;
+  document.querySelector('.container').style.display='none';
+  for(const key of ['learn','practice','recall','play'])ui('pm-tab-'+key)?.classList.toggle('active',key==='recall');
+  pmRecallOpen();
+  return;
+ }
+ ui('pm-recall-screen').hidden=true;
+ pmRecallOriginalShowTab(tab);
+ ui('pm-tab-recall')?.classList.remove('active');
+};
+
+// Existing Firebase initialization remains last, and unchanged.
 setupFirebase();
 })();
 </script>
