@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="he" dir="rtl">
+<html lang="he" dir="rtl" data-pronounceme-build="practice-width-20261024-v2">
 
 <head>
 
@@ -2492,7 +2492,7 @@ button:focus-visible,.phonetic:focus-visible,.az-badge:focus-visible { outline:3
   font-family:Inter,Heebo,system-ui,sans-serif;overflow-y:auto;overscroll-behavior:contain;
 }
 #pm-practice-screen.pm-lab-screen *{box-sizing:border-box}
-#pm-practice-screen .pm-lab-layout{max-width:430px;margin:0 auto}
+#pm-practice-screen .pm-lab-layout{width:100%;max-width:none;margin:0 auto;min-width:0;align-self:stretch}
 #pm-practice-screen .pm-lab-header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0 2px 14px;direction:ltr}
 #pm-practice-screen .pm-lab-title{display:flex;align-items:center;gap:10px}
 #pm-practice-screen .pm-lab-title h2{font:850 24px/1.2 Inter,Heebo,sans-serif;letter-spacing:-.7px;color:#1e3159;margin:0}
@@ -2566,6 +2566,19 @@ button:focus-visible,.phonetic:focus-visible,.az-badge:focus-visible { outline:3
 @media(max-width:767px){#pm-practice-screen.pm-lab-screen{padding:12px 14px 24px}#pm-practice-screen .pm-lab-header{margin-bottom:11px}#pm-practice-screen .pm-lab-main{min-height:clamp(210px,37dvh,280px);padding:19px 15px 17px}#pm-recall-screen .pm-recall-card-main{gap:11px}#pm-recall-screen .pm-recall-phonetic{font-size:15px}}
 @media(max-width:767px) and (max-height:650px){#pm-practice-screen .pm-lab-main{min-height:185px;gap:9px}#pm-practice-screen .pm-lab-field{min-height:73px}#pm-practice-screen .pm-lab-stack{margin-bottom:11px}}
 
+/* Practice size correction: remove old 430px cap on touch devices.
+   Wider desktop views remain readable without affecting Discover / Recall / Play. */
+#pm-practice-screen.pm-lab-screen {width:100%!important;max-width:none!important;}
+#pm-practice-root {width:100%!important;min-width:0!important;}
+#pm-practice-screen .pm-lab-layout {width:100%!important;max-width:none!important;min-width:0!important;align-self:stretch!important;}
+#pm-practice-screen .pm-lab-stack,
+#pm-practice-screen .pm-lab-header,
+#pm-practice-screen .pm-lab-steps,
+#pm-practice-screen .pm-lab-daily,
+#pm-practice-screen .pm-lab-card {max-width:100%!important;min-width:0!important;}
+@media (min-width:768px) and (hover:hover) and (pointer:fine) {
+ #pm-practice-screen .pm-lab-layout {max-width:680px!important;}
+}
 /* Practice – four requested visual refinements, 2026-10-24.
    Keep Discover, Recall, Play and study logic unchanged. */
 #pm-practice-screen .pm-lab-layout{
@@ -4922,7 +4935,9 @@ window.pmEnableNotifications=async function(){
  }catch(e){out.textContent='Push configuration error: '+(e.message||e);}
 };
 if('serviceWorker' in navigator && /^https?:$/.test(location.protocol))window.addEventListener('load',()=>{
- navigator.serviceWorker.register('./service-worker.js',{scope:'./'}).catch(err=>console.warn('PWA service worker:',err));
+ navigator.serviceWorker.register('./service-worker.js',{scope:'./',updateViaCache:'none'})
+   .then(reg=>reg.update().catch(err=>console.warn('PWA update check:',err)))
+   .catch(err=>console.warn('PWA service worker:',err));
 });
 
 /* ========= PronounceMe targeted improvements (2026-10) =========

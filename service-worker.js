@@ -1,5 +1,5 @@
-/* PronounceMe SW v5 — current dictionary online + offline shell + Firebase background push. */
-const CACHE='pronounceme-v5-20261024';
+/* PronounceMe SW v6 — network-fresh pages and dictionary; offline fallback; Firebase push preserved. */
+const CACHE='pronounceme-v6-20261024-layout-refresh';
 const STATIC=['./','./index.html','./manifest.webmanifest','./dictionary.js','./icons/icon-192.png','./icons/icon-512.png','./icons/maskable-512.png'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(async cache=>{
  for(const path of STATIC){try{const response=await fetch(path,{cache:'reload'});if(response.ok)await cache.put(path,response);}catch(e){}}
@@ -28,7 +28,7 @@ self.addEventListener('fetch',event=>{
   return;
  }
  if(event.request.mode==='navigate'){
-  event.respondWith(fetch(event.request).then(async response=>{
+  event.respondWith(fetch(event.request,{cache:'no-store'}).then(async response=>{
    if(response.ok){const cache=await caches.open(CACHE);await cache.put('./index.html',response.clone());}
    return response;
   }).catch(async()=>(await (await caches.open(CACHE)).match('./index.html'))||Response.error()));
